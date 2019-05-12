@@ -10,7 +10,7 @@ const passport = require('passport');
 
 
 mongoose
-    .connect(db, {userNewUrlParse: true})
+    .connect(db, { useNewUrlParser: true })
     .then(() => console.log("Connected to MongoDB sucessfully"))
     .catch(err => console.log(err));
 
