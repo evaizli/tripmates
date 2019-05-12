@@ -12,24 +12,24 @@ const validateLoginInput = require("../../validation/login");
 
 router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
 
-router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
-    debugger;
-    res.json({msg: "success"});
-    // res.json({
-    //     id: req.user.id,
-    //     handle: req.user.handle,
-    //     email: req.user.email
-    // });
-});
-
+router.get(
+    '/current', 
+    passport.authenticate('jwt', { session: false }), 
+    (req, res) => {
+        res.json({
+            id: req.user.id,
+            handle: req.user.handle,
+            email: req.user.email
+        });
+    }
+);
 
 router.post('/register', (req, res) =>{
 
-    const {errors, isValid} = validateRegisterInput(req.body);
+    const { errors, isValid } = validateRegisterInput(req.body);
     if(!isValid){
         return res.status(400).json(errors);
     }
-
 
     User.findOne({email: req.body.email})
      .then(user => {
@@ -53,13 +53,17 @@ router.post('/register', (req, res) =>{
                                 name: user.email 
                             };
 
-                            jwt.sign(payload, keys.secretOrKey, { expires: 3600 }, (err, token) => {
-                                console.log(token);
-                                res.json({
-                                    success: true,
-                                    token: 'Bearer ' + token
-                                });
-                            });
+                            jwt.sign(
+                                payload, 
+                                keys.secretOrKey, 
+                                { expires: 3600 }, 
+                                (err, token) => {
+                                    res.json({
+                                        success: true,
+                                        token: 'Bearer ' + token
+                                    });
+                                }
+                            );
                         })
                         .catch(err => console.log(err));
                 });
@@ -69,9 +73,7 @@ router.post('/register', (req, res) =>{
 });
 
 router.post("/login", (req, res) =>{
-
-
-    const {errors, isValid} = validateLoginInput(req.body);
+    const { errors, isValid } = validateLoginInput(req.body);
 
     if(!isValid){
         return res.status(400).json(errors);
@@ -102,7 +104,7 @@ router.post("/login", (req, res) =>{
                             (err, token) =>{
                                 res.json({
                                     sucess: true,
-                                    token: "Bearer" + token 
+                                    token: "Bearer " + token 
                                 });
                             }
                         );
