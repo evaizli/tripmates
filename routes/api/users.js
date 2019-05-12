@@ -76,7 +76,7 @@ router.post("/login", (req, res) =>{
             bcrypt.compare(password, user.password)
                 .then(isMatch => {
                     if(isMatch){
-                    // res.json({msg: "Success!" });  REMOVED AND REPLAY WITH PAYLOD
+
                         const payload ={
                             id: user.id,
                             handle: user.handle,
