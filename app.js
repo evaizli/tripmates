@@ -4,13 +4,12 @@ const mongoose = require('mongoose');
 const db = require('./config/keys').mongoURI;
 const users = require("./routes/api/users");
 const tweets = require("./routes/api/tweets");
-const User = require("./models/User");
 const bodyParser = require('body-parser');
 const passport = require('passport');
 
 
 mongoose
-    .connect(db, {userNewUrlParse: true})
+    .connect(db, { useNewUrlParser: true })
     .then(() => console.log("Connected to MongoDB sucessfully"))
     .catch(err => console.log(err));
 
@@ -18,16 +17,16 @@ mongoose
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-    res.send('"Hello World!!!!!!"');
+// app.get("/", (req, res) => {
+//     res.send('"Hello World!!!!!!"');
 
-});
-
-app.use(passport.initialize());
-require('./config/passport')(passport);
+// });
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.use(passport.initialize());
+require('./config/passport')(passport);
 
 app.use("/api/users", users);
 app.use("/api/tweets", tweets);

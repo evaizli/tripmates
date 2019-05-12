@@ -13,11 +13,13 @@ const validateLoginInput = require("../../validation/login");
 router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
 
 router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
-    res.json({
-        id: req.user.id,
-        handle: req.user.handle,
-        email: req.user.email
-    });
+    debugger;
+    res.json({msg: "success"});
+    // res.json({
+    //     id: req.user.id,
+    //     handle: req.user.handle,
+    //     email: req.user.email
+    // });
 });
 
 
@@ -43,12 +45,25 @@ router.post('/register', (req, res) =>{
                 bcrypt.hash(newUser.password, salt, (err, hash) =>{
                     if(err) throw err;
                     newUser.password = hash;
-                    newUser.save()
-                        .then((user) =res.json(user))
+                    newUser
+                        .save()
+                        .then(user => {
+                            const payload = { 
+                                id: user.id, 
+                                name: user.email 
+                            };
+
+                            jwt.sign(payload, keys.secretOrKey, { expires: 3600 }, (err, token) => {
+                                console.log(token);
+                                res.json({
+                                    success: true,
+                                    token: 'Bearer ' + token
+                                });
+                            });
+                        })
                         .catch(err => console.log(err));
                 });
              });
-            
          }
      });
 });
@@ -62,7 +77,6 @@ router.post("/login", (req, res) =>{
         return res.status(400).json(errors);
     }
 
-
     const email = req.body.email;
     const password = req.body.password;
 
@@ -75,8 +89,7 @@ router.post("/login", (req, res) =>{
             bcrypt.compare(password, user.password)
                 .then(isMatch => {
                     if(isMatch){
-
-                        const payload ={
+                        const payload = {
                             id: user.id,
                             handle: user.handle,
                             email: user.email
