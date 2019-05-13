@@ -10,7 +10,8 @@ class TripForm extends React.Component {
       description: "",
       tripStartDate: "",
       tripEndDate: "",
-      destination: ""
+      destination: "",
+      destinationCount: [""]
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -28,7 +29,32 @@ class TripForm extends React.Component {
     };
   }
 
+  destinationCount(action) {
+    let oldArr = Object.assign([], this.state.destinationCount);
+    if (action === 'remove' && (this.state.destinationCount.length > 1)) {
+      oldArr.pop();
+      return this.setState({ destinationCount: oldArr});
+    } else if (action === 'add') {
+      oldArr.push("");
+      return this.setState({ destinationCount: oldArr });
+    }
+  }
+
+
+
   render() {
+
+    const destinationInput = this.state.destinationCount.map((el, idx) => {
+      return (
+        <div key={idx}>
+          <h4>Destination #{idx+1}</h4>
+          <input type="text" placeholder={`Destination #${idx+1}`}/>
+          <input type="date" />
+          <input type="date" />
+        </div>
+      )
+    });
+
     return (
       <div className = "trip-form-page" >
         <h2>Create a Trip</h2>
@@ -57,7 +83,19 @@ class TripForm extends React.Component {
                 />
             </label>
           </div>
+          <div className="destination-count flex-row">
+            <div className="destination-remove" onClick={() => this.destinationCount('remove')}>-</div>
+            <input 
+              type="number"
+              min="1"
+              value={this.state.destinationCount.length}
+            />
+            <div className="destination-add" onClick={() => this.destinationCount('add')}>+</div>
+          </div>
 
+          <div>
+            { destinationInput }
+          </div>
           <input type="submit" value="Create Trip" />
 
         </form>

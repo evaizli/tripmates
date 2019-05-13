@@ -1,5 +1,6 @@
 .upcoming-trips-main {
   @extend .flex-col;  
+  margin-bottom: 40px;
 }
 
 .upcoming-trips-content {
@@ -10,20 +11,44 @@
   padding: 10px;
 }
 
+.upcoming-trips-main h2{
+  margin-top: 10px;
+}
+
 .upcoming-trips-item {
   @extend .flex-col;
   width: 150px;
   height: 150px;
   border-radius: 5px;
-  padding: 10px;
   margin: 10px;
   box-sizing: border-box;
-  background: $color-primary-bluegreen;
+  background: white;
   justify-content: flex-end;
   align-items: flex-start;
+  color: black;
+  z-index: 1;
+}
+
+.upcoming-trips-item-info {
+  padding: 10px;
+}
+
+.upcoming-trips-item-background {
+  position: absolute;
+  border-radius: 5px;
+  width: 150px;
+  height: 150px;
+  opacity: .40;
+  content: "";
   background-image: url("../assets/images/170606110126-tokyo-skyline.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
+  z-index: -2;
+}
+
+.upcoming-trips-item:hover, .upcoming-trips-item-add:hover {
+  opacity: .5;
+  text-decoration: none;
 }
 
 .upcoming-trips-item-add {
@@ -31,9 +56,5 @@
   background: $color-primary-bluegreen;
   justify-content: center;
   align-items: center;
-}
-
-.upcoming-trips-item-add:hover {
-  opacity: .75;
 }
 

@@ -1,0 +1,25 @@
+.destination-count input {
+  margin: 0;
+  width: 75px;
+  border-left: $color-primary-blue;
+  border-right: $color-primary-blue;
+}
+
+.destination-remove {
+  background: $color-primary-blue;
+  height: 40px;
+  width: 20px;
+  border-radius: 3px 0px 0px 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 25pt;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.destination-add {
+  @extend .destination-remove;
+  border-radius: 0px 3px 3px 0px;
+}

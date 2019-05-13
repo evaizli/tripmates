@@ -6,7 +6,7 @@
   box-sizing: border-box;
   width: 225px;
   height: 100vh;
-  padding: 20px;
+  padding: 20px 0px;
 }
 
 .sidebar-main a {
@@ -15,6 +15,10 @@
 
 .sidebar-menu {
   @extend .flex-col;
+}
+
+.sidebar-menu * {
+  padding: 0px 20px;
 }
 
 .sidebar-menu-item {
