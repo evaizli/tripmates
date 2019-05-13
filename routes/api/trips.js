@@ -1,34 +1,34 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
-const validateTweetInput = require("../../validation/tweets");
-const Tweet = require("../../models/Tweet");
+const validateTripInput = require("../../validation/trips");
+const Trip = require("../../models/Trip");
 
 router.get("/test", 
-    (req, res) => res.json({ msg: "This is the tweets route" }));
+    (req, res) => res.json({ msg: "This is the trips route" }));
 
 
 router.get("/", ( req, res) => {
-    Tweet
+    Trip
         .find()
         .sort({date: -1})
-        .then(tweets => res.json(tweets))
+        .then(trips => res.json(trips))
         .catch(err => res.status(400).json(err));
 });
 
 
 router.get("/user/:user_id", (req, res)=>{
-    Tweet
+    Trip
         .find({user: req.params.user_id})
-        .then(tweets => res.json(tweets))
+        .then(trips => res.json(trips))
         .catch(err => res.status(400).json(err));
 });
 
 
 router.get("/:id", (req, res) => {
-    Tweet
+    Trip
         .findById(req.params.id)
-        .then(tweet => res.json(tweet))
+        .then(trip => res.json(trip))
         .catch(err => res.status(400).json(err));
 });
 
@@ -37,19 +37,19 @@ router.post("/",
     passport.authenticate("jwt", {session: false}), 
     
     (req, res) =>{
-        const { isValid, errors } = validateTweetInput(req.body);
+        const { isValid, errors } = validateTripInput(req.body);
 
         if (!isValid){
             return res.status(400).json(errors);
         }
 
-        const newTweet = new Tweet({
+        const newTrip = new Trip({
             user: req.user.id,
             text: req.body.text
         });
-        newTweet
+        newTrip
             .save()
-            .then(tweet => res.json(tweet));
+            .then(trip => res.json(trip));
     }
 );
 

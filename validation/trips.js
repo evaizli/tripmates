@@ -1,14 +1,14 @@
 const Validator = require("validator");
 const validText = require("./valid-text");
 
-module.exports = function validateTweetInput(data){
+module.exports = function validateTripInput(data){
     let errors = {};
 
     data.text = validText(data.text) ? data.text : "";
 
 
     if (!Validator.isLength(data.text, { min: 5, max: 140})){
-        errors.text = "Tweet must be between 5 and 140 chars";
+        errors.text = "Trip must be between 5 and 140 chars";
     }
 
     if (Validator.isEmpty(data.text)){
