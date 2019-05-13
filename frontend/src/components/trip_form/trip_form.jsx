@@ -8,8 +8,6 @@ class TripForm extends React.Component {
       tripMates: "",
       tripName: "",
       description: "",
-      tripStartDate: "",
-      tripEndDate: "",
       destinations: [{location: "", startDate:undefined, endDate: undefined}]
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,7 +16,10 @@ class TripForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
   }
+ 
+  componentDidUpdate() {
 
+  }
 
   update(field) {
     return (e) => {
@@ -42,6 +43,10 @@ class TripForm extends React.Component {
       const oldDestinations = Object.assign([], this.state.destinations);
       oldDestinations.push({ location: "", startDate: undefined, endDate: undefined });
       this.setState({destinations: oldDestinations});
+      // this.setState(prevState => {
+      //   console.log(prevState);
+      //   return { destinations: oldDestinations };
+      // });
     };
   }
 
@@ -57,9 +62,7 @@ class TripForm extends React.Component {
 
   render() {
 
-    console.log(this.state.destinations);
-
-    const destinationInput = Object.keys(this.state.destinations).map((destination, idx) => {
+    const destinationInput = Object.values(this.state.destinations).map((destination, idx) => {
       return (
         <div key={idx} className="trip-form-destination-inputs">
           <h4>Destination #{idx+1}</h4>
@@ -100,13 +103,10 @@ class TripForm extends React.Component {
             onChange={this.update('description')}
             placeholder="Trip Description"
             />
-
-          <div>
-            { destinationInput }
-            <button onClick={this.addDestination()}>Add a Destination</button>
-          </div>
-
-
+        
+          { destinationInput }
+          <button onClick={this.addDestination()}>Add a Destination</button>
+  
           <input type="submit" value="Create Trip" />
 
         </form>

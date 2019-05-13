@@ -9,8 +9,12 @@
   padding: 20px 0px;
 }
 
-.sidebar-main a {
-  color: black;
+.sidebar-main * {
+  color: white;
+}
+.sidebar-main *:hover {
+  text-decoration: none;
+  color: white;
 }
 
 .sidebar-menu {
@@ -28,6 +32,7 @@
   justify-content: flex-start;
   align-items: center;
   cursor: pointer;
+  font-weight: bold;
 }
 .sidebar-menu-item:hover {
   background: $color-primary-blue;

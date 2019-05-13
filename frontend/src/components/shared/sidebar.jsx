@@ -13,8 +13,8 @@ const SideBar = () => {
         <div className="sidebar-menu-item"><Link to='/'>Link 3</Link></div>
         <div className="sidebar-menu-item"><Link to='/'>Link 4</Link></div>
       </div>
-      <div className="sidebar-menu-item">
-        <Link to='/'>Log Out</Link>
+      <div className="sidebar-menu">
+        <div className="sidebar-menu-item"><Link to='/'>Log Out</Link></div>
       </div>
     </section>
   );
