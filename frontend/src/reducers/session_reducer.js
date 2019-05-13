@@ -26,6 +26,7 @@ export default function (state = initialState, action) {
             debugger;
             return{
                 ...state,
+                isAuthenticated: !!action.currentUser,
                 isSignedIn: true
             };
         default:
