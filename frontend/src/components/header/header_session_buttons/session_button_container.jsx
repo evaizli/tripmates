@@ -1,7 +1,7 @@
 import SessionButtons from './session_button';
 import { connect } from 'react-redux';
 import { openModal } from '../../../actions/modal_actions';
-// import { logout } from '../../actions/session_actions';
+import { logout } from '../../actions/session_actions';
 
 const mapStateToProps = state => {
   // const { session } = state;
@@ -13,7 +13,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    // logout: () => dispatch(logout()),
+    logout: () => dispatch(logout()),
     openModal: modal => dispatch(openModal(modal))
   };
 };
