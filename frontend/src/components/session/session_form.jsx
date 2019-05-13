@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -9,6 +8,7 @@ class SessionForm extends React.Component {
       email: "",
       name: "",
       password: "",
+      password2: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleOtherSessionModal = this.handleOtherSessionModal.bind(this);
@@ -19,7 +19,7 @@ class SessionForm extends React.Component {
     e.preventDefault();
 
     this.props.processForm(this.state)
-      .then(() => this.props.closeModal());
+      .then(() => this.props.closeModal()).then( this.props.history.push("/dashboard") );
   }
 
   handleOtherSessionModal(e) {
@@ -47,10 +47,18 @@ class SessionForm extends React.Component {
 
     const formTypeInput = (formType === "Sign Up") ? 
       (
-        <>
-          <input type="text" onChange={this.update('displayName')} placeholder="Display Name" />
+        <div>
+          <input type="text" onChange={this.update('handle')} placeholder="Display Name" />
           <input type="text" onChange={this.update('name')} placeholder="Name" />
-        </>
+        </div>
+      ) : (
+        ""
+      );
+    const confirmPass = (formType === "Sign Up") ? 
+      (
+        <div>
+          <input type="text" onChange={this.update('password2')} placeholder="Confirm Password" />
+        </div>
       ) : (
         ""
       );
@@ -77,7 +85,7 @@ class SessionForm extends React.Component {
             onChange={this.update('password')}
             placeholder="Password"
           />
-
+          {confirmPass}
           <input type="submit" value={formType} />
           {demoForm}
         </form>
