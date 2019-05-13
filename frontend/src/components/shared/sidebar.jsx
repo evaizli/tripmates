@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const SideBar = () => {
+const SideBar = ({ logout }) => {
 
   return (
     <section className="sidebar-main">
@@ -13,7 +13,10 @@ const SideBar = () => {
         <div className="sidebar-menu-item"><Link to='/'>Link 3</Link></div>
         <div className="sidebar-menu-item"><Link to='/'>Link 4</Link></div>
       </div>
-      <div className="sidebar-menu-item">
+      <div 
+        className="sidebar-menu-item"
+        onClick={logout}
+      >
         <Link to='/'>Log Out</Link>
       </div>
     </section>

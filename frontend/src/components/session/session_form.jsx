@@ -19,7 +19,7 @@ class SessionForm extends React.Component {
     e.preventDefault();
   
     this.props.processForm(this.state)
-      .then(() => this.props.closeModal()).then( this.props.history.push("/dashboard") );
+      .then(() => this.props.closeModal()).then(() => this.props.history.push("/dashboard"));
   }
 
   handleOtherSessionModal(e) {
@@ -43,7 +43,7 @@ class SessionForm extends React.Component {
     const errors = this.props.errors.map((error, idx) => (
       <li key={idx}>{error}</li>
     ));
-    const { formType } = this.props;
+    const { formType} = this.props;
 
     const formTypeInput = (formType === "Sign Up") ? 
       (
