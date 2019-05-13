@@ -3,6 +3,7 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import LoginFormContainer from '../session/login_form_container';
 import SignupFormContainer from '../session/signup_form_container';
+import TripCreateFormContainer from '../trip/trip_create_form_container';
 import TEST from '../TEST';
 
 function Modal({ modal, closeModal }) {
@@ -16,6 +17,9 @@ function Modal({ modal, closeModal }) {
       break;
     case 'signup':
       component = <SignupFormContainer />;
+      break;
+    case 'createTrip':
+      component = <TripCreateFormContainer />;
       break;
     default:
       return null;

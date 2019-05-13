@@ -4,9 +4,10 @@ import UpcomingTrips from './upcoming_trips';
 import PastTrips from './past_trips';
 
 class TripsDash extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+  }
 
 
 
@@ -19,6 +20,11 @@ class TripsDash extends React.Component {
 //   document.getElementById("mySidenav").style.width = "0";
 //   document.getElementById("main").style.marginLeft = "0";
 
+  handleOpenModal(e) {
+    e.preventDefault();
+    this.props.openModal("createTrip");
+  }
+
   render() {
 
     return (
@@ -26,7 +32,7 @@ class TripsDash extends React.Component {
       <section className="trips-dash-main">
         <Sidebar />
         <div className="trips-dash-content">
-          <UpcomingTrips />
+          <UpcomingTrips openModal={this.handleOpenModal}/>
           <PastTrips />
         </div>
       </section>

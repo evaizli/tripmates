@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const UpcomingTrips = () => {
+const UpcomingTrips = props => {
 
   return (
     <section className="upcoming-trips-main">
@@ -47,7 +47,7 @@ const UpcomingTrips = () => {
           <h3>Vegas</h3>
           <h4>July 10-July 30</h4>
         </Link>
-        <Link to="/" className="upcoming-trips-item-add">
+        <Link to="/" onClick={props.openModal} className="upcoming-trips-item-add">
           <img height="75" src="https://image.flaticon.com/icons/svg/32/32339.svg" alt="plus"/>
         </Link>
       </div>
