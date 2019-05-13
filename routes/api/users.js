@@ -74,14 +74,13 @@ router.post('/register', (req, res) =>{
 
 router.post("/login", (req, res) =>{
     const { errors, isValid } = validateLoginInput(req.body);
-
+    
     if(!isValid){
         return res.status(400).json(errors);
     }
 
     const email = req.body.email;
     const password = req.body.password;
-
     User.findOne({email})
         .then(user => {
             if(!user) {
