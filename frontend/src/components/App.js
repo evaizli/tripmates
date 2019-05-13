@@ -1,10 +1,13 @@
 import React from 'react';
-import { Switch } from 'react-router-dom';
+// import { Switch } from 'react-router-dom';
+import Modal from './shared/modal';
 
-function App() {
+const App = () => {
+
   return (
     <div className="App">
-      <h1>THIS IS THE HEADER</h1>
+      <Modal />
+      <h2>THIS IS THE APP</h2>
     </div>
   );
 }

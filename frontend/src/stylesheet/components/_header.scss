@@ -1,0 +1,9 @@
+.header-main {
+  @extend .flex-row;
+  background: $color-primary-bluegreen;
+  justify-content: flex-end;
+}
+
+.header-container {
+  padding: 20px;
+}
