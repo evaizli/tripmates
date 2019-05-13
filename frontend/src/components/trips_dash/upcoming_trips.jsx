@@ -48,7 +48,7 @@ const UpcomingTrips = props => {
           <h4>July 10-July 30</h4>
         </Link>
         <Link to="/" onClick={props.openModal} className="upcoming-trips-item-add">
-          <img height="75" src="https://image.flaticon.com/icons/svg/32/32339.svg" alt="plus"/>
+          <img height="60" src="https://image.flaticon.com/icons/svg/32/32339.svg" alt="plus"/>
         </Link>
       </div>
     </section>

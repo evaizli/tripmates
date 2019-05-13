@@ -5,6 +5,9 @@
 .upcoming-trips-content {
   @extend .flex-row;
   flex-wrap: wrap;
+  background: rgb(241, 241, 241);
+  border-radius: 5px;
+  padding: 10px;
 }
 
 .upcoming-trips-item {
@@ -13,7 +16,7 @@
   height: 150px;
   border-radius: 5px;
   padding: 10px;
-  margin: 20px 40px 20px 0;
+  margin: 10px;
   box-sizing: border-box;
   background: $color-primary-bluegreen;
   justify-content: flex-end;
@@ -24,13 +27,7 @@
 }
 
 .upcoming-trips-item-add {
-  @extend .flex-col;
-  width: 150px;
-  height: 150px;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 20px 40px 20px 0;
-  box-sizing: border-box;
+  @extend .upcoming-trips-item;
   background: $color-primary-bluegreen;
   justify-content: center;
   align-items: center;
