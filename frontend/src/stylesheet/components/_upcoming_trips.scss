@@ -1,0 +1,38 @@
+.upcoming-trips-main {
+  @extend .flex-col;  
+}
+
+.upcoming-trips-content {
+  @extend .flex-row;
+  flex-wrap: wrap;
+}
+
+.upcoming-trips-item {
+  @extend .flex-col;
+  width: 150px;
+  height: 150px;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 20px 40px 20px 0;
+  box-sizing: border-box;
+  background: $color-primary-bluegreen;
+  justify-content: flex-end;
+  align-items: flex-start;
+  background-image: url("../assets/images/170606110126-tokyo-skyline.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.upcoming-trips-item-add {
+  @extend .flex-col;
+  width: 150px;
+  height: 150px;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 20px 40px 20px 0;
+  box-sizing: border-box;
+  background: $color-primary-bluegreen;
+  justify-content: center;
+  align-items: center;
+}
+
