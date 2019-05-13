@@ -26,11 +26,10 @@ class TripsDash extends React.Component {
   }
 
   render() {
-
+    const { logout } = this.props;
     return (
-      
       <section className="trips-dash-main">
-        <Sidebar />
+        <Sidebar logout={logout}/>
         <div className="trips-dash-content">
           <UpcomingTrips openModal={this.handleOpenModal}/>
           <PastTrips />
