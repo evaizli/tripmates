@@ -2,13 +2,18 @@ import React from 'react';
 // import { Switch } from 'react-router-dom';
 // import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Modal from './shared/modal';
+import TripsDashContainer from './trips_dash/trips_dash_container';
+import Splash from './splash/splash';
 
 const App = () => {
 
   return (
     <div className="App">
       <Modal />
-      <h2>THIS IS THE APP</h2>
+      <Switch>
+        <Route exact path='/:userId/dashboard' component={TripsDashContainer}/>
+        <Route exact path='/' component={Splash}/>
+      </Switch>
     </div>
   );
 }
