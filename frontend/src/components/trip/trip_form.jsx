@@ -10,8 +10,7 @@ class TripForm extends React.Component {
       description: "",
       tripStartDate: "",
       tripEndDate: "",
-      destination: "",
-      destinationCount: [""]
+      destinations: [{location: "", startDate:undefined, endDate: undefined}]
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -29,28 +28,60 @@ class TripForm extends React.Component {
     };
   }
 
-  destinationCount(action) {
-    let oldArr = Object.assign([], this.state.destinationCount);
-    if (action === 'remove' && (this.state.destinationCount.length > 1)) {
-      oldArr.pop();
-      return this.setState({ destinationCount: oldArr});
-    } else if (action === 'add') {
-      oldArr.push("");
-      return this.setState({ destinationCount: oldArr });
-    }
+  updateDestination(idx, field) {
+    return (e) => {
+      const newDestinations = Object.assign([], this.state.destinations);
+      newDestinations[idx][field] = e.target.value;
+      this.setState({ destinations: newDestinations });
+    };
+  }
+
+  addDestination(){
+    return (e) => {
+      e.preventDefault();
+      const oldDestinations = Object.assign([], this.state.destinations);
+      oldDestinations.push({ location: "", startDate: undefined, endDate: undefined });
+      this.setState({destinations: oldDestinations});
+    };
+  }
+
+  removeDestination(removeIdx) {
+    return (e) => {
+      e.preventDefault();
+      const newDestinations = this.state.destinations.filter((el, idx) => idx !== removeIdx);
+      this.setState({ destinations: newDestinations});
+    };
   }
 
 
 
   render() {
 
-    const destinationInput = this.state.destinationCount.map((el, idx) => {
+    console.log(this.state.destinations);
+
+    const destinationInput = Object.keys(this.state.destinations).map((destination, idx) => {
       return (
-        <div key={idx}>
+        <div key={idx} className="trip-form-destination-inputs">
           <h4>Destination #{idx+1}</h4>
-          <input type="text" placeholder={`Destination #${idx+1}`}/>
-          <input type="date" />
-          <input type="date" />
+          <input 
+            type="text" 
+            placeholder={`Destination #${idx + 1}`} 
+            onChange={this.updateDestination(idx, 'location')} 
+            value={destination.location}
+            />
+          <div className="trip-form-destination-date-inputs flex-row">
+            <input 
+              type="date" 
+              onChange={this.updateDestination(idx, 'startDate')} 
+              value={destination.startDate} 
+              />&nbsp;&nbsp;&nbsp;to&nbsp;&nbsp;&nbsp;
+            <input 
+              type="date" 
+              onChange={this.updateDestination(idx, 'endDate')} 
+              value={destination.endDate}
+              />
+            <button href="#" onClick={this.removeDestination(idx)}>Remove</button>
+          </div>
         </div>
       )
     });
@@ -69,33 +100,13 @@ class TripForm extends React.Component {
             onChange={this.update('description')}
             placeholder="Trip Description"
             />
-          <div className="flex-row">
-            <label className="flex-col">Trip Start Date
-              <input 
-                type="date"
-                onChange={this.update('tripStartDate')}
-                />
-            </label>
-            <label className="flex-col">Trip End Date
-              <input 
-                type="date"
-                onChange={this.update('tripEndDate')}
-                />
-            </label>
-          </div>
-          <div className="destination-count flex-row">
-            <div className="destination-remove" onClick={() => this.destinationCount('remove')}>-</div>
-            <input 
-              type="number"
-              min="1"
-              value={this.state.destinationCount.length}
-            />
-            <div className="destination-add" onClick={() => this.destinationCount('add')}>+</div>
-          </div>
 
           <div>
             { destinationInput }
+            <button onClick={this.addDestination()}>Add a Destination</button>
           </div>
+
+
           <input type="submit" value="Create Trip" />
 
         </form>

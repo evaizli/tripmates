@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import TripsDash from './trips_dash';
 import { closeModal, openModal } from '../../actions/modal_actions';
