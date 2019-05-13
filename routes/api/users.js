@@ -18,6 +18,7 @@ router.get(
     (req, res) => {
         res.json({
             id: req.user.id,
+            name: req.user.name,
             handle: req.user.handle,
             email: req.user.email
         });
@@ -38,6 +39,7 @@ router.post('/register', (req, res) =>{
          } else {
              const newUser = new User({
                 handle: req.body.handle,
+                name: req.body.name,
                 email: req.body.email,
                 password: req.body.password
              });
@@ -50,7 +52,7 @@ router.post('/register', (req, res) =>{
                         .then(user => {
                             const payload = { 
                                 id: user.id, 
-                                name: user.email 
+                                name: user.name 
                             };
 
                             jwt.sign(
@@ -74,14 +76,13 @@ router.post('/register', (req, res) =>{
 
 router.post("/login", (req, res) =>{
     const { errors, isValid } = validateLoginInput(req.body);
-
+    
     if(!isValid){
         return res.status(400).json(errors);
     }
 
     const email = req.body.email;
     const password = req.body.password;
-
     User.findOne({email})
         .then(user => {
             if(!user) {
@@ -93,6 +94,7 @@ router.post("/login", (req, res) =>{
                     if(isMatch){
                         const payload = {
                             id: user.id,
+                            name: user.name,
                             handle: user.handle,
                             email: user.email
                         };
