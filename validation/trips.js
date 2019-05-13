@@ -4,15 +4,15 @@ const validText = require("./valid-text");
 module.exports = function validateTripInput(data){
     let errors = {};
 
-    data.text = validText(data.text) ? data.text : "";
+    data.tripName = validText(data.tripName) ? data.tripName : "";
 
 
-    if (!Validator.isLength(data.text, { min: 5, max: 140})){
-        errors.text = "Trip must be between 5 and 140 chars";
+    if (!Validator.isLength(data.tripName, { min: 1, max: 50})){
+        errors.tripName = "Trip name must be between 1 and 50 chars";
     }
 
-    if (Validator.isEmpty(data.text)){
-        errors.text = "Text field is required";
+    if (Validator.isEmpty(data.tripName)){
+        errors.tripName = "Trip name field is required";
     }
 
     return{

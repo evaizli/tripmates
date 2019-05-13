@@ -44,8 +44,11 @@ router.post("/",
         }
 
         const newTrip = new Trip({
-            user: req.user.id,
-            text: req.body.text
+            author: req.user.id,
+            tripName: req.body.tripName, 
+            tripMates: req.body.tripMates,
+            description: req.body.description,
+            destinations: req.body.destinations
         });
         newTrip
             .save()

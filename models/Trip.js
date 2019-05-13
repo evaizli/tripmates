@@ -8,11 +8,10 @@ const TripSchema = new Schema({
         ref: "users"
     },
 
-    tripMates: {
-        type: Array,
+    tripMates: [{type: Schema.Types.ObjectId, ref: "users",
         required: false,
         default: undefined //may need to change to empty array
-    },
+    }],
     tripName: {
         type: String,
         required: true
