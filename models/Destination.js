@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const DestinationSchema = new Schema({
-   location: {
-       type: String, 
-       required: true
-   },
+    location: {
+        type: String, 
+        required: true
+    },
     transportation: {
         type: String,
         required: false
