@@ -3,13 +3,16 @@ const router = express.Router();
 const Activity = require("../../models/Activity");
 const passport = require("passport");
 const validateActivityInput = require("../../validation/activity");
+const Trip = require("../../models/Trip");
 
-router.get("/test", (req, res) => res.json({ msg: "This is the activities of a trip" }));
+router.get("/test",
+  (req, res) => res.json({ msg: "This is the activities route" }));
 
-//is this the right path?
+
 router.get("/", (req, res) => {
-  Activity.find()
-    .sort({ date: 1 }) // sort by oldest
+  Activity
+    .find()
+    .sort({ date: -1 })
     .then(activities => res.json(activities))
     .catch(err => res.status(400).json(err));
 });
@@ -33,7 +36,7 @@ router.post( "/",
     }
 
     const newActivity = new Activity({
-      author: req.user.id,
+      tripId: req.trip.id,
       name: req.body.name,
       location: req.body.location,
       address: req.body.address,
@@ -45,9 +48,11 @@ router.post( "/",
       endTime: req.body.endTime,
     });
 
-    newActivity
+
+    Trip.activities.push(newActivity)
         .save()
-        .then(activity => res.json(activity));
+        .then(activity => res.json(activity))
+        .catch (err => res.status(400).json(err));
   }
 );
 
