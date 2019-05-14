@@ -62,6 +62,8 @@ router.post('/register', (req, res) =>{
                                 { expiresIn: 3600 }, 
                                 (err, token) => {
                                     res.json({
+                                        id: user.id,
+                                        user: user.name,
                                         success: true,
                                         token: 'Bearer ' + token
                                     });
@@ -105,6 +107,8 @@ router.post("/login", (req, res) =>{
                             {expiresIn: 3600},
                             (err, token) =>{
                                 res.json({
+                                    id: user.id,
+
                                     sucess: true,
                                     token: "Bearer " + token 
                                 });

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const TripSchema = require('../models/Trip');
 
 
 const UserSchema = new Schema({
@@ -15,10 +16,11 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    password:{
+    password: {
         type: String, 
         required: true
     },
+    trips: [TripSchema],
     date: {
         type: Date,
         default: Date.now

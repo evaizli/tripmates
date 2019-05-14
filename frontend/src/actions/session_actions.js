@@ -13,6 +13,7 @@ export const receiveCurrentUser = currentUser => ({
 });
 
 // This will be used to redirect the user to the login page upon signup
+// THE currentUser is playload of all nested info. Consider reward to payload.
 export const receiveUserSignIn = (currentUser) => ({
     type: RECEIVE_USER_SIGN_IN,
     currentUser
