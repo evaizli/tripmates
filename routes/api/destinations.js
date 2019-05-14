@@ -44,10 +44,25 @@ router.post("/:tripId/", passport.authenticate("jwt", { session: false }),
             // make sure not to send back the user password
             return res.json(user);
           })
-          .catch(err => console.log("error in result from db ", err))
+          .catch(err => console.log("error in result from db ", err));
         });
-  }
-);
+    }
+  );
+  
+  // get single destination for a trip
+  router.get(":tripId/:destinationId", passport.authenticate("jwt", { session: false }), 
+    (req, res) => {
+      User.findById(req.user.id)
+        .then(user => {
+          const trip = user.trips.id(req.params.tripId);
+          const destination = trip.destinations.id(req.params.destinationId);
+
+          res.send(destination);
+        })
+        .catch(err => console.log("error in getting destination ", err));
+    });
+
+
 
 // post route to update destination
 router.post("/:id/edit", passport.authenticate("jwt", {session: false}),

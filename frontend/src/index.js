@@ -8,7 +8,7 @@ import { setAuthToken } from './utils/sessions_api_util';
 
 ///testing to be removed
 import { logout, login, signup } from './actions/session_actions';
-import { fetchTrip, fetchTrips, createTrip, updateTrip } from "./actions/trip_actions";
+import { fetchTrips } from './actions/trip_actions'
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -36,10 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.signup = signup
   window.dispatch = store.dispatch;
   window.getState = store.getState;
-  window.fetchTrip = fetchTrip;
   window.fetchTrips = fetchTrips;
-  window.createTrip = createTrip;
-  window.updateTrip = updateTrip;
-
+  
   ReactDOM.render(<Root store={store}/>, root);
 });
