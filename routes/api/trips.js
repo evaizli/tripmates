@@ -35,7 +35,7 @@ router.get("/:id", (req, res) => {
 router.post("/", 
 
     passport.authenticate("jwt", {session: false}), 
-    
+    debugger
     (req, res) =>{
         const { isValid, errors } = validateTripInput(req.body);
 
