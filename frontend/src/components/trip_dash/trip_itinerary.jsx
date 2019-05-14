@@ -24,6 +24,10 @@ class TripItinerary extends React.Component {
     return activitiesCatDate;
   }
 
+  createCalendar() {
+    
+  }
+
   render() {
     const startDate = new Date(this.state.tripDates.start);
     const endDate = new Date(this.state.tripDates.end);
@@ -42,9 +46,7 @@ class TripItinerary extends React.Component {
       allDates.push(newDate);
     }
 
-    console.log(activitiesByDate)
     const calendar = allDates.map((day, idx) => {
-      const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
       
       let activityOfDay = "";
       if (activitiesByDate[day.toDateString()]) {
@@ -57,8 +59,7 @@ class TripItinerary extends React.Component {
       
       return (
         <div key={idx} className="trip-itinerary-day">
-          <h4>{days[day.getDay()]}</h4>
-          <h5>{day.toDateString()}</h5>
+          <h4>{day.toDateString()}</h4>
           <div className="trip-itinerary-day-details">
             { activityOfDay }
           </div>

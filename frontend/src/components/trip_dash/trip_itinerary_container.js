@@ -48,6 +48,17 @@ const mapStateToProps = state => {
         activityEndTime: "6:00PM",
         activityMates: ["Andrew", "Eve", "Jeff"],
         activityNotes: ""
+      },
+      {
+        activityName: "Go Climb!",
+        activityLocation: "Red Rocks",
+        Address: undefined,
+        activityTag: "Entertainment",
+        activityDate: "2019-10-20",
+        activityStartTime: "3:00PM",
+        activityEndTime: "6:00PM",
+        activityMates: ["Andrew", "Eve", "Jeff"],
+        activityNotes: ""
       }
     ]
   };
