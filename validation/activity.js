@@ -17,8 +17,6 @@ module.exports = function validateActivityInput(data) {
     if (!Validator.isEmpty(data.startTime)) {
         errors.startTime = "Start date field is required";
     }
-        errors.endDate = "End date field is required";
-    }
 
     return {
         errors,
