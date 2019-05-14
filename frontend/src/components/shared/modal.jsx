@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import LoginFormContainer from '../session/login_form_container';
 import SignupFormContainer from '../session/signup_form_container';
 import TripCreateFormContainer from '../trip_form/trip_create_form_container';
+import TripDestinationEditFormContainer from '../trip_itinerary/trip_destination_edit_form_container';
+import TripDestinationCreateFormContainer from '../trip_itinerary/trip_destination_create_form_container';
 
 function Modal({ modal, closeModal }) {
   if (!modal) {
@@ -19,6 +21,12 @@ function Modal({ modal, closeModal }) {
       break;
     case 'createTrip':
       component = <TripCreateFormContainer />;
+      break;
+    case 'createDestination':
+      component = <TripDestinationCreateFormContainer />;
+      break;
+    case 'editDestination':
+      component = <TripDestinationEditFormContainer />;
       break;
     default:
       return null;

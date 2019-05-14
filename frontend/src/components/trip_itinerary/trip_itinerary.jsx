@@ -6,46 +6,59 @@ class TripItinerary extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      tripName: 'Red Rocks Climbing',
+      tripName: 'Nevada/Utah Climbing',
       tripDescription: 'A fun rock climbing trip!',
       destinations: [
         {
           location: 'Las Vegas', 
           startDate: "2019-10-10", 
-          endDate: "2019-15-20",
+          endDate: "2019-10-15",
           housing: "Bellagio, Confirm#: FJFH32J, Booked under Jeff",
-          transportation: "Enterprise, full-size, Confirm#234JG2, Booked under Jeff",
+          transportation: "Enterprise, full-size, Confirm#234JG2, Booked under Andrew",
           notes: ""
         },
         {
           location: "Moe's Valley", 
-          startDate: "2019-20-10", 
+          startDate: "2019-10-25", 
           endDate: "2019-10-30",
-          housing: "",
-          transportation: "",
+          housing: "Airbnb, confirm# GSE234D, Booked under Eve",
+          transportation: "Enterprise, full-size, Confirm#234JG2, Booked under Andrew",
           notes: ""
         },
         {
           location: "Zion NPS",
-          startDate: "2019-15-10",
-          endDate: "2019-20-30",
-          housing: "",
-          transportation: "",
+          startDate: "2019-10-15",
+          endDate: "2019-10-25",
+          housing: "Airbnb, confirm# GSE234D, Booked under Eve",
+          transportation: "Enterprise, full-size, Confirm#234JG2, Booked under Andrew",
           notes: ""
         }
       ]
     };
   }
 
-  render() {
+  convertDate(date) {
+    const dateOptions = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+    return new Date(date + "T00:00:00-07:00").toLocaleDateString("en-US", dateOptions);
+  }
 
-    const destinationsDup = Object.assign([], this.state.destinations);
+  sortStartDateAsc(destinations) {
+    const destinationsDup = Object.assign([], destinations);
     const compareDateAsc = (a, b) => (a.startDate < b.startDate ? -1 : 1);
-    const tripStartDate = destinationsDup.sort(compareDateAsc)[0].startDate;
-    const compareDateDesc = (a, b) => (a.endDate > b.endDate ? -1 : 1);
-    const tripEndDate = destinationsDup.sort(compareDateDesc)[0].endDate;
+    return destinationsDup.sort(compareDateAsc);
+  }
 
-    const destinationsSorted = destinationsDup.sort(compareDateAsc);
+  sortEndDateDesc(destinations) {
+    const destinationsDup = Object.assign([], destinations);
+    const compareDateDesc = (a, b) => (a.endDate > b.endDate ? -1 : 1);
+    return destinationsDup.sort(compareDateDesc);
+  }
+
+  render() {
+    const { destinations } = this.state;
+    const tripStartDate = this.convertDate(this.sortStartDateAsc(destinations, 'asc')[0].startDate);
+    const tripEndDate = this.convertDate(this.sortEndDateDesc(destinations, 'desc')[0].endDate);
+    const destinationsSorted = this.sortStartDateAsc(destinations, 'asc');
 
     return (
       <section className="trip-itinerary-main">
@@ -55,7 +68,7 @@ class TripItinerary extends React.Component {
             <h1>{this.state.tripName}</h1>
             <h3>{tripStartDate} to {tripEndDate}</h3> 
           </div>
-          <TripLogistics destinations={destinationsSorted}  />
+          <TripLogistics destinations={destinationsSorted} convertDate={this.convertDate} openModal={this.props.openModal}/>
         </div>
       </section>
     )
