@@ -1,8 +1,9 @@
 import React from 'react';
 import Sidebar from '../shared/sidebar';
 import TripLogistics from './trip_logistics';
+import TripItineraryContainer from './trip_itinerary_container';
 
-class TripItinerary extends React.Component {
+class TripDash extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -61,18 +62,19 @@ class TripItinerary extends React.Component {
     const destinationsSorted = this.sortStartDateAsc(destinations, 'asc');
 
     return (
-      <section className="trip-itinerary-main">
+      <section className="trip-dash-main">
         <Sidebar />
-        <div className="trip-itinerary-content">
-          <div className="trip-itinerary-header">
+        <div className="trip-dash-content">
+          <div className="trip-dash-header">
             <h1>{this.state.tripName}</h1>
             <h3>{tripStartDate} to {tripEndDate}</h3> 
           </div>
           <TripLogistics destinations={destinationsSorted} convertDate={this.convertDate} openModal={this.props.openModal}/>
+          <TripItineraryContainer tripDates={{start: tripStartDate, end: tripEndDate}} convertDate={this.convertDate}/>
         </div>
       </section>
     )
   }
 }
 
-export default TripItinerary;
+export default TripDash;

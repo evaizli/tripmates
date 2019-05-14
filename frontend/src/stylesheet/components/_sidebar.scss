@@ -1,12 +1,11 @@
 .sidebar-main {
   position: fixed;
-  @extend .flex-col;
-  justify-content: space-between;
   background: $color-primary-blue;
   box-sizing: border-box;
   width: 225px;
-  height: 100vh;
-  padding: 20px 0px;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
 }
 
 .sidebar-main * {
@@ -18,22 +17,29 @@
 }
 
 .sidebar-menu {
+  padding: 20px 0px;
   @extend .flex-col;
+  width: 100%;
+}
+.sidebar-menu h1 {
+  padding: 0 20px;
 }
 
-.sidebar-menu * {
-  padding: 0px 20px;
+.sidebar-menu-items {
+  height: 100%;
+  @extend .flex-col;
+  justify-content: space-between;
 }
 
 .sidebar-menu-item {
   height: 30px;
   padding: 5px 20px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
   cursor: pointer;
   font-weight: bold;
+  display: flex;
+  align-items: center;
 }
+
 .sidebar-menu-item:hover {
   background: $color-primary-bluegreen;
 }

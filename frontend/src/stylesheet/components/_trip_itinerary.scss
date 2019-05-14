@@ -1,19 +1,20 @@
-.trip-itinerary-main {
+.trip-dash-main {
   @extend .flex-row;
 }
 
-.trip-itinerary-content {
+.trip-dash-content {
   position: absolute;
   margin-left: 225px;
   padding: 20px 40px;
+  width: calc(100% - 345px);
 }
 
-.trip-itinerary-header {
+.trip-dash-header {
   @extend .flex-row;
   align-items: baseline;
 }
 
-.trip-itinerary-header > * {
+.trip-dash-header > * {
   margin-right: 20px;
 }
 
@@ -21,7 +22,9 @@
   background: lightgray;
   border-radius: 5px;
   padding: 20px;
-  width: 70vw;
+  width: 100%;
+  margin-right: 20px;
+  margin-bottom: 20px;
 }
 
 .trip-logistics-destination-header {
@@ -71,4 +74,25 @@
 
 .trip-logistics-destination-add:hover {
   opacity: .60;
+}
+
+.trip-itinerary-main {
+  @extend .trip-logistics;
+}
+
+.trip-itinerary-week {
+  @extend .flex-row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  column-count: 7;
+}
+
+.trip-itinerary-day {
+  width: 13%;
+}
+
+.trip-itinerary-day-details {
+  min-height: 300px;
+  background: white;
+  border-radius: 3px;
 }
