@@ -57,7 +57,11 @@ router.post("/:tripId/", passport.authenticate("jwt", { session: false }),
           const trip = user.trips.id(req.params.tripId);
           const destination = trip.destinations.id(req.params.destinationId);
 
-          res.send(destination);
+          if (!destination) {
+            return res.status(400).json("there is not a sigle destination");
+          } else {
+            res.send(destination);
+          }
         })
         .catch(err => console.log("error in getting destination ", err));
     });

@@ -14,12 +14,15 @@ router.get("/", passport.authenticate("jwt", {session: false}),
                 const trips = user.trips;
                 res.send(trips);
             })
-            .catch(err => res.status(400).json(err));
+            .catch(err => {
+                return res.status(400).json(err)
+            });
     });
 
 // post a trip for a user
 router.post("/", passport.authenticate("jwt", { session: false }),
     (req, res) => {
+        
         User.findById(req.user.id)
             .then(user => {
                 const trip = req.body;
