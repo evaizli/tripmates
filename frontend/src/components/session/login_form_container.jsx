@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = state => {
   return ({
-    errors: state.errors.session,
+    errors: Object.values(state.errors.session),
     formType: "Log In"
   });
 };

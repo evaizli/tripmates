@@ -2,11 +2,12 @@ import { connect } from 'react-redux';
 import SessionForm from './session_form';
 import { closeModal, openModal } from '../../actions/modal_actions';
 import { signup } from '../../actions/session_actions';
+import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = state => {
+  const { errors } = state;
   return ({
-    errors: state.errors.session,
-    signedIn: state.session.isSignedIn,
+    errors: Object.values(errors.session),
     formType: "Sign Up"
   });
 };
@@ -19,4 +20,4 @@ const mapDispatchToProps = dispatch => {
   });
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SessionForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SessionForm));

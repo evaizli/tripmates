@@ -3,9 +3,12 @@ const app = express();
 const mongoose = require('mongoose');
 const db = require('./config/keys').mongoURI;
 const users = require("./routes/api/users");
-const tweets = require("./routes/api/tweets");
+const trips = require("./routes/api/trips");
+const activities = require("./routes/api/activities");
+// const destinations = require("./routes/api/destinations");
 const bodyParser = require('body-parser');
 const passport = require('passport');
+
 
 
 mongoose
@@ -21,8 +24,9 @@ app.use(passport.initialize());
 require('./config/passport')(passport);
 
 app.use("/api/users", users);
-app.use("/api/tweets", tweets);
-
+app.use("/api/trips", trips);
+app.use("/api/activities", activities);
+// app.use("/api/destinations", destinations)
 
 const port = process.env.PORT || 5000;
 app.listen(port, ()=> console.log(`Server is running on port ${port}`));

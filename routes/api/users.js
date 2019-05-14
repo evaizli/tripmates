@@ -18,7 +18,8 @@ router.get(
     (req, res) => {
         res.json({
             id: req.user.id,
-            handle: req.user.handle,
+            name: req.user.name,
+            displayName: req.user.displayName,
             email: req.user.email
         });
     }
@@ -37,9 +38,10 @@ router.post('/register', (req, res) =>{
          return res.status(400).json({email: "A user is already registered with that email"});
          } else {
              const newUser = new User({
-                handle: req.body.handle,
+                name: req.body.name,
                 email: req.body.email,
-                password: req.body.password
+                password: req.body.password,
+                displayName: req.body.displayName
              });
              bcrypt.genSalt(10, (err, salt) =>{
                 bcrypt.hash(newUser.password, salt, (err, hash) =>{
@@ -50,13 +52,14 @@ router.post('/register', (req, res) =>{
                         .then(user => {
                             const payload = { 
                                 id: user.id, 
-                                name: user.email 
+                                name: user.name,
+                                displayName: user.displayName 
                             };
 
                             jwt.sign(
                                 payload, 
                                 keys.secretOrKey, 
-                                { expires: 3600 }, 
+                                { expiresIn: 3600 }, 
                                 (err, token) => {
                                     res.json({
                                         success: true,
@@ -84,7 +87,7 @@ router.post("/login", (req, res) =>{
     User.findOne({email})
         .then(user => {
             if(!user) {
-                return res.status(404).json({email: "This user does note exist"});
+                return res.status(404).json({email: "This user does not exist"});
             }
 
             bcrypt.compare(password, user.password)
@@ -92,7 +95,7 @@ router.post("/login", (req, res) =>{
                     if(isMatch){
                         const payload = {
                             id: user.id,
-                            handle: user.handle,
+                            displayName: user.displayName,
                             email: user.email
                         };
 
