@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import TripsDash from './trips_dash';
 import { closeModal, openModal } from '../../actions/modal_actions';
+import { logout } from '../../actions/session_actions';
 
 const mapStateToProps = state => {
   return ({
@@ -10,6 +11,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return ({
+    logout: () => dispatch(logout()),
     closeModal: () => dispatch(closeModal()),
     openModal: modal => dispatch(openModal(modal))
   });

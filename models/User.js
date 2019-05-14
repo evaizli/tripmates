@@ -7,7 +7,7 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    handle: {
+    displayName: {
         type: String,
         required: true
     },

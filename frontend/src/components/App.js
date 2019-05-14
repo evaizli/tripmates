@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-// import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import { AuthRoute, ProtectedRoute} from '../utils/route_util';
 import Modal from './shared/modal';
 import TripsDashContainer from './trips_dash/trips_dash_container';
 import TripItineraryContainer from './trip_itinerary/trip_itinerary_container';
@@ -13,7 +13,7 @@ const App = () => {
       <Modal />
       <Switch>
         <Route exact path='/itinerary' component={TripItineraryContainer}/>
-        <Route exact path='/dashboard' component={TripsDashContainer}/>
+        <ProtectedRoute exact path='/dashboard' component={TripsDashContainer}/>
         <Route exact path='/' component={Splash}/>
       </Switch>
     </div>

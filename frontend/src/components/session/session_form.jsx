@@ -17,9 +17,9 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
+  
     this.props.processForm(this.state)
-      .then(() => this.props.closeModal()).then( this.props.history.push("/dashboard") );
+      .then(() => this.props.closeModal()).then(() => this.props.history.push("/dashboard"));
   }
 
   handleOtherSessionModal(e) {
@@ -43,12 +43,12 @@ class SessionForm extends React.Component {
     const errors = this.props.errors.map((error, idx) => (
       <li key={idx}>{error}</li>
     ));
-    const { formType } = this.props;
+    const { formType} = this.props;
 
     const formTypeInput = (formType === "Sign Up") ? 
       (
         <div>
-          <input type="text" onChange={this.update('handle')} placeholder="Display Name" />
+          <input type="text" onChange={this.update('displayName')} placeholder="Display Name" />
           <input type="text" onChange={this.update('name')} placeholder="Name" />
         </div>
       ) : (
