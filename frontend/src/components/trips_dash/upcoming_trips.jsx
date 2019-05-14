@@ -7,7 +7,7 @@ const UpcomingTrips = props => {
     <section className="upcoming-trips-main">
       <h2>Upcoming Trips</h2>
       <div className="upcoming-trips-content">
-        <Link to="/" className="upcoming-trips-item">
+        <Link to="/itinerary" className="upcoming-trips-item">
             <div className="upcoming-trips-item-info">
               <h2>Trip 1</h2>
               <h3>London</h3>
@@ -16,7 +16,7 @@ const UpcomingTrips = props => {
           <div className="upcoming-trips-item-background">
           </div>
         </Link>
-        <Link to="/" className="upcoming-trips-item">
+        <Link to="/itinerary" className="upcoming-trips-item">
             <div className="upcoming-trips-item-info">
               <h2>Trip 1</h2>
               <h3>London</h3>
@@ -25,7 +25,7 @@ const UpcomingTrips = props => {
           <div className="upcoming-trips-item-background">
           </div>
         </Link>
-        <Link to="/" className="upcoming-trips-item">
+        <Link to="/itinerary" className="upcoming-trips-item">
             <div className="upcoming-trips-item-info">
               <h2>Trip 1</h2>
               <h3>London</h3>
@@ -34,7 +34,7 @@ const UpcomingTrips = props => {
           <div className="upcoming-trips-item-background">
           </div>
         </Link>
-        <Link to="/" className="upcoming-trips-item">
+        <Link to="/itinerary" className="upcoming-trips-item">
             <div className="upcoming-trips-item-info">
               <h2>Trip 1</h2>
               <h3>London</h3>
@@ -43,7 +43,7 @@ const UpcomingTrips = props => {
           <div className="upcoming-trips-item-background">
           </div>
         </Link>
-        <Link to="/" className="upcoming-trips-item">
+        <Link to="/itinerary" className="upcoming-trips-item">
             <div className="upcoming-trips-item-info">
               <h2>Trip 1</h2>
               <h3>London</h3>

@@ -46,9 +46,14 @@
   z-index: -2;
 }
 
+.upcoming-trips-item a {
+  cursor: pointer;
+}
+
 .upcoming-trips-item:hover, .upcoming-trips-item-add:hover {
   opacity: .5;
   text-decoration: none;
+
 }
 
 .upcoming-trips-item-add {

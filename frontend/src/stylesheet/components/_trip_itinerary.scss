@@ -1,0 +1,30 @@
+.trip-itinerary-main {
+  @extend .flex-row;
+}
+
+.trip-itinerary-content {
+  position: absolute;
+  margin-left: 225px;
+  padding: 20px 40px;
+}
+
+.trip-itinerary-header {
+  @extend .flex-row;
+  align-items: baseline;
+}
+
+.trip-itinerary-header > * {
+  margin-right: 20px;
+}
+
+.trip-itinerary-logistics-details > * {
+  margin-right: 30px;
+  width: 400px;
+  background: lightgray;
+  padding: 10px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+.trip-itinerary-logistics-details p {
+  margin-top: 0;
+}
