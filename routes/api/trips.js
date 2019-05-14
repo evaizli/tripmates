@@ -16,13 +16,13 @@ router.get("/", ( req, res) => {
         .catch(err => res.status(400).json(err));
 });
 
-
-router.get("/user/:user_id", (req, res)=>{
-    Trip
-        .find({user: req.params.user_id})
-        .then(trips => res.json(trips))
-        .catch(err => res.status(400).json(err));
-});
+// TBD: consider this code for multiple users (to see mates trips)
+// router.get("/user/:user_id", (req, res)=>{
+//     Trip
+//         .find({author: req.params.user_id})
+//         .then(trips => res.json(trips))
+//         .catch(err => res.status(400).json(err));
+// });
 
 
 router.get("/:id", (req, res) => {
@@ -50,6 +50,7 @@ router.post("/",
             description: req.body.description,
             destinations: req.body.destinations
         });
+
         newTrip
             .save()
             .then(trip => res.json(trip));

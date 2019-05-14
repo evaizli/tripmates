@@ -1,29 +1,41 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const DestinationSchema = new Schema({
-   location: {
+const ActivitySchema = new Schema({
+    name: {
        type: String, 
        required: true
-   },
-    transportation: {
+    },
+    location: {
         type: String,
         required: false
     },
-    housing: {
+    address: {
         type: String,
+        required: false
+    },
+    mates: {
+        type: Array,
+        required: false
+    },
+    tag: {
+        type: Array,
+        required: false
+    },
+    image: {
+        type: Array,
         required: false
     },
     notes: {
         type: String,
         required: false
     },
-    startDate: {
+    startTime: {
         type: Date,
         required: true,
         default: Date.now
     },
-    endDate: {
+    endTime: {
         type: Date,
         required: true,
         default: Date.now
@@ -34,4 +46,4 @@ const DestinationSchema = new Schema({
     }
 });
 
-module.exports = DestinationSchema;
+module.exports = ActivitySchema;
