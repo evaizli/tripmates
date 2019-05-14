@@ -11,7 +11,7 @@ router.get("/", passport.authenticate("jwt", {session: false}),
     (req, res) => {
         User.findById(req.user.id)
             .then(user => {
-                const trips = user.trips.sort({date: -1});
+                const trips = user.trips;
                 res.send(trips);
             })
             .catch(err => res.status(400).json(err));
