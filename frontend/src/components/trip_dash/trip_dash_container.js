@@ -1,4 +1,4 @@
-import TripItinerary from './trip_itinerary';
+import TripDash from './trip_dash';
 import { connect } from 'react-redux';
 import { openModal } from '../../actions/modal_actions';
 
@@ -14,4 +14,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TripItinerary);
+export default connect(mapStateToProps, mapDispatchToProps)(TripDash);
