@@ -34,12 +34,12 @@
 .sidebar-menu-item {
   height: 30px;
   padding: 5px 20px;
-  cursor: pointer;
   font-weight: bold;
   display: flex;
   align-items: center;
 }
 
 .sidebar-menu-item:hover {
+  cursor: pointer;
   background: $color-primary-bluegreen;
 }

@@ -9,12 +9,15 @@ router.get("/test", (req, res) => res.json({ msg: "This is the trips route" }));
 // get all trips for a user
 router.get("/", passport.authenticate("jwt", {session: false}), 
     (req, res) => {
+    
         User.findById(req.user.id)
             .then(user => {
-                const trips = user.trips.sort({date: -1});
+                const trips = user.trips;
                 res.send(trips);
             })
-            .catch(err => res.status(400).json(err));
+            .catch(err => {
+                return res.status(400).json(err)
+            });
     });
 
 // post a trip for a user
