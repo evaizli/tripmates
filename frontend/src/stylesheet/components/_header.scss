@@ -5,5 +5,15 @@
 }
 
 .header-container {
+  max-width: 600px;
   padding: 20px;
+}
+
+.session-buttons {
+  @extend .flex-row;
+}
+
+.session-button {
+  width: 100px;
+  margin-left: 20px;
 }
