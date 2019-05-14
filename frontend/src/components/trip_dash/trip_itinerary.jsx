@@ -39,6 +39,17 @@ class TripItinerary extends React.Component {
     console.log(allDates);
 
 
+    const calendar = allDates.map((day, idx) => {
+      const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+      return (
+        <div key={idx} className="trip-itinerary-day">
+          <h4>{days[day.getDay()]}</h4>
+          <h5>{day.toDateString()}</h5>
+          <div className="trip-itinerary-day-details">
+          </div>
+        </div>
+      )
+    })
 
 
 
@@ -47,41 +58,7 @@ class TripItinerary extends React.Component {
       <section className="trip-itinerary-main">
         <h1>Itinerary</h1>
         <div className="trip-itinerary-week">
-          <div className="trip-itinerary-day">
-            <h4>Sunday</h4>
-            <div className="trip-itinerary-day-details">
-            </div>
-          </div>
-          <div className="trip-itinerary-day">
-            <h4>Monday</h4>
-            <div className="trip-itinerary-day-details">
-            </div>
-          </div>
-          <div className="trip-itinerary-day">
-            <h4>Tuesday</h4>
-            <div className="trip-itinerary-day-details">
-            </div>
-          </div>
-          <div className="trip-itinerary-day">
-            <h4>Wednesday</h4>
-            <div className="trip-itinerary-day-details">
-            </div>
-          </div>
-          <div className="trip-itinerary-day">
-            <h4>Thursday</h4>
-            <div className="trip-itinerary-day-details">
-            </div>
-          </div>
-          <div className="trip-itinerary-day">
-            <h4>Friday</h4>
-            <div className="trip-itinerary-day-details">
-            </div>
-          </div>
-          <div className="trip-itinerary-day">
-            <h4>Saturday</h4>
-            <div className="trip-itinerary-day-details">
-            </div>
-          </div>
+          { calendar }
         </div>
       </section>
     )

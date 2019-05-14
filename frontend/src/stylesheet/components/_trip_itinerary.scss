@@ -82,7 +82,9 @@
 
 .trip-itinerary-week {
   @extend .flex-row;
+  flex-wrap: wrap;
   justify-content: space-between;
+  column-count: 7;
 }
 
 .trip-itinerary-day {
