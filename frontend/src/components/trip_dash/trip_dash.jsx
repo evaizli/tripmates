@@ -70,7 +70,7 @@ class TripDash extends React.Component {
             <h3>{tripStartDate} to {tripEndDate}</h3> 
           </div>
           <TripLogistics destinations={destinationsSorted} convertDate={this.convertDate} openModal={this.props.openModal}/>
-          <TripItineraryContainer tripDates={{start: tripStartDate, end: tripEndDate}}/>
+          <TripItineraryContainer tripDates={{start: tripStartDate, end: tripEndDate}} convertDate={this.convertDate}/>
         </div>
       </section>
     )
