@@ -55,6 +55,8 @@ router.post("/",
             .save()
             .then(trip => res.json(trip));
     }
+
+    
 );
 
 
