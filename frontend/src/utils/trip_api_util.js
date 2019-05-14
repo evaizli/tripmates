@@ -8,7 +8,7 @@ export const fetchTrip = id => {
     return axios.get(`/api/trips/${id}`)
 };
 
-export const postTrip = data => {
+export const createTrip = data => {
     return axios.post(`/api/trips/`, data)
 };
 
