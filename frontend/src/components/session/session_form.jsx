@@ -57,7 +57,7 @@ class SessionForm extends React.Component {
     const confirmPass = (formType === "Sign Up") ? 
       (
         <div>
-          <input type="text" onChange={this.update('password2')} placeholder="Confirm Password" />
+          <input type="password" onChange={this.update('password2')} placeholder="Confirm Password" />
         </div>
       ) : (
         ""

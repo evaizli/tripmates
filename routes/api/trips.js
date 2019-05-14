@@ -98,5 +98,4 @@ router.delete("/:tripId", passport.authenticate("jwt", {session: false}),
 // });
 
 
-
 module.exports = router;

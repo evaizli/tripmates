@@ -24,6 +24,10 @@
     flex-direction: row;
 }
 
+.baseline {
+  align-items: baseline;
+}
+
 .flex-col {
     display: flex;
     flex-direction: column;

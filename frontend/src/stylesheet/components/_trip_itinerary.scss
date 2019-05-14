@@ -1,0 +1,74 @@
+.trip-itinerary-main {
+  @extend .flex-row;
+}
+
+.trip-itinerary-content {
+  position: absolute;
+  margin-left: 225px;
+  padding: 20px 40px;
+}
+
+.trip-itinerary-header {
+  @extend .flex-row;
+  align-items: baseline;
+}
+
+.trip-itinerary-header > * {
+  margin-right: 20px;
+}
+
+.trip-logistics {
+  background: lightgray;
+  border-radius: 5px;
+  padding: 20px;
+  width: 70vw;
+}
+
+.trip-logistics-destination-header {
+  @extend .flex-row;
+  @extend .baseline;
+}
+
+.trip-logistics-destination-header > * {
+  margin-right: 20px;
+}
+
+.trip-logistics-destination-header img {
+  height: 20px;
+  cursor: pointer;
+}
+.trip-logistics-destination-header img:hover {
+  opacity: .60;
+}
+
+.trip-logistics-destination-details {
+  @extend .flex-row;
+  justify-content: space-between;
+}
+
+.trip-logistics-destination-details > * {
+  width: 40%;
+  background: white;
+  padding: 10px;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+.trip-logistics-destination-details p {
+  margin-top: 0;
+}
+
+.trip-logistics-destination-details-center {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.trip-logistics-destination-add {
+  @extend .flex-row;
+  align-items: center;
+  cursor: pointer;
+  width: 150px;
+}
+
+.trip-logistics-destination-add:hover {
+  opacity: .60;
+}

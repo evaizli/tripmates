@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ActivitySchema = new Schema({
+    tripId: {
+        type: Schema.Types.ObjectId,
+        ref: "trips"
+    },
     name: {
        type: String, 
        required: true
