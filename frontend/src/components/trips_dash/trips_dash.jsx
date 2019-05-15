@@ -54,7 +54,7 @@ class TripsDash extends React.Component {
 
     return (
       <section className="trips-dash-main">
-        <Sidebar logout={logout}/>
+        <Sidebar logout={logout} trips={upcomingTrips}/>
         <div className="trips-dash-content">
           <TripsDashItems tripType="Upcoming" trips={upcomingTrips} openModal={this.handleOpenModal}/>
           <TripsDashItems tripType="Past" trips={pastTrips} openModal={this.handleOpenModal}/>

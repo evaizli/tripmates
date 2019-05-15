@@ -32,7 +32,8 @@
 }
 
 .sidebar-menu-item {
-  height: 30px;
+  min-height: 30px;
+  height: 100%;
   padding: 5px 20px;
   font-weight: bold;
   display: flex;
@@ -42,4 +43,14 @@
 .sidebar-menu-item:hover {
   cursor: pointer;
   background: $color-primary-bluegreen;
+}
+
+.sidebar-menu-item-logout {
+  @extend .sidebar-menu-item;
+  height: 30px;
+}
+
+.sidebar-menu-item-countdown:hover {
+  cursor: auto;
+  background: none;
 }
