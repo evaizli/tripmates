@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import TripForm from './trip_form';
 import { closeModal } from '../../actions/modal_actions';
 import { createTrip } from '../../actions/trip_actions';
+import { createDestination } from '../../actions/destination_actions';
 
 const mapStateToProps = state => {
   return {
@@ -11,7 +12,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return ({
-    processForm: trip => dispatch(createTrip(trip)),
+    createTrip: trip => dispatch(createTrip(trip)),
+    createDestination: trip => dispatch(createDestination(trip)),
     closeModal: () => dispatch(closeModal)
   });
 };

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import TripsDash from '../trips_dash/trips_dash';
 
 const SideBar = ({ logout, trips }) => {
 

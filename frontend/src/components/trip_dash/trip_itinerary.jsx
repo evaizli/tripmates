@@ -39,7 +39,7 @@ class TripItinerary extends React.Component {
   endOfWeek(tripEndDate) {
     const endDateDup = new Date(tripEndDate);
     if (endDateDup.getDay() !== 6) {
-      endDateDup.setDate(endDateDup.getDate() + endDateDup.getDay() + 1);
+      endDateDup.setDate(endDateDup.getDate() + (6-endDateDup.getDay()));
     }
     return endDateDup;
   }
