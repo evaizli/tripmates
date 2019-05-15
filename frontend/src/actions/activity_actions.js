@@ -80,6 +80,7 @@ export const updateActivity = (data) => dispatch => {
 };
 
 export const deleteActivity = (id) => dispatch => {
+
   return APIUtil.deleteActivity(id)
     .then(activityId => dispatch(removeActivity(activityId)))
     .catch(err => {
