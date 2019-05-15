@@ -22,7 +22,6 @@ export const receiveTrip = (payload) => {
 };
 
 export const removeTrip = (trip) =>{
-    // debugger
     return({
         type: REMOVE_TRIP,
         tripId: trip.data._id

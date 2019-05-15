@@ -6,6 +6,7 @@ import SignupFormContainer from '../session/signup_form_container';
 import TripCreateFormContainer from '../trip_form/trip_create_form_container';
 import TripDestinationEditFormContainer from '../trip_dash/trip_destination_edit_form_container';
 import TripDestinationCreateFormContainer from '../trip_dash/trip_destination_create_form_container';
+import CreateActivityFormContainer from "../activity_form/create_activity_container";
 
 function Modal({ modal, closeModal }) {
   if (!modal) {
@@ -13,20 +14,23 @@ function Modal({ modal, closeModal }) {
   }
   let component;
   switch (modal) {
-    case 'login':
+    case "login":
       component = <LoginFormContainer />;
       break;
-    case 'signup':
+    case "signup":
       component = <SignupFormContainer />;
       break;
-    case 'createTrip':
+    case "createTrip":
       component = <TripCreateFormContainer />;
       break;
-    case 'createDestination':
+    case "createDestination":
       component = <TripDestinationCreateFormContainer />;
       break;
-    case 'editDestination':
+    case "editDestination":
       component = <TripDestinationEditFormContainer />;
+      break;
+    case "createActivity":
+      component = <CreateActivityFormContainer />;
       break;
     default:
       return null;

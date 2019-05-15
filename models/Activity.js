@@ -30,6 +30,11 @@ const ActivitySchema = new Schema({
         type: String,
         required: false
     },
+    activityDate: {
+        type: Date,
+        required: true,
+        default: Date.now
+    },
     startTime: {
         type: Date,
         required: true,
