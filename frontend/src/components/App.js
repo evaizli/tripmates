@@ -12,7 +12,7 @@ const App = () => {
     <div className="App">
       <Modal />
       <Switch>
-        <Route exact path='/trip' component={TripDashContainer}/>
+        <Route exact path='/trip/:tripId' component={TripDashContainer}/>
         <ProtectedRoute exact path='/dashboard' component={TripsDashContainer}/>
         <Route exact path='/' component={Splash}/>
       </Switch>
