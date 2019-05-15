@@ -4,6 +4,7 @@ const passport = require("passport");
 const validateTripInput = require("../../validation/trips");
 const User = require("../../models/User");
 
+//test
 router.get("/test", (req, res) => res.json({ msg: "This is the trips route" }));
 
 // get all trips for a user
@@ -15,7 +16,7 @@ router.get("/", passport.authenticate("jwt", {session: false}),
                 res.send(trips);
             })
             .catch(err => {
-                return res.status(400).json(err)
+                return res.status(400).json(err);
             });
     });
 
@@ -25,8 +26,8 @@ router.post("/", passport.authenticate("jwt", { session: false }),
         
         User.findById(req.user.id)
             .then(user => {
-                const trip = req.body;
                 const { isValid, errors } = validateTripInput(req.body);
+                const trip = req.body;
 
                 if (!isValid) {
                     return res.status(400).json(errors);
@@ -58,11 +59,10 @@ router.patch("/:tripId/update", passport.authenticate("jwt", { session: false })
     (req, res) => {
         User.findById(req.user.id)
             .then(user => {
-                let trip = user.trips.id(req.params.tripId);
-                console.log(trip);
                 const { isValid, errors } = validateTripInput(req.body);
+                let trip = user.trips.id(req.params.tripId);
 
-                if (!trip) {
+                if (!isValid) {
                     return res.status(400).json(errors);
                 } else {
                     trip.tripName = req.body.tripName;
@@ -84,7 +84,6 @@ router.delete("/:tripId", passport.authenticate("jwt", {session: false}),
     (req, res) => {
         User.findById(req.user.id)
             .then(user => {
-                console.log(user);
                 user.trips.id(req.params.tripId).remove();
                 res.json(user);
             })
