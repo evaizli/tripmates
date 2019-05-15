@@ -1,0 +1,19 @@
+.splash {
+  background: url("../assets/images/ha_long_bay_jeff_dam.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+}
+
+.splash-text {
+  height: calc(100% - 97px);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:rgba(100, 100, 100, 0.25);
+  color: white;
+  text-shadow: #000 2px 0 20px;
+}

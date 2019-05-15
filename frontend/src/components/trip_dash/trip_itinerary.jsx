@@ -50,9 +50,9 @@ class TripItinerary extends React.Component {
       
       let activityOfDay = "";
       if (activitiesByDate[day.toDateString()]) {
-        activityOfDay = activitiesByDate[day.toDateString()].map(activity => {
+        activityOfDay = activitiesByDate[day.toDateString()].map((activity, idx) => {
           return (
-            <h1>{activity.activityName}</h1>
+            <h4 key={idx}>{activity.activityName}</h4>
           )
         })
       } 

@@ -91,8 +91,14 @@
   width: 13%;
 }
 
+.trip-itinerary-day > h4 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
 .trip-itinerary-day-details {
   min-height: 300px;
   background: white;
+  padding: 5px;
   border-radius: 3px;
 }
