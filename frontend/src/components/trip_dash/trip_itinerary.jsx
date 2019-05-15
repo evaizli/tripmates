@@ -28,16 +28,27 @@ class TripItinerary extends React.Component {
     
   }
 
+  startOfWeek(tripStartDate) {
+    const startDateDup = new Date(tripStartDate);
+    if (startDateDup.getDay() !== 0) {
+      startDateDup.setDate(startDateDup.getDate() - startDateDup.getDay());
+    }
+    return startDateDup;
+  }
+
+  endOfWeek(tripEndDate) {
+    const endDateDup = new Date(tripEndDate);
+    if (endDateDup.getDay() !== 6) {
+      endDateDup.setDate(endDateDup.getDate() + endDateDup.getDay() + 1);
+    }
+    return endDateDup;
+  }
+
   render() {
-    const startDate = new Date(this.state.tripDates.start);
-    const endDate = new Date(this.state.tripDates.end);
-    
     const activitiesByDate = this.parseDates(this.props.activities);
 
-    let startWeek = new Date(startDate);
-    startWeek.setDate(startWeek.getDate() - startWeek.getDay());
-    let endWeek = new Date(endDate);
-    endWeek.setDate(endWeek.getDate() + endWeek.getDay());
+    const startWeek = this.startOfWeek(this.state.tripDates.start);
+    const endWeek = this.endOfWeek(this.state.tripDates.end);
 
     const allDates = [startWeek];
     for (let i = 1; allDates.slice(allDates.length - 1)[0] < endWeek; i++ ) {

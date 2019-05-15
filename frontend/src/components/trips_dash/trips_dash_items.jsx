@@ -9,8 +9,11 @@ const TripsDashItems = ({ tripType, trips, openModal }) => {
     ) : "";
 
   const convertDate = (date) => {
+    console.log(date)
     const dateOptions = { year: 'numeric', month: 'short', day: 'numeric' };
-    return new Date(date).toLocaleDateString("en-US", dateOptions);
+    const dateDup = new Date(date)
+    dateDup.setHours(dateDup.getHours() + 7)
+    return dateDup.toLocaleDateString("en-US", dateOptions);
   }
 
   const sortStartDateAsc = (destinations) => {

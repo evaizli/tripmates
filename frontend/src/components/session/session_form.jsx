@@ -28,7 +28,7 @@ class SessionForm extends React.Component {
   }
 
   demoLogin() {
-    this.setState({ email: "Demo_User@tripmates.com", password: "tR!pM@t3s!" })
+    this.setState({ email: "Demo_User@tripmates.com", password: "tR!pM@t3s!" });
   }
 
   update(field) {
@@ -99,3 +99,5 @@ class SessionForm extends React.Component {
 };
 
 export default SessionForm;
+
+
