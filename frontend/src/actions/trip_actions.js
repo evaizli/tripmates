@@ -52,7 +52,6 @@ export const fetchTrips = () => dispatch => {
 };
 
 export const fetchTrip = (id) => dispatch => {
-    debugger
     return (
         APIUtil.fetchTrip(id)
             .then(trip => dispatch(receiveTrip(trip)))

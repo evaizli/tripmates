@@ -6,21 +6,21 @@ class TripItinerary extends React.Component {
     this.state = {
       tripDates: this.props.tripDates,
       activities: this.props.activities
-    }
+    };
     this.tripDates = this.props;
   }
 
 
   parseDates(activities) {
-    const activitiesCatDate = {}
+    const activitiesCatDate = {};
     activities.forEach((activity, idx) => {
       const date = new Date(activity.activityDate);
       if (activitiesCatDate[date.toDateString()]) {
-        activitiesCatDate[date.toDateString()].push(activity)
+        activitiesCatDate[date.toDateString()].push(activity);
       } else {
-        activitiesCatDate[date.toDateString()] = [activity]
+        activitiesCatDate[date.toDateString()] = [activity];
       }
-    })
+    });
     return activitiesCatDate;
   }
 

@@ -5,7 +5,7 @@ import addIcon from '../../assets/images/icons8-plus-math-30.png';
 const TripLogistics = ({ destinations, convertDate, openModal }) => {
 
   const destinationsDisplay = destinations.map((destination, idx) => {
-
+    console.log(destination);
     return (
       <div key={idx} className="trip-logistics-destination">
         <div className="trip-logistics-destination-header">
