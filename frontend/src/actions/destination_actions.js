@@ -1,4 +1,4 @@
-import * as APIUtil from "../utils/activity_api_util";
+import * as APIUtil from "../utils/destination_api_util";
 
 export const RECEIVE_DESTINATIONS = "RECEIVE_DESTINATIONS";
 export const RECEIVE_DESTINATION = "RECEIVE_DESTINATION";
