@@ -4,6 +4,7 @@ const passport = require("passport");
 const validateDestinationInput = require("../../validation/destination");
 const User = require("../../models/User");
 
+//test
 router.get("/test", (req, res) => res.json({ msg: "this is the destinations routes" }));
 
 // get all destinations
@@ -20,7 +21,24 @@ router.get("/:tripId", passport.authenticate("jwt", { session: false }),
       .catch(err => console.log(err, "error in destinations"));
   });
 
-// post route to destination
+// get single destination for a trip
+router.get("/:tripId/:destinationId", passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    User.findById(req.user.id)
+      .then(user => {
+        const trip = user.trips.id(req.params.tripId);
+        const destination = trip.destinations.id(req.params.destinationId);
+
+        if (!destination) {
+          return res.status(400).json("there is not a sigle destination");
+        } else {
+          res.send(destination);
+        }
+      })
+      .catch(err => console.log("error in getting destination ", err));
+  });
+
+// post destination
 router.post("/:tripId/", passport.authenticate("jwt", { session: false }),
   (req, res) => {
     User.findById(req.user.id)
@@ -44,54 +62,51 @@ router.post("/:tripId/", passport.authenticate("jwt", { session: false }),
             // make sure not to send back the user password
             return res.json(user);
           })
-          .catch(err => console.log("error in result from db ", err));
+          .catch(err => console.log("error in posting destination from db ", err));
         });
-    }
-  );
+    });
   
-  // get single destination for a trip
-  router.get(":tripId/:destinationId", passport.authenticate("jwt", { session: false }), 
-    (req, res) => {
-      User.findById(req.user.id)
-        .then(user => {
-          const trip = user.trips.id(req.params.tripId);
-          const destination = trip.destinations.id(req.params.destinationId);
-
-          if (!destination) {
-            return res.status(400).json("there is not a sigle destination");
-          } else {
-            res.send(destination);
-          }
-        })
-        .catch(err => console.log("error in getting destination ", err));
-    });
-
-
-
-// post route to update destination
-router.post("/:id/edit", passport.authenticate("jwt", {session: false}),
+// update single destination
+router.patch("/:tripId/:destinationId/update", passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    const { isValid, errors } = validateDestinationInput(req.body);
+    User.findById(req.user.id)
+      .then(user => {
+        const { isValid, errors } = validateDestinationInput(req.body);
+        let trip = user.trips.id(req.params.tripId);
+        let destination = trip.destinations.id(req.params.destinationId);
 
-    if (!isValid) {
-      return res.status(400).json(errors);
-    }
-    const newData = req.body;
-    // req.newData.location = req.body.destination.location;
-    // req.newData.transportation = req.body.destination.transportation;
-    // req.newData.housing = req.body.destination.housing;
-    // req.newData.notes = req.body.destination.notes;
-    // req.newData.startDate = req.body.destination.startDate;
-    // req.newData.endDate = req.body.destination.endDate;
+        if (!isValid) {
+          return res.status(400).json(errors);
+        } else {
+          destination.location = req.body.location;
+          destination.transportation = req.body.transportation;
+          destination.housing = req.body.housing;
+          destination.notes = req.body.notes;
+          destination.startDate = req.body.startDate;
+          destination.endDate = req.body.endDate;
 
-    const query = {destination: req.body.destination.id};
-    Destination.findOneAndUpdate(query, newData, (err, doc) => {
-      if (err) {
-        return res.send(500, { error: err });
-      }
-      return res.send({ msg: "Successful update" });
-    });
-  }
-);
+          user.save()
+            .then(user => {
+              return res.json(user);
+            })
+            .catch(err => res.status(400).json(err));
+        }
+        res.json(user);
+      })
+      .catch(err => console.log("error in deleting destination ", err));
+  });
+
+// delete single destination 
+router.delete("/:tripId/:destinationId", passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    User.findById(req.user.id)
+      .then(user => {
+        const trip = user.trips.id(req.params.tripId);
+        trip.destinations.id(req.params.destinationId).remove();
+        res.json(user);
+      })
+      .catch(err => console.log("error in deleting destination ", err));
+  });
+
 
 module.exports = router;
