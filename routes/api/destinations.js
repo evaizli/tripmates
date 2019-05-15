@@ -91,7 +91,6 @@ router.patch("/:tripId/:destinationId/update", passport.authenticate("jwt", { se
             })
             .catch(err => res.status(400).json(err));
         }
-        res.json(user);
       })
       .catch(err => console.log("error in deleting destination ", err));
   });
@@ -103,10 +102,11 @@ router.delete("/:tripId/:destinationId", passport.authenticate("jwt", { session:
       .then(user => {
         const trip = user.trips.id(req.params.tripId);
         trip.destinations.id(req.params.destinationId).remove();
-        user.save()
-          .then(user => {
-            res.json(user);
-          });
+
+        user.save().then(user => {
+          res.json(user);
+        });
+
       })
       .catch(err => console.log("error in deleting destination ", err));
   });

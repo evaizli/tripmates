@@ -6,6 +6,7 @@ const Header = () => {
   return (
     <section className="header-main">
       <div className="header-container">
+        <h1>TripMates</h1>
         <SessionButtonContainer />
       </div>
     </section>

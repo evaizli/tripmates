@@ -1,12 +1,17 @@
 .header-main {
-  @extend .flex-row;
-  background: $color-primary-bluegreen;
-  justify-content: flex-end;
+  background: $color-primary-blue;
 }
 
 .header-container {
-  max-width: 600px;
   padding: 20px;
+  @extend .flex-row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-container h1 {
+  margin: 0;
+  color: white;
 }
 
 .session-buttons {
@@ -16,4 +21,5 @@
 .session-button {
   width: 100px;
   margin-left: 20px;
+  border-radius: 3px;
 }
