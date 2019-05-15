@@ -22,9 +22,10 @@ export const receiveTrip = (payload) => {
 }
 
 export const removeTrip = (trip) =>{
+    // debugger
     return({
         type: REMOVE_TRIP,
-        tripId: trip._id
+        tripId: trip.data._id
     })
 }
 
@@ -52,6 +53,7 @@ export const fetchTrips = () => dispatch => {
 }
 
 export const fetchTrip = (id) => dispatch => {
+    debugger
     return (
         APIUtil.fetchTrip(id)
             .then(trip => dispatch(receiveTrip(trip)))

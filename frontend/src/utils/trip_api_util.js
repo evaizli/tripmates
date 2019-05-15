@@ -13,6 +13,7 @@ export const createTrip = data => {
 };
 
 export const deleteTrip = id => {
+    // debugger
     return axios.delete(`/api/trips/${id}`)
 }
 
