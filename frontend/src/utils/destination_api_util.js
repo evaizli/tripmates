@@ -8,14 +8,14 @@ export const fetchDestination = id => {
     return axios.get(`/api/destinations/${id}`)
 };
 
-export const postTrip = data => {
+export const createDestination = data => {
     return axios.post(`/api/destinations/`, data)
 };
 
-export const deleteTrip = id => {
+export const deleteDestination = id => {
     return axios.delete(`/api/destinations/${id}`)
 }
 
-export const updateTrip = data => {
+export const updateDestination = data => {
     return axios.patch(`/api/destinations/${data.id}`, data)
 }
