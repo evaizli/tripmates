@@ -4,8 +4,6 @@ class TripForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tripLeader: "",
-      tripMates: "",
       tripName: "",
       description: "",
       destinations: [{location: "", startDate:undefined, endDate: undefined}]
@@ -15,6 +13,20 @@ class TripForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    const tripDate = {
+      tripName: this.state.tripName,
+      description: this.state.description,
+    };
+    
+    this.props.createTrip(tripDate)
+      .then(trip => {
+        this.state.destinations.forEach(destination => {
+          destination.tripId = trip._id;
+          this.props.createDestination(destination);
+        })
+      })
+      // .then(this.props.closeModal);
+      // .then(this.props.history.push());
   }
  
   componentDidUpdate() {
@@ -57,8 +69,6 @@ class TripForm extends React.Component {
 
 
   render() {
-    console.log(this.state);
-
     const destinationInput = this.state.destinations.map((destination, idx) => {
       return (
         <div key={idx} className="trip-form-destination-inputs">

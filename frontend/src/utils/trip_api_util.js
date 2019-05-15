@@ -9,7 +9,7 @@ export const fetchTrip = id => {
 };
 
 export const createTrip = data => {
-    return axios.post(`/api/trips/`, data)
+    return axios.post(`/api/trips/`, data);
 };
 
 export const deleteTrip = id => {

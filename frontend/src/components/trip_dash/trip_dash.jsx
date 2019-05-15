@@ -36,7 +36,7 @@ class TripDash extends React.Component {
 
     return (
       <section className="trip-dash-main">
-        <Sidebar />
+        <Sidebar trips={[trip]} />
         <div className="trip-dash-content">
           <div className="trip-dash-header">
             <h1>{trip.tripName}</h1>
