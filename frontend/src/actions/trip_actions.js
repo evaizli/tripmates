@@ -7,72 +7,73 @@ export const RECEIVE_TRIP_ERRORS = "RECEIVE_TRIP_ERRORS";
 export const CLEAR_TRIP_ERRORS = "CLEAR_TRIP_ERRORS";
 export const REMOVE_TRIP = "REMOVE_TRIP";
 
-export const receiveTrips = (trips) => {
+export const receiveTrips = (payload) => {
     return ({
         type: RECEIVE_TRIPS, 
-        trips
-    })
-}
+        trips: payload.data
+    });
+};
 
-export const receiveTrip = (trip) => {
+export const receiveTrip = (payload) => {
     return ({
         type: RECEIVE_TRIP,
-        trip
-    })
-}
+        trip: payload.data
+    });
+};
 
 export const removeTrip = (trip) =>{
     return({
         type: REMOVE_TRIP,
-        trip: trip
-    })
-}
+        tripId: trip._id
+    });
+};
 
 export const receiveTripErrors = errors => {
     return({
         type: RECEIVE_TRIP_ERRORS,
         errors
-    })
-}
+    });
+};
 
 export const clearTripErrors = () => {
     return ({
         type: CLEAR_TRIP_ERRORS
-    })
-}
+    });
+};
 
 
 export const fetchTrips = () => dispatch => {
+
     return(
         APIUtil.fetchTrips()
             .then(trips => dispatch(receiveTrips(trips)))
             .catch(err => {dispatch(receiveTripErrors(err.response.data))})
-    )
-}
+    );
+};
 
 export const fetchTrip = (id) => dispatch => {
     return (
         APIUtil.fetchTrip(id)
             .then(trip => dispatch(receiveTrip(trip)))
             .catch(err => { dispatch(receiveTripErrors(err.response.data)) })
-    )
-}
+    );
+};
 
 export const createTrip = (data) => dispatch => {
     return (
         APIUtil.createTrip(data)
             .then(data => dispatch(receiveTrip(data)))
             .catch(err => { dispatch(receiveTripErrors(err.response.data)) })
-    )
-}
+    );
+};
 
 export const updateTrip = (data) => dispatch => {
     return (
         APIUtil.updateTrip(data)
             .then(data => dispatch(receiveTrip(data)))
             .catch(err => { dispatch(receiveTripErrors(err.response.data)) })
-    )
-}
+    );
+};
 
 
 export const deleteTrip = (id) => dispatch => {
@@ -81,8 +82,8 @@ export const deleteTrip = (id) => dispatch => {
             .then(test => console.log(test))
             // .then(tripId => dispatch(removeTrip(tripId)))
             // .catch(err => { dispatch(receiveTripErrors(err.response.data)) })
-    )
-}
+    );
+};
 
 window.createTrip = createTrip;
 window.deleteTrip = deleteTrip;
