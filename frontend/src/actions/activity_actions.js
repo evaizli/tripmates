@@ -4,7 +4,7 @@ import * as APIUtil from "../utils/activity_api_util";
 export const RECEIVE_ACTIVITIES = "RECEIVE_ACTIVITIES";
 export const RECEIVE_ACTIVITY = "RECEIVE_ACTIVITY";
 export const RECEIVE_ACTIVITY_ERRORS = "RECEIVE_ACTIVITY_ERRORS";
-export const CLEAR_ACTIVITY_ERRORS = "CLEAR_TRIP_ERRORS";
+export const CLEAR_ACTIVITY_ERRORS = "CLEAR_ACTIVITY_ERRORS";
 export const REMOVE_ACTIVITY = "REMOVE_ACTIVITY";
 
 export const receiveActivities = payload => {
