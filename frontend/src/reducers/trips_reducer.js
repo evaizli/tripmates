@@ -32,10 +32,7 @@ const tripsReducer = (state = [], action ) => {
                 return newState
             }
         case REMOVE_TRIP:
-            newState = state.filter((trip) => {
-                trip._id !== action.tripId
-            });
-            delete newState[action.tripId]
+            newState = state.filter((trip) => trip._id !== action.tripId);
             return newState;
         default:
             return state;
