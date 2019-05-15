@@ -13,6 +13,7 @@ const mapStateToProps = state => {
       address: "",
       mates: "",
       tag: "",
+      activityDate: "",
       image: "",
       notes: "",
       startTime: "",
