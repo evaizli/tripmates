@@ -35,14 +35,14 @@ class TripItinerary extends React.Component {
     const activitiesByDate = this.parseDates(this.props.activities);
 
     let startWeek = new Date(startDate);
-    startWeek.setDate(startWeek.getDate() - startWeek.getDay())
+    startWeek.setDate(startWeek.getDate() - startWeek.getDay());
     let endWeek = new Date(endDate);
-    endWeek.setDate(endWeek.getDate() + endWeek.getDay())
+    endWeek.setDate(endWeek.getDate() + endWeek.getDay());
 
     const allDates = [startWeek];
     for (let i = 1; allDates.slice(allDates.length - 1)[0] < endWeek; i++ ) {
-      let newDate = new Date(startWeek)
-      newDate.setDate(newDate.getDate() + i)
+      let newDate = new Date(startWeek);
+      newDate.setDate(newDate.getDate() + i);
       allDates.push(newDate);
     }
 

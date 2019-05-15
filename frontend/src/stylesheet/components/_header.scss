@@ -3,7 +3,7 @@
 }
 
 .header-container {
-  padding: 20px;
+  padding: 20px 40px;
   @extend .flex-row;
   justify-content: space-between;
   align-items: center;
@@ -20,6 +20,7 @@
 
 .session-button {
   width: 100px;
+  margin: 0;
   margin-left: 20px;
   border-radius: 3px;
 }

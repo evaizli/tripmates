@@ -58,8 +58,12 @@
 
 .upcoming-trips-item-add {
   @extend .upcoming-trips-item;
-  background: $color-primary-bluegreen;
+  background: $color-primary-blue;
   justify-content: center;
   align-items: center;
+}
+.upcoming-trips-item-add img {
+  filter: brightness(0) invert(1);
+  height: 65px;
 }
 
