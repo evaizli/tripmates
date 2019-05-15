@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from './header/header';
-import SplashImg from '../../assets/images/ha_long_bay_jeff_dam.jpg';
 
 const Splash = () => {
 
