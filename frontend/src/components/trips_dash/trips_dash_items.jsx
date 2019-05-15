@@ -30,7 +30,7 @@ const TripsDashItems = ({ tripType, trips, openModal }) => {
     const tripStartDate = convertDate(sortStartDateAsc(trip.destinations, 'asc')[0].startDate);
     const tripEndDate = convertDate(sortEndDateDesc(trip.destinations, 'desc')[0].endDate);
     return (
-      <Link key={idx} to="/trip" className="upcoming-trips-item">
+      <Link key={idx} to={`/trip/${trip._id}`} className="upcoming-trips-item">
         <div className="upcoming-trips-item-info">
           <h3>{trip.tripName}</h3>
           <h4>{tripStartDate} to {tripEndDate}</h4>

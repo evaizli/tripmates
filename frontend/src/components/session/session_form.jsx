@@ -47,18 +47,16 @@ class SessionForm extends React.Component {
 
     const formTypeInput = (formType === "Sign Up") ? 
       (
-        <div>
+        <>
           <input type="text" onChange={this.update('displayName')} placeholder="Display Name" />
           <input type="text" onChange={this.update('name')} placeholder="Name" />
-        </div>
+        </>
       ) : (
         ""
       );
     const confirmPass = (formType === "Sign Up") ? 
       (
-        <div>
-          <input type="password" onChange={this.update('password2')} placeholder="Confirm Password" />
-        </div>
+        <input type="password" onChange={this.update('password2')} placeholder="Confirm Password" />
       ) : (
         ""
       );

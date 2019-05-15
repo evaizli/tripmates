@@ -4,7 +4,7 @@ import { closeModal, openModal } from '../../actions/modal_actions';
 import { logout } from '../../actions/session_actions';
 import { fetchTrips } from '../../actions/trip_actions';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   const { entities: { trips } } = state;
   return ({
     trips: trips
