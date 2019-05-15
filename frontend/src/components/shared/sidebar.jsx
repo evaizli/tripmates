@@ -27,13 +27,13 @@ const SideBar = ({ logout, trips }) => {
     const daysLeft = Math.floor((startDate - dateNow) / oneDay);
 
     return (
-      // <Link key={idx} to={`/trips/${trip.tripId}`}>
-        <div key={idx} className="flex-col">
+      <Link key={idx} to={`/trip/${trip.tripId}`}>
+      <div key={idx} className="sidebar-menu-item flex-col">
           <div>{`${daysLeft} days`}</div>
           <div>until</div>
           <div>{`${trip.name}`}</div>
         </div>
-      // </Link>
+      </Link>
     )
   })
 
@@ -48,13 +48,14 @@ const SideBar = ({ logout, trips }) => {
             <div className="sidebar-menu-item"><Link to='/'>Link 2</Link></div>
             <div className="sidebar-menu-item"><Link to='/'>Link 3</Link></div>
             <div className="sidebar-menu-item"><Link to='/'>Link 4</Link></div>
-            <div className="sidebar-menu-item flex-col">
-              Trip Countdown
+            <div className="sidebar-menu-item">Trip Countdown</div>
+            
+            <div className="flex-col">
               {tripCountdown}
             </div>
           </div>
           
-          <div className="sidebar-menu-item" onClick={ logout }><Link to='/'>Log Out</Link></div>
+          <div className="sidebar-menu-item-logout" onClick={ logout }><Link to='/'>Log Out</Link></div>
         </div>
       </div>
     </section>
