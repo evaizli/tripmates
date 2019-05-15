@@ -57,8 +57,6 @@ class TripForm extends React.Component {
 
 
   render() {
-    console.log(this.state);
-
     const destinationInput = this.state.destinations.map((destination, idx) => {
       return (
         <div key={idx} className="trip-form-destination-inputs">

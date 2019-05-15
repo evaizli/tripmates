@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import TripForm from './trip_form';
-// import { closeModal, openModal } from '../../actions/modal_actions';
+import { closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = state => {
   return {

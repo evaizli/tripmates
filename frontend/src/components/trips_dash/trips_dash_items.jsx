@@ -9,7 +9,6 @@ const TripsDashItems = ({ tripType, trips, openModal }) => {
     ) : "";
 
   const convertDate = (date) => {
-    console.log(date)
     const dateOptions = { year: 'numeric', month: 'short', day: 'numeric' };
     const dateDup = new Date(date)
     dateDup.setHours(dateDup.getHours() + 7)

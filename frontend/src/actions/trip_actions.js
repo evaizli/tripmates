@@ -79,39 +79,7 @@ export const updateTrip = (data) => dispatch => {
 export const deleteTrip = (id) => dispatch => {
     return (
         APIUtil.deleteTrip(id)
-            .then(test => console.log(test))
-            // .then(tripId => dispatch(removeTrip(tripId)))
-            // .catch(err => { dispatch(receiveTripErrors(err.response.data)) })
+            .then(tripId => dispatch(removeTrip(tripId)))
+            .catch(err => { dispatch(receiveTripErrors(err.response.data)) })
     );
 };
-
-window.createTrip = createTrip;
-window.deleteTrip = deleteTrip;
-
-// dispatch(createTrip({
-//     tripLeader: "5cdc41945e8d1005b942378c", tripName: "Europe", destinations: [{ location: "London", startDate: "2019-7-1", endDate: "2019-7-20" }, { location: "Paris", startDate: "2019-7-20", endDate: "2019-7-27" }, { location: "Denmark", startDate: "2019-7-27", endDate: "2019-8-10" }], activities: [{
-//         activityName: "Lunch",
-//         location: "",
-//         address: "",
-//         mates: "",
-//         tag: "Food",
-//         image: [],
-//         notes: "",
-//         activityDate: "2019-07-01",
-//         startTime: "2019-07-01T19:00:00.000+00:00",
-//         endTime: "2019-07-01T21:00:00.000+00:00",
-//         date: undefined
-//     }, {
-//         activityName: "Lunch",
-//         location: "",
-//         address: "",
-//         mates: "",
-//         tag: "Food",
-//         image: [],
-//         notes: "",
-//         activityDate: "2019-07-02",
-//         startTime: "2019-07-02T19:00:00.000+00:00",
-//         endTime: "2019-07-02T21:00:00.000+00:00",
-//         date: undefined
-//     }]
-// }))
