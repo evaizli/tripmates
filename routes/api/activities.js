@@ -3,62 +3,87 @@ const router = express.Router();
 const Activity = require("../../models/Activity");
 const passport = require("passport");
 const validateActivityInput = require("../../validation/activity");
-const Trip = require("../../models/Trip");
+const User = require("../../models/User");
 
 router.get("/test",
   (req, res) => res.json({ msg: "This is the activities route" }));
 
-
-router.get("/", (req, res) => {
-  Activity
-    .find()
-    .sort({ date: -1 })
-    .then(activities => res.json(activities))
-    .catch(err => res.status(400).json(err));
-});
-
-router.get("/:id", (req, res) => {
-  Activity.findById(req.params.id)
-    .then(activity => res.json(activity))
-    .catch(err => res.status(400).json(err));
-});
-
-
-router.post( "/",
-
-  passport.authenticate("jwt", { session: false }),
-
+// get all activities
+router.get("/:tripId", passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    const { isValid, errors } = validateActivityInput(req.body);
+    User.findById(req.user.id)
+      .then(user => {
+        const trip = user.trips.id(req.params.tripId);
+        const activities = trip.activities;
 
-    if (!isValid) {
-      return res.status(400).json(errors);
-    }
+        res.send(activities);
+      })
+      .catch(err => console.log(err, "error in destinations"));
+  });
 
-    const newActivity = new Activity({
-      tripId: req.trip.id,
-      name: req.body.name,
-      location: req.body.location,
-      address: req.body.address,
-      mates: req.body.mates,
-      tag: req.body.tag,
-      image: req.body.image,
-      notes: req.body.notes,
-      startTime: req.body.startTime,
-      endTime: req.body.endTime,
-    });
+// post activity
+router.post("/:tripId", passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    User.findById(req.user.id)
+      .then(user => {
+        const activity = req.body;
+        const trip = user.trips.id(req.params.tripId);
 
+        if (!trip) {
+          return res.status(400).json("there is no trip of this name");
+        } else {
+          const { isValid, errors } = validateActivityInput(req.body);
 
-    Trip.activities.push(newActivity)
-        .save()
-        .then(activity => res.json(activity))
-        .catch (err => res.status(400).json(err));
-  }
-);
+          if (!isValid) {
+            return res.status(400).json(errors);
+          }
+        }
+
+        trip.activities.push(activity);
+        user.save()
+          .then(user => {
+            // make sure not to send back the user password
+            return res.json(user);
+          })
+          .catch(err => console.log("error in posting activity from db ", err));
+      });
+  });
+
+// patch activities
+router.patch("/:tripId/:activityId/update", passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    User.findById(req.user.id)
+      .then(user => {
+        const { isValid, errors } = validateActivityInput(req.body);
+        let trip = user.trips.id(req.params.tripId);
+        let activity = trip.activities.id(req.params.activityId);
+
+        if (!isValid) {
+          return res.status(400).json(errors);
+        } else {
+          activity.name = req.body.name;
+          activity.location = req.body.location;
+          activity.address = req.body.address;
+          activity.mates = req.body.mates;
+          activity.tag = req.body.tag;
+          activity.image = req.body.image;
+          activity.notes = req.body.notes;
+          activity.startTime = req.body.startTime;
+          activity.endTime = req.body.endTime;
+
+          user.save()
+            .then(user => {
+              return res.json(user);
+            })
+            .catch(err => res.status(400).json(err));
+        }
+      })
+      .catch(err => console.log("error in updating activity ", err));
+  });
 
 
 
 module.exports = router;
 
 ///
-// NOTES: what kind of routes do we need for activities
+// mates: what kind of routes do we need for activities
