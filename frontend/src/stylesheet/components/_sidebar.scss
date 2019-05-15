@@ -49,3 +49,8 @@
   @extend .sidebar-menu-item;
   height: 30px;
 }
+
+.sidebar-menu-item-countdown:hover {
+  cursor: auto;
+  background: none;
+}

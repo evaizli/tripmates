@@ -25,8 +25,8 @@ export const removeTrip = (trip) =>{
     return({
         type: REMOVE_TRIP,
         tripId: trip.data._id
-    })
-}
+    });
+};
 
 export const receiveTripErrors = errors => {
     return({

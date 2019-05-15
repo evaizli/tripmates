@@ -15,6 +15,10 @@ class TripForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.props.processForm(this.state)
+      .then(test => console.log(test))
+      .then(this.props.closeModal);
+      // .then(this.props.history.push());
   }
  
   componentDidUpdate() {
