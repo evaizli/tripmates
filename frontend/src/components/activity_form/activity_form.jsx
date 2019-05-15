@@ -33,33 +33,40 @@ class ActivityForm extends React.Component {
           <input
             type="text"
             value={activityName}
+            placeholder="Activity Name"
             onChange={this.update("activityName")}
           />
           <input
             type="text"
             value={location}
+            placeholder="Activity Location"
             onChange={this.update("location")}
           />
           <input
             type="text"
             value={address}
+            placeholder="Address"
             onChange={this.update("address")}
           />
           <textarea
             type="text"
             value={notes}
-            onChange={this.update("notes")}>
-          </textarea>
+            placeholder="Activity Notes"
+            onChange={this.update("notes")}
+          />
+          <label> Activity Date: </label>
           <input
             type="date"
             value={activityDate}
             onChange={this.update("activityDate")}
           />
+          <label> Start Time: </label>
           <input
             type="time"
             value={startTime}
             onChange={this.update("startTime")}
           />
+          <label> Start Time: </label>
           <input
             type="time"
             value={endTime}
