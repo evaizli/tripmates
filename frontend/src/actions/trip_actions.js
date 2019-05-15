@@ -79,11 +79,7 @@ export const updateTrip = (data) => dispatch => {
 export const deleteTrip = (id) => dispatch => {
     return (
         APIUtil.deleteTrip(id)
-            .then(test => console.log(test))
-            // .then(tripId => dispatch(removeTrip(tripId)))
-            // .catch(err => { dispatch(receiveTripErrors(err.response.data)) })
+            .then(tripId => dispatch(removeTrip(tripId)))
+            .catch(err => { dispatch(receiveTripErrors(err.response.data)) })
     );
 };
-
-window.createTrip = createTrip;
-window.deleteTrip = deleteTrip;

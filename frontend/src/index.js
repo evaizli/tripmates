@@ -5,10 +5,8 @@ import configureStore from './stores/store';
 import "./stylesheet/application.scss";
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './utils/sessions_api_util';
+import { logout} from './actions/session_actions';
 
-///testing to be removed
-import { logout, login, signup } from './actions/session_actions';
-import { fetchTrips, fetchTrip, deleteTrip } from './actions/trip_actions'
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -31,14 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const root = document.getElementById('root');
-  window.login = login
-  window.logout = logout
-  window.signup = signup
-  window.dispatch = store.dispatch;
-  window.getState = store.getState;
-  window.fetchTrips = fetchTrips;
-  window.fetchTrip = fetchTrip;
-  window.deleteTrip = deleteTrip;
   
   ReactDOM.render(<Root store={store}/>, root);
 });
