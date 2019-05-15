@@ -73,6 +73,7 @@ class TripItinerary extends React.Component {
     return (
       <section className="trip-itinerary-main">
         <h1>Itinerary</h1>
+        <div onClick ={() =>this.props.openModal("createActivity")}> + Add Activity</div>
         <div className="trip-itinerary-week">
           { calendar }
         </div>
