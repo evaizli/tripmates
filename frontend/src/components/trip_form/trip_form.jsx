@@ -13,18 +13,18 @@ class TripForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const tripDate = {
-      tripName: this.state.tripName,
-      description: this.state.description,
-    };
-    
-    this.props.createTrip(tripDate)
-      .then(trip => {
-        this.state.destinations.forEach(destination => {
-          destination.tripId = trip._id;
-          this.props.createDestination(destination);
-        })
-      })
+    // const tripDate = {
+    //   tripName: this.state.tripName,
+    //   description: this.state.description,
+    // };
+    this.props.history.push("/dashboard");
+    // this.props.createTrip(tripDate)
+    //   .then(trip => {
+    //     this.state.destinations.forEach(destination => {
+    //       destination.tripId = trip._id;
+    //       this.props.createDestination(destination);
+    //     })
+    //   })
       // .then(this.props.closeModal);
       // .then(this.props.history.push());
   }
