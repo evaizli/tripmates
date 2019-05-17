@@ -1,6 +1,6 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import { ProtectedRoute} from '../utils/route_util';
+import { Switch, Redirect } from 'react-router-dom';
+import { AuthRoute, ProtectedRoute} from '../utils/route_util';
 import Modal from './shared/modal';
 import TripsDashContainer from './trips_dash/trips_dash_container';
 import TripDashContainer from './trip_dash/trip_dash_container';
@@ -13,9 +13,10 @@ const App = () => {
     <div className="App">
       <Modal />
       <Switch>
-        <Route exact path='/trip/:tripId' component={TripDashContainer}/>
+        <ProtectedRoute exact path='/trip/:tripId' component={TripDashContainer}/>
         <ProtectedRoute exact path='/dashboard' component={TripsDashContainer}/>
-        <Route exact path='/' component={Splash}/>
+        <AuthRoute exact path='/' component={Splash}/>
+        <Redirect to='/'/>
       </Switch>
     </div>
   );
