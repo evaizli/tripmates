@@ -12,7 +12,7 @@
     "dev": "concurrently \"npm run server\" \"npm run frontend\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
-  "author": "Eva Pan",
+  "author": "Eva Pan, Jeff Dam, Andrew Mac",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -29,5 +29,9 @@
   },
   "devDependencies": {
     "nodemon": "^1.19.0"
+  },
+  "engines": {
+    "node": "8.4.0",
+    "npm": "6.1.0"
   }
 }
