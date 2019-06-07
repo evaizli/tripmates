@@ -12,7 +12,7 @@
     "dev": "concurrently \"npm run server\" \"npm run frontend\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
-  "author": "Eva Pan",
+  "author": "Eva Pan, Jeff Dam, Andrew Mac",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -23,11 +23,21 @@
     "mongoose": "^5.5.7",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
+    "react": "^16.8.6",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
+    "redux": "^4.0.1",
     "validator": "^10.11.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.0"
+  },
+  "engines": {
+    "node": "8.4.0",
+    "npm": "6.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/evaizli/tripmates.git"
   }
 }
