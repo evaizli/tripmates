@@ -11,6 +11,7 @@ const destinationsReducer = (state = [], action) => {
     case RECEIVE_DESTINATIONS:
         return state.action
     case RECEIVE_DESTINATION:
+        console.log(action.destination)
         if (state.length === 0) {
                 return [action.destination]
             } else {

@@ -5,8 +5,7 @@ import {updateDestination} from "../../actions/destination_actions";
 
 const mapStateToProps = (state, ownProps) => {
   // debugger
-  const destinations = state.entities.trips[0].destinations;
-  console.log(destinations)
+  // const destinations = state.entities.trips[0].destinations;
   return {
     formType: "Edit Destination"
   };
@@ -15,7 +14,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     closeModal: () => dispatch(closeModal()),
-    updateDestination: (data) => dispatch(updateDestination(data))
+    processForm: (data) => dispatch(updateDestination(data))
   };
 };
 
