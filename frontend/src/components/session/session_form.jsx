@@ -15,12 +15,6 @@ class SessionForm extends React.Component {
     this.demoLogin = this.demoLogin.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.errors.length === 0) {
-      this.props.closeModal();
-    }
-  }
-
   componentWillUnmount() {
     this.props.clearErrors();
   }

@@ -9,8 +9,8 @@ class TripsDash extends React.Component {
   }
 
   componentDidMount() {
+    this.props.closeModal();
     this.props.fetchTrips();
-
   }
 
   handleOpenModal(e) {
