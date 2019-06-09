@@ -4,7 +4,7 @@ import {
     REMOVE_TRIP 
 } from "../actions/trip_actions";
 
-const tripsReducer = (state = [], action ) => {
+const tripsReducer = (state = [], action) => {
     Object.freeze(state);
     let newState;
     switch(action.type){
@@ -14,7 +14,7 @@ const tripsReducer = (state = [], action ) => {
             newState = Object.assign([], state, [action.trip]);
             return newState;
         case REMOVE_TRIP:
-            newState = state.filter((trip) => trip._id !== action.tripId);
+            newState = state.filter(trip => trip._id !== action.tripId);
             return newState;
         default:
             return state;
