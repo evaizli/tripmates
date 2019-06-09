@@ -26,7 +26,7 @@ const SideBar = ({ logout, trips }) => {
       const startDate = sortStartDateAsc(trip.destinations)[0].startDate;
       return new Date(startDate) > dateNow;
     });
-  }
+  };
 
   const tripsStartDates = upcomingTrips(trips).map(trip => {
     const tripStartDate = convertDate(sortStartDateAsc(trip.destinations, 'asc')[0].startDate);
