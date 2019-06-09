@@ -56,7 +56,9 @@ const SideBar = ({ logout, trips }) => {
         <h1 className="logo">TripMates</h1>
         <div className="sidebar-menu-items">
           <div>
-            <div className="sidebar-menu-item"><Link to='/dashboard'>Trips Dashboard</Link></div>
+            <Link to='/dashboard'>
+              <div className="sidebar-menu-item">Trips Dashboard</div>
+            </Link>
             <div className="sidebar-menu-item sidebar-menu-item-countdown">Trip Countdown</div>
             
             <div className="flex-col">
@@ -64,7 +66,7 @@ const SideBar = ({ logout, trips }) => {
             </div>
           </div>
           
-          <div className="sidebar-menu-item-logout" onClick={ logout }><Link to='/'>Log Out</Link></div>
+          <div className="sidebar-menu-item-logout" onClick={ logout }>Log Out</div>
         </div>
       </div>
     </section>
