@@ -26,15 +26,20 @@ function Modal({ modal, closeModal }) {
     case "createDestination":
       component = <TripDestinationCreateFormContainer />;
       break;
-    case "editDestination":
-      component = <TripDestinationEditFormContainer />;
-      break;
+    // case "editDestination":
+    //   component = <TripDestinationEditFormContainer />;
+    //   break;
     case "createActivity":
       component = <CreateActivityFormContainer />;
       break;
     default:
-      return null;
+      if (modal.type === "editDestination"){
+        component = <TripDestinationEditFormContainer />;
+      } else {
+        return null;
+      }
   }
+
   return (
     <div className="modal-background" onClick={closeModal}>
       <div className="modal-child" onClick={e => e.stopPropagation()}>

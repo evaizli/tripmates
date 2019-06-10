@@ -1,6 +1,7 @@
 import React from 'react';
 import editIcon from '../../assets/images/icons8-pencil-24.png'; 
 import addIcon from '../../assets/images/icons8-plus-math-30.png'; 
+import TripDestinationEditContainer from "./trip_destination_edit_form_container";
 
 const TripLogistics = ({ destinations, convertDate, openModal }) => {
 
@@ -10,7 +11,7 @@ const TripLogistics = ({ destinations, convertDate, openModal }) => {
         <div className="trip-logistics-destination-header">
           <h3>Destinations #{idx + 1}: {destination.location}</h3>
           <h4>{convertDate(destination.startDate)} to {convertDate(destination.endDate)}</h4>
-          <img src={editIcon} alt="edit" onClick={() => openModal('editDestination')} />
+          <img src={editIcon} alt="edit" onClick={() => openModal({type:'editDestination', id:destination._id})} />
         </div>
         <ul className="trip-logistics-destination-details">
           <li className="flex-col">
