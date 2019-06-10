@@ -13,24 +13,24 @@ const tripsReducer = (state = [], action ) => {
     let newState;
     switch(action.type){
         case RECEIVE_TRIPS:
-            return action.trips
+            return action.trips;
         case RECEIVE_TRIP:
             if (state.length === 0) {
-                return [action.trip]
+                return [action.trip];
             } else {
                 newState = Object.assign([], state);
-                let idx = null;
+                let idx;
                 newState.forEach((trip, i) =>{
                     if (trip._id === action.trip._id) {
-                        idx = i
+                        idx = i;
                     } 
-                })
-                if (idx) {
+                });
+                if (idx !== undefined) {
                     newState[idx] = action.trip;
                 } else {
-                    newState.push(action.trip)
+                    newState.push(action.trip);
                 }
-                return newState
+                return newState;
             }
         case REMOVE_TRIP:
             newState = state.filter((trip) => trip._id !== action.tripId);
@@ -41,11 +41,8 @@ const tripsReducer = (state = [], action ) => {
         //     debugger
         default:
             return state;
-
     }
-
-}
-
+};
 
 export default tripsReducer;
  

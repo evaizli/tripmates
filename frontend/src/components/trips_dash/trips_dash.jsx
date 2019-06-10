@@ -1,5 +1,5 @@
 import React from 'react';
-import Sidebar from '../shared/sidebar';
+import SidebarContainer from '../shared/sidebar_container';
 import TripsDashItems from './trips_dash_items';
 
 class TripsDash extends React.Component {
@@ -9,8 +9,8 @@ class TripsDash extends React.Component {
   }
 
   componentDidMount() {
+    this.props.closeModal();
     this.props.fetchTrips();
-
   }
 
   handleOpenModal(e) {
@@ -47,14 +47,14 @@ class TripsDash extends React.Component {
   }
 
   render() {
-    const { logout, trips } = this.props;
+    const { trips } = this.props;
     if (!trips) return null;
     const pastTrips = this.pastTrips(trips);
     const upcomingTrips = this.upcomingTrips(trips);
 
     return (
       <section className="trips-dash-main">
-        <Sidebar logout={logout} trips={upcomingTrips}/>
+        <SidebarContainer />
         <div className="trips-dash-content">
           <TripsDashItems tripType="Upcoming" trips={upcomingTrips} openModal={this.handleOpenModal}/>
           <TripsDashItems tripType="Past" trips={pastTrips} openModal={this.handleOpenModal}/>

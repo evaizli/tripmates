@@ -1,5 +1,5 @@
 import React from 'react';
-import Sidebar from '../shared/sidebar';
+import SidebarContainer from '../shared/sidebar_container';
 import TripLogistics from './trip_logistics';
 import TripItineraryContainer from './trip_itinerary_container';
 
@@ -36,7 +36,7 @@ class TripDash extends React.Component {
 
     return (
       <section className="trip-dash-main">
-        <Sidebar trips={[trip]} />
+        <SidebarContainer />
         <div className="trip-dash-content">
           <div className="trip-dash-header">
             <h1>{trip.tripName}</h1>
