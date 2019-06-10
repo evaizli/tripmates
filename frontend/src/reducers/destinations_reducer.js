@@ -3,20 +3,23 @@ import {
   RECEIVE_DESTINATION,
   REMOVE_DESTINATION
 } from "../actions/destination_actions";
+import { RECEIVE_TRIP } from "../actions/trip_actions";
 
 const destinationsReducer = (state = [], action) => {
-    // console.log("REDUCER",state)
   Object.freeze(state);
   let newState;
   switch (action.type) {
     case RECEIVE_DESTINATIONS:
-        return state.action
+      return state.action
     case RECEIVE_DESTINATION:
-        debugger
-          return [action.destination]
+      newState = Object.assign([], state);
+      newState.push(action.destination);
+      return newState;
     case REMOVE_DESTINATION:
         newState = state.filter(destination => destination._id !== action.destinationId);
         return newState;
+    case RECEIVE_TRIP:
+      return action.trip.destinations
     default:
       return state;
   }

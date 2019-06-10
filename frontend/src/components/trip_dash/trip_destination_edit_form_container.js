@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import {updateDestination} from "../../actions/destination_actions";
 
 const mapStateToProps = (state, ownProps) => {
-  // debugger
   // const destinations = state.entities.trips[0].destinations;
   return {
     formType: "Edit Destination"

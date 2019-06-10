@@ -27,9 +27,9 @@ class TripDash extends React.Component {
   }
 
   render() {
-    const { trip } = this.props;
+    const { trip, destinations } = this.props;
     if (!trip) return null;
-    const destinations = trip.destinations;
+    // const destinations = trip.destinations;
     const tripStartDate = this.convertDate(this.sortStartDateAsc(destinations, 'asc')[0].startDate);
     const tripEndDate = this.convertDate(this.sortEndDateDesc(destinations, 'desc')[0].endDate);
     const destinationsSorted = this.sortStartDateAsc(destinations, 'asc');

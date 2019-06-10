@@ -38,7 +38,6 @@ const tripsReducer = (state = [], action ) => {
         // case RECEIVE_DESTINATION:
         //     newState = Object.assign([], state);
         //     return newState[0].destinations.push(action.destination)
-        //     debugger
         default:
             return state;
 
