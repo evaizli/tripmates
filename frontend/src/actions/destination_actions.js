@@ -57,13 +57,14 @@ export const fetchDestination = id => dispatch => {
 };
 
 export const createDestination = data => dispatch => {
+  debugger
   return APIUtil.createDestination(data)
     .then(data => { 
       console.log(data);
       dispatch(receiveDestination(data))
     })
     .catch(err => {
-      dispatch(receiveDestinationErrors(err.response.data));
+      dispatch(receiveDestinationErrors(err));
     });
 };
 

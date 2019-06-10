@@ -4,7 +4,7 @@ import {withRouter} from 'react-router-dom'
 class TripDestinationForm extends React.Component {
   constructor(props){
     super(props);
-    this.state = this.props.destination;
+    this.state = Object.assign({}, this.props.destination);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
   }
@@ -17,7 +17,6 @@ class TripDestinationForm extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    // debugger
     this.props.processForm(this.state).then(()=>this.props.closeModal());
   }
 

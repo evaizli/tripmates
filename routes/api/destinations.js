@@ -41,11 +41,13 @@ router.get("/:tripId/:destinationId", passport.authenticate("jwt", { session: fa
 // post destination
 router.post("/:tripId/", passport.authenticate("jwt", { session: false }),
   (req, res) => {
+    // debugger;
     User.findById(req.user.id)
       .then(user => {
         const destination = req.body;
         const trip = user.trips.id(req.params.tripId);
-
+        
+        // debugger;
         if (!trip) {
           return res.status(400).json("there is no trip of this name");
         } else {
@@ -56,11 +58,14 @@ router.post("/:tripId/", passport.authenticate("jwt", { session: false }),
           }
         }
 
+        // debugger;
         trip.destinations.push(destination);
         user.save()
           .then(user => {
             // make sure not to send back the user password
-            return res.json(user);
+            console.log(destination)
+            // debugger;
+            return res.json(destination);
           })
           .catch(err => console.log("error in posting destination from db ", err));
         });

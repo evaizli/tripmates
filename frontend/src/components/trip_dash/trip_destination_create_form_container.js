@@ -3,9 +3,12 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import { createDestination} from "../../actions/destination_actions";
 
-const mapStateToProps = state => {
-  // debugger
-  const tripId = state.entities.trips[0]._id;
+const mapStateToProps = (state, ownProps) => {
+  console.log("FROM CONTAINER",state)
+  debugger
+  const tripId = state.entities.destinations.length > 0 ? state.entities.destinations[0].tripId 
+  : state.entities.trips[0]._id;
+
   let destination = {
     location: "",
     startDate: new Date(),

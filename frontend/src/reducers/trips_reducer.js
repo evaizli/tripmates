@@ -3,8 +3,9 @@ import {
     RECEIVE_TRIP, 
     REMOVE_TRIP 
 } from "../actions/trip_actions";
-
-
+import {
+    RECEIVE_DESTINATION,
+} from "../actions/destination_actions";
 
 
 const tripsReducer = (state = [], action ) => {
@@ -34,6 +35,10 @@ const tripsReducer = (state = [], action ) => {
         case REMOVE_TRIP:
             newState = state.filter((trip) => trip._id !== action.tripId);
             return newState;
+        // case RECEIVE_DESTINATION:
+        //     newState = Object.assign([], state);
+        //     return newState[0].destinations.push(action.destination)
+        //     debugger
         default:
             return state;
 
