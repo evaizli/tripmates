@@ -20,6 +20,11 @@ class TripDestinationForm extends React.Component {
     this.props.processForm(this.state).then(()=>this.props.closeModal());
   }
 
+  prefillDate(date){
+    let dateConvert = new Date(date).toISOString().substring(0, 10);
+    return dateConvert; 
+  }
+
   render() {
     const {  location, startDate, endDate, housing, transportation, notes} = this.state
     return (
@@ -36,14 +41,14 @@ class TripDestinationForm extends React.Component {
           <label><h4>Start Date</h4>
           <input
             type="date"
-            value={startDate} //need to figure out how to prefill a date
+            value={this.prefillDate(startDate)} //need to figure out how to prefill a date
             onChange={this.update("startDate")}
           />
           </label>
           <label><h4>End Date</h4>
           <input
             type="date"
-            // value={endDate} //need to figure out how to prefill a date
+            value={this.prefillDate(endDate)} //need to figure out how to prefill a date
               onChange={this.update("endDate")}
           />
           </label>

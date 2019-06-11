@@ -4,16 +4,12 @@ import { connect } from 'react-redux';
 import { createDestination} from "../../actions/destination_actions";
 
 const mapStateToProps = (state, ownProps) => {
-  console.log("FROM CONTAINER",state)
-  // const tripId = state.entities.destinations.length > 0 ? state.entities.destinations[0].tripId 
-  // : state.entities.trips[0]._id;
-
   const tripId = state.entities.trips[0]._id;
   
   let destination = {
     location: "",
-    startDate: "",
-    endDate: "",
+    startDate: new Date(),
+    endDate: new Date(),
     housing: "",
     transportation: "",
     notes:"",
