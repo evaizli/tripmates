@@ -9,6 +9,7 @@ export const fetchDestination = id => {
 };
 
 export const createDestination = data => {
+
     return axios.post(`/api/destinations/${data.tripId}`, data)
 };
 
@@ -17,5 +18,5 @@ export const deleteDestination = id => {
 }
 
 export const updateDestination = data => {
-    return axios.patch(`/api/destinations/${data.id}`, data)
+    return axios.patch(`/api/destinations/${data.tripId}/${data._id}/update`, data)
 }

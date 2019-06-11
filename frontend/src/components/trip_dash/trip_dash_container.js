@@ -6,8 +6,10 @@ import { fetchTrip } from '../../actions/trip_actions';
 const mapStateToProps = (state, ownProps) => {
   const { entities: { trips } } = state;
   const trip = trips.filter(trip => trip._id === ownProps.match.params.tripId);
+  const destinations = state.entities.destinations;
   return {
-    trip: trip[0]
+    trip: trip[0],
+    destinations: destinations
   };
 };
 

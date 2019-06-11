@@ -1,16 +1,32 @@
 import TripDestinationForm from './trip_destination_form';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
+import { createDestination} from "../../actions/destination_actions";
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  const tripId = state.entities.trips[0]._id;
+  
+  let destination = {
+    location: "",
+    startDate: new Date(),
+    endDate: new Date(),
+    housing: "",
+    transportation: "",
+    notes:"",
+    tripId: tripId
+  }; 
+
   return {
-    formType: "Create Destination"
+    destination,
+    formType: "Create Destination",
+    errors: state.errors.destination
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()), 
+    processForm: (data) => dispatch(createDestination(data))
   };
 };
 

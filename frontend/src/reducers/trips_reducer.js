@@ -3,8 +3,12 @@ import {
     RECEIVE_TRIP, 
     REMOVE_TRIP 
 } from "../actions/trip_actions";
+import {
+    RECEIVE_DESTINATION,
+} from "../actions/destination_actions";
 
-const tripsReducer = (state = [], action) => {
+
+const tripsReducer = (state = [], action ) => {
     Object.freeze(state);
     let newState;
     switch(action.type){

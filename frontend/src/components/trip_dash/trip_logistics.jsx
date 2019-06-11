@@ -11,7 +11,7 @@ const TripLogistics = ({ destinations, openModal }) => {
         <div className="trip-logistics-destination-header">
           <h3>Destinations #{idx + 1}: {destination.location}</h3>
           <h4>{convertDate(destination.startDate)} to {convertDate(destination.endDate)}</h4>
-          <img src={editIcon} alt="edit" onClick={() => openModal('editDestination')} />
+          <img src={editIcon} alt="edit" onClick={() => openModal({type:'editDestination', id:destination._id})} />
         </div>
         <ul className="trip-logistics-destination-details">
           <li className="flex-col">
