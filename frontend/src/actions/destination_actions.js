@@ -59,7 +59,6 @@ export const fetchDestination = id => dispatch => {
 export const createDestination = data => dispatch => {
   return APIUtil.createDestination(data)
     .then(data => { 
-      console.log(data);
       dispatch(receiveDestination(data))
     })
     .catch(err => {

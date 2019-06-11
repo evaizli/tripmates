@@ -18,6 +18,5 @@ export const deleteDestination = id => {
 }
 
 export const updateDestination = data => {
-    // debugger
     return axios.patch(`/api/destinations/${data.tripId}/${data._id}/update`, data)
 }

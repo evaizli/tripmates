@@ -12,7 +12,7 @@ const destinationsReducer = (state = [], action) => {
     case RECEIVE_DESTINATIONS:
       return state.action
     case RECEIVE_DESTINATION:
-      debugger
+      
       newState = Object.assign([], state);
       let destinationId = action.destination._id
       if (destinationId){
@@ -24,7 +24,7 @@ const destinationsReducer = (state = [], action) => {
       } else {
         newState.push(action.destination);
       }
-      debugger
+      
       return newState;
     case REMOVE_DESTINATION:
         newState = state.filter(destination => destination._id !== action.destinationId);
