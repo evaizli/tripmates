@@ -13,7 +13,7 @@ class TripItinerary extends React.Component {
 
   parseDates(activities) {
     const activitiesCatDate = {};
-    activities.forEach((activity, idx) => {
+    activities.forEach((activity) => {
       const date = new Date(activity.activityDate);
       if (activitiesCatDate[date.toDateString()]) {
         activitiesCatDate[date.toDateString()].push(activity);
