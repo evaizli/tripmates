@@ -2,6 +2,7 @@ import React from 'react';
 import SidebarContainer from '../shared/sidebar_container';
 import TripLogistics from './trip_logistics';
 import TripItineraryContainer from './trip_itinerary_container';
+import { sortStartDateAsc, sortEndDateDesc } from '../../utils/date_sort_api_util';
 
 class TripDash extends React.Component {
 
@@ -14,25 +15,13 @@ class TripDash extends React.Component {
     return new Date(date).toLocaleDateString("en-US", dateOptions);
   }
 
-  sortStartDateAsc(destinations) {
-    const destinationsDup = Object.assign([], destinations);
-    const compareDateAsc = (a, b) => (a.startDate < b.startDate ? -1 : 1);
-    return destinationsDup.sort(compareDateAsc);
-  }
-
-  sortEndDateDesc(destinations) {
-    const destinationsDup = Object.assign([], destinations);
-    const compareDateDesc = (a, b) => (a.endDate > b.endDate ? -1 : 1);
-    return destinationsDup.sort(compareDateDesc);
-  }
-
   render() {
     const { trip } = this.props;
     if (!trip) return null;
     const destinations = trip.destinations;
-    const tripStartDate = this.convertDate(this.sortStartDateAsc(destinations, 'asc')[0].startDate);
-    const tripEndDate = this.convertDate(this.sortEndDateDesc(destinations, 'desc')[0].endDate);
-    const destinationsSorted = this.sortStartDateAsc(destinations, 'asc');
+    const destinationsSorted = sortStartDateAsc(destinations);
+    const tripStartDate = this.convertDate(destinationsSorted[0].startDate);
+    const tripEndDate = this.convertDate(sortEndDateDesc(destinations)[0].endDate);
 
     return (
       <section className="trip-dash-main">

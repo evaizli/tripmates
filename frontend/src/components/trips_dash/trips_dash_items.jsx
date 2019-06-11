@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { sortStartDateAsc, sortEndDateDesc } from '../../utils/date_sort_api_util';
 
 const TripsDashItems = ({ tripType, trips, openModal }) => {
   const addTrip = tripType === 'Upcoming' ? (
@@ -14,23 +15,10 @@ const TripsDashItems = ({ tripType, trips, openModal }) => {
     dateDup.setHours(dateDup.getHours() + 7)
     return dateDup.toLocaleDateString("en-US", dateOptions);
   }
-
-  const sortStartDateAsc = (destinations) => {
-    const destinationsDup = Object.assign([], destinations);
-    const compareDateAsc = (a, b) => (a.startDate < b.startDate ? -1 : 1);
-    return destinationsDup.sort(compareDateAsc);
-  }
-
-  const sortEndDateDesc = (destinations) => {
-    const destinationsDup = Object.assign([], destinations);
-    const compareDateDesc = (a, b) => (a.endDate > b.endDate ? -1 : 1);
-    return destinationsDup.sort(compareDateDesc);
-  }
-
   
   const tripButtons = trips.map((trip, idx) => {
-    const tripStartDate = convertDate(sortStartDateAsc(trip.destinations, 'asc')[0].startDate);
-    const tripEndDate = convertDate(sortEndDateDesc(trip.destinations, 'desc')[0].endDate);
+    const tripStartDate = convertDate(sortStartDateAsc(trip.destinations)[0].startDate);
+    const tripEndDate = convertDate(sortEndDateDesc(trip.destinations)[0].endDate);
     return (
       <Link key={idx} to={`/trip/${trip._id}`} className="upcoming-trips-item">
         <div className="upcoming-trips-item-info">
