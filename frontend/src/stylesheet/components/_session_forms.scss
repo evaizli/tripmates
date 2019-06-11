@@ -4,14 +4,17 @@
   align-items: center;
   box-sizing: border-box;
   width: 300px;
-}
 
-.session-page li {
-  list-style: circle inside;
-}
+  li {
+    list-style: none inside;
+    color: red;
+    margin-top: 5px;
+  }
 
-.session-page * {
-  // margin: 8px;
+  input, button, ul {
+    width: 260px;
+    box-sizing: border-box;
+  }
 }
 
 .session-form {
@@ -25,9 +28,4 @@
   flex-direction: row;
   width: 100%;
   justify-content: space-evenly;
-}
-
-.session-page input, button {
-  width: 260px;
-  box-sizing: border-box;
 }

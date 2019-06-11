@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { tripStartDateFinder, tripEndDateFinder } from '../../utils/date_sort_api_util';
 
 const TripsDashItems = ({ tripType, trips, openModal }) => {
   const addTrip = tripType === 'Upcoming' ? (
@@ -7,35 +8,16 @@ const TripsDashItems = ({ tripType, trips, openModal }) => {
       <img src="https://image.flaticon.com/icons/svg/32/32339.svg" alt="plus" />
     </Link>
     ) : "";
-
-  const convertDate = (date) => {
-    const dateOptions = { year: 'numeric', month: 'short', day: 'numeric' };
-    const dateDup = new Date(date)
-    dateDup.setHours(dateDup.getHours() + 7)
-    return dateDup.toLocaleDateString("en-US", dateOptions);
-  }
-
-  const sortStartDateAsc = (destinations) => {
-    const destinationsDup = Object.assign([], destinations);
-    const compareDateAsc = (a, b) => (a.startDate < b.startDate ? -1 : 1);
-    return destinationsDup.sort(compareDateAsc);
-  }
-
-  const sortEndDateDesc = (destinations) => {
-    const destinationsDup = Object.assign([], destinations);
-    const compareDateDesc = (a, b) => (a.endDate > b.endDate ? -1 : 1);
-    return destinationsDup.sort(compareDateDesc);
-  }
-
   
   const tripButtons = trips.map((trip, idx) => {
-    const tripStartDate = convertDate(sortStartDateAsc(trip.destinations, 'asc')[0].startDate);
-    const tripEndDate = convertDate(sortEndDateDesc(trip.destinations, 'desc')[0].endDate);
+    const destinations = trip.destinations;
+    const tripStartDate = tripStartDateFinder(destinations);
+    const tripEndDate = tripEndDateFinder(destinations);
     return (
       <Link key={idx} to={`/trip/${trip._id}`} className="upcoming-trips-item">
         <div className="upcoming-trips-item-info">
           <h3>{trip.tripName}</h3>
-          <h4>{tripStartDate} to {tripEndDate}</h4>
+          <h4>{tripStartDate} <br/> to <br/> {tripEndDate}</h4>
         </div>
         <div className="upcoming-trips-item-background">
         </div>
