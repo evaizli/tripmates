@@ -10,7 +10,6 @@ class TripItinerary extends React.Component {
     this.tripDates = this.props;
   }
 
-
   parseDates(activities) {
     const activitiesCatDate = {};
     activities.forEach((activity) => {
@@ -22,10 +21,6 @@ class TripItinerary extends React.Component {
       }
     });
     return activitiesCatDate;
-  }
-
-  createCalendar() {
-    
   }
 
   startOfWeek(tripStartDate) {
@@ -62,8 +57,13 @@ class TripItinerary extends React.Component {
       let activityOfDay = "";
       if (activitiesByDate[day.toDateString()]) {
         activityOfDay = activitiesByDate[day.toDateString()].map((activity, idx) => {
+          const time = activity.startTime;
+
           return (
-            <h4 key={idx}>{activity.activityName}</h4>
+            <div key={idx}>
+              <h4>{time}</h4>
+              <h4>{activity.activityName}</h4>
+            </div>
           )
         })
       } 
@@ -77,9 +77,6 @@ class TripItinerary extends React.Component {
         </div>
       )
     })
-
-
-
 
     return (
       <section className="trip-itinerary-main">
