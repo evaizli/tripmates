@@ -41,14 +41,14 @@ class TripDestinationForm extends React.Component {
           <label><h4>Start Date</h4>
           <input
             type="date"
-            value={this.prefillDate(startDate)} //need to figure out how to prefill a date
+            value={this.prefillDate(startDate)}
             onChange={this.update("startDate")}
           />
           </label>
           <label><h4>End Date</h4>
           <input
             type="date"
-            value={this.prefillDate(endDate)} //need to figure out how to prefill a date
+            value={this.prefillDate(endDate)} 
               onChange={this.update("endDate")}
           />
           </label>

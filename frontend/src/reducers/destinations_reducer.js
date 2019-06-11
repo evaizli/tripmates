@@ -12,14 +12,31 @@ const destinationsReducer = (state = [], action) => {
     case RECEIVE_DESTINATIONS:
       return state.action
     case RECEIVE_DESTINATION:
+      debugger
       newState = Object.assign([], state);
-      newState.push(action.destination);
+      let destinationId = action.destination._id
+      if (destinationId){
+        for (let i = 0; i < newState.length; i++){
+          if (newState[i]._id === destinationId){
+            newState[i] = action.destination;
+          }
+        }
+      } else {
+        newState.push(action.destination);
+      }
+      debugger
       return newState;
     case REMOVE_DESTINATION:
         newState = state.filter(destination => destination._id !== action.destinationId);
         return newState;
     case RECEIVE_TRIP:
-      return action.trip.destinations
+      let tripId = action.trip._id;
+      newState = Object.assign([], state);
+      action.trip.destinations.forEach(destination =>{
+        destination["tripId"] = tripId;
+        newState.push(destination)
+      })
+      return newState;
     default:
       return state;
   }

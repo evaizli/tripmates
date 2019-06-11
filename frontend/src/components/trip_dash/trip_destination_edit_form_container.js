@@ -6,11 +6,13 @@ import {updateDestination} from "../../actions/destination_actions";
 const mapStateToProps = (state, ownProps) => {
   let destinationId = state.ui.modal.id;
   let destination;
+  // debugger
   state.entities.destinations.forEach(d => {
     if (d._id === destinationId){
       destination = d;
     }
   })
+  // debugger
   return {
     destination: destination,
     formType: "Edit Destination"

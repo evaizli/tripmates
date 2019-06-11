@@ -3,6 +3,7 @@ const router = express.Router();
 const passport = require("passport");
 const validateDestinationInput = require("../../validation/destination");
 const User = require("../../models/User");
+const Destinations = require("../../models/Destination");
 
 //test
 router.get("/test", (req, res) => res.json({ msg: "this is the destinations routes" }));
@@ -70,6 +71,7 @@ router.post("/:tripId/", passport.authenticate("jwt", { session: false }),
 // update single destination
 router.patch("/:tripId/:destinationId/update", passport.authenticate("jwt", { session: false }),
   (req, res) => {
+    // debugger
     User.findById(req.user.id)
       .then(user => {
         const { isValid, errors } = validateDestinationInput(req.body);
@@ -93,9 +95,33 @@ router.patch("/:tripId/:destinationId/update", passport.authenticate("jwt", { se
             .catch(err => res.status(400).json(err));
         }
       })
-      .catch(err => console.log("error in deleting destination ", err));
+      .catch(err => console.log("error in updating destination ", err));
   });
+// router.patch("/:destinationId/", passport.authenticate("jwt", { session: false }),
+//   (req, res) => {
+//     debugger
+//     Destinations.findById(req.params.destinationId)
+//       .then(destination => {
+//         const { isValid, errors } = validateDestinationInput(req.body);
+//         if (!isValid) {
+//           return res.status(400).json(errors);
+//         } else {
+//           destination.location = req.body.location;
+//           destination.transportation = req.body.transportation;
+//           destination.housing = req.body.housing;
+//           destination.notes = req.body.notes;
+//           destination.startDate = req.body.startDate;
+//           destination.endDate = req.body.endDate;
 
+//           destination.save()
+//             .then((destination) => {
+//               return res.json(destination);
+//             })
+//             .catch(err => res.status(400).json(err));
+//         }
+//       })
+//       .catch(err => console.log("error in updating destination ", err));
+//   });
 // delete single destination 
 router.delete("/:tripId/:destinationId", passport.authenticate("jwt", { session: false }),
   (req, res) => {
