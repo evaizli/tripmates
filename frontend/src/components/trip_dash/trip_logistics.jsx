@@ -1,9 +1,9 @@
 import React from 'react';
 import editIcon from '../../assets/images/icons8-pencil-24.png'; 
 import addIcon from '../../assets/images/icons8-plus-math-30.png'; 
-import TripDestinationEditContainer from "./trip_destination_edit_form_container";
+import { convertDate } from '../../utils/date_sort_api_util';
 
-const TripLogistics = ({ destinations, convertDate, openModal }) => {
+const TripLogistics = ({ destinations, openModal }) => {
 
   const destinationsDisplay = destinations.map((destination, idx) => {
     return (
