@@ -3,6 +3,7 @@ const router = express.Router();
 const passport = require("passport");
 const validateDestinationInput = require("../../validation/destination");
 const User = require("../../models/User");
+const Destinations = require("../../models/Destination");
 
 //test
 router.get("/test", (req, res) => res.json({ msg: "this is the destinations routes" }));
@@ -41,11 +42,12 @@ router.get("/:tripId/:destinationId", passport.authenticate("jwt", { session: fa
 // post destination
 router.post("/:tripId/", passport.authenticate("jwt", { session: false }),
   (req, res) => {
+
     User.findById(req.user.id)
       .then(user => {
         const destination = req.body;
         const trip = user.trips.id(req.params.tripId);
-
+        
         if (!trip) {
           return res.status(400).json("there is no trip of this name");
         } else {
@@ -60,7 +62,7 @@ router.post("/:tripId/", passport.authenticate("jwt", { session: false }),
         user.save()
           .then(user => {
             // make sure not to send back the user password
-            return res.json(user);
+            return res.json(destination);
           })
           .catch(err => console.log("error in posting destination from db ", err));
         });
@@ -86,16 +88,14 @@ router.patch("/:tripId/:destinationId/update", passport.authenticate("jwt", { se
           destination.endDate = req.body.endDate;
 
           user.save()
-            .then(user => {
-              return res.json(user);
+            .then(() => {
+              return res.json(destination);
             })
             .catch(err => res.status(400).json(err));
         }
       })
-      .catch(err => console.log("error in deleting destination ", err));
+      .catch(err => console.log("error in updating destination ", err));
   });
-
-// delete single destination 
 router.delete("/:tripId/:destinationId", passport.authenticate("jwt", { session: false }),
   (req, res) => {
     User.findById(req.user.id)
