@@ -1,6 +1,7 @@
 import React from 'react';
-import Sidebar from '../shared/sidebar';
+import SidebarContainer from '../shared/sidebar_container';
 import TripsDashItems from './trips_dash_items';
+import { pastTrips, upcomingTrips, inProgressTrips } from '../../utils/date_sort_api_util';
 
 class TripsDash extends React.Component {
   constructor(props) {
@@ -9,55 +10,26 @@ class TripsDash extends React.Component {
   }
 
   componentDidMount() {
+    this.props.closeModal();
     this.props.fetchTrips();
-
   }
 
   handleOpenModal(e) {
     e.preventDefault();
     this.props.openModal("createTrip");
   }
-
-  pastTrips(trips) {
-    const sortEndDateDesc = (destinations) => {
-      const destinationsDup = Object.assign([], destinations);
-      const compareDateDesc = (a, b) => (a.endDate > b.endDate ? -1 : 1);
-      return destinationsDup.sort(compareDateDesc);
-    };
-
-    const dateNow = new Date();
-    return trips.filter(trip => {
-      const endDate = sortEndDateDesc(trip.destinations)[0].endDate;
-      return new Date(endDate) < dateNow;
-    });
-  }
-
-  upcomingTrips(trips) {
-    const sortStartDateAsc = (destinations) => {
-      const destinationsDup = Object.assign([], destinations);
-      const compareDateAsc = (a, b) => (a.startDate < b.startDate ? -1 : 1);
-      return destinationsDup.sort(compareDateAsc);
-    };
-
-    const dateNow = new Date();
-    return trips.filter(trip => {
-      const startDate = sortStartDateAsc(trip.destinations)[0].startDate;
-      return new Date(startDate) > dateNow;
-    });
-  }
-
+  
   render() {
-    const { logout, trips } = this.props;
+    const { trips } = this.props;
     if (!trips) return null;
-    const pastTrips = this.pastTrips(trips);
-    const upcomingTrips = this.upcomingTrips(trips);
 
     return (
       <section className="trips-dash-main">
-        <Sidebar logout={logout} trips={upcomingTrips}/>
+        <SidebarContainer />
         <div className="trips-dash-content">
-          <TripsDashItems tripType="Upcoming" trips={upcomingTrips} openModal={this.handleOpenModal}/>
-          <TripsDashItems tripType="Past" trips={pastTrips} openModal={this.handleOpenModal}/>
+          <TripsDashItems tripType="In Progress" trips={inProgressTrips(trips)} openModal={this.handleOpenModal}/>
+          <TripsDashItems tripType="Upcoming" trips={upcomingTrips(trips)} openModal={this.handleOpenModal}/>
+          <TripsDashItems tripType="Past" trips={pastTrips(trips)} openModal={this.handleOpenModal}/>
         </div>
       </section>
     );

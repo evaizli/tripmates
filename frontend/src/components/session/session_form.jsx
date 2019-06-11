@@ -15,11 +15,13 @@ class SessionForm extends React.Component {
     this.demoLogin = this.demoLogin.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-  
-    this.props.processForm(this.state)
-      .then(() => this.props.closeModal()).then(() => this.props.history.push("/dashboard"));
+    this.props.processForm(this.state);
   }
 
   handleOtherSessionModal(e) {

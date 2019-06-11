@@ -14,7 +14,21 @@ const SideBar = ({ logout, trips }) => {
     return destinationsDup.sort(compareDateAsc);
   };
 
-  const tripsStartDates = trips.map(trip => {
+  const upcomingTrips = (trips) => {
+    const sortStartDateAsc = (destinations) => {
+      const destinationsDup = Object.assign([], destinations);
+      const compareDateAsc = (a, b) => (a.startDate < b.startDate ? -1 : 1);
+      return destinationsDup.sort(compareDateAsc);
+    };
+
+    const dateNow = new Date();
+    return trips.filter(trip => {
+      const startDate = sortStartDateAsc(trip.destinations)[0].startDate;
+      return new Date(startDate) > dateNow;
+    });
+  };
+
+  const tripsStartDates = upcomingTrips(trips).map(trip => {
     const tripStartDate = convertDate(sortStartDateAsc(trip.destinations, 'asc')[0].startDate);
     return {name: trip.tripName, startDate: tripStartDate, tripId: trip._id};
   });
@@ -42,7 +56,9 @@ const SideBar = ({ logout, trips }) => {
         <h1 className="logo">TripMates</h1>
         <div className="sidebar-menu-items">
           <div>
-            <div className="sidebar-menu-item"><Link to='/dashboard'>Trips Dashboard</Link></div>
+            <Link to='/dashboard'>
+              <div className="sidebar-menu-item">Trips Dashboard</div>
+            </Link>
             <div className="sidebar-menu-item sidebar-menu-item-countdown">Trip Countdown</div>
             
             <div className="flex-col">
@@ -50,7 +66,7 @@ const SideBar = ({ logout, trips }) => {
             </div>
           </div>
           
-          <div className="sidebar-menu-item-logout" onClick={ logout }><Link to='/'>Log Out</Link></div>
+          <div className="sidebar-menu-item-logout" onClick={ logout }>Log Out</div>
         </div>
       </div>
     </section>
