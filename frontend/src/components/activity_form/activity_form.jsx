@@ -2,21 +2,24 @@ import React from 'react';
 
 class ActivityForm extends React.Component {
   constructor(props) {
-    debugger
+    // debugger
     super(props);
     this.state = Object.assign({}, this.props.activity);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.update = this.update.bind(this);
   }
 
   update(field) {
-    return e => {
-      return this.setState({[field]: e.target.value });
-    };
+    return e => this.setState({[field]: e.currentTarget.value });
   }
 
   handleSubmit(e) {
     e.preventDefault();
     this.props.processForm(this.state).then(() => this.props.closeModal());
+  }
+
+  prefillDate(date){
+    return new Date(date).toISOString().substring(0, 10);
   }
 
   render() {
@@ -30,7 +33,7 @@ class ActivityForm extends React.Component {
 
     return (
       <div>
-        <form onClick={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <input
             type="text"
             value={activityName}
@@ -58,7 +61,7 @@ class ActivityForm extends React.Component {
           <label> Activity Date: </label>
           <input
             type="date"
-            value={activityDate}
+            value={this.prefillDate(activityDate)}
             onChange={this.update("activityDate")}
           />
           <label> Start Time: </label>

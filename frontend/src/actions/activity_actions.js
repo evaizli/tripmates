@@ -63,6 +63,7 @@ export const fetchActivity = (id) => dispatch => {
 };
 
 export const createActivity = (data) => dispatch => {
+  // debugger
   return APIUtil.createActivity(data)
     .then(data => dispatch(receiveActivity(data)))
     .catch(err => {
