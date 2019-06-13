@@ -12,7 +12,6 @@ const destinationsReducer = (state = [], action) => {
     case RECEIVE_DESTINATIONS:
       return state.action
     case RECEIVE_DESTINATION:
-      
       newState = Object.assign([], state);
       let destinationId = action.destination._id
       if (destinationId){
@@ -24,19 +23,12 @@ const destinationsReducer = (state = [], action) => {
       } else {
         newState.push(action.destination);
       }
-      
       return newState;
     case REMOVE_DESTINATION:
         newState = state.filter(destination => destination._id !== action.destinationId);
         return newState;
     case RECEIVE_TRIP:
-      let tripId = action.trip._id;
-      newState = Object.assign([], state);
-      action.trip.destinations.forEach(destination =>{
-        destination["tripId"] = tripId;
-        newState.push(destination)
-      })
-      return newState;
+      return action.trip.destinations
     default:
       return state;
   }
