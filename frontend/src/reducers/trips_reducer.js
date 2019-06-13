@@ -9,7 +9,6 @@ const tripsReducer = (state = [], action ) => {
     let newState;
     switch(action.type){
         case RECEIVE_TRIPS:
-            debugger
             return action.trips;
         case RECEIVE_TRIP:
             

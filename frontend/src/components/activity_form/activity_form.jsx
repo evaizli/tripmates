@@ -2,8 +2,9 @@ import React from 'react';
 
 class ActivityForm extends React.Component {
   constructor(props) {
+    debugger
     super(props);
-    this.state = this.props.trip;
+    this.state = Object.assign({}, this.props.activity);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -25,7 +26,7 @@ class ActivityForm extends React.Component {
             notes,
             activityDate,
             startTime,
-            endTime } = this.props.trip;
+            endTime } = this.state;
 
     return (
       <div>
