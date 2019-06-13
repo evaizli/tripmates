@@ -4,7 +4,7 @@ import {
   REMOVE_ACTIVITY
 } from "../actions/activity_actions";
 import {
-  RECEIVE_TRIPS
+  RECEIVE_TRIP
 } from "../actions/trip_actions";
 
 const activitiesReducer = (state = [], action) =>{
@@ -34,16 +34,9 @@ const activitiesReducer = (state = [], action) =>{
         case REMOVE_ACTIVITY:
           newState = state.filter(activity => activity._id !== action.activityId);
           return newState;
-        case RECEIVE_TRIPS: 
-          newState = Object.assign([], state);
-          Object.values(action.trips).map(trip => {
-            let tripId = trip._id
-            for (let i = 0; i < trip.activities.length; i++) {
-              trip.activities[i]["tripId"] = tripId;
-              newState.push(trip.activities[i]);
-            }
-          })
-          return newState;
+        case RECEIVE_TRIP: 
+        // debugger
+          return action.trip.activities;
         default: 
             return state;
     }

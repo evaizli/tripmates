@@ -3,18 +3,16 @@ import {
     RECEIVE_TRIP, 
     REMOVE_TRIP 
 } from "../actions/trip_actions";
-import {
-    RECEIVE_DESTINATION,
-} from "../actions/destination_actions";
-
 
 const tripsReducer = (state = [], action ) => {
     Object.freeze(state);
     let newState;
     switch(action.type){
         case RECEIVE_TRIPS:
+            debugger
             return action.trips;
         case RECEIVE_TRIP:
+            
             if (state.length === 0) {
                 return [action.trip];
             } else {
