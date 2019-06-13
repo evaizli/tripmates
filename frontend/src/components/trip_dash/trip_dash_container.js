@@ -7,9 +7,11 @@ const mapStateToProps = (state, ownProps) => {
   const { entities: { trips } } = state;
   const trip = trips.filter(trip => trip._id === ownProps.match.params.tripId);
   const destinations = state.entities.destinations;
+  const activities = state.entities.activities;
   return {
     trip: trip[0],
-    destinations: destinations
+    destinations,
+    activities
   };
 };
 

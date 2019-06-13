@@ -79,8 +79,6 @@ class TripItinerary extends React.Component {
     })
 
 
-
-
     return (
       <section className="trip-itinerary-main">
         <h1>Itinerary</h1>

@@ -35,7 +35,6 @@ const activitiesReducer = (state = [], action) =>{
           newState = state.filter(activity => activity._id !== action.activityId);
           return newState;
         case RECEIVE_TRIP: 
-        // debugger
           return action.trip.activities;
         default: 
             return state;

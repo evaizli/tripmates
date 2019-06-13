@@ -59,7 +59,7 @@ router.post("/:tripId/", passport.authenticate("jwt", { session: false }),
         user.save()
           .then(user => {
             // make sure not to send back the user password
-            return res.json(user);
+            return res.json(activity);
           })
           .catch(err => console.log("error in posting activity from db ", err));
       });
@@ -89,7 +89,7 @@ router.patch("/:tripId/:activityId/update", passport.authenticate("jwt", { sessi
 
           user.save()
             .then(user => {
-              return res.json(user);
+              return res.json(activity);
             })
             .catch(err => res.status(400).json(err));
         }

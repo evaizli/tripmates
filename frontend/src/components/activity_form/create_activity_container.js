@@ -20,11 +20,12 @@ const mapStateToProps = state => {
   }
   return {
     activity,
-    FormType: "Create Trip"
+    formType: "Create Activity"
   };
 };
 
 const mapDispatchToProps = dispatch => {
+
   return {
     processForm: activity => dispatch(createActivity(activity)),
     closeModal: () => dispatch(closeModal())

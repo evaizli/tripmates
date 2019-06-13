@@ -60,7 +60,7 @@ router.post("/:tripId/", passport.authenticate("jwt", { session: false }),
 
         trip.destinations.push(destination);
         user.save()
-          .then(user => {
+          .then(() => {
             // make sure not to send back the user password
             return res.json(destination);
           })
