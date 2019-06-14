@@ -57,8 +57,8 @@ class TripItinerary extends React.Component {
       let activityOfDay = "";
       if (activitiesByDate[day.toDateString()]) {
         activityOfDay = activitiesByDate[day.toDateString()].map((activity, idx) => {
-          const time = activity.startTime;
-
+          const time = new Date(activity.startTime).toLocaleTimeString('en-US', { hour: "numeric", minute: "numeric" });
+          
           return (
             <div key={idx}>
               <h4>{time}</h4>
@@ -78,10 +78,6 @@ class TripItinerary extends React.Component {
       )
     })
 
-<<<<<<< HEAD
-
-=======
->>>>>>> master
     return (
       <section className="trip-itinerary-main">
         <h1>Itinerary</h1>
