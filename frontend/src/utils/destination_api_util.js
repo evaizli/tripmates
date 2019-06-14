@@ -9,7 +9,6 @@ export const fetchDestination = id => {
 };
 
 export const createDestination = data => {
-
     return axios.post(`/api/destinations/${data.tripId}`, data)
 };
 

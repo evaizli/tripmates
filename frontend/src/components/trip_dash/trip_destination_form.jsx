@@ -21,8 +21,7 @@ class TripDestinationForm extends React.Component {
   }
 
   prefillDate(date){
-    let dateConvert = new Date(date).toISOString().substring(0, 10);
-    return dateConvert; 
+    return new Date(date).toISOString().substring(0, 10);
   }
 
   render() {

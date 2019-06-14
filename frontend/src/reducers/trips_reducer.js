@@ -3,10 +3,6 @@ import {
     RECEIVE_TRIP, 
     REMOVE_TRIP 
 } from "../actions/trip_actions";
-import {
-    RECEIVE_DESTINATION,
-} from "../actions/destination_actions";
-
 
 const tripsReducer = (state = [], action ) => {
     Object.freeze(state);
@@ -15,6 +11,7 @@ const tripsReducer = (state = [], action ) => {
         case RECEIVE_TRIPS:
             return action.trips;
         case RECEIVE_TRIP:
+            
             if (state.length === 0) {
                 return [action.trip];
             } else {

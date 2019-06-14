@@ -78,6 +78,10 @@ class TripItinerary extends React.Component {
       )
     })
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> master
     return (
       <section className="trip-itinerary-main">
         <h1>Itinerary</h1>

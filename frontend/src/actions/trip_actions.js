@@ -15,6 +15,9 @@ export const receiveTrips = (payload) => {
 };
 
 export const receiveTrip = (payload) => {
+    let tripId = payload.data._id;
+    payload.data.destinations.forEach( destination => destination["tripId"] = tripId);
+    payload.data.activities.forEach(activity => activity["tripId"] = tripId);
     return ({
         type: RECEIVE_TRIP,
         trip: payload.data

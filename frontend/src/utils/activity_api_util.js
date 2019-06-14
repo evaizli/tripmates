@@ -9,7 +9,7 @@ export const fetchActivity = id => {
 };
 
 export const createActivity = data => {
-    return axios.post(`/api/activities/`, data)
+    return axios.post(`/api/activities/${data.tripId}`, data)
 };
 
 export const deleteActivity = id => {

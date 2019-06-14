@@ -1,5 +1,5 @@
 # TripMates
-[TripMates Live](https://tripmates-pandammac.herokuapp.com/)
+[TripMates Live](https://tripmates-aa.herokuapp.com/)
 
 #### Background and Overview
 

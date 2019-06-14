@@ -3,19 +3,26 @@ import React from 'react';
 class ActivityForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.trip;
+    this.state = Object.assign({}, this.props.activity);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.update = this.update.bind(this);
   }
 
   update(field) {
-    return e => {
-      return this.setState({[field]: e.target.value });
-    };
+    return e => this.setState({[field]: e.currentTarget.value });
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.processForm(this.state).then(() => this.props.closeModal());
+    let newState = Object.assign({}, this.state);
+
+    newState.startTime = this.state.activityDate + " " + this.state.startTime;
+    newState.endTime = this.state.activityDate + " " + this.state.endTime;
+    this.props.processForm(newState).then(() => this.props.closeModal());
+  }
+
+  prefillDate(date){
+    return new Date(date).toISOString().substring(0, 10);
   }
 
   render() {
@@ -25,54 +32,65 @@ class ActivityForm extends React.Component {
             notes,
             activityDate,
             startTime,
-            endTime } = this.props.trip;
+            endTime } = this.state;
 
     return (
       <div>
-        <form onClick={this.handleSubmit}>
+        <h2>{this.props.formType}</h2>
+        <form onSubmit={this.handleSubmit}>
+          <label><h4>Activity Name</h4>
           <input
             type="text"
             value={activityName}
             placeholder="Activity Name"
             onChange={this.update("activityName")}
           />
+          </label>
+          <label><h4>Location</h4>
           <input
             type="text"
             value={location}
             placeholder="Activity Location"
             onChange={this.update("location")}
           />
+          </label>
+          <label><h4>Address</h4>
           <input
             type="text"
             value={address}
             placeholder="Address"
             onChange={this.update("address")}
           />
+          </label>
+          <label><h4>Notes</h4>
           <textarea
             type="text"
             value={notes}
             placeholder="Activity Notes"
             onChange={this.update("notes")}
           />
-          <label> Activity Date: </label>
+          <label> <h4>Activity Date</h4></label>
           <input
             type="date"
-            value={activityDate}
+            value={this.prefillDate(activityDate)}
             onChange={this.update("activityDate")}
           />
-          <label> Start Time: </label>
+          </label>
+          <label> <h4>Start Time</h4>
           <input
             type="time"
             value={startTime}
             onChange={this.update("startTime")}
           />
-          <label> Start Time: </label>
+          </label>
+          <label> <h4>End Time</h4> 
           <input
             type="time"
             value={endTime}
-            onChange={this.update("startTime")}
+            onChange={this.update("endTime")}
           />
-          <input type="submit" value="Add Activity" />
+          </label>
+          <input type="submit" value="Add Activity"/>
         </form>
       </div>
     );
