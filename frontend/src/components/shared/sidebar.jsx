@@ -33,6 +33,19 @@ class SideBar extends React.Component {
       )
     })
 
+    const tripCountdownItem = () => {
+      if (tripsStartDates.length > 0) {
+        return(
+          <>
+            <div className="sidebar-menu-item sidebar-menu-item-countdown">Trip Countdown</div>
+            <div className="flex-col">
+              { tripCountdown } 
+            </div>
+          </>
+        );
+      }
+    }
+
     return(
       <section className = "sidebar-main" >
         <div className="sidebar-menu">
@@ -42,10 +55,7 @@ class SideBar extends React.Component {
               <Link to='/dashboard'>
                 <div className="sidebar-menu-item">Trips Dashboard</div>
               </Link>
-              <div className="sidebar-menu-item sidebar-menu-item-countdown">Trip Countdown</div>
-              <div className="flex-col">
-                {tripCountdown}
-              </div>
+              { tripCountdownItem() }
             </div>
   
             <div className="sidebar-menu-item-logout" onClick={logout}>Log Out</div>
