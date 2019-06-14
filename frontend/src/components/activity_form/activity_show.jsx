@@ -12,7 +12,17 @@ class ActivtyShow extends React.Component{
 
     parseTime(time){
         let activityTime = new Date(time);
-        return activityTime.toLocaleTimeString();
+        let timeString =activityTime.toLocaleTimeString();
+        let unit = timeString.substring(timeString.length-2);
+        let hour = activityTime.getHours();
+        let res;
+        if ( hour !== 0 &&  hour < 10){
+            res = "0" + timeString.substring(0,4) + " " + unit;
+        } else {
+            res = timeString.substring(0, 5) + " " + unit;
+        }
+        // debugger
+        return res;
     }
 
     render(){

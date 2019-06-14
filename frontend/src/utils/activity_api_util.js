@@ -18,5 +18,5 @@ export const deleteActivity = id => {
 
 //mongoose action for update patch or get???
 export const updateActivity = data => {
-    return axios.patch(`/api/activities/${data.id}`, data)
+    return axios.patch(`/api/activities/${data.tripId}/${data._id}/update`, data)
 } 

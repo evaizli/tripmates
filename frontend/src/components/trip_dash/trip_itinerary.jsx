@@ -39,6 +39,19 @@ class TripItinerary extends React.Component {
     }
     return endDateDup;
   }
+  parseTime(time) {
+    let activityTime = new Date(time);
+    let timeString = activityTime.toLocaleTimeString();
+    let unit = timeString.substring(timeString.length - 2);
+    let hour = activityTime.getHours();
+    let res;
+    if (hour !== 0 && hour < 10) {
+      res = "0" + timeString.substring(0, 4) + " " + unit;
+    } else {
+      res = timeString.substring(0, 5) + " " + unit;
+    }
+    return res;
+  }
 
   render() {
     const activitiesByDate = this.parseDates(this.props.activities);
@@ -61,7 +74,7 @@ class TripItinerary extends React.Component {
           const time = activity.startTime;
           return (
             <div key={idx} onClick={() => this.props.openModal({ type: "activityShow", id: activity._id })}>
-              <h4>{time}</h4>
+              <h4>{this.parseTime(time)}</h4>
               <h4 >{activity.activityName}</h4>
             </div>
           )
