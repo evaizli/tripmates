@@ -14,7 +14,7 @@ class TripDash extends React.Component {
     let { trip, destinations} = this.props;
     if (!trip) return null;
     destinations = destinations.length < 1 ? trip.destinations : destinations;
-    if (!destinations) return null;
+    
     const destinationsSorted = sortStartDateAsc(destinations);
     const tripStartDate = tripStartDateFinder(destinations);
     const tripEndDate = tripEndDateFinder(destinations);

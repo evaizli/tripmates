@@ -10,7 +10,7 @@
 }
 
 .trip-dash-header {
-  @extend .flex-row;
+  @extend .flex-col;
   align-items: baseline;
 
   > * {
