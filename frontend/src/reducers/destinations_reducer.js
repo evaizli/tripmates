@@ -7,6 +7,7 @@ import { RECEIVE_TRIP } from "../actions/trip_actions";
 
 const destinationsReducer = (state = [], action) => {
   Object.freeze(state);
+  
   let newState;
   switch (action.type) {
     case RECEIVE_DESTINATIONS:
