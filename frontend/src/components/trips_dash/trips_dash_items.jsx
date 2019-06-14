@@ -4,7 +4,7 @@ import { tripStartDateFinder, tripEndDateFinder } from '../../utils/date_sort_ap
 
 const TripsDashItems = ({ tripType, trips, openModal }) => {
   const addTrip = tripType === 'Upcoming' ? (
-    <Link to="/" onClick={openModal} className="upcoming-trips-item-add">
+    <Link to="/" onClick={openModal} className="upcoming-trips-item-add" title="Add a Trip">
       <img src="https://image.flaticon.com/icons/svg/32/32339.svg" alt="plus" />
     </Link>
     ) : "";

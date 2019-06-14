@@ -23,13 +23,21 @@ class TripsDash extends React.Component {
     const { trips } = this.props;
     if (!trips) return null;
 
+    const inProgressTripsItems = (inProgressTrips(trips).length > 0) ? 
+      <TripsDashItems tripType="In Progress" trips={inProgressTrips(trips)} openModal={this.handleOpenModal} /> :
+      "";
+
+    const pastTripsItems = (inProgressTrips(trips).length > 0) ? 
+      <TripsDashItems tripType="Past" trips={pastTrips(trips)} openModal={this.handleOpenModal} /> :
+      "";
+
     return (
       <section className="trips-dash-main">
         <SidebarContainer />
         <div className="trips-dash-content">
-          <TripsDashItems tripType="In Progress" trips={inProgressTrips(trips)} openModal={this.handleOpenModal}/>
+          { inProgressTripsItems }
           <TripsDashItems tripType="Upcoming" trips={upcomingTrips(trips)} openModal={this.handleOpenModal}/>
-          <TripsDashItems tripType="Past" trips={pastTrips(trips)} openModal={this.handleOpenModal}/>
+          { pastTripsItems }
         </div>
       </section>
     );

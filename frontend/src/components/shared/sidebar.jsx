@@ -10,7 +10,7 @@ class SideBar extends React.Component {
 
   render() {
     const { trips, logout } = this.props;
-    
+
     const tripsStartDates = upcomingTrips(trips).map(trip => {
       const tripStartDate = tripStartDateFinder(trip.destinations);
       return { name: trip.tripName, startDate: tripStartDate, tripId: trip._id };
@@ -43,7 +43,6 @@ class SideBar extends React.Component {
                 <div className="sidebar-menu-item">Trips Dashboard</div>
               </Link>
               <div className="sidebar-menu-item sidebar-menu-item-countdown">Trip Countdown</div>
-  
               <div className="flex-col">
                 {tripCountdown}
               </div>
