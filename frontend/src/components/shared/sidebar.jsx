@@ -10,6 +10,7 @@ class SideBar extends React.Component {
 
   render() {
     const { trips, logout } = this.props;
+    
     const tripsStartDates = upcomingTrips(trips).map(trip => {
       const tripStartDate = tripStartDateFinder(trip.destinations);
       return { name: trip.tripName, startDate: tripStartDate, tripId: trip._id };

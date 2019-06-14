@@ -1,59 +1,55 @@
 .upcoming-trips-main {
   @extend .flex-col;  
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+
+  h2{
+    margin-top: 10px;
+  }
 }
 
 .upcoming-trips-content {
   @extend .flex-row;
   flex-wrap: wrap;
-  background: rgb(241, 241, 241);
-  border-radius: 5px;
-  padding: 10px;
-}
-
-.upcoming-trips-main h2{
-  margin-top: 10px;
 }
 
 .upcoming-trips-item {
   @extend .flex-col;
   width: 150px;
   height: 150px;
-  border-radius: 5px;
+  border-radius: 3px;
   margin: 10px;
   box-sizing: border-box;
-  background: white;
   justify-content: flex-end;
   align-items: flex-start;
   color: black;
-  z-index: 1;
+  background: $color-primary-blue;
+  color: white;
 }
 
 .upcoming-trips-item-info {
   padding: 10px;
 }
 
-.upcoming-trips-item-background {
-  position: absolute;
-  border-radius: 5px;
-  width: 150px;
-  height: 150px;
-  opacity: .40;
-  content: "";
-  background-image: url("../assets/images/170606110126-tokyo-skyline.jpg");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  z-index: -2;
-}
+// .upcoming-trips-item-background {
+//   position: absolute;
+//   border-radius: 3px;
+//   width: 150px;
+//   height: 150px;
+//   opacity: .40;
+//   content: "";
+//   background-image: url("../assets/images/170606110126-tokyo-skyline.jpg");
+//   background-repeat: no-repeat;
+//   background-size: 100%;
+//   z-index: -2;
 
-.upcoming-trips-item a {
-  cursor: pointer;
-}
+//   a {
+//     cursor: pointer;
+//   }
+// }
 
 .upcoming-trips-item:hover, .upcoming-trips-item-add:hover {
   opacity: .5;
   text-decoration: none;
-
 }
 
 .upcoming-trips-item-add {
@@ -61,9 +57,10 @@
   background: $color-primary-blue;
   justify-content: center;
   align-items: center;
-}
-.upcoming-trips-item-add img {
-  filter: brightness(0) invert(1);
-  height: 65px;
+
+  img {
+    filter: brightness(0) invert(1);
+    height: 65px;
+  }
 }
 
