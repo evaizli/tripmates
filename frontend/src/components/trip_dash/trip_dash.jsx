@@ -12,12 +12,14 @@ class TripDash extends React.Component {
 
   render() {
     const { trip, destinations } = this.props;
+    
     if (!trip) return null;
+    if (destinations.length <= 0) return null;
 
     const destinationsSorted = sortStartDateAsc(destinations);
     const tripStartDate = tripStartDateFinder(destinations);
     const tripEndDate = tripEndDateFinder(destinations);
-
+    
     return (
       <section className="trip-dash-main">
         <SidebarContainer />
@@ -27,7 +29,7 @@ class TripDash extends React.Component {
             <h3>{tripStartDate} to {tripEndDate}</h3> 
           </div>
           <TripLogistics destinations={destinationsSorted} openModal={this.props.openModal}/>
-          <TripItineraryContainer tripDates={{start: tripStartDate, end: tripEndDate}}/>
+          <TripItineraryContainer activities={trip.activities} tripDates={{start: tripStartDate, end: tripEndDate}}/>
         </div>
       </section>
     )
