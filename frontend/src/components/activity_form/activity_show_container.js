@@ -1,11 +1,11 @@
 import { connect } from "react-redux";
-import ActivityShow from "./activity_form";
+import ActivityShow from "../activity_form/activity_show";
 import { closeModal } from "../../actions/modal_actions";
 import { fetchActivity } from "../../actions/activity_actions";
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    // trip: 
+    formType: "Activity Show"
   };
 };
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { openModal } from "../../actions/modal_actions";
 
 class TripItinerary extends React.Component {
   constructor(props) {
@@ -58,11 +59,10 @@ class TripItinerary extends React.Component {
       if (activitiesByDate[day.toDateString()]) {
         activityOfDay = activitiesByDate[day.toDateString()].map((activity, idx) => {
           const time = activity.startTime;
-
           return (
             <div key={idx}>
               <h4>{time}</h4>
-              <h4>{activity.activityName}</h4>
+              <h4 onClick={() => openModal({ type: "activityShow", id: activity._id })}>{activity.activityName}</h4>
             </div>
           )
         })

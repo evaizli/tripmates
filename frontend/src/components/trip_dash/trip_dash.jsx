@@ -18,6 +18,7 @@ class TripDash extends React.Component {
     const destinationsSorted = sortStartDateAsc(destinations);
     const tripStartDate = tripStartDateFinder(destinations);
     const tripEndDate = tripEndDateFinder(destinations);
+    // debugger
     
     return (
       <section className="trip-dash-main">
