@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import ActivityShow from "../activity_form/activity_show";
-import { closeModal } from "../../actions/modal_actions";
+import { closeModal, openModal } from "../../actions/modal_actions";
 import { fetchActivity } from "../../actions/activity_actions";
 
 const mapStateToProps = (state, ownProps) => {
@@ -20,7 +20,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchActivity: activity => dispatch(fetchActivity(activity)),
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
+    openModal: modal => dispatch(openModal(modal))
+
   };
 };
 

@@ -1,5 +1,6 @@
 import React from "react";
-
+// import { openModal} from "../../actions/modal_actions";
+import editIcon from "../../assets/images/icons8-pencil-24.png"
 
 class ActivtyShow extends React.Component{
 
@@ -23,10 +24,12 @@ class ActivtyShow extends React.Component{
             location,
             notes, 
             startTime} = this.props.activity;
-            
         return(
             <div>
-                <h2>{activityName}</h2>
+                <div>
+                    <h2>{activityName}</h2>
+                    <img src={editIcon} alt="edit" onClick={() => this.props.openModal({ type: 'editActivity', id: this.props.activity._id })} />
+                </div>
                 <label> <h4>Location</h4>
                     {location}
                 </label>

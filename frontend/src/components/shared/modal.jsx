@@ -8,6 +8,7 @@ import TripDestinationEditFormContainer from '../trip_dash/trip_destination_edit
 import TripDestinationCreateFormContainer from '../trip_dash/trip_destination_create_form_container';
 import CreateActivityFormContainer from "../activity_form/create_activity_container";
 import ActivityShowContainer from "../activity_form/activity_show_container";
+import ActivityEditContainer from "../activity_form/edit_activity_container";
 
 function Modal({ modal, closeModal }) {
   if (!modal) {
@@ -38,7 +39,9 @@ function Modal({ modal, closeModal }) {
         component = <TripDestinationEditFormContainer />;
       } else if (modal.type === "activityShow") {
         component = <ActivityShowContainer/>;
-      }else {
+      } else if (modal.type === "editActivity"){
+        component = <ActivityEditContainer />;
+      } else {
         return null;
       }
   }
