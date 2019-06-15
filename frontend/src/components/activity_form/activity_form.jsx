@@ -25,6 +25,27 @@ class ActivityForm extends React.Component {
     return new Date(date).toISOString().substring(0, 10);
   }
 
+  parseDate(date) {
+    let activityDate = new Date(date);
+    return activityDate.toDateString()
+  }
+
+  // parseTime(time) {
+  //   if (time === "") return "";
+
+  //   let activityTime = new Date(time);
+  //   let timeString = activityTime.toLocaleTimeString();
+  //   let hour = activityTime.getHours();
+  //   let res;
+  //   if (hour !== 0 && hour < 10) {
+  //     res = "0" + timeString.substring(0, 4);
+  //   } else {
+  //     res = timeString.substring(0, 5);
+  //   }
+  //   // debugger
+  //   return res;
+  // }
+
   render() {
       const {activityName,
             location,
@@ -33,7 +54,8 @@ class ActivityForm extends React.Component {
             activityDate,
             startTime,
             endTime } = this.state;
-
+    
+  
     return (
       <div>
         <h2>{this.props.formType}</h2>
@@ -90,7 +112,7 @@ class ActivityForm extends React.Component {
             onChange={this.update("endTime")}
           />
           </label>
-          <input type="submit" value="Add Activity"/>
+          <input type="submit" value={this.props.formType}/>
         </form>
       </div>
     );
