@@ -28,9 +28,9 @@
 }
 
 .trip-logistics-destination-header {
-  @extend .flex-row;
+  @extend .flex-col;
   @extend .baseline;
-  justify-content: space-between;
+  // justify-content: space-between;
 
   > * {
     margin-right: 20px;
@@ -93,9 +93,9 @@
 .trip-itinerary-day {
   width: 13%;
 
-  > h4 {
-    margin-top: 20px;
-    margin-bottom: 10px;
+  h4 {
+    margin-top: 15px;
+    margin-bottom: 5px;
   }
 }
 
@@ -104,4 +104,13 @@
   background: white;
   padding: 5px;
   border-radius: 3px;
+
+  h4 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  h4 + h4 {
+    margin-bottom: 10px;
+  }
 }
