@@ -68,6 +68,7 @@ router.post("/:tripId/", passport.authenticate("jwt", { session: false }),
 // patch activities
 router.patch("/:tripId/:activityId/update", passport.authenticate("jwt", { session: false }),
   (req, res) => {
+
     User.findById(req.user.id)
       .then(user => {
         const { isValid, errors } = validateActivityInput(req.body);
