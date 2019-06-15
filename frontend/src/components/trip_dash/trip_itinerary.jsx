@@ -39,20 +39,20 @@ class TripItinerary extends React.Component {
     }
     return endDateDup;
   }
-  parseTime(time) {
-    let activityTime = new Date(time);
-    let timeString = activityTime.toLocaleTimeString();
-    let unit = timeString.substring(timeString.length - 2);
-    let hour = activityTime.getHours();
-    let res;
-    if (hour === 0 || hour < 10) {
-      res = timeString.substring(0, 4) + " " + unit;
-    } else {
-      res = timeString.substring(0, 4) + " " + unit;
-    }
-    // debugger
-    return res;
-  }
+  // parseTime(time) {
+  //   let activityTime = new Date(time);
+  //   let timeString = activityTime.toLocaleTimeString();
+  //   let unit = timeString.substring(timeString.length - 2);
+  //   let hour = activityTime.getHours();
+  //   let res;
+  //   if (hour === 0 || hour < 10) {
+  //     res = timeString.substring(0, 4) + " " + unit;
+  //   } else {
+  //     res = timeString.substring(0, 4) + " " + unit;
+  //   }
+  //   // debugger
+  //   return res;
+  // }
 
   render() {
     const activitiesByDate = this.parseDates(this.props.activities);
@@ -72,10 +72,11 @@ class TripItinerary extends React.Component {
       let activityOfDay = "";
       if (activitiesByDate[day.toDateString()]) {
         activityOfDay = activitiesByDate[day.toDateString()].map((activity, idx) => {
-          const time = activity.startTime;
+          const time = new Date(activity.startTime).toLocaleTimeString();
+          let renderTime = time.substring(0, time.length - 6) + " " + time.substring(time.length - 2)
           return (
             <div key={idx} onClick={() => this.props.openModal({ type: "activityShow", id: activity._id })}>
-              <h4>{this.parseTime(time)}</h4>
+              <h4>{renderTime }</h4>
               <h4 >{activity.activityName}</h4>
             </div>
           )
