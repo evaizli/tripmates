@@ -24,14 +24,15 @@
     flex-direction: row;
 }
 
-.baseline {
-  align-items: baseline;
-}
-
 .flex-col {
     display: flex;
     flex-direction: column;
 }
+
+.baseline {
+  align-items: baseline;
+}
+
 
 input[type=text], input[type=password], input[type=number], input[type=date], textarea {
   font-size: 11pt;
@@ -39,11 +40,20 @@ input[type=text], input[type=password], input[type=number], input[type=date], te
   box-sizing: border-box;
   width: 100%;
   height: 40px;
-    margin: 10px 0px;
+  margin: 10px 0px;
   border: 1px solid $color-light-grey;
   color: $color-dark-grey;
-
   cursor: text;
+
+  &:focus {
+    outline: none;
+    border: 1px solid $color-dark-grey;
+  }
+
+  &::placeholder {
+    color: $color-grey;
+    font-weight: 300;
+  }
 }
 
 input[type=radio], input[type=checkbox], input[type=option] {
@@ -54,16 +64,6 @@ input[type=radio], input[type=checkbox], input[type=option] {
 select {
   cursor: pointer;
   min-width: 100px;
-}
-
-input[type=text]:focus, input[type=password]:focus, input[type=number]:focus, textarea:focus, input[type=date]:focus {
-  outline: none;
-  border: 1px solid $color-dark-grey;
-}
-
-input[type=text]::placeholder, input[type=password]::placeholder, input[type=number]::placeholder, textarea::placeholder, input[type=date]::placeholder {
-  color: $color-grey;
-  font-weight: 300;
 }
 
 input[type=number], input[type=date] {
@@ -89,14 +89,13 @@ input[type=submit], button {
                 transform 150ms ease;
     -webkit-appearance: none;
     -moz-appearance: none;
-}
 
-input[type=submit]:hover, button:hover{
-  background: $color-primary-blue-hover;
+  &:hover{
+    background: $color-primary-blue-hover;
+  }
 }
 
 input[type=file] {
-//   background: $color-light-grey;
   min-width: 400px;
   padding: 10px;
 }
@@ -105,12 +104,12 @@ a {
   color: $color-primary-blue;
   text-decoration: none;
   cursor: pointer;
-}
 
-a:hover {
-  color: black;
-  text-decoration: underline;
-  cursor: pointer;
+  &:hover {
+    color: black;
+    text-decoration: underline;
+    cursor: pointer;
+  }
 }
 
 p {
