@@ -17,7 +17,7 @@ class ActivtyShow extends React.Component{
         let hour = activityTime.getHours();
         let res;
         if ( hour !== 0 &&  hour < 10){
-            res = "0" + timeString.substring(0,4) + " " + unit;
+            res = timeString.substring(0,4) + " " + unit;
         } else {
             res = timeString.substring(0, 5) + " " + unit;
         }

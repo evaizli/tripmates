@@ -30,21 +30,21 @@ class ActivityForm extends React.Component {
     return activityDate.toDateString()
   }
 
-  parseTime(time) {
-    if (time === "") return "";
+  // parseTime(time) {
+  //   if (time === "") return "";
 
-    let activityTime = new Date(time);
-    let timeString = activityTime.toLocaleTimeString();
-    let hour = activityTime.getHours();
-    let res;
-    if (hour !== 0 && hour < 10) {
-      res = "0" + timeString.substring(0, 4);
-    } else {
-      res = timeString.substring(0, 5);
-    }
-    // debugger
-    return res;
-  }
+  //   let activityTime = new Date(time);
+  //   let timeString = activityTime.toLocaleTimeString();
+  //   let hour = activityTime.getHours();
+  //   let res;
+  //   if (hour !== 0 && hour < 10) {
+  //     res = "0" + timeString.substring(0, 4);
+  //   } else {
+  //     res = timeString.substring(0, 5);
+  //   }
+  //   // debugger
+  //   return res;
+  // }
 
   render() {
       const {activityName,
@@ -55,7 +55,7 @@ class ActivityForm extends React.Component {
             startTime,
             endTime } = this.state;
     
-    debugger
+  
     return (
       <div>
         <h2>{this.props.formType}</h2>
@@ -101,14 +101,14 @@ class ActivityForm extends React.Component {
           <label> <h4>Start Time</h4>
           <input
             type="time"
-            value={this.parseTime(startTime)}
+            value={startTime}
             onChange={this.update("startTime")}
           />
           </label>
           <label> <h4>End Time</h4> 
           <input
             type="time"
-            value={this.parseTime(endTime)}
+            value={endTime}
             onChange={this.update("endTime")}
           />
           </label>
