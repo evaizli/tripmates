@@ -47,7 +47,7 @@ class SideBar extends React.Component {
     }
 
     return(
-      <section className = "sidebar-main" >
+      <section className = "sidebar-main" > 
         <div className="sidebar-menu">
           <h1 className="logo">TripMates</h1>
           <div className="sidebar-menu-items">
