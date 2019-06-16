@@ -1,5 +1,6 @@
 import React from 'react';
-// import ScrollableAnchor from 'react-scrollable-anchor';
+import addIcon from '../../assets/images/icons8-plus-math-30.png'; 
+import ScrollableAnchor from 'react-scrollable-anchor';
 
 class TripItinerary extends React.Component {
   constructor(props) {
@@ -80,15 +81,17 @@ class TripItinerary extends React.Component {
     })
 
     return (
-      // <ScrollableAnchor id="itinerary">
-        <section className="trip-itinerary-main">
+      <section className="trip-itinerary-main">
+        <ScrollableAnchor id={'itinerary'}>
           <h1>Itinerary</h1>
-          <div onClick ={() =>this.props.openModal("createActivity")}> + Add Activity</div>
-          <div className="trip-itinerary-week">
-            { calendar }
-          </div>
-        </section>
-      // </ScrollableAnchor>
+        </ScrollableAnchor>
+        <div onClick={() => this.props.openModal('createActivity')} className="trip-add">
+          <img height="20" src={addIcon} alt="add" />&nbsp;Add Activity
+        </div>
+        <div className="trip-itinerary-week">
+          { calendar }
+        </div>
+      </section>
     )
   }
 }

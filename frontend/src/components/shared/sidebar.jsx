@@ -46,15 +46,15 @@ class SideBar extends React.Component {
       }
     }
     
-    // const tripDashLinks = () => {
-    //   if (this.props.pageType === "Trip Dash") {
-    //     return (
-    //       <>
-    //         <a href="#itinerary">Itinerary</a>
-    //       </>
-    //     )
-    //   }
-    // }
+    const tripDashLinks = () => {
+      if (this.props.pageType === "Trip Dash") {
+        return (
+          <>
+            <a href="#itinerary">Itinerary</a>
+          </>
+        )
+      }
+    }
 
     return(
       <section className = "sidebar-main" > 
@@ -66,7 +66,7 @@ class SideBar extends React.Component {
                 <div className="sidebar-menu-item">Trips Dashboard</div>
               </Link>
               { tripCountdownItem() }
-              {/* { tripDashLinks() } */}
+              { tripDashLinks() }
             </div>
   
             <div className="sidebar-menu-item-logout" onClick={logout}>Log Out</div>
