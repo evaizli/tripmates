@@ -1,4 +1,5 @@
 import React from 'react';
+// import ScrollableAnchor from 'react-scrollable-anchor';
 
 class TripItinerary extends React.Component {
   constructor(props) {
@@ -79,13 +80,15 @@ class TripItinerary extends React.Component {
     })
 
     return (
-      <section id="itinerary" className="trip-itinerary-main">
-        <h1>Itinerary</h1>
-        <div onClick ={() =>this.props.openModal("createActivity")}> + Add Activity</div>
-        <div className="trip-itinerary-week">
-          { calendar }
-        </div>
-      </section>
+      // <ScrollableAnchor id="itinerary">
+        <section className="trip-itinerary-main">
+          <h1>Itinerary</h1>
+          <div onClick ={() =>this.props.openModal("createActivity")}> + Add Activity</div>
+          <div className="trip-itinerary-week">
+            { calendar }
+          </div>
+        </section>
+      // </ScrollableAnchor>
     )
   }
 }
