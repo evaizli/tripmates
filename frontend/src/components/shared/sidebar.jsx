@@ -3,10 +3,22 @@ import { Link } from 'react-router-dom';
 import { upcomingTrips, tripStartDateFinder } from '../../utils/date_sort_api_util';
 
 class SideBar extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.scrollTo = this.scrollTo.bind(this);
+  // }
+
 
   componentDidMount() {
     this.props.fetchTrips();
   }
+
+  scrollTo (e, id) {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+
 
   render() {
     const { trips, logout } = this.props;
@@ -46,15 +58,21 @@ class SideBar extends React.Component {
       }
     }
     
-    const tripDashLinks = () => {
+    const tripNav = () => {
       if (this.props.pageType === "Trip Dash") {
         return (
           <>
-            <a href="#itinerary">Itinerary</a>
+            <a href="#logistics" onClick={e => this.scrollTo(e, "logistics")}>
+              <div className="sidebar-menu-item">Logitsics</div>
+            </a>
+            <a href="#itinerary" onClick={e => this.scrollTo(e, "itinerary")}>
+              <div className="sidebar-menu-item">Itinerary</div>
+            </a>
           </>
         )
       }
     }
+
 
     return(
       <section className = "sidebar-main" > 
@@ -65,10 +83,9 @@ class SideBar extends React.Component {
               <Link to='/dashboard'>
                 <div className="sidebar-menu-item">Trips Dashboard</div>
               </Link>
+              { tripNav() }
               { tripCountdownItem() }
-              { tripDashLinks() }
             </div>
-  
             <div className="sidebar-menu-item-logout" onClick={logout}>Log Out</div>
           </div>
         </div>
