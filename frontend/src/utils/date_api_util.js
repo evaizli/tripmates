@@ -53,3 +53,31 @@ export const tripEndDateFinder = (destinations) => {
   const endDate = convertDate(destinationsSorted[0].endDate);
   return endDate;
 };
+
+const startOfWeek = (tripStartDate) => {
+  const startDateDup = new Date(tripStartDate);
+  if (startDateDup.getDay() !== 0) {
+    startDateDup.setDate(startDateDup.getDate() - startDateDup.getDay());
+  }
+  return startDateDup;
+};
+
+const endOfWeek = (tripEndDate) => {
+  const endDateDup = new Date(tripEndDate);
+  if (endDateDup.getDay() !== 6) {
+    endDateDup.setDate(endDateDup.getDate() + (6 - endDateDup.getDay()));
+  }
+  return endDateDup;
+};
+
+export const allDatesFinder = (tripStartDate, tripEndDate) => {
+  const startWeek = startOfWeek(tripStartDate);
+  const endWeek = endOfWeek(tripEndDate);
+  const allDates = [startWeek];
+  for (let i = 1; allDates.slice(allDates.length - 1)[0] < endWeek; i++) {
+    let newDate = new Date(startWeek);
+    newDate.setDate(newDate.getDate() + i);
+    allDates.push(newDate);
+  }
+  return allDates;
+};

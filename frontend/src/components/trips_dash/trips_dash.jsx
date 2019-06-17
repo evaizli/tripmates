@@ -1,7 +1,7 @@
 import React from 'react';
 import SidebarContainer from '../shared/sidebar_container';
 import TripsDashItems from './trips_dash_items';
-import { pastTrips, upcomingTrips, inProgressTrips } from '../../utils/date_sort_api_util';
+import { pastTrips, upcomingTrips, inProgressTrips } from '../../utils/date_api_util';
 
 class TripsDash extends React.Component {
   constructor(props) {

@@ -1,5 +1,6 @@
 import React from 'react';
 import addIcon from '../../assets/images/icons8-plus-math-30.png'; 
+import { allDatesFinder } from '../../utils/date_api_util';
 
 class TripItinerary extends React.Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class TripItinerary extends React.Component {
     this.tripDates = this.props;
   }
 
-  parseDates(activities) {
+  parseActivities(activities) {
     const activitiesCatDate = {};
     activities.forEach((activity) => {
       const date = new Date(activity.activityDate);
@@ -24,37 +25,11 @@ class TripItinerary extends React.Component {
     return activitiesCatDate;
   }
 
-  startOfWeek(tripStartDate) {
-    const startDateDup = new Date(tripStartDate);
-    if (startDateDup.getDay() !== 0) {
-      startDateDup.setDate(startDateDup.getDate() - startDateDup.getDay());
-    }
-    return startDateDup;
-  }
-
-  endOfWeek(tripEndDate) {
-    const endDateDup = new Date(tripEndDate);
-    if (endDateDup.getDay() !== 6) {
-      endDateDup.setDate(endDateDup.getDate() + (6-endDateDup.getDay()));
-    }
-    return endDateDup;
-  }
-
   render() {
-    const activitiesByDate = this.parseDates(this.props.activities);
-
-    const startWeek = this.startOfWeek(this.state.tripDates.start);
-    const endWeek = this.endOfWeek(this.state.tripDates.end);
-
-    const allDates = [startWeek];
-    for (let i = 1; allDates.slice(allDates.length - 1)[0] < endWeek; i++ ) {
-      let newDate = new Date(startWeek);
-      newDate.setDate(newDate.getDate() + i);
-      allDates.push(newDate);
-    }
-
+    const activitiesByDate = this.parseActivities(this.props.activities);
+    const allDates = allDatesFinder(this.state.tripDates.start, this.state.tripDates.end);
+    
     const calendar = allDates.map((day, idx) => {
-      
       let activityOfDay = "";
       if (activitiesByDate[day.toDateString()]) {
         activityOfDay = activitiesByDate[day.toDateString()].map((activity, idx) => {

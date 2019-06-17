@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { upcomingTrips, tripStartDateFinder } from '../../utils/date_sort_api_util';
+import { upcomingTrips, tripStartDateFinder } from '../../utils/date_api_util';
 
 class SideBar extends React.Component {
 

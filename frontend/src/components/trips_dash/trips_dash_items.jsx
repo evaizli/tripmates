@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { tripStartDateFinder, tripEndDateFinder } from '../../utils/date_sort_api_util';
+import { tripStartDateFinder, tripEndDateFinder } from '../../utils/date_api_util';
 
 const TripsDashItems = ({ tripType, trips, openModal }) => {
   const addTrip = tripType === 'Upcoming' ? (

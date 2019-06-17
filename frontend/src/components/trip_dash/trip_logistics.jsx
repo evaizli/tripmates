@@ -1,7 +1,7 @@
 import React from 'react';
 import editIcon from '../../assets/images/icons8-pencil-24.png'; 
 import addIcon from '../../assets/images/icons8-plus-math-30.png'; 
-import { convertDate } from '../../utils/date_sort_api_util';
+import { convertDate } from '../../utils/date_api_util';
 
 const TripLogistics = ({ destinations, openModal }) => {
 
@@ -34,7 +34,6 @@ const TripLogistics = ({ destinations, openModal }) => {
   });
 
   return (
-
     <div id="logistics" className="trip-logistics">
       <h2>Trip Logistics</h2>
       <div className="trip-logistics-destinations">
@@ -44,8 +43,6 @@ const TripLogistics = ({ destinations, openModal }) => {
         <img height="20" src={addIcon} alt="add" />&nbsp;Add Destination
       </div>
     </div>
-
-
   )
 
 }
