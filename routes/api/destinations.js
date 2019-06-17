@@ -86,7 +86,6 @@ router.patch("/:tripId/:destinationId/update", passport.authenticate("jwt", { se
           destination.notes = req.body.notes;
           destination.startDate = req.body.startDate;
           destination.endDate = req.body.endDate;
-
           user.save()
             .then(() => {
               return res.json(destination);
