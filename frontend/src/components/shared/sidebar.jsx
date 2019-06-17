@@ -3,11 +3,6 @@ import { Link } from 'react-router-dom';
 import { upcomingTrips, tripStartDateFinder } from '../../utils/date_sort_api_util';
 
 class SideBar extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.scrollTo = this.scrollTo.bind(this);
-  // }
-
 
   componentDidMount() {
     this.props.fetchTrips();
@@ -18,7 +13,6 @@ class SideBar extends React.Component {
     const element = document.getElementById(id);
     element.scrollIntoView({ behavior: "smooth" });
   }
-
 
   render() {
     const { trips, logout } = this.props;
@@ -72,7 +66,6 @@ class SideBar extends React.Component {
         )
       }
     }
-
 
     return(
       <section className = "sidebar-main" > 
