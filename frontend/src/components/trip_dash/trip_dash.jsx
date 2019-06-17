@@ -18,11 +18,10 @@ class TripDash extends React.Component {
     const destinationsSorted = sortStartDateAsc(destinations);
     const tripStartDate = tripStartDateFinder(destinations);
     const tripEndDate = tripEndDateFinder(destinations);
-    // debugger
     
     return (
       <section className="trip-dash-main">
-        <SidebarContainer />
+        <SidebarContainer pageType="Trip Dash" url={this.props.match.url}/>
         <div className="trip-dash-content">
           <div className="trip-dash-header">
             <h1>{trip.tripName}</h1>

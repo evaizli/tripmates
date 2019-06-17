@@ -86,7 +86,7 @@ class TripForm extends React.Component {
               value={destination.startDate} 
               />&nbsp;&nbsp;&nbsp;to&nbsp;&nbsp;&nbsp;
             <input 
-              type="date" 
+              type="datetime" 
               onChange={this.updateDestination(idx, 'endDate')} 
               value={destination.endDate}
               />

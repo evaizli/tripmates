@@ -16,6 +16,7 @@
   "author": "Eva Pan, Jeff Dam, Andrew Mac",
   "license": "ISC",
   "dependencies": {
+    "@types/react-scrollable-anchor": "^0.6.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "concurrently": "^4.1.0",
@@ -25,8 +26,10 @@
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
+    "react-scrollable-anchor": "^0.6.1",
     "redux": "^4.0.1",
     "validator": "^10.11.0"
   },

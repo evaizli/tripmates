@@ -8,6 +8,12 @@ class SideBar extends React.Component {
     this.props.fetchTrips();
   }
 
+  scrollTo (e, id) {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+
   render() {
     const { trips, logout } = this.props;
 
@@ -45,9 +51,24 @@ class SideBar extends React.Component {
         );
       }
     }
+    
+    const tripNav = () => {
+      if (this.props.pageType === "Trip Dash") {
+        return (
+          <>
+            <a href="#logistics" onClick={e => this.scrollTo(e, "logistics")}>
+              <div className="sidebar-menu-item">Logitsics</div>
+            </a>
+            <a href="#itinerary" onClick={e => this.scrollTo(e, "itinerary")}>
+              <div className="sidebar-menu-item">Itinerary</div>
+            </a>
+          </>
+        )
+      }
+    }
 
     return(
-      <section className = "sidebar-main" >
+      <section className = "sidebar-main" > 
         <div className="sidebar-menu">
           <h1 className="logo">TripMates</h1>
           <div className="sidebar-menu-items">
@@ -55,9 +76,9 @@ class SideBar extends React.Component {
               <Link to='/dashboard'>
                 <div className="sidebar-menu-item">Trips Dashboard</div>
               </Link>
+              { tripNav() }
               { tripCountdownItem() }
             </div>
-  
             <div className="sidebar-menu-item-logout" onClick={logout}>Log Out</div>
           </div>
         </div>

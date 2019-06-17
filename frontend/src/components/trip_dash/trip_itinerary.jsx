@@ -1,5 +1,5 @@
 import React from 'react';
-import { openModal } from "../../actions/modal_actions";
+import addIcon from '../../assets/images/icons8-plus-math-30.png'; 
 
 class TripItinerary extends React.Component {
   constructor(props) {
@@ -61,9 +61,9 @@ class TripItinerary extends React.Component {
           const time = new Date(activity.startTime).toLocaleTimeString('en-US', { hour: "numeric", minute: "numeric" });
           
           return (
-            <div key={idx} onClick={() => this.props.openModal({ type: "activityShow", id: activity._id })}>
+            <div className="trip-activity" key={idx} onClick={() => this.props.openModal({ type: "activityShow", id: activity._id })}>
               <h4>{time }</h4>
-              <h4 >{activity.activityName}</h4>
+              <h4>{activity.activityName}</h4>
             </div>
           )
         })
@@ -80,9 +80,11 @@ class TripItinerary extends React.Component {
     })
 
     return (
-      <section className="trip-itinerary-main">
+      <section id="itinerary" className="trip-itinerary-main">
         <h1>Itinerary</h1>
-        <div onClick ={() =>this.props.openModal("createActivity")}> + Add Activity</div>
+        <div onClick={() => this.props.openModal('createActivity')} className="trip-add">
+          <img height="20" src={addIcon} alt="add" />&nbsp;Add Activity
+        </div>
         <div className="trip-itinerary-week">
           { calendar }
         </div>

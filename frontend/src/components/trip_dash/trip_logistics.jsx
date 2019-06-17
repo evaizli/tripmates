@@ -35,12 +35,12 @@ const TripLogistics = ({ destinations, openModal }) => {
 
   return (
 
-    <div className="trip-logistics">
+    <div id="logistics" className="trip-logistics">
       <h2>Trip Logistics</h2>
       <div className="trip-logistics-destinations">
         {destinationsDisplay}
       </div>
-      <div onClick={() => openModal('createDestination')} className="trip-logistics-destination-add">
+      <div onClick={() => openModal('createDestination')} className="trip-add">
         <img height="20" src={addIcon} alt="add" />&nbsp;Add Destination
       </div>
     </div>
