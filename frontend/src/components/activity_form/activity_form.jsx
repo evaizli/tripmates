@@ -37,8 +37,6 @@ class ActivityForm extends React.Component {
             activityDate,
             startTime,
             endTime } = this.state;
-        console.log(this.state.begin)
-  
     return (
       <div>
         <h2>{this.props.formType}</h2>

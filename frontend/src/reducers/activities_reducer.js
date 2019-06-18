@@ -15,7 +15,7 @@ const activitiesReducer = (state = [], action) =>{
           return action.activities;
         case RECEIVE_ACTIVITY:
           if (state.length === 0) {
-                return [action.destination]
+                return [action.activity]
             } else {
                 newState = Object.assign([], state);
                 let idx = null;

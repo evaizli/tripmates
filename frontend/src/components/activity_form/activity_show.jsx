@@ -11,8 +11,14 @@ class ActivtyShow extends React.Component{
     }
 
     parseTime(time){
-        let activityTime = new Date(time);
-        let timeString = activityTime.toLocaleTimeString('en-US', { hour: "numeric", minute: "numeric" });
+        let timeString;
+        let timeSplit = time.split(":");
+        let hours = parseInt(timeSplit[0]);
+        if (hours > 12){
+            timeString = (hours - 12) + ":" + timeSplit[1] + " PM"
+        } else {
+            timeString = time + " AM"
+        }
         return timeString;
     }
 
@@ -25,6 +31,7 @@ class ActivtyShow extends React.Component{
             location,
             notes, 
             startTime} = this.props.activity;
+            debugger
         return(
             <div>
                 <div>
