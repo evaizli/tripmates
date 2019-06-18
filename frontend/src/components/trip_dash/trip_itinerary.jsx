@@ -28,27 +28,42 @@ class TripItinerary extends React.Component {
   render() {
     const activitiesByDate = this.parseActivities(this.props.activities);
     const allDates = allDatesFinder(this.state.tripDates.start, this.state.tripDates.end);
-    
-    const calendar = allDates.map((day, idx) => {
-      let activityOfDay = "";
-      if (activitiesByDate[day.toDateString()]) {
-        activityOfDay = activitiesByDate[day.toDateString()].map((activity, idx) => {
-          const time = new Date(activity.startTime).toLocaleTimeString('en-US', { hour: "numeric", minute: "numeric" });
-          
-          return (
-            <div className="trip-activity" key={idx} onClick={() => this.props.openModal({ type: "activityShow", id: activity._id })}>
-              <h4>{time }</h4>
-              <h4>{activity.activityName}</h4>
-            </div>
-          )
-        })
-      } 
-      
-      return (
-        <div key={idx} className="trip-itinerary-day">
-          <h4>{day.toDateString()}</h4>
-          <div className="trip-itinerary-day-details">
+  
+    const calendar = allDates.map((week, idxWeek) => {
+      const weekDates = week.map((day, idxDay) => {
+        return (
+          <h4 key={`header-${idxDay}`}>{day.toDateString()}</h4>
+        )
+      })
+
+      const weekActivities = week.map((day, idxDay) => {
+        let activityOfDay = "";
+        if (activitiesByDate[day.toDateString()]) {
+          activityOfDay = activitiesByDate[day.toDateString()].map((activity, idxActivity) => {
+            const time = new Date(activity.startTime).toLocaleTimeString('en-US', { hour: "numeric", minute: "numeric" });
+
+            return (
+              <div className="trip-activity" key={idxActivity} onClick={() => this.props.openModal({ type: "activityShow", id: activity._id })}>
+                <h4>{time}</h4>
+                <h4>{activity.activityName}</h4>
+              </div>
+            )
+          })
+        } 
+        return (
+          <div className="trip-itinerary-activity-list">
             { activityOfDay }
+          </div>
+        )
+      })
+
+      return (
+        <div key={`week-${idxWeek}`} className="flex-col">
+          <div className="trip-itinerary-date-header">
+            { weekDates }
+          </div>
+          <div className="trip-itinerary-activity-lists">
+            { weekActivities }
           </div>
         </div>
       )

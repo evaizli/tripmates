@@ -73,11 +73,18 @@ const endOfWeek = (tripEndDate) => {
 export const allDatesFinder = (tripStartDate, tripEndDate) => {
   const startWeek = startOfWeek(tripStartDate);
   const endWeek = endOfWeek(tripEndDate);
-  const allDates = [startWeek];
-  for (let i = 1; allDates.slice(allDates.length - 1)[0] < endWeek; i++) {
-    let newDate = new Date(startWeek);
+  const allDates = [[startWeek]];
+  let j = 0;
+
+  let newDate = startWeek;
+  for (let i = 1; newDate < endWeek; i++) {
+    newDate = new Date(startWeek);
     newDate.setDate(newDate.getDate() + i);
-    allDates.push(newDate);
+    allDates[j].push(newDate);
+    if (allDates[j].length === 7 && newDate < endWeek) {
+      allDates.push([]);
+      j++;
+    }
   }
   return allDates;
 };

@@ -7,6 +7,7 @@
   display: flex;
   align-items: stretch;
   overflow-y: auto;
+  z-index: 1;
 }
 
 .sidebar-main * {
