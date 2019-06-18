@@ -72,7 +72,6 @@ router.patch("/:tripId/:activityId/update", passport.authenticate("jwt", { sessi
       .then(user => {
         const { isValid, errors } = validateActivityInput(req.body);
         let trip = user.trips.id(req.params.tripId);
-        debugger
         let activity = trip.activities.id(req.params.activityId);
         if (!isValid) {
           return res.status(404).json(errors);
@@ -87,14 +86,12 @@ router.patch("/:tripId/:activityId/update", passport.authenticate("jwt", { sessi
           activity.notes = req.body.notes;
           activity.startTime = req.body.startTime;
           activity.endTime = req.body.endTime;
-          activity.tripId = req.params.tripId;
 
           user.save()
             .then(user => {
               return res.json(activity);
             })
             .catch(err => {
-              // debugger
               res.status(400).json(err)
             });
         }

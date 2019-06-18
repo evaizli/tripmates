@@ -3,7 +3,6 @@ import React from 'react';
 class ActivityForm extends React.Component {
   constructor(props) {
     super(props);
-    // debugger
     this.state = Object.assign({}, this.props.activity);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
@@ -14,16 +13,6 @@ class ActivityForm extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    // let newState = Object.assign({}, this.state);
-    // let actDate = this.state.activityDate
-    // if (this.state.formType === "Edit Activity"){
-    //   actDate = new Date(this.state.activityDate).toLocaleDateString();
-    // }
-    // // let startTimeArr = this.state.startTime.split(":");
-    // // let endTimeArr = this.state.endTime.split(":");
-    // newState.startTime = actDate + " " + this.state.startTime;
-    // newState.endTime = actDate + " " + this.state.endTime;
-    debugger
     this.props.processForm(this.state).then(() => this.props.closeModal());
   }
 

@@ -72,7 +72,6 @@ export const createActivity = (data) => dispatch => {
 
 
 export const updateActivity = (data) => dispatch => {
-  // debugger
   return APIUtil.updateActivity(data)
     .then(data => dispatch(receiveActivity(data)))
     .catch(err => {

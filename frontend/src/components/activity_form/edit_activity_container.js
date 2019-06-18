@@ -7,7 +7,6 @@ const mapStateToProps = state => {
     let tripId = state.ui.modal.tripId;
     let activityId = state.ui.modal.id;
     let activity;
-    // debugger
     state.entities.activities.forEach(a => {
         if (a._id === activityId){
             activity = a;

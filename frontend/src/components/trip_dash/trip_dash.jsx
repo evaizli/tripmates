@@ -13,13 +13,11 @@ class TripDash extends React.Component {
   render() {
     let { trip, destinations, activities} = this.props;
     if (!trip) return null;
-    // debugger
     destinations = destinations.length < 1 ? trip.destinations : destinations;
     
     const destinationsSorted = sortStartDateAsc(destinations);
     const tripStartDate = tripStartDateFinder(destinations);
     const tripEndDate = tripEndDateFinder(destinations);
-    // debugger
     
     return (
       <section className="trip-dash-main">
