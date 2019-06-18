@@ -11,14 +11,9 @@ class ActivityForm extends React.Component {
   update(field) {
     return e => this.setState({[field]: e.currentTarget.value });
   }
-
   handleSubmit(e) {
     e.preventDefault();
-    let newState = Object.assign({}, this.state);
-
-    newState.startTime = this.state.activityDate + " " + this.state.startTime;
-    newState.endTime = this.state.activityDate + " " + this.state.endTime;
-    this.props.processForm(newState).then(() => this.props.closeModal());
+    this.props.processForm(this.state).then(() => this.props.closeModal());
   }
 
   prefillDate(date){
@@ -29,23 +24,11 @@ class ActivityForm extends React.Component {
     let activityDate = new Date(date);
     return activityDate.toDateString()
   }
-
-  // parseTime(time) {
-  //   if (time === "") return "";
-
-  //   let activityTime = new Date(time);
-  //   let timeString = activityTime.toLocaleTimeString();
-  //   let hour = activityTime.getHours();
-  //   let res;
-  //   if (hour !== 0 && hour < 10) {
-  //     res = "0" + timeString.substring(0, 4);
-  //   } else {
-  //     res = timeString.substring(0, 5);
-  //   }
-  //   // debugger
-  //   return res;
-  // }
-
+  parseTime(time){
+    if (this.state.formType === "Edit Activity"){
+    return new Date(time).toLocaleTimeString({ hour: "numeric", minute: "numeric" });
+    }
+  }
   render() {
       const {activityName,
             location,
@@ -54,8 +37,6 @@ class ActivityForm extends React.Component {
             activityDate,
             startTime,
             endTime } = this.state;
-    
-  
     return (
       <div>
         <h2>{this.props.formType}</h2>
@@ -109,7 +90,7 @@ class ActivityForm extends React.Component {
           <input
             type="time"
             value={endTime}
-            onChange={this.update("endTime")}
+              onChange={this.update("endTime")}
           />
           </label>
           <input type="submit" value={this.props.formType}/>

@@ -58,10 +58,10 @@ class TripItinerary extends React.Component {
       let activityOfDay = "";
       if (activitiesByDate[day.toDateString()]) {
         activityOfDay = activitiesByDate[day.toDateString()].map((activity, idx) => {
+
           const time = new Date(activity.startTime).toLocaleTimeString('en-US', { hour: "numeric", minute: "numeric" });
-          
           return (
-            <div className="trip-activity" key={idx} onClick={() => this.props.openModal({ type: "activityShow", id: activity._id })}>
+            <div className="trip-activity" key={idx} onClick={() => this.props.openModal({ type: "activityShow", id: activity._id, tripId: this.props.tripId})}>
               <h4>{time }</h4>
               <h4>{activity.activityName}</h4>
             </div>
