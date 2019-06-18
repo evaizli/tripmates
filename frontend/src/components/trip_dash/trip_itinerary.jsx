@@ -4,6 +4,7 @@ import { openModal } from "../../actions/modal_actions";
 class TripItinerary extends React.Component {
   constructor(props) {
     super(props);
+    // debugger
     this.state = {
       tripDates: this.props.tripDates,
       activities: this.props.activities
@@ -63,7 +64,7 @@ class TripItinerary extends React.Component {
           const time = new Date(activity.startTime).toLocaleTimeString('en-US', { hour: "numeric", minute: "numeric" });
           // debugger
           return (
-            <div key={idx} onClick={() => this.props.openModal({ type: "activityShow", id: activity._id })}>
+            <div key={idx} onClick={() => this.props.openModal({ type: "activityShow", id: activity._id, tripId: this.props.tripId})}>
               <h4>{time }</h4>
               <h4 >{activity.activityName}</h4>
             </div>

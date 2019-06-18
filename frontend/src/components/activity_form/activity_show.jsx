@@ -25,11 +25,12 @@ class ActivtyShow extends React.Component{
             location,
             notes, 
             startTime} = this.props.activity;
+            // debugger
         return(
             <div>
                 <div>
                     <h2>{activityName}</h2>
-                    <img src={editIcon} alt="edit" onClick={() => this.props.openModal({ type: 'editActivity', id: this.props.activity._id })} />
+                    <img src={editIcon} alt="edit" onClick={() => this.props.openModal({ type: 'editActivity', id: this.props.activity._id, tripId:this.props.tripId })} />
                 </div>
                 <label> <h4>Location</h4>
                     {location}

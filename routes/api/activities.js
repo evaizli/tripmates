@@ -68,17 +68,17 @@ router.post("/:tripId/", passport.authenticate("jwt", { session: false }),
 // patch activities
 router.patch("/:tripId/:activityId/update", passport.authenticate("jwt", { session: false }),
   (req, res) => {
-
     User.findById(req.user.id)
       .then(user => {
         const { isValid, errors } = validateActivityInput(req.body);
         let trip = user.trips.id(req.params.tripId);
-        // debugger
+        debugger
         let activity = trip.activities.id(req.params.activityId);
         if (!isValid) {
           return res.status(404).json(errors);
         } else {
           activity.activityName = req.body.activityName;
+          activity.activityDate = req.body.activityDate;
           activity.location = req.body.location;
           activity.address = req.body.address;
           activity.mates = req.body.mates;
@@ -87,6 +87,7 @@ router.patch("/:tripId/:activityId/update", passport.authenticate("jwt", { sessi
           activity.notes = req.body.notes;
           activity.startTime = req.body.startTime;
           activity.endTime = req.body.endTime;
+          activity.tripId = req.params.tripId;
 
           user.save()
             .then(user => {

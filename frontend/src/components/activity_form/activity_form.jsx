@@ -3,6 +3,7 @@ import React from 'react';
 class ActivityForm extends React.Component {
   constructor(props) {
     super(props);
+    // debugger
     this.state = Object.assign({}, this.props.activity);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
@@ -22,7 +23,7 @@ class ActivityForm extends React.Component {
     // // let endTimeArr = this.state.endTime.split(":");
     // newState.startTime = actDate + " " + this.state.startTime;
     // newState.endTime = actDate + " " + this.state.endTime;
-    // // debugger
+    debugger
     this.props.processForm(this.state).then(() => this.props.closeModal());
   }
 
