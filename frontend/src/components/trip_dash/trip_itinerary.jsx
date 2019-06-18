@@ -61,11 +61,7 @@ class TripItinerary extends React.Component {
 
           const time = new Date(activity.startTime).toLocaleTimeString('en-US', { hour: "numeric", minute: "numeric" });
           return (
-<<<<<<< HEAD
-            <div key={idx} onClick={() => this.props.openModal({ type: "activityShow", id: activity._id, tripId: this.props.tripId})}>
-=======
-            <div className="trip-activity" key={idx} onClick={() => this.props.openModal({ type: "activityShow", id: activity._id })}>
->>>>>>> master
+            <div className="trip-activity" key={idx} onClick={() => this.props.openModal({ type: "activityShow", id: activity._id, tripId: this.props.tripId})}>
               <h4>{time }</h4>
               <h4>{activity.activityName}</h4>
             </div>
