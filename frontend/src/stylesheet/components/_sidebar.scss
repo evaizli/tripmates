@@ -3,7 +3,7 @@
   background: $color-primary-blue;
   box-sizing: border-box;
   width: 225px;
-  height: 100%;
+  height: calc(100% + 14px);
   display: flex;
   align-items: stretch;
   overflow-y: auto;
@@ -55,4 +55,9 @@
 .sidebar-menu-item-countdown:hover {
   cursor: auto;
   background: none;
+}
+
+.spacing {
+  width: 10px;
+  background: white;
 }

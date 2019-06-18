@@ -32,7 +32,7 @@ class TripItinerary extends React.Component {
     const calendar = allDates.map((week, idxWeek) => {
       const weekDates = week.map((day, idxDay) => {
         return (
-          <h4 key={`header-${idxDay}`}>{day.toDateString()}</h4>
+          <h4 key={idxDay}>{day.toDateString()}</h4>
         )
       })
 
@@ -51,14 +51,14 @@ class TripItinerary extends React.Component {
           })
         } 
         return (
-          <div className="trip-itinerary-activity-list">
+          <div key={idxDay} className="trip-itinerary-activity-list">
             { activityOfDay }
           </div>
         )
       })
 
       return (
-        <div key={`week-${idxWeek}`} className="flex-col">
+        <div key={idxWeek} className="flex-col">
           <div className="trip-itinerary-date-header">
             { weekDates }
           </div>

@@ -82,6 +82,8 @@ class SideBar extends React.Component {
             <div className="sidebar-menu-item-logout" onClick={logout}>Log Out</div>
           </div>
         </div>
+        <div className="spacing">
+        </div>
       </section>
     );
   }
