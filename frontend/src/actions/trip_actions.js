@@ -1,6 +1,5 @@
 import * as APIUtil from "../utils/trip_api_util";
 
-
 export const RECEIVE_TRIPS = "RECEIVE_TRIPS";
 export const RECEIVE_TRIP = "RECEIVE_TRIP";
 export const RECEIVE_TRIP_ERRORS = "RECEIVE_TRIP_ERRORS";
