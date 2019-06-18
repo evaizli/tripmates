@@ -1,5 +1,4 @@
 import React from 'react';
-import DateTime from "react-datetime";
 
 class ActivityForm extends React.Component {
   constructor(props) {
@@ -12,20 +11,19 @@ class ActivityForm extends React.Component {
   update(field) {
     return e => this.setState({[field]: e.currentTarget.value });
   }
-
   handleSubmit(e) {
     e.preventDefault();
-    let newState = Object.assign({}, this.state);
-    let actDate = this.state.activityDate
-    if (this.state.formType === "Edit Activity"){
-      actDate = new Date(this.state.activityDate).toLocaleDateString();
-    }
-    // let startTimeArr = this.state.startTime.split(":");
-    // let endTimeArr = this.state.endTime.split(":");
-    newState.startTime = actDate + " " + this.state.startTime;
-    newState.endTime = actDate + " " + this.state.endTime;
-    // debugger
-    this.props.processForm(newState).then(() => this.props.closeModal());
+    // let newState = Object.assign({}, this.state);
+    // let actDate = this.state.activityDate
+    // if (this.state.formType === "Edit Activity"){
+    //   actDate = new Date(this.state.activityDate).toLocaleDateString();
+    // }
+    // // let startTimeArr = this.state.startTime.split(":");
+    // // let endTimeArr = this.state.endTime.split(":");
+    // newState.startTime = actDate + " " + this.state.startTime;
+    // newState.endTime = actDate + " " + this.state.endTime;
+    // // debugger
+    this.props.processForm(this.state).then(() => this.props.closeModal());
   }
 
   prefillDate(date){
@@ -49,7 +47,7 @@ class ActivityForm extends React.Component {
             activityDate,
             startTime,
             endTime } = this.state;
-    
+        console.log(this.state.begin)
   
     return (
       <div>
@@ -94,15 +92,17 @@ class ActivityForm extends React.Component {
           />
           </label>
           <label> <h4>Start Time</h4>
-          <DateTime
+          <input
+            type="time"
             value={startTime}
             onChange={this.update("startTime")}
           />
           </label>
           <label> <h4>End Time</h4> 
-          <DateTime
+          <input
+            type="time"
             value={endTime}
-            onChange={this.update("endTime")}
+              onChange={this.update("endTime")}
           />
           </label>
           <input type="submit" value={this.props.formType}/>

@@ -41,6 +41,7 @@ class TripItinerary extends React.Component {
   }
 
   render() {
+    // debugger
     const activitiesByDate = this.parseDates(this.props.activities);
 
     const startWeek = this.startOfWeek(this.state.tripDates.start);
@@ -58,8 +59,9 @@ class TripItinerary extends React.Component {
       let activityOfDay = "";
       if (activitiesByDate[day.toDateString()]) {
         activityOfDay = activitiesByDate[day.toDateString()].map((activity, idx) => {
+
           const time = new Date(activity.startTime).toLocaleTimeString('en-US', { hour: "numeric", minute: "numeric" });
-          
+          // debugger
           return (
             <div key={idx} onClick={() => this.props.openModal({ type: "activityShow", id: activity._id })}>
               <h4>{time }</h4>

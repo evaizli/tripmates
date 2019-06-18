@@ -73,6 +73,7 @@ router.patch("/:tripId/:activityId/update", passport.authenticate("jwt", { sessi
       .then(user => {
         const { isValid, errors } = validateActivityInput(req.body);
         let trip = user.trips.id(req.params.tripId);
+        // debugger
         let activity = trip.activities.id(req.params.activityId);
         if (!isValid) {
           return res.status(404).json(errors);
