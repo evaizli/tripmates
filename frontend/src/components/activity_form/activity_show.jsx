@@ -31,7 +31,6 @@ class ActivtyShow extends React.Component{
             location,
             notes, 
             startTime} = this.props.activity;
-            debugger
         return(
             <div>
                 <div>
