@@ -22,6 +22,7 @@ class TripsDash extends React.Component {
   render() {
     const { trips } = this.props;
     if (!trips) return null;
+    if (trips.length === 0) return null;
 
     const inProgressTripsItems = (inProgressTrips(trips).length > 0) ? 
       <TripsDashItems tripType="In Progress" trips={inProgressTrips(trips)} openModal={this.handleOpenModal} /> :
@@ -36,7 +37,7 @@ class TripsDash extends React.Component {
         <SidebarContainer />
         <div className="trips-dash-content">
           { inProgressTripsItems }
-          <TripsDashItems tripType="Upcoming" trips={upcomingTrips(trips)} openModal={this.handleOpenModal}/>
+          <TripsDashItems tripType="Future" trips={upcomingTrips(trips)} openModal={this.handleOpenModal}/>
           { pastTripsItems }
         </div>
       </section>

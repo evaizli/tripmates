@@ -12,6 +12,57 @@
   }
 }
 
+.trips-dash-item-main {
+  @extend .flex-col;  
+  margin-bottom: 20px;
+
+  h2{
+    margin-top: 10px;
+  }
+}
+
+.trips-dash-item-content {
+  @extend .flex-row;
+  flex-wrap: wrap;
+}
+
+.trips-dash-item {
+  @extend .flex-col;
+  width: 150px;
+  height: 150px;
+  border-radius: 3px;
+  margin: 10px;
+  box-sizing: border-box;
+  justify-content: flex-end;
+  align-items: flex-start;
+  color: black;
+  background: $color-primary-blue;
+  color: white;
+}
+
+.trips-dash-item-info {
+  padding: 10px;
+}
+
+.trips-dash-item:hover, .trips-dash-item-add:hover {
+  opacity: .5;
+  text-decoration: none;
+}
+
+.trips-dash-item-add {
+  @extend .trips-dash-item;
+  background: $color-primary-blue;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  img {
+    filter: brightness(0) invert(1);
+    height: 65px;
+  }
+}
+
+
 
 // .sidenav {
 //   height: 100%;
