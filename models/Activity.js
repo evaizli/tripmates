@@ -31,19 +31,19 @@ const ActivitySchema = new Schema({
         required: false
     },
     activityDate: {
-        type: Date,
+        type: String,
         required: true,
-        default: Date.now
+        // default: Date.now
     },
     startTime: {
-        type: Date,
+        type: String,
         required: true,
-        default: Date.now
+        // default: Date.now
     },
     endTime: {
-        type: Date,
+        type: String,
         required: true,
-        default: Date.now
+        // default: Date.now
     },
     date: {
         type: Date,

@@ -11,18 +11,15 @@ class ActivtyShow extends React.Component{
     }
 
     parseTime(time){
-        let activityTime = new Date(time);
-        let timeString =activityTime.toLocaleTimeString();
-        let unit = timeString.substring(timeString.length-2);
-        let hour = activityTime.getHours();
-        let res;
-        if ( hour !== 0 &&  hour < 10){
-            res = timeString.substring(0,4) + " " + unit;
+        let timeString;
+        let timeSplit = time.split(":");
+        let hours = parseInt(timeSplit[0]);
+        if (hours > 12){
+            timeString = (hours - 12) + ":" + timeSplit[1] + " PM"
         } else {
-            res = timeString.substring(0, 5) + " " + unit;
+            timeString = time + " AM"
         }
-        // debugger
-        return res;
+        return timeString;
     }
 
     render(){
@@ -38,7 +35,7 @@ class ActivtyShow extends React.Component{
             <div>
                 <div>
                     <h2>{activityName}</h2>
-                    <img src={editIcon} alt="edit" onClick={() => this.props.openModal({ type: 'editActivity', id: this.props.activity._id })} />
+                    <img src={editIcon} alt="edit" onClick={() => this.props.openModal({ type: 'editActivity', id: this.props.activity._id, tripId:this.props.tripId })} />
                 </div>
                 <label> <h4>Location</h4>
                     {location}

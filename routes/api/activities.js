@@ -68,17 +68,16 @@ router.post("/:tripId/", passport.authenticate("jwt", { session: false }),
 // patch activities
 router.patch("/:tripId/:activityId/update", passport.authenticate("jwt", { session: false }),
   (req, res) => {
-
     User.findById(req.user.id)
       .then(user => {
         const { isValid, errors } = validateActivityInput(req.body);
         let trip = user.trips.id(req.params.tripId);
         let activity = trip.activities.id(req.params.activityId);
-        console.log(req.body);
         if (!isValid) {
-          return res.status(400).json(errors);
+          return res.status(404).json(errors);
         } else {
           activity.activityName = req.body.activityName;
+          activity.activityDate = req.body.activityDate;
           activity.location = req.body.location;
           activity.address = req.body.address;
           activity.mates = req.body.mates;
@@ -92,7 +91,9 @@ router.patch("/:tripId/:activityId/update", passport.authenticate("jwt", { sessi
             .then(user => {
               return res.json(activity);
             })
-            .catch(err => res.status(400).json(err));
+            .catch(err => {
+              res.status(400).json(err)
+            });
         }
       })
       .catch(err => console.log("error in updating activity ", err));
