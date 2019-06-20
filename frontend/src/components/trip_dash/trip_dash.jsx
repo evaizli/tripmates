@@ -10,6 +10,12 @@ class TripDash extends React.Component {
     this.props.fetchTrip(this.props.match.params.tripId);
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.tripId !== this.props.match.params.tripId) {
+      this.props.fetchTrip(this.props.match.params.tripId);
+    }
+  }
+
   render() {
     let { trip, destinations, activities} = this.props;
     if (!trip) return null;
