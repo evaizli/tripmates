@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { upcomingTrips, tripStartDateFinder } from '../../utils/datetime_api_util';
+import { futureTrips, tripStartDateFinder } from '../../utils/datetime_api_util';
 
 class SideBar extends React.Component {
 
@@ -17,7 +17,7 @@ class SideBar extends React.Component {
   render() {
     const { trips, logout } = this.props;
 
-    const tripsStartDates = upcomingTrips(trips).map(trip => {
+    const tripsStartDates = futureTrips(trips).map(trip => {
       const tripStartDate = tripStartDateFinder(trip.destinations);
       return { name: trip.tripName, startDate: tripStartDate, tripId: trip._id };
     });
