@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { tripStartDateFinder, tripEndDateFinder } from '../../utils/date_api_util';
+import { tripStartDateFinder, tripEndDateFinder } from '../../utils/datetime_api_util';
 
 const TripsDashItems = ({ tripType, trips, openModal }) => {
   const addTrip = tripType === 'Future' ? (
@@ -25,9 +25,11 @@ const TripsDashItems = ({ tripType, trips, openModal }) => {
     )
   })
 
+  const tripTitle = tripType === 'in Progress' ? 'Trips in Progress' : `${ tripType } Trips`;
+
   return (
     <section className="trips-dash-item-main">
-      <h2>{tripType} Trips</h2>
+      <h2>{ tripTitle }</h2>
       <div className="trips-dash-item-content">
         { tripButtons }
         { addTrip }

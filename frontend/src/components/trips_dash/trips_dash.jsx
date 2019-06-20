@@ -1,7 +1,7 @@
 import React from 'react';
 import SidebarContainer from '../shared/sidebar_container';
 import TripsDashItems from './trips_dash_items';
-import { pastTrips, upcomingTrips, inProgressTrips } from '../../utils/date_api_util';
+import { pastTrips, upcomingTrips, inProgressTrips } from '../../utils/datetime_api_util';
 
 class TripsDash extends React.Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class TripsDash extends React.Component {
     if (trips.length === 0) return null;
 
     const inProgressTripsItems = (inProgressTrips(trips).length > 0) ? 
-      <TripsDashItems tripType="In Progress" trips={inProgressTrips(trips)} openModal={this.handleOpenModal} /> :
+      <TripsDashItems tripType="in Progress" trips={inProgressTrips(trips)} openModal={this.handleOpenModal} /> :
       "";
 
     const pastTripsItems = (inProgressTrips(trips).length > 0) ? 

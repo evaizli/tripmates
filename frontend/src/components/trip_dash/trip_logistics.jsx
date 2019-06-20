@@ -1,7 +1,7 @@
 import React from 'react';
 import editIcon from '../../assets/images/icons8-pencil-24.png'; 
 import addIcon from '../../assets/images/icons8-plus-math-30.png'; 
-import { convertDate } from '../../utils/date_api_util';
+import { convertDate } from '../../utils/datetime_api_util';
 
 const TripLogistics = ({ destinations, openModal }) => {
 

@@ -2,7 +2,7 @@ import React from 'react';
 import SidebarContainer from '../shared/sidebar_container';
 import TripLogistics from './trip_logistics';
 import TripItineraryContainer from './trip_itinerary_container';
-import { sortStartDateAsc, tripStartDateFinder, tripEndDateFinder } from '../../utils/date_api_util';
+import { sortStartDateAsc, tripStartDateFinder, tripEndDateFinder } from '../../utils/datetime_api_util';
 
 class TripDash extends React.Component {
 
