@@ -1,6 +1,6 @@
 import React from 'react';
 import addIcon from '../../assets/images/icons8-plus-math-30.png'; 
-import { allDatesFinder, formatTime } from '../../utils/datetime_api_util';
+import { allDatesFinder, formatTime, sortStartTime } from '../../utils/datetime_api_util';
 
 class TripItinerary extends React.Component {
   constructor(props) {
@@ -39,7 +39,8 @@ class TripItinerary extends React.Component {
       const weekActivities = week.map((day, idxDay) => {
         let activityOfDay = "";
         if (activitiesByDate[day.toDateString()]) {
-          activityOfDay = activitiesByDate[day.toDateString()].map((activity, idxActivity) => {
+          const sortedActivities = sortStartTime(activitiesByDate[day.toDateString()])
+          activityOfDay = sortedActivities.map((activity, idxActivity) => {
             const time = formatTime(activity.startTime);
 
             return (

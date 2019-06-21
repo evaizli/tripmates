@@ -10,6 +10,12 @@ export const sortStartDateAsc = (destinations) => {
   return destinationsDup.sort(compareDateAsc);
 };
 
+export const sortStartTime = activities => {
+  const activitiesDup = Object.assign([], activities);
+  const compareTimeAsc = (a, b) => (a.startTime < b.startTime ? -1 : 1);
+  return activitiesDup.sort(compareTimeAsc);
+};
+
 export const inProgressTrips = (trips) => {
   const dateNow = new Date();
   return trips.filter(trip => {
