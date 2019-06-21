@@ -1,34 +1,42 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { tripStartDateFinder, tripEndDateFinder } from '../../utils/date_sort_api_util';
+import { tripStartDateFinder, tripEndDateFinder } from '../../utils/datetime_api_util';
 
 const TripsDashItems = ({ tripType, trips, openModal }) => {
-  const addTrip = tripType === 'Upcoming' ? (
-    <Link to="/" onClick={openModal} className="upcoming-trips-item-add" title="Add a Trip">
+  const addTrip = tripType === 'Future' ? (
+    <div onClick={openModal} className="trips-dash-item-add" title="Add a Trip">
       <img src="https://image.flaticon.com/icons/svg/32/32339.svg" alt="plus" />
-    </Link>
+    </div>
     ) : "";
   
   const tripButtons = trips.map((trip, idx) => {
-    const destinations = trip.destinations;
-    const tripStartDate = tripStartDateFinder(destinations);
-    const tripEndDate = tripEndDateFinder(destinations);
+    const description = trip.description ? trip.description : ""; 
+    const tripDates = trip.destinations.length > 0 ? 
+      <div>
+        <h4>{`${tripStartDateFinder(trip.destinations)}`}</h4>
+        <h4>to</h4>
+        <h4>{`${tripEndDateFinder(trip.destinations)}`}</h4>
+      </div>
+     : "";
+
     return (
-      <Link key={idx} to={`/trip/${trip._id}`} className="upcoming-trips-item">
-        <div className="upcoming-trips-item-info">
+      <Link key={idx} to={`/trip/${trip._id}`} className="trips-dash-item" title={ description }>
+        <div className="trips-dash-item-info">
           <h3>{trip.tripName}</h3>
-          <h4>{tripStartDate} <br/> to <br/> {tripEndDate}</h4>
+          {tripDates}
         </div>
-        <div className="upcoming-trips-item-background">
+        <div className="trips-dash-item-background">
         </div>
       </Link>
     )
   })
 
+  const tripTitle = tripType === 'in Progress' ? 'Trips in Progress' : `${ tripType } Trips`;
+
   return (
-    <section className="upcoming-trips-main">
-      <h2>{tripType} Trips</h2>
-      <div className="upcoming-trips-content">
+    <section className="trips-dash-item-main">
+      <h2>{ tripTitle }</h2>
+      <div className="trips-dash-item-content">
         { tripButtons }
         { addTrip }
       </div>

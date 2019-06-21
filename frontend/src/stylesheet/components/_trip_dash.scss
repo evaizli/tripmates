@@ -7,18 +7,19 @@
   margin-left: 225px;
   padding: 20px 40px;
   width: calc(100% - 345px);
+  min-width: 730px;
 }
 
 .trip-dash-header {
   @extend .flex-col;
   align-items: baseline;
-
+  
   > * {
     margin-right: 20px;
   }
 }
 
-.trip-logistics {
+.trip-logistics-main {
   background: lightgray;
   border-radius: 5px;
   padding: 20px;
@@ -30,19 +31,9 @@
 .trip-logistics-destination-header {
   @extend .flex-col;
   @extend .baseline;
-  // justify-content: space-between;
 
   > * {
     margin-right: 20px;
-  }
-
-  img {
-    height: 20px;
-    cursor: pointer;
-
-    &:hover {
-      opacity: .60;
-    }
   }
 }
 
@@ -61,18 +52,27 @@
   p {
     margin-top: 0;
   }
-}
 
-.trip-logistics-destination-details-center {
-  margin-left: 10px;
-  margin-right: 10px;
+  li {
+    @extend .flex-col;
+    cursor: pointer;
+  }
+
+  li + li {
+    margin-left: 10px;
+  }
 }
 
 .trip-add {
   @extend .flex-row;
   align-items: center;
+  justify-content: center;
+  background: white;
+  padding: 5px 10px;
+  height: 100%;
+  max-width: 150px;
+  border-radius: 3px;
   cursor: pointer;
-  width: 150px;
 
   &:hover {
     opacity: .60;
@@ -80,34 +80,61 @@
 }
 
 .trip-itinerary-main {
-  @extend .trip-logistics;
+  @extend .trip-logistics-main;
+  min-width: 730px;
 }
 
-.trip-itinerary-week {
+.trip-itinerary-header {
   @extend .flex-row;
-  flex-wrap: wrap;
   justify-content: space-between;
-  column-count: 7;
+
 }
 
-.trip-itinerary-day {
-  width: 13%;
+.trip-itinerary-date-header {
+  @extend .flex-row;
+  justify-content: space-between;
+  align-items: center;
 
   h4 {
+    min-width: 100px;
+    width: 13%; 
     margin-top: 15px;
     margin-bottom: 5px;
   }
+  
+  h4 + h4 {
+    margin-left: 5px;
+  }
 }
 
-.trip-itinerary-day-details {
+.trip-itinerary-activity-lists {
+  @extend .flex-row;
+  justify-content: space-between;
+
+  > div + div {
+    margin-left: 5px;
+  }
+}
+
+.trip-itinerary-activity-list {
+  @extend .flex-col;
+  width: 13%; 
   min-height: 100px;
+  min-width: 100px;
   background: white;
   padding: 5px;
+  box-sizing: border-box;
   border-radius: 3px;
 }
 
 .trip-activity {
+  @extend .flex-col;
+  width: 100%;
+  
   h4 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     margin-top: 0px;
     margin-bottom: 0px;
   }
@@ -119,5 +146,15 @@
   &:hover {
     color: $color-grey;
     cursor: pointer;
+  }
+}
+
+
+.edit-icon {
+  height: 15px;
+  cursor: pointer;
+  
+  &:hover {
+    opacity: .60;
   }
 }

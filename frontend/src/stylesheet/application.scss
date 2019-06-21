@@ -2,14 +2,15 @@
 @import "base/colors.scss";
 @import "base/layout.scss";
 @import "base/fonts.scss";
+@import "base/form.scss";
 
 @import "components/modal.scss";
 @import "components/header.scss";
 @import "components/trips_dash.scss";
 @import "components/sidebar.scss";
-@import "components/upcoming_trips";
 @import "components/_trip_form";
-@import "components/_trip_itinerary";
+@import "components/_trip_dash";
 @import "components/_splash";
 @import "components/session_forms";
 @import "components/_about_us";
+@import "components/activity";

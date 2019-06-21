@@ -3,9 +3,11 @@
   background: $color-primary-blue;
   box-sizing: border-box;
   width: 225px;
-  height: 100%;
+  height: 100vh;
   display: flex;
   align-items: stretch;
+  overflow-y: auto;
+  z-index: 1;
 }
 
 .sidebar-main * {
@@ -48,9 +50,15 @@
 .sidebar-menu-item-logout {
   @extend .sidebar-menu-item;
   height: 30px;
+  margin-bottom: 14px;
 }
 
 .sidebar-menu-item-countdown:hover {
   cursor: auto;
   background: none;
+}
+
+.spacing {
+  width: 10px;
+  background: white;
 }
