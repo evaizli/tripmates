@@ -24,12 +24,24 @@ class TripsDash extends React.Component {
     if (!trips) return null;
     if (trips.length === 0) return null;
 
-    const inProgressTripsItems = (inProgressTrips(trips).length > 0) ? 
-      <TripsDashItems tripType="in Progress" trips={inProgressTrips(trips)} openModal={this.handleOpenModal} /> :
+    const tentativeTrips = trips.filter(trip => {
+      return trip.destinations.length === 0;
+    });
+
+    const allTrips = trips.filter(trip => {
+      return trip.destinations.length > 0;
+    });
+
+    const inProgressTripsItems = (inProgressTrips(allTrips).length > 0) ? 
+      <TripsDashItems tripType="in Progress" trips={inProgressTrips(allTrips)} openModal={this.handleOpenModal} /> :
       "";
 
-    const pastTripsItems = (inProgressTrips(trips).length > 0) ? 
-      <TripsDashItems tripType="Past" trips={pastTrips(trips)} openModal={this.handleOpenModal} /> :
+    const pastTripsItems = (pastTrips(allTrips).length > 0) ? 
+      <TripsDashItems tripType="Past" trips={pastTrips(allTrips)} openModal={this.handleOpenModal} /> :
+      "";
+
+    const tentativeTripsItems = (tentativeTrips.length > 0) ? 
+      <TripsDashItems tripType="Tentative" trips={tentativeTrips} openModal={this.handleOpenModal} /> :
       "";
 
     return (
@@ -37,7 +49,8 @@ class TripsDash extends React.Component {
         <SidebarContainer />
         <div className="trips-dash-content">
           { inProgressTripsItems }
-          <TripsDashItems tripType="Future" trips={futureTrips(trips)} openModal={this.handleOpenModal}/>
+          <TripsDashItems tripType="Future" trips={futureTrips(allTrips)} openModal={this.handleOpenModal}/>
+          { tentativeTripsItems }
           { pastTripsItems }
         </div>
       </section>

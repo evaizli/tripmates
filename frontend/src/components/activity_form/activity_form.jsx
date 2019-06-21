@@ -17,7 +17,7 @@ class ActivityForm extends React.Component {
   }
 
   prefillDate(date){
-    return date.toISOString().substring(0, 10);
+    return new Date(date).toISOString().substring(0, 10);
   }
 
   parseDate(date) {
@@ -30,13 +30,16 @@ class ActivityForm extends React.Component {
     }
   }
   render() {
-      const {activityName,
-            location,
-            address,
-            notes,
-            activityDate,
-            startTime,
-            endTime } = this.state;
+    const {
+      activityName,
+      location,
+      address,
+      notes,
+      activityDate,
+      startTime,
+      endTime 
+    } = this.state;
+    
     return (
       <div>
         <h2>{this.props.formType}</h2>

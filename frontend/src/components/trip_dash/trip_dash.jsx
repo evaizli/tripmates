@@ -21,20 +21,22 @@ class TripDash extends React.Component {
     if (!trip) return null;
     destinations = destinations.length < 1 ? trip.destinations : destinations;
     
-    const destinationsSorted = sortStartDateAsc(destinations);
-    const tripStartDate = tripStartDateFinder(destinations);
-    const tripEndDate = tripEndDateFinder(destinations);
-    
+    const destinationsSorted = trip.destinations.length > 0 ? sortStartDateAsc(destinations) : [];
+    const tripStartDate = trip.destinations.length > 0 ? tripStartDateFinder(destinations) : new Date();
+    const tripEndDate = trip.destinations.length > 0 ? tripEndDateFinder(destinations) : new Date();
+    const tripItinerary = trip.destinations.length > 0 ? <TripItineraryContainer tripId={trip._id} activities={activities} tripDates={{start: tripStartDate, end: tripEndDate}}/> : "";
+    const tripDates = trip.destinations.length > 0 ? `${tripStartDateFinder(trip.destinations)} to ${tripEndDateFinder(trip.destinations)}` : "";
+
     return (
       <section className="trip-dash-main">
         <SidebarContainer pageType="Trip Dash" url={this.props.match.url}/>
         <div className="trip-dash-content">
           <div className="trip-dash-header">
             <h1>{trip.tripName}</h1>
-            <h3>{tripStartDate} to {tripEndDate}</h3> 
+            <h3>{tripDates}</h3> 
           </div>
           <TripLogistics destinations={destinationsSorted} openModal={this.props.openModal}/>
-          <TripItineraryContainer tripId={trip._id} activities={activities} tripDates={{start: tripStartDate, end: tripEndDate}}/>
+          { tripItinerary }
         </div>
       </section>
     )

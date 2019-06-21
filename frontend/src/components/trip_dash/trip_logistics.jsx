@@ -39,7 +39,7 @@ const TripLogistics = ({ destinations, openModal }) => {
       <div className="trip-logistics-destinations">
         {destinationsDisplay}
       </div>
-      <div onClick={() => openModal('createDestination')} className="trip-add">
+      <div onClick={() => openModal({type: 'createDestination'})} className="trip-add">
         <img height="20" src={addIcon} alt="add" />&nbsp;Add Destination
       </div>
     </div>
