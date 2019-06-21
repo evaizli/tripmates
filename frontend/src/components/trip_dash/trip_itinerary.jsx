@@ -43,7 +43,12 @@ class TripItinerary extends React.Component {
             const time = formatTime(activity.startTime);
 
             return (
-              <div className="trip-activity" key={idxActivity} onClick={() => this.props.openModal({ type: "activityShow", id: activity._id })}>
+              <div 
+                className="trip-activity" 
+                key={idxActivity} 
+                onClick={() => this.props.openModal({ type: "activityShow", id: activity._id })} 
+                title={activity.activityName}
+              >
                 <h4>{time}</h4>
                 <h4>{activity.activityName}</h4>
               </div>
@@ -51,8 +56,17 @@ class TripItinerary extends React.Component {
           })
         } 
         return (
-          <div key={idxDay} className="trip-itinerary-activity-list">
+          <div 
+            className="trip-itinerary-activity-list" 
+            key={idxDay} 
+          >
             { activityOfDay }
+            <div 
+              className="activity-add" 
+              onClick={() => this.props.openModal({ type: 'createActivity', date: day})}
+              title="Add Activity"
+            > 
+            </div>
           </div>
         )
       })
@@ -72,7 +86,7 @@ class TripItinerary extends React.Component {
     return (
       <section id="itinerary" className="trip-itinerary-main">
         <h1>Itinerary</h1>
-        <div onClick={() => this.props.openModal('createActivity')} className="trip-add">
+        <div onClick={() => this.props.openModal({type: 'createActivity'})} className="trip-add">
           <img height="20" src={addIcon} alt="add" />&nbsp;Add Activity
         </div>
         <div className="trip-itinerary-week">

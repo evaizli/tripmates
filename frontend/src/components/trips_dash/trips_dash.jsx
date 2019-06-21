@@ -16,7 +16,7 @@ class TripsDash extends React.Component {
 
   handleOpenModal(e) {
     e.preventDefault();
-    this.props.openModal("createTrip");
+    this.props.openModal({type: 'createTrip'});
   }
   
   render() {

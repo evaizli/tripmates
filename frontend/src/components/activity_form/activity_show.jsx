@@ -1,5 +1,4 @@
 import React from "react";
-// import { openModal} from "../../actions/modal_actions";
 import editIcon from "../../assets/images/icons8-pencil-24.png"
 
 class ActivtyShow extends React.Component{

@@ -15,7 +15,7 @@ function Modal({ modal, closeModal }) {
     return null;
   }
   let component;
-  switch (modal) {
+  switch (modal.type) {
     case "login":
       component = <LoginFormContainer />;
       break;
@@ -28,22 +28,20 @@ function Modal({ modal, closeModal }) {
     case "createDestination":
       component = <TripDestinationCreateFormContainer />;
       break;
-    // case "editDestination":
-    //   component = <TripDestinationEditFormContainer />;
-    //   break;
+    case "editDestination":
+      component = <TripDestinationEditFormContainer />;
+      break;
+      case "activityShow":
+        component = <ActivityShowContainer />;
+        break;
     case "createActivity":
       component = <CreateActivityFormContainer />;
       break;
+    case "editActivity":
+      component = <ActivityEditContainer />;
+      break;
     default:
-      if (modal.type === "editDestination"){
-        component = <TripDestinationEditFormContainer />;
-      } else if (modal.type === "activityShow") {
-        component = <ActivityShowContainer/>;
-      } else if (modal.type === "editActivity"){
-        component = <ActivityEditContainer />;
-      } else {
-        return null;
-      }
+      return null;
   }
 
   return (

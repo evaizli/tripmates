@@ -17,12 +17,12 @@ class ActivityForm extends React.Component {
   }
 
   prefillDate(date){
-    return new Date(date).toISOString().substring(0, 10);
+    return date.toISOString().substring(0, 10);
   }
 
   parseDate(date) {
     let activityDate = new Date(date);
-    return activityDate.toDateString()
+    return activityDate.toDateString();
   }
   parseTime(time){
     if (this.state.formType === "Edit Activity"){
