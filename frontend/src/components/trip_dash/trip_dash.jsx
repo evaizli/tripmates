@@ -7,12 +7,14 @@ import { sortStartDateAsc, tripStartDateFinder, tripEndDateFinder } from '../../
 class TripDash extends React.Component {
 
   componentDidMount() {
+    window.scrollTo(0, 0); 
     this.props.fetchTrip(this.props.match.params.tripId);
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.match.params.tripId !== this.props.match.params.tripId) {
       this.props.fetchTrip(this.props.match.params.tripId);
+      window.scrollTo(0, 0);
     }
   }
 

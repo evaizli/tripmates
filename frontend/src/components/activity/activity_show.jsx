@@ -1,25 +1,8 @@
 import React from "react";
-import editIcon from "../../assets/images/icons8-pencil-24.png"
+import editIcon from "../../assets/images/icons8-pencil-24.png";
+import { formatDate, formatTime } from '../../utils/datetime_api_util';
 
 class ActivtyShow extends React.Component{
-
-
-    parseDate(date){
-        let activityDate = new Date(date);
-        return activityDate.toDateString() 
-    }
-
-    parseTime(time){
-        let timeString;
-        let timeSplit = time.split(":");
-        let hours = parseInt(timeSplit[0]);
-        if (hours > 12){
-            timeString = (hours - 12) + ":" + timeSplit[1] + " PM"
-        } else {
-            timeString = time + " AM"
-        }
-        return timeString;
-    }
 
     render(){
         const { 
@@ -52,15 +35,15 @@ class ActivtyShow extends React.Component{
                 <div className="flex-row left-margin">
                     <label> 
                         <h4>Activity Date</h4>
-                        {this.parseDate(activityDate)}
+                        {formatDate(activityDate)}
                     </label>
                     <label> 
                         <h4>Start Time</h4>
-                        {this.parseTime(startTime)}
+                        {formatTime(startTime)}
                     </label>
                     <label> 
                         <h4>End Time</h4>
-                        {this.parseTime(endTime)}
+                        {formatTime(endTime)}
                     </label>
                 </div>
                 <label> 

@@ -20,15 +20,6 @@ class ActivityForm extends React.Component {
     return new Date(date).toISOString().substring(0, 10);
   }
 
-  parseDate(date) {
-    let activityDate = new Date(date);
-    return activityDate.toDateString();
-  }
-  parseTime(time){
-    if (this.state.formType === "Edit Activity"){
-    return new Date(time).toLocaleTimeString({ hour: "numeric", minute: "numeric" });
-    }
-  }
   render() {
     const {
       activityName,
