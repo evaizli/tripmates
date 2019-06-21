@@ -6,9 +6,9 @@ import SignupFormContainer from '../session/signup_form_container';
 import TripCreateFormContainer from '../trip_form/trip_create_form_container';
 import TripDestinationEditFormContainer from '../trip_dash/trip_destination_edit_form_container';
 import TripDestinationCreateFormContainer from '../trip_dash/trip_destination_create_form_container';
-import CreateActivityFormContainer from "../activity_form/create_activity_container";
-import ActivityShowContainer from "../activity_form/activity_show_container";
-import ActivityEditContainer from "../activity_form/edit_activity_container";
+import CreateActivityFormContainer from "../activity/create_activity_container";
+import ActivityShowContainer from "../activity/activity_show_container";
+import ActivityEditContainer from "../activity/edit_activity_container";
 
 function Modal({ modal, closeModal }) {
   if (!modal) {

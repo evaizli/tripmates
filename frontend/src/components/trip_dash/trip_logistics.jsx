@@ -12,7 +12,13 @@ const TripLogistics = ({ destinations, openModal }) => {
           <h3>Destinations #{idx + 1}: {destination.location}</h3>
           <div className="flex-row">
             <h4>{formatDate(destination.startDate)} to {formatDate(destination.endDate)}</h4>
-            <img src={editIcon} alt="edit" onClick={() => openModal({type:'editDestination', id:destination._id})} />
+            <img 
+              src={editIcon} 
+              className="edit-icon" 
+              alt="edit" 
+              onClick={() => openModal({type:'editDestination', id:destination._id})} 
+              title="Edit Destination"
+            />
           </div>
         </div>
         <ul className="trip-logistics-destination-details">
@@ -34,12 +40,17 @@ const TripLogistics = ({ destinations, openModal }) => {
   });
 
   return (
-    <div id="logistics" className="trip-logistics">
-      <h2>Trip Logistics</h2>
+    <div id="logistics" className="trip-logistics-main">
+      <div className="trip-itinerary-header">
+        <h1>Logistics</h1>
+        <div onClick={() => openModal({ type: 'createDestination' })} className="trip-add">
+          <img height="20" src={addIcon} alt="add" />&nbsp;Add Destination
+        </div>
+      </div>
       <div className="trip-logistics-destinations">
         {destinationsDisplay}
       </div>
-      <div onClick={() => openModal({type: 'createDestination'})} className="trip-add">
+      <div onClick={() => openModal({ type: 'createDestination' })} className="trip-add">
         <img height="20" src={addIcon} alt="add" />&nbsp;Add Destination
       </div>
     </div>

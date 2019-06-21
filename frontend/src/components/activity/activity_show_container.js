@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import ActivityShow from "../activity_form/activity_show";
+import ActivityShow from "../activity/activity_show";
 import { closeModal, openModal } from "../../actions/modal_actions";
 import { fetchActivity } from "../../actions/activity_actions";
 

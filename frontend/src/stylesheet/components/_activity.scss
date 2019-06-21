@@ -1,0 +1,29 @@
+.activity-add {
+  height: 100%;
+  cursor: pointer;
+}
+
+.activity-show-main {
+  width: 400px;
+  @extend .h4-form;
+}
+
+.activity-show-header {
+  @extend .flex-row;
+  @extend .baseline;
+}
+
+.left-margin {
+  label + label {
+    margin-left: 20px;
+  }
+}
+
+.activity-form-main {
+  width: 450px;
+
+  h4 {
+    margin-top: 5px;
+    margin-bottom: 0px;
+  }
+}

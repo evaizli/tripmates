@@ -37,7 +37,7 @@
 }
 
 
-input[type=text], input[type=password], input[type=number], input[type=date], textarea {
+input[type=text], input[type=password], input[type=number], textarea {
   font-size: 11pt;
   padding: 7px 10px;
   box-sizing: border-box;
@@ -59,6 +59,15 @@ input[type=text], input[type=password], input[type=number], input[type=date], te
   }
 }
 
+input[type=date] {
+  @extend input[type=text];
+  width: 160px;
+}
+input[type=time] {
+  @extend input[type=text];
+  width: 125px;
+}
+
 input[type=radio], input[type=checkbox], input[type=option] {
   cursor: pointer;
   margin: 5px 10px 5px 0px;
@@ -67,11 +76,6 @@ input[type=radio], input[type=checkbox], input[type=option] {
 select {
   cursor: pointer;
   min-width: 100px;
-}
-
-input[type=number], input[type=date] {
-  margin-right: 50px;
-  width: 225px;
 }
 
 input[type=submit], button {
