@@ -11,13 +11,19 @@ const TripsDashItems = ({ tripType, trips, openModal }) => {
   
   const tripButtons = trips.map((trip, idx) => {
     const description = trip.description ? trip.description : ""; 
-    const tripDates = trip.destinations.length > 0 ? `${tripStartDateFinder(trip.destinations)} to ${tripEndDateFinder(trip.destinations)}` : "";
+    const tripDates = trip.destinations.length > 0 ? 
+      <div>
+        <h4>{`${tripStartDateFinder(trip.destinations)}`}</h4>
+        <h4>to</h4>
+        <h4>{`${tripEndDateFinder(trip.destinations)}`}</h4>
+      </div>
+     : "";
 
     return (
       <Link key={idx} to={`/trip/${trip._id}`} className="trips-dash-item" title={ description }>
         <div className="trips-dash-item-info">
           <h3>{trip.tripName}</h3>
-          <h4>{tripDates}</h4>
+          {tripDates}
         </div>
         <div className="trips-dash-item-background">
         </div>
