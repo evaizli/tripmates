@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { upcomingTrips, tripStartDateFinder } from '../../utils/date_sort_api_util';
+import { futureTrips, tripStartDateFinder } from '../../utils/datetime_api_util';
 
 class SideBar extends React.Component {
 
@@ -17,7 +17,11 @@ class SideBar extends React.Component {
   render() {
     const { trips, logout } = this.props;
 
-    const tripsStartDates = upcomingTrips(trips).map(trip => {
+    const allTrips = trips.filter(trip => {
+      return trip.destinations.length > 0;
+    });
+
+    const tripsStartDates = futureTrips(allTrips).map(trip => {
       const tripStartDate = tripStartDateFinder(trip.destinations);
       return { name: trip.tripName, startDate: tripStartDate, tripId: trip._id };
     });
@@ -81,6 +85,8 @@ class SideBar extends React.Component {
             </div>
             <div className="sidebar-menu-item-logout" onClick={logout}>Log Out</div>
           </div>
+        </div>
+        <div className="spacing">
         </div>
       </section>
     );

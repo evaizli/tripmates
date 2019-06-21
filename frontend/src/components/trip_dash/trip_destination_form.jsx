@@ -27,9 +27,9 @@ class TripDestinationForm extends React.Component {
   render() {
     const {  location, startDate, endDate, housing, transportation, notes} = this.state
     return (
-      <div className="trip-destination-form-page" >
+      <div className="form-main" >
         <h2>{this.props.formType}</h2>
-        <form onSubmit={this.handleSubmit} className="trip-form" >
+        <form onSubmit={this.handleSubmit}>
           <label><h4>Location</h4>
             <input
               type="text"
@@ -37,20 +37,22 @@ class TripDestinationForm extends React.Component {
               onChange={this.update("location")}
             />
           </label>
-          <label><h4>Start Date</h4>
-          <input
-            type="date"
-            value={this.prefillDate(startDate)}
-            onChange={this.update("startDate")}
-          />
-          </label>
-          <label><h4>End Date</h4>
-          <input
-            type="date"
-            value={this.prefillDate(endDate)} 
-              onChange={this.update("endDate")}
-          />
-          </label>
+          <div className="flex-row left-margin">
+            <label><h4>Start Date</h4>
+            <input
+              type="date"
+              value={this.prefillDate(startDate)}
+              onChange={this.update("startDate")}
+            />
+            </label>
+            <label><h4>End Date</h4>
+            <input
+              type="date"
+              value={this.prefillDate(endDate)} 
+                onChange={this.update("endDate")}
+            />
+            </label>
+          </div>
           <label><h4>Housing</h4>
             <textarea 
               value={housing}

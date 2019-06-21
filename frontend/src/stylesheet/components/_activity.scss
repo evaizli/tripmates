@@ -1,0 +1,19 @@
+.activity-add {
+  height: 100%;
+  cursor: pointer;
+}
+
+.activity-show-main {
+  width: 400px;
+  @extend .h4-form;
+}
+
+.activity-show-header {
+  @extend .flex-row;
+  @extend .baseline;
+}
+
+.grey {
+  height: 100%;
+  background: $color-light-grey;
+}
