@@ -10,9 +10,7 @@ class ActivtyShow extends React.Component{
             activityDate,
             startTime,
             endTime,
-            // location,
             address,
-            // notes
         } = this.props.activity;
         
         const location = this.props.activity.location === "" ? <>&nbsp;</> : this.props.activity.location;
