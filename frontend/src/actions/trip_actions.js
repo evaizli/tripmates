@@ -24,14 +24,14 @@ export const receiveTrip = (payload) => {
 };
 
 export const removeTrip = (trip) =>{
-    return({
+    return ({
         type: REMOVE_TRIP,
         tripId: trip.data._id
     });
 };
 
 export const receiveTripErrors = errors => {
-    return({
+    return ({
         type: RECEIVE_TRIP_ERRORS,
         errors
     });
@@ -46,7 +46,7 @@ export const clearTripErrors = () => {
 
 export const fetchTrips = () => dispatch => {
 
-    return(
+    return (
         APIUtil.fetchTrips()
             .then(trips => dispatch(receiveTrips(trips)))
             .catch(err => {dispatch(receiveTripErrors(err.response.data))})
