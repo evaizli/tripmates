@@ -23,15 +23,15 @@ const TripLogistics = ({ destinations, openModal }) => {
         </div>
         <ul className="trip-logistics-destination-details">
           <li onClick={() => openModal({ type: 'editDestination', id: destination._id })} title="Edit Housing">
-            <h5>Housing</h5>
+            <h4>Housing</h4>
             <p>{destination.housing}</p>
           </li>
           <li onClick={() => openModal({ type: 'editDestination', id: destination._id })} title="Edit Transportation">
-            <h5>Transportation</h5>
+            <h4>Transportation</h4>
             <p>{destination.transportation}</p>
           </li>
           <li onClick={() => openModal({ type: 'editDestination', id: destination._id })} title="Edit Notes">
-            <h5>Notes</h5>
+            <h4>Notes</h4>
             <p>{destination.notes}</p>
           </li>
         </ul>
