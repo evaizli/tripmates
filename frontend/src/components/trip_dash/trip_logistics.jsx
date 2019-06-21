@@ -9,28 +9,28 @@ const TripLogistics = ({ destinations, openModal }) => {
     return (
       <div key={idx} className="trip-logistics-destination">
         <div className="trip-logistics-destination-header">
-          <h3>Destinations #{idx + 1}: {destination.location}</h3>
-          <div className="flex-row">
-            <h4>{formatDate(destination.startDate)} to {formatDate(destination.endDate)}</h4>
+          <div className="flex-row baseline">
+            <h3>Destinations #{idx + 1}: {destination.location}&nbsp;</h3>
             <img 
               src={editIcon} 
               className="edit-icon" 
               alt="edit" 
               onClick={() => openModal({type:'editDestination', id:destination._id})} 
               title="Edit Destination"
-            />
+              />
           </div>
+          <h4>{formatDate(destination.startDate)} to {formatDate(destination.endDate)}</h4>
         </div>
         <ul className="trip-logistics-destination-details">
-          <li className="flex-col">
+          <li onClick={() => openModal({ type: 'editDestination', id: destination._id })} title="Edit Housing">
             <h5>Housing</h5>
             <p>{destination.housing}</p>
           </li>
-          <li className="flex-col trip-logistics-destination-details-center">
+          <li onClick={() => openModal({ type: 'editDestination', id: destination._id })} title="Edit Transportation">
             <h5>Transportation</h5>
             <p>{destination.transportation}</p>
           </li>
-          <li className="flex-col">
+          <li onClick={() => openModal({ type: 'editDestination', id: destination._id })} title="Edit Notes">
             <h5>Notes</h5>
             <p>{destination.notes}</p>
           </li>

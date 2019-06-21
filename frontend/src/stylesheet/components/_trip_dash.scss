@@ -52,11 +52,15 @@
   p {
     margin-top: 0;
   }
-}
 
-.trip-logistics-destination-details-center {
-  margin-left: 10px;
-  margin-right: 10px;
+  li {
+    @extend .flex-col;
+    cursor: pointer;
+  }
+
+  li + li {
+    margin-left: 10px;
+  }
 }
 
 .trip-add {
@@ -147,7 +151,7 @@
 
 
 .edit-icon {
-  height: 20px;
+  height: 15px;
   cursor: pointer;
   
   &:hover {
