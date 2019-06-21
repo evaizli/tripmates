@@ -39,20 +39,22 @@ const TripLogistics = ({ destinations, openModal }) => {
     )
   });
 
+  const addDestinationButton = (
+    <div onClick={() => openModal({ type: 'createDestination' })} className="trip-add">
+      <img height="20" src={addIcon} alt="add" />&nbsp;Add Destination
+    </div>
+  )
+
   return (
     <div id="logistics" className="trip-logistics-main">
       <div className="trip-itinerary-header">
         <h1>Logistics</h1>
-        <div onClick={() => openModal({ type: 'createDestination' })} className="trip-add">
-          <img height="20" src={addIcon} alt="add" />&nbsp;Add Destination
-        </div>
+        { addDestinationButton }
       </div>
       <div className="trip-logistics-destinations">
         {destinationsDisplay}
       </div>
-      <div onClick={() => openModal({ type: 'createDestination' })} className="trip-add">
-        <img height="20" src={addIcon} alt="add" />&nbsp;Add Destination
-      </div>
+      { addDestinationButton }
     </div>
   )
 
