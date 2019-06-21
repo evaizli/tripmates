@@ -30,6 +30,13 @@ class ActivtyShow extends React.Component{
             location,
             notes, 
             startTime} = this.props.activity;
+
+
+        const mapLink = address => {
+            const formatAddress = address.split(" ").join("+"); 
+            return <a target="_blank" href={`https://www.google.com/maps/place/${formatAddress}/`}>{address}</a>;
+        };  
+
         return(
             <div className="activity-show-main">
                 <div className="activity-show-header">
@@ -62,7 +69,7 @@ class ActivtyShow extends React.Component{
                 </label>
                 <label> 
                     <h4>Address</h4>
-                    {address}
+                    {mapLink(address)}
                 </label>
                 <label> 
                     <h4>Notes</h4>
