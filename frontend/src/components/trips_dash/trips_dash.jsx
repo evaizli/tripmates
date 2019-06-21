@@ -41,17 +41,12 @@ class TripsDash extends React.Component {
       <TripsDashItems tripType="Past" trips={pastTrips(allTrips)} openModal={this.handleOpenModal} /> :
       "";
 
-    const tentativeTripsItems = (tentativeTrips.length > 0) ? 
-      <TripsDashItems tripType="Tentative" trips={tentativeTrips} openModal={this.handleOpenModal} /> :
-      "";
-
     return (
       <section className="trips-dash-main">
         <SidebarContainer />
         <div className="trips-dash-content">
           { inProgressTripsItems }
-          <TripsDashItems tripType="Future" trips={futureTrips(allTrips)} openModal={this.handleOpenModal}/>
-          { tentativeTripsItems }
+          <TripsDashItems tripType="Future" trips={futureTrips(allTrips).concat(tentativeTrips)} openModal={this.handleOpenModal}/>
           { pastTripsItems }
         </div>
       </section>
