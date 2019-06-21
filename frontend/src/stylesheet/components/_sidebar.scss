@@ -3,7 +3,7 @@
   background: $color-primary-blue;
   box-sizing: border-box;
   width: 225px;
-  height: calc(100% + 14px);
+  height: 100vh;
   display: flex;
   align-items: stretch;
   overflow-y: auto;
@@ -50,6 +50,7 @@
 .sidebar-menu-item-logout {
   @extend .sidebar-menu-item;
   height: 30px;
+  margin-bottom: 14px;
 }
 
 .sidebar-menu-item-countdown:hover {
