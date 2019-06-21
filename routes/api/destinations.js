@@ -95,6 +95,7 @@ router.patch("/:tripId/:destinationId/update", passport.authenticate("jwt", { se
       })
       .catch(err => console.log("error in updating destination ", err));
   });
+  
 router.delete("/:tripId/:destinationId", passport.authenticate("jwt", { session: false }),
   (req, res) => {
     User.findById(req.user.id)
