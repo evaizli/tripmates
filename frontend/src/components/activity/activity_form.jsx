@@ -41,7 +41,7 @@ class ActivityForm extends React.Component {
     } = this.state;
     
     return (
-      <div className="activity-form-main">
+      <div className="form-main">
         <h2>{this.props.formType}</h2>
         <form onSubmit={this.handleSubmit}>
           <label><h4>Activity Name</h4>

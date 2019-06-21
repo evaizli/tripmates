@@ -34,7 +34,7 @@ class ActivtyShow extends React.Component{
 
         const mapLink = address => {
             const formatAddress = address.split(" ").join("+"); 
-            return <a target="_blank" href={`https://www.google.com/maps/search/?api=1&query=${formatAddress}/`}>{address}</a>;
+            return <a target="_blank" href={`https://www.google.com/maps/search/?api=1&query=${formatAddress}`}>{address}</a>;
         };  
 
         return(

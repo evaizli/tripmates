@@ -13,17 +13,7 @@
   @extend .baseline;
 }
 
-.left-margin {
-  label + label {
-    margin-left: 20px;
-  }
-}
-
-.activity-form-main {
-  width: 450px;
-
-  h4 {
-    margin-top: 5px;
-    margin-bottom: 0px;
-  }
+.grey {
+  height: 100%;
+  background: $color-light-grey;
 }
