@@ -48,7 +48,7 @@ const TripLogistics = ({ destinations, openModal }) => {
   return (
     <div id="logistics" className="trip-logistics-main">
       <div className="trip-itinerary-header">
-        <h1>Logistics</h1>
+        <h2>Logistics</h2>
         { addDestinationButton }
       </div>
       <div className="trip-logistics-destinations">

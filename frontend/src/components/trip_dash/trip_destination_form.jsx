@@ -9,11 +9,9 @@ class TripDestinationForm extends React.Component {
     this.update = this.update.bind(this);
   }
 
-
   update(field) {
     return e => this.setState( {[field]: e.currentTarget.value});
   }
-
 
   handleSubmit(e){
     e.preventDefault();
@@ -25,7 +23,9 @@ class TripDestinationForm extends React.Component {
   }
 
   render() {
-    const {  location, startDate, endDate, housing, transportation, notes} = this.state
+    const { location, startDate, endDate, housing, transportation, notes } = this.state;
+    const deleteButton = this.props.formType === "Edit Destination" ? <div className="delete">Delete Destination</div> : "";
+
     return (
       <div className="form-main" >
         <h2>{this.props.formType}</h2>
@@ -75,6 +75,7 @@ class TripDestinationForm extends React.Component {
           <input type="submit" value={this.props.formType} />
 
         </form>
+        { deleteButton }
       </div>
     )
   }

@@ -20,7 +20,7 @@
 }
 
 .trip-logistics-main {
-  background: lightgray;
+  background: $color-primary-blue;
   border-radius: 5px;
   padding: 20px;
   width: 100%;
@@ -93,6 +93,7 @@
     width: 13%; 
     margin-top: 15px;
     margin-bottom: 5px;
+    font-size: 15px;
   }
   
   h4 + h4 {
@@ -130,6 +131,7 @@
     text-overflow: ellipsis;
     margin-top: 0px;
     margin-bottom: 0px;
+    font-size: 14px;
   }
 
   h4 + h4 {
