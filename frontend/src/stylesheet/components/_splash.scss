@@ -38,4 +38,8 @@
     margin: 0;
     color: white;
   }
+
+  button + button {
+    margin-left: 5px;
+  }
 }
