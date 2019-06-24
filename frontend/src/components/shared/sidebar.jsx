@@ -8,8 +8,7 @@ class SideBar extends React.Component {
     this.props.fetchTrips();
   }
 
-  scrollTo (e, id) {
-    e.preventDefault();
+  scrollTo (id) {
     const element = document.getElementById(id);
     element.scrollIntoView({ behavior: "smooth" });
   }
@@ -58,14 +57,11 @@ class SideBar extends React.Component {
     
     const tripNav = () => {
       if (this.props.pageType === "Trip Dash") {
+
         return (
           <>
-            <a href="#logistics" onClick={e => this.scrollTo(e, "logistics")}>
-              <div className="sidebar-menu-item">Logitsics</div>
-            </a>
-            <a href="#itinerary" onClick={e => this.scrollTo(e, "itinerary")}>
-              <div className="sidebar-menu-item">Itinerary</div>
-            </a>
+            <div className="sidebar-menu-item" onClick={() => this.scrollTo("logistics")}>Logitsics</div>
+            <div className="sidebar-menu-item" onClick={() => this.scrollTo("itinerary")}>Itinerary</div>
           </>
         )
       }
