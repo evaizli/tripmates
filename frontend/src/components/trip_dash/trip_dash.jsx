@@ -31,7 +31,7 @@ class TripDash extends React.Component {
 
     return (
       <section className="trip-dash-main">
-        <SidebarContainer pageType="Trip Dash" url={this.props.match.url}/>
+        <SidebarContainer pageType="Trip Dash" destinationsCount={destinations.length}/>
         <div className="trip-dash-content">
           <div className="trip-dash-header">
             <h1>{trip.tripName}</h1>
