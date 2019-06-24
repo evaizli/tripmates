@@ -60,8 +60,14 @@ class SideBar extends React.Component {
 
         return (
           <>
-            <div className="sidebar-menu-item" onClick={() => this.scrollTo("logistics")}>Logitsics</div>
-            <div className="sidebar-menu-item" onClick={() => this.scrollTo("itinerary")}>Itinerary</div>
+            <div 
+              className="sidebar-menu-item" 
+              onClick={() => this.scrollTo("logistics")}
+            >Logitsics</div>
+            <div 
+              className="sidebar-menu-item" 
+              onClick={() => this.scrollTo("itinerary")}
+            >Itinerary</div>
           </>
         )
       }
