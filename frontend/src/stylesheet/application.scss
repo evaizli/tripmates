@@ -1,16 +1,15 @@
-@import "base/reset.scss";
-@import "base/colors.scss";
-@import "base/layout.scss";
-@import "base/fonts.scss";
-@import "base/form.scss";
+@import "base/reset";
+@import "base/colors";
+@import "base/layout";
+@import "base/fonts";
+@import "base/form";
 
-@import "components/modal.scss";
-@import "components/header.scss";
-@import "components/trips_dash.scss";
-@import "components/sidebar.scss";
+@import "components/_modal";
+@import "components/_trips_dash";
+@import "components/_sidebar";
 @import "components/_trip_form";
 @import "components/_trip_dash";
 @import "components/_splash";
-@import "components/session_forms";
+@import "components/_session_forms";
 @import "components/_about_us";
-@import "components/activity";
+@import "components/_activity";

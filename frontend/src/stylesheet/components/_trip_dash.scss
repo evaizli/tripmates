@@ -28,34 +28,27 @@
   margin-bottom: 20px;
 }
 
-.trip-logistics-destination-header {
-  @extend .flex-col;
-  @extend .baseline;
-
-  > * {
-    margin-right: 20px;
-  }
-}
-
 .trip-logistics-destination-details {
   @extend .flex-row;
   justify-content: space-between;
-
-  > * {
+  
+  p {
+    margin: 0;
+  }
+  
+  h4 {
+    margin-bottom: 5px;
+  }
+  
+  li {
+    @extend .flex-col;
+    cursor: pointer;
+    min-height: 50px;
     width: 40%;
     background: white;
     padding: 10px;
     border-radius: 3px;
     margin-bottom: 20px;
-  }
-
-  p {
-    margin-top: 0;
-  }
-
-  li {
-    @extend .flex-col;
-    cursor: pointer;
   }
 
   li + li {

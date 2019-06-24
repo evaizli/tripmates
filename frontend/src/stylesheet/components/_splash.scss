@@ -17,3 +17,29 @@
   color: white;
   text-shadow: #000 10px 0 20px;
 }
+
+.header-main {
+  background: $color-primary-blue;
+
+  button {
+    width: 100px;
+    margin: 0;
+    border-radius: 3px;
+  }
+}
+
+.header-container {
+  @extend .flex-row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+
+  h1 {
+    margin: 0;
+    color: white;
+  }
+
+  button + button {
+    margin-left: 5px;
+  }
+}

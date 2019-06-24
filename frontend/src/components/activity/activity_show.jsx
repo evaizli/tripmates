@@ -6,18 +6,23 @@ class ActivtyShow extends React.Component{
 
     render(){
         const { 
-            activityDate,
             activityName,
-            address,
+            activityDate,
+            startTime,
             endTime,
-            location,
-            notes, 
-            startTime} = this.props.activity;
-
+            address,
+        } = this.props.activity;
+        
+        const location = this.props.activity.location === "" ? <>&nbsp;</> : this.props.activity.location;
+        const notes = this.props.activity.notes === "" ? <>&nbsp;</> : this.props.activity.notes;
 
         const mapLink = address => {
-            const formatAddress = address.split(" ").join("+"); 
-            return <a target="_blank" rel="noopener noreferrer" href={`https://www.google.com/maps/search/?api=1&query=${formatAddress}`}>{address}</a>;
+            if (address === "") {
+                return <>&nbsp;</>
+            } else {
+                const formatAddress = address.split(" ").join("+"); 
+                return <a target="_blank" rel="noopener noreferrer" href={`https://www.google.com/maps/search/?api=1&query=${formatAddress}`}>{address}</a>;
+            }
         };  
 
         return(
