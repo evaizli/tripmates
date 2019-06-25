@@ -15,7 +15,6 @@
 }
 .sidebar-main *:hover {
   text-decoration: none;
-  color: white;
 }
 
 .sidebar-menu {
@@ -51,6 +50,7 @@
   @extend .sidebar-menu-item;
   height: 30px;
   margin-bottom: 14px;
+  margin-bottom: 0px;
 }
 
 .sidebar-menu-item-countdown:hover {
