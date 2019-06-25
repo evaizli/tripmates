@@ -97,8 +97,9 @@ class TripItinerary extends React.Component {
       <section id="itinerary" className="trip-itinerary-main">
         <div className="trip-itinerary-header">
           <h2>Itinerary</h2>
-          <div onClick={() => this.props.openModal({type: 'createActivity'})} className="trip-add">
-            <img height="20" src={addIcon} alt="add" />&nbsp;Add Activity
+          <div onClick={() => this.props.openModal({type: 'createActivity'})} className="add-button">
+            <img src={addIcon} alt="add" />
+            &nbsp;Add Activity
           </div>
         </div>
         <div className="trip-itinerary-week">

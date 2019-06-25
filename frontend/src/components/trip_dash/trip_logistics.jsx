@@ -6,6 +6,8 @@ import { formatDate } from '../../utils/datetime_api_util';
 const TripLogistics = ({ destinations, openModal }) => {
 
   const destinationsDisplay = destinations.map((destination, idx) => {
+    const modalAttr = { type: 'editDestination', id: destination._id };
+    
     return (
       <div key={idx} className="trip-logistics-destination">
         <div className="trip-logistics-destination-header">
@@ -15,22 +17,22 @@ const TripLogistics = ({ destinations, openModal }) => {
               src={editIcon} 
               className="edit-icon" 
               alt="edit" 
-              onClick={() => openModal({type:'editDestination', id:destination._id})} 
+              onClick={() => openModal(modalAttr)} 
               title="Edit Destination"
               />
           </div>
           <h4>{formatDate(destination.startDate)} to {formatDate(destination.endDate)}</h4>
         </div>
         <ul className="trip-logistics-destination-details">
-          <li onClick={() => openModal({ type: 'editDestination', id: destination._id })} title="Edit Housing">
+          <li onClick={() => openModal(modalAttr)} title="Edit Housing">
             <h4>Housing</h4>
             <p>{destination.housing}</p>
           </li>
-          <li onClick={() => openModal({ type: 'editDestination', id: destination._id })} title="Edit Transportation">
+          <li onClick={() => openModal(modalAttr)} title="Edit Transportation">
             <h4>Transportation</h4>
             <p>{destination.transportation}</p>
           </li>
-          <li onClick={() => openModal({ type: 'editDestination', id: destination._id })} title="Edit Notes">
+          <li onClick={() => openModal(modalAttr)} title="Edit Notes">
             <h4>Notes</h4>
             <p>{destination.notes}</p>
           </li>
@@ -40,8 +42,9 @@ const TripLogistics = ({ destinations, openModal }) => {
   });
 
   const addDestinationButton = (
-    <div onClick={() => openModal({ type: 'createDestination' })} className="trip-add">
-      <img height="20" src={addIcon} alt="add" />&nbsp;Add Destination
+    <div onClick={() => openModal({ type: 'createDestination' })} className="add-button">
+      <img src={addIcon} alt="add" />
+      &nbsp;Add Destination
     </div>
   )
 
