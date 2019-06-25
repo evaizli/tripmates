@@ -37,7 +37,7 @@ class ActivtyShow extends React.Component{
                         title="Edit Activity"
                     />
                 </div>
-                <div className="flex-row left-margin">
+                <div className="activity-show-datetime">
                     <label> 
                         <h4>Activity Date</h4>
                         {formatDate(activityDate)}
