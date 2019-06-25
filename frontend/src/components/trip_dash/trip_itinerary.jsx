@@ -50,8 +50,8 @@ class TripItinerary extends React.Component {
                 onClick={() => this.props.openModal({ type: "activityShow", id: activity._id })} 
                 title={activity.activityName}
               >
-                <h4>{time}</h4>
-                <h4>{activity.activityName}</h4>
+                <h5>{time}</h5>
+                <h5>{activity.activityName}</h5>
               </div>
             )
           })

@@ -129,16 +129,15 @@
   @extend .flex-col;
   width: 100%;
   
-  h4 {
+  h5 {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     margin-top: 0px;
     margin-bottom: 0px;
-    font-size: 14px;
   }
 
-  h4 + h4 {
+  h5 + h5 {
     margin-bottom: 10px;
   }
 
