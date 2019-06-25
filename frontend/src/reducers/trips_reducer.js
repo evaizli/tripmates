@@ -11,7 +11,6 @@ const tripsReducer = (state = [], action ) => {
         case RECEIVE_TRIPS:
             return action.trips;
         case RECEIVE_TRIP:
-            
             if (state.length === 0) {
                 return [action.trip];
             } else {
