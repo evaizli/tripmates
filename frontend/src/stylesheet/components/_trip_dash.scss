@@ -20,7 +20,7 @@
 }
 
 .trip-logistics-main {
-  background: lightgray;
+  background: $color-primary-blue;
   border-radius: 5px;
   padding: 20px;
   width: 100%;
@@ -56,16 +56,20 @@
   }
 }
 
-.trip-add {
+.add-button {
   @extend .flex-row;
   align-items: center;
   justify-content: center;
   background: white;
   padding: 5px 10px;
   height: 100%;
-  max-width: 150px;
+  max-width: 137px;
   border-radius: 3px;
   cursor: pointer;
+
+  img {
+    height: 15px;
+  }
 
   &:hover {
     opacity: .60;
@@ -93,6 +97,7 @@
     width: 13%; 
     margin-top: 15px;
     margin-bottom: 5px;
+    font-size: 15px;
   }
   
   h4 + h4 {
@@ -124,7 +129,7 @@
   @extend .flex-col;
   width: 100%;
   
-  h4 {
+  h5 {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -132,7 +137,7 @@
     margin-bottom: 0px;
   }
 
-  h4 + h4 {
+  h5 + h5 {
     margin-bottom: 10px;
   }
 
@@ -148,6 +153,6 @@
   cursor: pointer;
   
   &:hover {
-    opacity: .60;
+    opacity: .5;
   }
 }

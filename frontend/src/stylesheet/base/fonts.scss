@@ -42,3 +42,15 @@ h5 {
   color: red;
   margin-bottom: 5px;
 }
+
+.delete {
+  display: inline-block;
+  color: red;
+  cursor: pointer;
+  font-size: 12px;
+  margin-top: 5px;
+
+  &:hover {
+    opacity: .5;
+  }
+}

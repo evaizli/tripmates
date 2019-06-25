@@ -10,9 +10,9 @@ const mapStateToProps = state => {
     state.entities.activities.forEach(a => {
         if (a._id === activityId){
             activity = a;
-            activity["tripId"] = tripId
+            activity.tripId = tripId;
         }
-    })
+    });
     return {
         activity,
         formType: "Edit Activity"

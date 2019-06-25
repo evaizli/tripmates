@@ -43,7 +43,7 @@ class TripsDash extends React.Component {
 
     return (
       <section className="trips-dash-main">
-        <SidebarContainer />
+        <SidebarContainer pageType="Trips Dash"/>
         <div className="trips-dash-content">
           { inProgressTripsItems }
           <TripsDashItems tripType="Future" trips={futureTrips(allTrips).concat(tentativeTrips)} openModal={this.handleOpenModal}/>

@@ -25,7 +25,7 @@ class SideBar extends React.Component {
       return { name: trip.tripName, startDate: tripStartDate, tripId: trip._id };
     });
 
-    const tripCountdown = tripsStartDates.map((trip, idx) => {
+    const tripsCountdown = tripsStartDates.map((trip, idx) => {
       const dateNow = new Date().getTime();
       const startDate = new Date(trip.startDate).getTime();
       const oneDay = 1000 * 60 * 60 * 24;
@@ -42,13 +42,13 @@ class SideBar extends React.Component {
       )
     })
 
-    const tripCountdownItem = () => {
+    const tripsCountdownItem = () => {
       if (tripsStartDates.length > 0) {
         return(
           <>
-            <div className="sidebar-menu-item sidebar-menu-item-countdown">Trip Countdown</div>
+            <div className="sidebar-menu-item sidebar-menu-item-countdown">Trips Countdown</div>
             <div className="flex-col">
-              { tripCountdown } 
+              { tripsCountdown } 
             </div>
           </>
         );
@@ -56,13 +56,27 @@ class SideBar extends React.Component {
     }
     
     const tripNav = () => {
-      if (this.props.pageType === "Trip Dash") {
-
+      if (this.props.pageType === "Trip Dash" && this.props.destinationsCount > 0) {
         return (
           <>
-            <div className="sidebar-menu-item" onClick={() => this.scrollTo("logistics")}>Logitsics</div>
-            <div className="sidebar-menu-item" onClick={() => this.scrollTo("itinerary")}>Itinerary</div>
+            <Link to='/dashboard'>
+              <div className="sidebar-menu-item">Trips Dashboard</div>
+            </Link>
+            <div 
+              className="sidebar-menu-item" 
+              onClick={() => this.scrollTo("logistics")}
+            >Logitsics</div>
+            <div 
+              className="sidebar-menu-item" 
+              onClick={() => this.scrollTo("itinerary")}
+            >Itinerary</div>
           </>
+        )
+      } else if (this.props.pageType === "Trip Dash") {
+        return (          
+          <Link to='/dashboard'>
+            <div className="sidebar-menu-item">Trips Dashboard</div>
+          </Link>
         )
       }
     }
@@ -73,11 +87,8 @@ class SideBar extends React.Component {
           <h1 className="logo">TripMates</h1>
           <div className="sidebar-menu-items">
             <div>
-              <Link to='/dashboard'>
-                <div className="sidebar-menu-item">Trips Dashboard</div>
-              </Link>
               { tripNav() }
-              { tripCountdownItem() }
+              { tripsCountdownItem() }
             </div>
             <div className="sidebar-menu-item-logout" onClick={logout}>Log Out</div>
           </div>

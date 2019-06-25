@@ -30,6 +30,8 @@ class ActivityForm extends React.Component {
       startTime,
       endTime 
     } = this.state;
+
+    const deleteButton = this.props.formType === "Edit Activity" ? <div className="delete">Delete Activity</div> : "";
     
     return (
       <div className="form-main">
@@ -92,6 +94,7 @@ class ActivityForm extends React.Component {
           </label>
           <input type="submit" value={this.props.formType}/>
         </form>
+        {deleteButton}
       </div>
     );
   }
