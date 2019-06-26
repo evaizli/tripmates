@@ -25,7 +25,7 @@ class TripsDash extends React.Component {
     const compareName = (a, b) => (a.tripName < b.tripName ? -1 : 1);
     return tripsDup.sort(compareName);
   }
-  
+
   sortTrips(trips) {
     const tripsDup = Object.assign([], trips);
     const compareTrip = (a, b) => (tripStartDateFinder(a.destinations) < tripStartDateFinder(b.destinations) ? -1 : 1);
@@ -37,9 +37,9 @@ class TripsDash extends React.Component {
     if (!trips) return null;
     if (trips.length === 0) return null;
 
-    const tentativeTrips = this.alphabetizeTrips(trips).filter(trip => {
+    const tentativeTrips = this.alphabetizeTrips(trips.filter(trip => {
       return trip.destinations.length === 0;
-    });
+    }));
 
     const allTrips = this.sortTrips(trips.filter(trip => {
       return trip.destinations.length > 0;
