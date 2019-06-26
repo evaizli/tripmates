@@ -1,7 +1,7 @@
 import React from 'react';
 import SidebarContainer from '../shared/sidebar_container';
 import TripsDashItems from './trips_dash_items';
-import { pastTrips, futureTrips, inProgressTrips } from '../../utils/datetime_api_util';
+import { pastTrips, futureTrips, inProgressTrips, tripStartDateFinder } from '../../utils/datetime_api_util';
 
 class TripsDash extends React.Component {
   constructor(props) {
@@ -19,19 +19,31 @@ class TripsDash extends React.Component {
     e.preventDefault();
     this.props.openModal({type: 'createTrip'});
   }
+
+  alphabetizeTrips(trips) {
+    const tripsDup = Object.assign([], trips);
+    const compareName = (a, b) => (a.tripName < b.tripName ? -1 : 1);
+    return tripsDup.sort(compareName);
+  }
+  
+  sortTrips(trips) {
+    const tripsDup = Object.assign([], trips);
+    const compareTrip = (a, b) => (tripStartDateFinder(a.destinations) < tripStartDateFinder(b.destinations) ? -1 : 1);
+    return tripsDup.sort(compareTrip);
+  }
   
   render() {
     const { trips } = this.props;
     if (!trips) return null;
     if (trips.length === 0) return null;
 
-    const tentativeTrips = trips.filter(trip => {
+    const tentativeTrips = this.alphabetizeTrips(trips).filter(trip => {
       return trip.destinations.length === 0;
     });
 
-    const allTrips = trips.filter(trip => {
+    const allTrips = this.sortTrips(trips.filter(trip => {
       return trip.destinations.length > 0;
-    });
+    }));
 
     const inProgressTripsItems = (inProgressTrips(allTrips).length > 0) ? 
       <TripsDashItems tripType="in Progress" trips={inProgressTrips(allTrips)} openModal={this.handleOpenModal} /> :

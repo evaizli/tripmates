@@ -35,25 +35,26 @@
   box-sizing: border-box;
   justify-content: center;
   align-items: center;
-  color: black;
-  background: $color-primary-blue;
   color: white;
+  background: $color-primary-blue;
   box-shadow: 3px 3px 5px $color-dark-grey;
   text-shadow: 1px 1px 2px $color-dark-grey;
+  transition: 0.3s;
+
+  &:hover {
+    color: white;
+    opacity: .5;
+    text-decoration: none;
+  }
 }
 
 .trips-dash-item-info {
   padding: 10px;
   text-align: center;
-
+  
   h4 {
     margin: 5px 0 0 0;
   }
-}
-
-.trips-dash-item:hover, .trips-dash-item-add:hover {
-  opacity: .5;
-  text-decoration: none;
 }
 
 .trips-dash-item-add {
@@ -68,8 +69,6 @@
     height: 65px;
   }
 }
-
-
 
 // .sidenav {
 //   height: 100%;

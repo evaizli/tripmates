@@ -39,6 +39,7 @@
   display: flex;
   align-items: center;
   text-shadow: 0px 1px 1px $color-dark-grey;
+  transition: 0.3s;
   
   &:hover {
     cursor: pointer;
