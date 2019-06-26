@@ -1,6 +1,5 @@
 .session-page {
-  display: flex;
-  flex-direction: column;
+  @extend .flex-col;
   align-items: center;
   box-sizing: border-box;
   width: 300px;
@@ -15,17 +14,13 @@
     width: 260px;
     box-sizing: border-box;
   }
+
+  input {
+    margin: 7.5px 0px;
+  }
 }
 
 .session-form {
-  display: flex;
-  flex-direction: column;
+  @extend .flex-col;
   align-items: center;
-}
-
-.session-form-other-options {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content: space-evenly;
 }
