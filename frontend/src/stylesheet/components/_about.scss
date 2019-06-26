@@ -1,0 +1,28 @@
+.about-container {
+  // background: url('../assets/images/trang_an_jeff_dam.JPG') no-repeat center center;
+  // background-size: contain;
+}
+
+.teammate {
+  display: flex;
+  // justify-content: space-between;
+}
+
+.content {
+  flex: 1;
+}
+
+.social {
+  flex: 1;
+  display: flex;
+  font-size: 30px;
+  background: black;
+  opacity: 0.4;
+  height: 100px;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.social a {
+  margin-left: 30px;
+}
