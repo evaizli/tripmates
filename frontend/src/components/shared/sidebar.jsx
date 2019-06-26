@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { futureTrips, tripStartDateFinder } from '../../utils/datetime_api_util';
+import logoutIcon from '../../assets/images/logout.svg';
 
 class SideBar extends React.Component {
 
@@ -90,10 +91,11 @@ class SideBar extends React.Component {
               { tripNav() }
               { tripsCountdownItem() }
             </div>
-            <div className="sidebar-menu-item-logout" onClick={logout}>Log Out</div>
+            <div className="sidebar-menu-item-logout" onClick={logout}>
+              <img className="logout-icon" src={logoutIcon} alt=""/>
+              Log Out
+            </div>
           </div>
-        </div>
-        <div className="spacing">
         </div>
       </section>
     );
