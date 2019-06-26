@@ -48,6 +48,8 @@ const TripLogistics = ({ destinations, openModal }) => {
     </div>
   )
 
+  const secondAddDestinationButton = destinations.length > 0 ? addDestinationButton : "";
+
   return (
     <div id="logistics" className="trip-logistics-main">
       <div className="trip-itinerary-header">
@@ -57,7 +59,7 @@ const TripLogistics = ({ destinations, openModal }) => {
       <div className="trip-logistics-destinations">
         {destinationsDisplay}
       </div>
-      { addDestinationButton }
+      { secondAddDestinationButton }
     </div>
   )
 
