@@ -47,6 +47,7 @@ router.post("/:tripId/", passport.authenticate("jwt", { session: false }),
       .then(user => {
         const destination = req.body;
         const trip = user.trips.id(req.params.tripId);
+        const tripId = req.params.tripId;
         
         if (!trip) {
           return res.status(400).json("there is no trip of this name");
@@ -57,7 +58,7 @@ router.post("/:tripId/", passport.authenticate("jwt", { session: false }),
             return res.status(400).json(errors);
           }
         }
-
+        destination["tripId"] = tripId;
         trip.destinations.push(destination);
         user.save()
           .then(() => {
