@@ -11,7 +11,6 @@ const destinationsReducer = (state = [], action) => {
   let newState;
   switch (action.type) {
     case RECEIVE_DESTINATIONS:
-      debugger
       return state.action
     case RECEIVE_DESTINATION:
       newState = Object.assign([], state);

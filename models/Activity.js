@@ -48,6 +48,9 @@ const ActivitySchema = new Schema({
     date: {
         type: Date,
         default: Date.now
+    },
+    tripId: {
+        type: Schema.Types.ObjectId, ref: 'trips',
     }
 });
 

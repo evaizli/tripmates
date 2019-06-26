@@ -24,7 +24,7 @@ const activitiesReducer = (state = [], action) =>{
                     idx = i;
                   }
                 });
-                if (idx) {
+                if (idx !== null) {
                     newState[idx] = action.activity;
                 } else {
                     newState.push(action.activity);
