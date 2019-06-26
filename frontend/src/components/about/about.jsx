@@ -25,7 +25,7 @@ class About extends React.Component {
             <div className="content">
               <h4>Jeffrey Dam</h4>
               <h5>Front-End Developer</h5>
-              <p>short description about jeff dam</p>
+              <h6>short description about jeff dam</h6>
             </div>
             <div className="social">
               <a href="https://www.linkedin.com/in/jeffdam/">
@@ -44,7 +44,7 @@ class About extends React.Component {
             <div className="content">
               <h4>Eva Pan</h4>
               <h5>Full-Stack Developer</h5>
-              <p>short description about eva pan</p>
+              <h6>short description about eva pan</h6>
             </div>
             <div className="social">
               <a href="https://www.linkedin.com/in/evapan2000/">
@@ -63,7 +63,7 @@ class About extends React.Component {
             <div className="content">
               <h4>Andrew Mac</h4>
               <h5>Back-End Develpoer</h5>
-              <p>short description about andrew mac</p>
+              <h6>short description about andrew mac</h6>
             </div>
             <div className="social">
               <a href="https://www.linkedin.com/in/macandrew6/">
