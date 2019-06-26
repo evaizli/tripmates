@@ -38,6 +38,10 @@
   color: black;
   background: $color-primary-blue;
   color: white;
+
+  box-shadow: 3px 3px 5px grey;
+  text-shadow: 1px 1px 2px $color-dark-grey;
+ 
 }
 
 .trips-dash-item-info {

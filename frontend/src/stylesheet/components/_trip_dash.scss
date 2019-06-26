@@ -21,11 +21,12 @@
 
 .trip-logistics-main {
   background: $color-primary-blue;
-  border-radius: 5px;
+  border-radius: 3px;
   padding: 20px;
   width: 100%;
   margin-right: 20px;
   margin-bottom: 20px;
+  box-shadow: 1px 1px 5px $color-dark-grey;
 }
 
 .trip-logistics-destination-details {
@@ -49,30 +50,11 @@
     padding: 10px;
     border-radius: 3px;
     margin-bottom: 20px;
+    box-shadow: 1px 1px 2px $color-dark-grey;
   }
 
   li + li {
     margin-left: 10px;
-  }
-}
-
-.add-button {
-  @extend .flex-row;
-  align-items: center;
-  justify-content: center;
-  background: white;
-  padding: 5px 10px;
-  height: 100%;
-  max-width: 137px;
-  border-radius: 3px;
-  cursor: pointer;
-
-  img {
-    height: 15px;
-  }
-
-  &:hover {
-    opacity: .60;
   }
 }
 
@@ -91,7 +73,7 @@
   @extend .flex-row;
   justify-content: space-between;
   align-items: center;
-
+  
   h4 {
     min-width: 100px;
     width: 13%; 
@@ -108,7 +90,7 @@
 .trip-itinerary-activity-lists {
   @extend .flex-row;
   justify-content: space-between;
-
+  
   > div + div {
     margin-left: 5px;
   }
@@ -123,6 +105,7 @@
   padding: 5px;
   box-sizing: border-box;
   border-radius: 3px;
+  box-shadow: 1px 1px 2px $color-dark-grey;
 }
 
 .trip-activity {
@@ -136,11 +119,11 @@
     margin-top: 0px;
     margin-bottom: 0px;
   }
-
+  
   h5 + h5 {
     margin-bottom: 10px;
   }
-
+  
   &:hover {
     color: $color-grey;
     cursor: pointer;
@@ -154,5 +137,26 @@
   
   &:hover {
     opacity: .5;
+  }
+}
+
+.add-button {
+  @extend .flex-row;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  padding: 5px 10px;
+  height: 100%;
+  max-width: 137px;
+  border-radius: 3px;
+  cursor: pointer;
+  box-shadow: 1px 1px 2px $color-dark-grey;
+
+  img {
+    height: 15px;
+  }
+
+  &:hover {
+    opacity: .60;
   }
 }
