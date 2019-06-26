@@ -3,49 +3,79 @@ import React from 'react'
 class About extends React.Component {
   render() {
     return (
-      <div>
+      <div className="about-container">
         <h2>About</h2>
 
         <h3>Trip Mates Mission</h3>
 
-        <p>Some words about our project, it's purpose and design goals</p>
+        <p>
+          TripMates is a web app that allows users to easily collaborate on
+          planning trips with a group of people. Users can go to one place
+          for all of their trip logistics, write notes and reviews while on
+          a trip, and share their travel recommendations and moments
+          afterwards.
+        </p>
 
         <h3>The Team</h3>
 
-        <section className="teammate-1">
-          <h4>Jeffrey Dam</h4>
-          <h5>Front-End Developer</h5>
-          <p>short description about jeff dam</p>
-          <div class="section-inner">
-            <a href="#">LinkedIn <i class="fab fa-linkedin-in"></i></a>
-            <a href="#">GitHub <i class="fab fa-github"></i></a>
-            <a href="#">Personal Site<i class="fa fa-soundcloud"></i></a>
+        <section className="teammate">
+          <div className="content">
+            <h4>Jeffrey Dam</h4>
+            <h5>Front-End Developer</h5>
+            <p>short description about jeff dam</p>
+          </div>
+          <div className="social">
+            <a href="https://www.linkedin.com/in/jeffdam/">
+              <i className="fab fa-linkedin-in" />
+            </a>
+            <a href="https://github.com/jeffdam">
+              <i className="fab fa-github" />
+            </a>
+            <a href="https://www.jeffdam.com/">
+              <i className="fas fa-mountain" /> - Personal Site
+            </a>
           </div>
         </section>
 
-        <section className="teammate-2">
-          <h4>Evangaline Pan</h4>
-          <h5>Full-Stack Developer</h5>
-          <p>short description about eva pan</p>
-          <div class="section-inner">
-            <a href="#">LinkedIn <i class="fa fa-facebook"></i></a>
-            <a href="#">GitHub <i class="fa fa-twitter"></i></a>
-            <a href="#">Personal Site<i class="fa fa-soundcloud"></i></a>
+        <section className="teammate">
+          <div className="content">
+            <h4>Eva Pan</h4>
+            <h5>Full-Stack Developer</h5>
+            <p>short description about eva pan</p>
+          </div>
+          <div className="social">
+            <a href="https://www.linkedin.com/in/evapan2000/">
+              <i className="fab fa-linkedin-in" />
+            </a>
+            <a href="https://github.com/evaizli">
+              <i className="fab fa-github" />
+            </a>
+            <a href="http://evapan.com/">
+              <i className="fas fa-running" /> - Personal Site
+            </a>
           </div>
         </section>
 
-        <section className="teammate-3">
-          <h4>Andrew Mac</h4>
-          <h5>Back-End Develpoer</h5>
-          <p>short description about andrew mac</p>
-          <div class="section-inner">
-            <a href="#">LinkedIn <i class="fa fa-facebook"></i></a>
-            <a href="#">GitHub <i class="fa fa-twitter"></i></a>
-            <a href="#">Personal Site<i class="fa fa-soundcloud"></i></a>
+        <section className="teammate">
+          <div className="content">
+            <h4>Andrew Mac</h4>
+            <h5>Back-End Develpoer</h5>
+            <p>short description about andrew mac</p>
+          </div>
+          <div className="social">
+            <a href="https://www.linkedin.com/in/macandrew6/">
+              <i className="fab fa-linkedin-in" />
+            </a>
+            <a href="https://github.com/macandrew6">
+              <i className="fab fa-github" />
+            </a>
+            <a href="https://github.com/macandrew6">
+              <i className="fas fa-tools" /> - Personal Site
+            </a>
           </div>
         </section>
       </div>
-    )
+    );
   }
 }
 
