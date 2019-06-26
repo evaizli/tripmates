@@ -35,7 +35,7 @@ class About extends React.Component {
                 <i className="fab fa-github" />
               </a>
               <a href="https://www.jeffdam.com/">
-                <i className="fas fa-mountain" /> - Personal Site
+                <i class="fas fa-user-circle" /> - Personal Site
               </a>
             </div>
           </section>
@@ -54,7 +54,7 @@ class About extends React.Component {
                 <i className="fab fa-github" />
               </a>
               <a href="http://evapan.com/">
-                <i className="fas fa-running" /> - Personal Site
+                <i class="fas fa-user-circle" /> - Personal Site
               </a>
             </div>
           </section>
@@ -73,7 +73,7 @@ class About extends React.Component {
                 <i className="fab fa-github" />
               </a>
               <a href="https://github.com/macandrew6">
-                <i className="fas fa-tools" /> - Personal Site
+                <i class="fas fa-user-circle" /> - Personal Site
               </a>
             </div>
           </section>
