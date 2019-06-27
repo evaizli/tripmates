@@ -11,13 +11,13 @@ const destinationsReducer = (state = [], action) => {
   let newState;
   switch (action.type) {
     case RECEIVE_DESTINATIONS:
-      return state.action
+      return state.action;
     case RECEIVE_DESTINATION:
       newState = Object.assign([], state);
-      let destinationId = action.destination._id
+      let destinationId = action.destination._id;
       if (destinationId){
-        for (let i = 0; i < newState.length; i++){
-          if (newState[i]._id === destinationId){
+        for (let i = 0; i < newState.length; i++) {
+          if (newState[i]._id === destinationId) {
             newState[i] = action.destination;
           }
         }
@@ -29,7 +29,7 @@ const destinationsReducer = (state = [], action) => {
         newState = state.filter(destination => destination._id !== action.destinationId);
         return newState;
     case RECEIVE_TRIP:
-      return action.trip.destinations
+      return action.trip.destinations;
     default:
       return state;
   }
