@@ -4,31 +4,22 @@ import {
     REMOVE_TRIP 
 } from "../actions/trip_actions";
 
-const tripsReducer = (state = [], action ) => {
+const tripsReducer = (state = {}, action ) => {
     Object.freeze(state);
     let newState;
     switch(action.type){
         case RECEIVE_TRIPS:
-            return action.trips;
+            newState = Object.assign({}, state);
+            action.trips.forEach(trip => {
+                newState[trip._id] = trip;
+            });
+            return newState;
         case RECEIVE_TRIP:
-            if (state.length === 0) {
-                return [action.trip];
-            } else {
-                newState = Object.assign([], state);
-                let idx;
-                newState.forEach((trip, i) =>{
-                    if (trip._id === action.trip._id) {
-                        idx = i;
-                    } 
-                });
-                if (idx !== undefined) {
-                    newState[idx] = action.trip;
-                } else {
-                    newState.push(action.trip);
-                }
-                return newState;
-            }
+            newState = Object.assign({}, state);
+            newState[action.trip._id] = action.trip;
+            return newState;
         case REMOVE_TRIP:
+            newState = Object.assign({}, state);
             newState = state.filter((trip) => trip._id !== action.tripId);
             return newState;
         default:

@@ -4,7 +4,8 @@ import { logout } from '../../actions/session_actions';
 import { fetchTrips } from '../../actions/trip_actions';
 
 const mapStateToProps = (state) => {
-  const { entities: { trips } } = state;
+  const trips = Object.values(state.entities.trips);
+
   return ({
     trips: trips
   });

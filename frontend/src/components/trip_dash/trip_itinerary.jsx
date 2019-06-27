@@ -63,7 +63,7 @@ class TripItinerary extends React.Component {
         const addActivity = (date >= startDate && date <= endDate) ?
           <div
             className="activity-add"
-            onClick={() => this.props.openModal({ type: 'createActivity', date: day })}
+            onClick={() => this.props.openModal({ type: 'createActivity', tripId: this.props.tripId, date: day })}
             title="Add Activity"
           ></div>
            : 
