@@ -5,7 +5,7 @@ import Modal from './shared/modal';
 import TripsDashContainer from './trips_dash/trips_dash_container';
 import TripDashContainer from './trip_dash/trip_dash_container';
 import Splash from './splash/splash';
-import AboutUs from './aboutus/about_us';
+import About from './about/about';
 
 
 const App = () => {
@@ -17,7 +17,7 @@ const App = () => {
         <ProtectedRoute exact path='/trip/:tripId' component={TripDashContainer} />
         <ProtectedRoute exact path='/dashboard' component={TripsDashContainer} />
         <AuthRoute exact path='/' component={Splash} />
-        <Route exact path='/about-us' component={AboutUs} />
+        <Route exact path='/about' component={About} />
         <Redirect to='/' />
       </Switch>
     </div>
