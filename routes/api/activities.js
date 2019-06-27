@@ -86,9 +86,9 @@ router.patch("/:tripId/:activityId/update", passport.authenticate("jwt", { sessi
           activity.notes = req.body.notes;
           activity.startTime = req.body.startTime;
           activity.endTime = req.body.endTime;
-
           user.save()
             .then(user => {
+              console.log(activity)
               return res.json(activity);
             })
             .catch(err => {
