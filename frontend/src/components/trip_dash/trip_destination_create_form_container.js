@@ -6,12 +6,12 @@ import { createDestination} from "../../actions/destination_actions";
 const mapStateToProps = (state, ownProps) => {
   
   const { tripId } = state.ui.modal; 
-
+  const placeholderDate = new Date().toISOString();
 
   let destination = {
     location: "",
-    startDate: new Date(),
-    endDate: new Date(),
+    startDate: placeholderDate,
+    endDate: placeholderDate,
     housing: "",
     transportation: "",
     notes:"",

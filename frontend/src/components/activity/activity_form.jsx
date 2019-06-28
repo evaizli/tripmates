@@ -47,7 +47,7 @@ class ActivityForm extends React.Component {
             <label> <h4>Activity Date</h4>
             <input
               type="date"
-                value={parseDate(activityDate)}
+              value={parseDate(activityDate)}
               onChange={this.update("activityDate")}
             />
             </label>

@@ -6,7 +6,7 @@ import { createActivity } from "../../actions/activity_actions";
 const mapStateToProps = (state, ownProps) => {
 
   const { tripId, date } = state.ui.modal; 
-  const activityDate = date ? date : new Date().toDateString();
+  const activityDate = date ? date : new Date().toISOString();
   
   let activity = {
       activityName: "",

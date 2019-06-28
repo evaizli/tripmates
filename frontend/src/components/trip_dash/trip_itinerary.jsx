@@ -7,7 +7,7 @@ const TripItinerary = ({ tripId, activities, tripDates, openModal }) => {
   const parseActivities = (activities) => {
     const activitiesCatDate = {};
     activities.forEach((activity) => {
-      const date = new Date(activity.activityDate).toDateString();
+      const date = activity.activityDate;
       if (activitiesCatDate[date]) {
         activitiesCatDate[date].push(activity);
       } else {
@@ -29,8 +29,8 @@ const TripItinerary = ({ tripId, activities, tripDates, openModal }) => {
 
     const weekActivities = week.map((day, idxDay) => {
       let activityOfDay = "";
-      if (activitiesByDate[day.toDateString()]) {
-        const sortedActivities = sortStartTime(activitiesByDate[day.toDateString()])
+      if (activitiesByDate[day.toISOString()]) {
+        const sortedActivities = sortStartTime(activitiesByDate[day.toISOString()])
         activityOfDay = sortedActivities.map((activity, idxActivity) => {
           const time = formatTime(activity.startTime);
 
@@ -54,7 +54,7 @@ const TripItinerary = ({ tripId, activities, tripDates, openModal }) => {
       const addActivity = (date >= startDate && date <= endDate) ?
         <div
           className="activity-add"
-          onClick={() => openModal({ type: 'createActivity', tripId, date: date.toDateString() })}
+          onClick={() => openModal({ type: 'createActivity', tripId, date: date.toISOString() })}
           title="Add Activity"
         ></div>
           : 
