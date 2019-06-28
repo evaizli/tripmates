@@ -1,7 +1,7 @@
 import React from 'react';
 import SidebarContainer from '../shared/sidebar_container';
 import TripLogistics from './trip_logistics';
-import TripItineraryContainer from './trip_itinerary_container';
+import TripItinerary from './trip_itinerary';
 import { sortStartDateAsc, tripStartDateFinder, tripEndDateFinder } from '../../utils/datetime_api_util';
 
 class TripDash extends React.Component {
@@ -26,7 +26,7 @@ class TripDash extends React.Component {
     const destinationsSorted = trip.destinations.length > 0 ? sortStartDateAsc(destinations) : [];
     const tripStartDate = trip.destinations.length > 0 ? tripStartDateFinder(destinations) : new Date();
     const tripEndDate = trip.destinations.length > 0 ? tripEndDateFinder(destinations) : new Date();
-    const tripItinerary = trip.destinations.length > 0 ? <TripItineraryContainer tripId={trip._id} activities={activities} tripDates={{ start: tripStartDate, end: tripEndDate }} openModal={this.props.openModal}/> : "";
+    const tripItinerary = trip.destinations.length > 0 ? <TripItinerary tripId={trip._id} activities={activities} tripDates={{ start: tripStartDate, end: tripEndDate }} openModal={this.props.openModal}/> : "";
     const tripDates = trip.destinations.length > 0 ? `${tripStartDateFinder(trip.destinations)} to ${tripEndDateFinder(trip.destinations)}` : "";
 
     return (
