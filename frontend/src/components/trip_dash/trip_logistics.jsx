@@ -3,7 +3,7 @@ import editIcon from '../../assets/images/icons8-pencil-24.png';
 import addIcon from '../../assets/images/icons8-plus-math-30.png'; 
 import { formatDate } from '../../utils/datetime_api_util';
 
-const TripLogistics = ({ destinations, openModal }) => {
+const TripLogistics = ({ tripId, destinations, openModal }) => {
 
   const destinationsDisplay = destinations.map((destination, idx) => {
     const modalAttr = { type: 'editDestination', id: destination._id };
@@ -42,7 +42,7 @@ const TripLogistics = ({ destinations, openModal }) => {
   });
 
   const addDestinationButton = (
-    <div onClick={() => openModal({ type: 'createDestination' })} className="add-button">
+    <div onClick={() => openModal({ type: 'createDestination', tripId })} className="add-button">
       <img src={addIcon} alt="add" />
       &nbsp;Add Destination
     </div>

@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 import { createDestination} from "../../actions/destination_actions";
 
 const mapStateToProps = (state, ownProps) => {
-  const tripId = state.entities.trips[0]._id;
   
+  const { tripId } = state.ui.modal; 
+
+
   let destination = {
     location: "",
     startDate: new Date(),
@@ -13,7 +15,7 @@ const mapStateToProps = (state, ownProps) => {
     housing: "",
     transportation: "",
     notes:"",
-    tripId: tripId
+    tripId
   }; 
 
   return {
