@@ -46,11 +46,11 @@ class TripsDash extends React.Component {
     }));
 
     const inProgressTripsItems = (inProgressTrips(allTrips).length > 0) ? 
-      <TripsDashItems tripType="in Progress" trips={inProgressTrips(allTrips)} openModal={this.handleOpenModal} /> :
+      <TripsDashItems tripType="in Progress" trips={inProgressTrips(allTrips)} /> :
       "";
 
     const pastTripsItems = (pastTrips(allTrips).length > 0) ? 
-      <TripsDashItems tripType="Past" trips={pastTrips(allTrips)} openModal={this.handleOpenModal} /> :
+      <TripsDashItems tripType="Past" trips={pastTrips(allTrips)} /> :
       "";
 
     return (

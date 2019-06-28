@@ -2,10 +2,13 @@ import {
     RECEIVE_TRIPS, 
     RECEIVE_TRIP, 
     REMOVE_TRIP 
-} from "../actions/trip_actions";
+} from '../actions/trip_actions';
 import {
     RECEIVE_DESTINATION
-} from "../actions/destination_actions";
+} from '../actions/destination_actions';
+import {
+    RECEIVE_ACTIVITY,
+} from "../actions/activity_actions";
 
 const tripsReducer = (state = {}, action ) => {
     Object.freeze(state);
@@ -39,9 +42,25 @@ const tripsReducer = (state = {}, action ) => {
             } else {
                 newDestinations.push(action.destination);
             }
-
-            newState[action.destination.tripId].destinations = newDestinations;
             
+            newState[action.destination.tripId].destinations = newDestinations;
+            return newState;
+        case RECEIVE_ACTIVITY:
+            newState = Object.assign({}, state);
+            let newActivities = Object.assign([], newState[action.activity.tripId].activities);
+            let activityId = action.activity._id;
+            
+            if (activityId) {
+                for (let i = 0; i < newActivities.length; i++) {
+                    if (newActivities[i]._id === activityId) {
+                        newActivities[i] = action.activity;
+                    }
+                }
+            } else {
+                newActivities.push(action.activity);
+            }
+
+            newState[action.activity.tripId].activities = newActivities;
             return newState;
         default:
             return state;

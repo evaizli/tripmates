@@ -22,7 +22,7 @@ function Modal({ modal, closeModal }) {
     case "signup":
       component = <SignupFormContainer />;
       break;
-    case "createTrip":
+      case "createTrip":
       component = <TripCreateFormContainer />;
       break;
     case "createDestination":

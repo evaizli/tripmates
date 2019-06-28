@@ -37,7 +37,7 @@ router.post("/", passport.authenticate("jwt", { session: false }),
                 user
                     .save()
                     .then(user => {
-                        return res.json(user);
+                        return res.json(user.trips.slice(user.trips.length-1)[0]);
                     })
                     .catch(err => res.send(err));
             });

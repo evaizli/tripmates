@@ -19,7 +19,7 @@ const TripItinerary = ({ tripId, activities, tripDates, openModal }) => {
 
   const activitiesByDate = parseActivities(activities);
   const allDates = allDatesFinder(tripDates.start, tripDates.end);
-
+  
   const calendar = allDates.map((week, idxWeek) => {
     const weekDates = week.map((day, idxDay) => {
       return (
