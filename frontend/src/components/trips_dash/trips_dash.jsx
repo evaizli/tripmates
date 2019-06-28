@@ -1,7 +1,7 @@
 import React from 'react';
 import SidebarContainer from '../shared/sidebar_container';
 import TripsDashItems from './trips_dash_items';
-import { pastTrips, futureTrips, inProgressTrips, tripStartDateFinder } from '../../utils/datetime_api_util';
+import { pastTripsFinder, futureTripsFinder, inProgressTripsFinder, tripStartDateFinder } from '../../utils/datetime_api_util';
 
 class TripsDash extends React.Component {
   constructor(props) {
@@ -28,7 +28,7 @@ class TripsDash extends React.Component {
 
   sortTrips(trips) {
     const tripsDup = Object.assign([], trips);
-    const compareTrip = (a, b) => (tripStartDateFinder(a.destinations) < tripStartDateFinder(b.destinations) ? -1 : 1);
+    const compareTrip = (a, b) => (new Date(tripStartDateFinder(a.destinations)) < new Date(tripStartDateFinder(b.destinations)) ? -1 : 1);
     return tripsDup.sort(compareTrip);
   }
   
@@ -44,13 +44,17 @@ class TripsDash extends React.Component {
     const allTrips = this.sortTrips(trips.filter(trip => {
       return trip.destinations.length > 0;
     }));
+    
+    const inProgressTrips = inProgressTripsFinder(allTrips);
+    const pastTrips = pastTripsFinder(allTrips);
+    const futureTrips = futureTripsFinder(allTrips);
 
-    const inProgressTripsItems = (inProgressTrips(allTrips).length > 0) ? 
-      <TripsDashItems tripType="in Progress" trips={inProgressTrips(allTrips)} /> :
+    const inProgressTripsItems = (inProgressTrips.length > 0) ? 
+      <TripsDashItems tripType="in Progress" trips={inProgressTrips} /> :
       "";
 
-    const pastTripsItems = (pastTrips(allTrips).length > 0) ? 
-      <TripsDashItems tripType="Past" trips={pastTrips(allTrips)} /> :
+    const pastTripsItems = (pastTrips.length > 0) ? 
+      <TripsDashItems tripType="Past" trips={pastTrips} /> :
       "";
 
     return (
@@ -58,7 +62,7 @@ class TripsDash extends React.Component {
         <SidebarContainer pageType="Trips Dash"/>
         <div className="trips-dash-content">
           { inProgressTripsItems }
-          <TripsDashItems tripType="Future" trips={futureTrips(allTrips).concat(tentativeTrips)} openModal={this.handleOpenModal}/>
+          <TripsDashItems tripType="Future" trips={futureTrips.concat(tentativeTrips)} openModal={this.handleOpenModal}/>
           { pastTripsItems }
         </div>
       </section>

@@ -16,7 +16,7 @@ export const sortStartTime = activities => {
   return activitiesDup.sort(compareTimeAsc);
 };
 
-export const inProgressTrips = (trips) => {
+export const inProgressTripsFinder = (trips) => {
   const dateNow = new Date();
   return trips.filter(trip => {
     const startDate = new Date(sortStartDateAsc(trip.destinations)[0].startDate);
@@ -25,7 +25,7 @@ export const inProgressTrips = (trips) => {
   });
 };
 
-export const pastTrips = (trips) => {
+export const pastTripsFinder = (trips) => {
   const dateNow = new Date();
   return trips.filter(trip => {
     const endDate = new Date(sortEndDateDesc(trip.destinations)[0].endDate);
@@ -33,7 +33,7 @@ export const pastTrips = (trips) => {
   });
 };
 
-export const futureTrips = (trips) => {
+export const futureTripsFinder = (trips) => {
   const dateNow = new Date();
   return trips.filter(trip => {
     const startDate = new Date(sortStartDateAsc(trip.destinations)[0].startDate);

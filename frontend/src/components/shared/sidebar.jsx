@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { futureTrips, tripStartDateFinder } from '../../utils/datetime_api_util';
+import { futureTripsFinder, tripStartDateFinder } from '../../utils/datetime_api_util';
 import logoutIcon from '../../assets/images/logout.svg';
 
 class SideBar extends React.Component {
@@ -21,7 +21,7 @@ class SideBar extends React.Component {
       return trip.destinations.length > 0;
     });
 
-    const tripsStartDates = futureTrips(allTrips).map(trip => {
+    const tripsStartDates = futureTripsFinder(allTrips).map(trip => {
       const tripStartDate = tripStartDateFinder(trip.destinations);
       return { name: trip.tripName, startDate: tripStartDate, tripId: trip._id };
     });
