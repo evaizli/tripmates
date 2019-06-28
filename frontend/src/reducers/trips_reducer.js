@@ -27,18 +27,21 @@ const tripsReducer = (state = {}, action ) => {
             return newState;
         case RECEIVE_DESTINATION:
             newState = Object.assign({}, state);
+            let newDestinations = Object.assign([], newState[action.destination.tripId].destinations);
             let destinationId = action.destination._id;
-            let trip = newState[action.destination.tripId];
             
             if (destinationId) {
-                for (let i = 0; i < trip.destinations.length; i++) {
-                    if (trip.destinations[i]._id === destinationId) {
-                        trip.destinations[i] = action.destination;
+                for (let i = 0; i < newDestinations.length; i++) {
+                    if (newDestinations[i]._id === destinationId) {
+                        newDestinations[i] = action.destination;
                     }
                 }
             } else {
-                newState[action.destination.tripId].destinations.push(action.destination);
+                newDestinations.push(action.destination);
             }
+
+            newState[action.destination.tripId].destinations = newDestinations;
+            
             return newState;
         default:
             return state;

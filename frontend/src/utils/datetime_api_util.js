@@ -100,7 +100,7 @@ export const allDatesFinder = (tripStartDate, tripEndDate) => {
   for (let i = 1; newDate < endWeek; i++) {
     newDate = new Date(startWeek);
     newDate.setDate(newDate.getDate() + i);
-    allDates[j].push(newDate);
+    allDates[j].push(formatDate(newDate.toISOString()));
     if (allDates[j].length === 7 && newDate < endWeek) {
       allDates.push([]);
       j++;

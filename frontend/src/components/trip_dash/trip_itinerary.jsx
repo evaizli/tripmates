@@ -7,7 +7,7 @@ const TripItinerary = ({ tripId, activities, tripDates, openModal }) => {
   const parseActivities = (activities) => {
     const activitiesCatDate = {};
     activities.forEach((activity) => {
-      const date = activity.activityDate;
+      const date = formatDate(activity.activityDate);
       if (activitiesCatDate[date]) {
         activitiesCatDate[date].push(activity);
       } else {
@@ -29,8 +29,8 @@ const TripItinerary = ({ tripId, activities, tripDates, openModal }) => {
 
     const weekActivities = week.map((day, idxDay) => {
       let activityOfDay = "";
-      if (activitiesByDate[day.toISOString()]) {
-        const sortedActivities = sortStartTime(activitiesByDate[day.toISOString()])
+      if (activitiesByDate[day]) {
+        const sortedActivities = sortStartTime(activitiesByDate[day])
         activityOfDay = sortedActivities.map((activity, idxActivity) => {
           const time = formatTime(activity.startTime);
 

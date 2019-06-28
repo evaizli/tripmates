@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => {
     if (d._id === destinationId){
       destination = d;
     }
-  })
+  });
 
   return {
     destination: destination,
