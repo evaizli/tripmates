@@ -57,6 +57,11 @@ export const formatDate = (date) => {
   return dateDup.toLocaleDateString("en-US", dateOptions);
 };
 
+export const parseDate = (date) => {
+  const parsedDate = date.split("T");
+  return parsedDate[0];
+};
+
 export const tripStartDateFinder = (destinations) => {
   const destinationsSorted = sortStartDateAsc(destinations);
   const startDate = formatDate(destinationsSorted[0].startDate);

@@ -1,22 +1,21 @@
 import React from 'react';
 import addIcon from '../../assets/images/icons8-plus-math-30.png'; 
-import { allDatesFinder, formatTime, sortStartTime } from '../../utils/datetime_api_util';
+import { allDatesFinder, formatTime, formatDate, sortStartTime } from '../../utils/datetime_api_util';
 
 const TripItinerary = ({ tripId, activities, tripDates, openModal }) => {
 
   const parseActivities = (activities) => {
     const activitiesCatDate = {};
     activities.forEach((activity) => {
-      const date = new Date(activity.activityDate);
-      if (activitiesCatDate[date.toDateString()]) {
-        activitiesCatDate[date.toDateString()].push(activity);
+      const date = new Date(activity.activityDate).toDateString();
+      if (activitiesCatDate[date]) {
+        activitiesCatDate[date].push(activity);
       } else {
-        activitiesCatDate[date.toDateString()] = [activity];
+        activitiesCatDate[date] = [activity];
       }
     });
     return activitiesCatDate;
   };
-
 
   const activitiesByDate = parseActivities(activities);
   const allDates = allDatesFinder(tripDates.start, tripDates.end);
@@ -24,7 +23,7 @@ const TripItinerary = ({ tripId, activities, tripDates, openModal }) => {
   const calendar = allDates.map((week, idxWeek) => {
     const weekDates = week.map((day, idxDay) => {
       return (
-        <h4 key={idxDay}>{day.toDateString()}</h4>
+        <h4 key={idxDay}>{formatDate(day)}</h4>
       )
     })
 
@@ -55,7 +54,7 @@ const TripItinerary = ({ tripId, activities, tripDates, openModal }) => {
       const addActivity = (date >= startDate && date <= endDate) ?
         <div
           className="activity-add"
-          onClick={() => openModal({ type: 'createActivity', tripId, date: day })}
+          onClick={() => openModal({ type: 'createActivity', tripId, date: date.toDateString() })}
           title="Add Activity"
         ></div>
           : 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { parseDate } from '../../utils/datetime_api_util';
 
 class ActivityForm extends React.Component {
   constructor(props) {
@@ -15,10 +16,6 @@ class ActivityForm extends React.Component {
     e.preventDefault();
     this.props.processForm(this.state)
       .then(() => this.props.closeModal());
-  }
-
-  prefillDate(date){
-    return new Date(date).toISOString().substring(0, 10);
   }
 
   render() {
@@ -50,7 +47,7 @@ class ActivityForm extends React.Component {
             <label> <h4>Activity Date</h4>
             <input
               type="date"
-              value={this.prefillDate(activityDate)}
+                value={parseDate(activityDate)}
               onChange={this.update("activityDate")}
             />
             </label>

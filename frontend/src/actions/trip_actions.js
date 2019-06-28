@@ -54,7 +54,7 @@ export const fetchTrip = (id) => dispatch => {
     return (
         APIUtil.fetchTrip(id)
             .then(trip => dispatch(receiveTrip(trip)))
-            .catch(err => { dispatch(receiveTripErrors(err.response.data)) })
+            .catch(err => dispatch(receiveTripErrors(err.response.data)))
     );
 };
 
@@ -62,7 +62,7 @@ export const createTrip = (data) => dispatch => {
     return (
         APIUtil.createTrip(data)
             .then(data => dispatch(receiveTrip(data)))
-            .catch(err => { dispatch(receiveTripErrors(err.response.data)) })
+            .catch(err => dispatch(receiveTripErrors(err.response.data)))
     );
 };
 
@@ -70,7 +70,7 @@ export const updateTrip = (data) => dispatch => {
     return (
         APIUtil.updateTrip(data)
             .then(data => dispatch(receiveTrip(data)))
-            .catch(err => { dispatch(receiveTripErrors(err.response.data)) })
+            .catch(err => dispatch(receiveTripErrors(err.response.data)))
     );
 };
 
@@ -79,6 +79,6 @@ export const deleteTrip = (id) => dispatch => {
     return (
         APIUtil.deleteTrip(id)
             .then(tripId => dispatch(removeTrip(tripId)))
-            .catch(err => { dispatch(receiveTripErrors(err.response.data)) })
+            .catch(err => dispatch(receiveTripErrors(err.response.data)))
     );
 };
