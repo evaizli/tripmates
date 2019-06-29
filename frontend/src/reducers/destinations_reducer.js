@@ -1,35 +1,47 @@
-import {
-  RECEIVE_DESTINATIONS,
-  RECEIVE_DESTINATION,
-  REMOVE_DESTINATION
-} from "../actions/destination_actions";
-import { RECEIVE_TRIP } from "../actions/trip_actions";
+// import {
+//   RECEIVE_DESTINATIONS,
+//   RECEIVE_DESTINATION,
+//   REMOVE_DESTINATION
+// } from "../actions/destination_actions";
+// import { RECEIVE_TRIP, RECEIVE_TRIPS } from "../actions/trip_actions";
 
-const destinationsReducer = (state = [], action) => {
+const destinationsReducer = (state = {}, action) => {
   Object.freeze(state);
   
-  let newState;
+  // let newState;
   switch (action.type) {
-    case RECEIVE_DESTINATIONS:
-      return state.action;
-    case RECEIVE_DESTINATION:
-      newState = Object.assign([], state);
-      let destinationId = action.destination._id;
-      if (destinationId){
-        for (let i = 0; i < newState.length; i++) {
-          if (newState[i]._id === destinationId) {
-            newState[i] = action.destination;
-          }
-        }
-      } else {
-        newState.push(action.destination);
-      }
-      return newState;
-    case REMOVE_DESTINATION:
-        newState = state.filter(destination => destination._id !== action.destinationId);
-        return newState;
-    case RECEIVE_TRIP:
-      return action.trip.destinations;
+    // case RECEIVE_DESTINATIONS:
+    //   return state.action;
+    // case RECEIVE_DESTINATION:
+    //   newState = Object.assign({}, state);
+      
+    //   return newState;
+    // case REMOVE_DESTINATION:
+    //   newState = state.filter(destination => destination._id !== action.destinationId);
+    //   return newState;
+    // case RECEIVE_TRIP:
+    //   newState = Object.assign({}, state);
+      
+    //   if (!newState[action.trip._id]) {
+    //     newState[action.trip._id] = {};
+    //   }
+
+    //   action.trip.destinations.forEach(destination => {
+    //     newState[action.trip._id][destination._id] = destination;
+    //   });
+
+    //   return newState;
+    // case RECEIVE_TRIPS:
+    //   newState = Object.assign({}, state);
+
+    //   action.trips.forEach(trip => {
+    //     newState[trip._id] = {};
+    //     trip.destinations.forEach(destination =>{
+    //       newState[trip._id][destination._id] = destination;
+    //     });
+    //   });
+
+    //   return newState;
     default:
       return state;
   }

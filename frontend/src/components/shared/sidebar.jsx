@@ -14,6 +14,12 @@ class SideBar extends React.Component {
     element.scrollIntoView({ behavior: "smooth" });
   }
 
+  sortTrips(trips) {
+    const tripsDup = Object.assign([], trips);
+    const compareTrip = (a, b) => (new Date(tripStartDateFinder(a.destinations)) < new Date(tripStartDateFinder(b.destinations)) ? -1 : 1);
+    return tripsDup.sort(compareTrip);
+  }
+
   render() {
     const { trips, logout } = this.props;
 
@@ -21,7 +27,9 @@ class SideBar extends React.Component {
       return trip.destinations.length > 0;
     });
 
-    const tripsStartDates = futureTripsFinder(allTrips).map(trip => {
+    const futureTrips = this.sortTrips(futureTripsFinder(allTrips));
+
+    const tripsStartDates = futureTrips.map(trip => {
       const tripStartDate = tripStartDateFinder(trip.destinations);
       return { name: trip.tripName, startDate: tripStartDate, tripId: trip._id };
     });

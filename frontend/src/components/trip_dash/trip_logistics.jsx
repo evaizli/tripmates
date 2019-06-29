@@ -6,7 +6,7 @@ import { formatDate } from '../../utils/datetime_api_util';
 const TripLogistics = ({ tripId, destinations, openModal }) => {
 
   const destinationsDisplay = destinations.map((destination, idx) => {
-    const modalAttr = { type: 'editDestination', id: destination._id };
+    const modalAttr = { type: 'editDestination', destinationId: destination._id, tripId };
     
     return (
       <div key={idx} className="trip-logistics-destination">

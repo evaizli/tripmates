@@ -3,18 +3,19 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import {updateDestination} from "../../actions/destination_actions";
 
-const mapStateToProps = (state, ownProps) => {
-  let destinationId = state.ui.modal.id;
+const mapStateToProps = (state) => {
+  const destinationId = state.ui.modal.destinationId;
+  const tripId = state.ui.modal.tripId;
+  
   let destination;
-
-  state.entities.destinations.forEach(d => {
+  state.entities.trips[tripId].destinations.forEach(d => {
     if (d._id === destinationId){
       destination = d;
     }
   });
 
   return {
-    destination: destination,
+    destination,
     formType: "Edit Destination"
   };
 };

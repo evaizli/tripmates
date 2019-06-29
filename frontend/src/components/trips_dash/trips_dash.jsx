@@ -35,7 +35,6 @@ class TripsDash extends React.Component {
   render() {
     const { trips } = this.props;
     if (!trips) return null;
-    if (trips.length === 0) return null;
 
     const tentativeTrips = this.alphabetizeTrips(trips.filter(trip => {
       return trip.destinations.length === 0;
@@ -47,7 +46,7 @@ class TripsDash extends React.Component {
     
     const inProgressTrips = inProgressTripsFinder(allTrips);
     const pastTrips = pastTripsFinder(allTrips);
-    const futureTrips = futureTripsFinder(allTrips);
+    const futureTrips = futureTripsFinder(allTrips).concat(tentativeTrips);
 
     const inProgressTripsItems = (inProgressTrips.length > 0) ? 
       <TripsDashItems tripType="in Progress" trips={inProgressTrips} /> :
@@ -62,7 +61,7 @@ class TripsDash extends React.Component {
         <SidebarContainer pageType="Trips Dash"/>
         <div className="trips-dash-content">
           { inProgressTripsItems }
-          <TripsDashItems tripType="Future" trips={futureTrips.concat(tentativeTrips)} openModal={this.handleOpenModal}/>
+          <TripsDashItems tripType="Future" trips={futureTrips} openModal={this.handleOpenModal}/>
           { pastTripsItems }
         </div>
       </section>
