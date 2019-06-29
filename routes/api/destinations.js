@@ -58,12 +58,11 @@ router.post("/:tripId/", passport.authenticate("jwt", { session: false }),
             return res.status(400).json(errors);
           }
         }
-        destination["tripId"] = tripId;
+
         trip.destinations.push(destination);
         user.save()
-          .then(() => {
-            // make sure not to send back the user password
-            return res.json(destination);
+          .then(user => {
+            return res.json(trip.destinations[trip.destinations.length - 1]);
           })
           .catch(err => console.log("error in posting destination from db ", err));
         });

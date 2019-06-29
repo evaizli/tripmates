@@ -56,11 +56,8 @@ router.post("/:tripId/", passport.authenticate("jwt", { session: false }),
         }
         trip.activities.push(activity);
         user.save()
-          .then(() => {
-            User.findById(req.user.id)
-              .then(user => {
-                return res.json(trip.activities[trip.activities.length-1]);
-              });  
+          .then(user => {
+            return res.json(trip.activities[trip.activities.length-1]);
           })
           .catch(err => console.log("error in posting activity from db ", err));
       });

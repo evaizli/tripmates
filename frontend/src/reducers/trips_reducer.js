@@ -13,6 +13,7 @@ import {
 const tripsReducer = (state = {}, action ) => {
     Object.freeze(state);
     let newState;
+    let replaced; 
     switch(action.type){
         case RECEIVE_TRIPS:
             newState = Object.assign({}, state);
@@ -33,13 +34,14 @@ const tripsReducer = (state = {}, action ) => {
             let newDestinations = Object.assign([], newState[action.destination.tripId].destinations);
             let destinationId = action.destination._id;
             
-            if (destinationId) {
-                for (let i = 0; i < newDestinations.length; i++) {
-                    if (newDestinations[i]._id === destinationId) {
-                        newDestinations[i] = action.destination;
-                    }
+            replaced = false;
+            for (let i = 0; i < newDestinations.length; i++) {
+                if (newDestinations[i]._id === destinationId) {
+                    newDestinations[i] = action.destination;
+                    replaced = true;
                 }
-            } else {
+            }
+            if (!replaced) {
                 newDestinations.push(action.destination);
             }
             
@@ -51,7 +53,7 @@ const tripsReducer = (state = {}, action ) => {
             const activityId = action.activity._id;
             let newActivities = Object.assign([], newState[tripId].activities);
             
-            let replaced = false;
+            replaced = false;
             for (let i = 0; i < newActivities.length; i++) {
                 if (newActivities[i]._id === activityId) {
                     newActivities[i] = action.activity;
