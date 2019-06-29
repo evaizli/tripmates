@@ -51,16 +51,17 @@ const tripsReducer = (state = {}, action ) => {
             const activityId = action.activity._id;
             let newActivities = Object.assign([], newState[tripId].activities);
             
-            if (activityId) {
-                for (let i = 0; i < newActivities.length; i++) {
-                    if (newActivities[i]._id === activityId) {
-                        newActivities[i] = action.activity;
-                    }
+            let replaced = false;
+            for (let i = 0; i < newActivities.length; i++) {
+                if (newActivities[i]._id === activityId) {
+                    newActivities[i] = action.activity;
+                    replaced = true;
                 }
-            } else {
+            }
+            if (!replaced) {
                 newActivities.push(action.activity);
             }
-
+            
             newState[tripId].activities = newActivities;
             return newState;
         default:

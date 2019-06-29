@@ -54,12 +54,13 @@ router.post("/:tripId/", passport.authenticate("jwt", { session: false }),
             return res.status(400).json(errors);
           }
         }
-
         trip.activities.push(activity);
         user.save()
-          .then(user => {
-            // make sure not to send back the user password
-            return res.json(activity);
+          .then(() => {
+            User.findById(req.user.id)
+              .then(user => {
+                return res.json(trip.activities[trip.activities.length-1]);
+              });  
           })
           .catch(err => console.log("error in posting activity from db ", err));
       });
