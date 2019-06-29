@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import ActivityForm from "./activity_form";
 import { closeModal } from '../../actions/modal_actions';
-import { updateActivity } from "../../actions/activity_actions";
+import { updateActivity, deleteActivity } from "../../actions/activity_actions";
 
 const mapStateToProps = state => {
     let activityId = state.ui.modal.activityId;
@@ -24,6 +24,7 @@ const mapDispatchToProps = dispatch => {
 
     return {
         processForm: activity => dispatch(updateActivity(activity)),
+        deleteActivity: (payload) => dispatch(deleteActivity(payload)),
         closeModal: () => dispatch(closeModal())
     };
 };

@@ -23,10 +23,10 @@ export const receiveActivity = payload => {
 };
 
 
-export const removeActivity = activity => {
+export const removeActivity = payload => {
   return {
     type: REMOVE_ACTIVITY,
-    activityId: activity._id
+    activity: payload.data
   };
 };
 
@@ -70,7 +70,6 @@ export const createActivity = (data) => dispatch => {
     });
 };
 
-
 export const updateActivity = (data) => dispatch => {
   return APIUtil.updateActivity(data)
     .then(data => dispatch(receiveActivity(data)))
@@ -79,10 +78,9 @@ export const updateActivity = (data) => dispatch => {
     });
 };
 
-export const deleteActivity = (id) => dispatch => {
-
-  return APIUtil.deleteActivity(id)
-    .then(activityId => dispatch(removeActivity(activityId)))
+export const deleteActivity = (data) => dispatch => {
+  return APIUtil.deleteActivity(data)
+    .then(data => dispatch(removeActivity(data)))
     .catch(err => {
       dispatch(receiveActivityErrors(err.response.data));
     });

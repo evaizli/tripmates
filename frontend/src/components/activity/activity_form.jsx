@@ -5,6 +5,7 @@ class ActivityForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = Object.assign({}, this.props.activity);
+    this.handleDelete = this.handleDelete.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
   }
@@ -12,6 +13,12 @@ class ActivityForm extends React.Component {
   update(field) {
     return e => this.setState({[field]: e.currentTarget.value });
   }
+
+  handleDelete() {
+    this.props.deleteActivity({ tripId: this.props.activity.tripId, _id: this.props.activity._id })
+    .then(() => this.props.closeModal());
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     this.props.processForm(this.state)
@@ -29,7 +36,7 @@ class ActivityForm extends React.Component {
       endTime 
     } = this.state;
 
-    const deleteButton = this.props.formType === "Edit Activity" ? <div className="delete">Delete Activity</div> : "";
+    const deleteButton = this.props.formType === "Edit Activity" ? <div onClick={this.handleDelete} className="delete">Delete Activity</div> : "";
     
     return (
       <div className="form-main">

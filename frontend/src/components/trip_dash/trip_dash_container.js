@@ -7,11 +7,10 @@ const mapStateToProps = (state, ownProps) => {
   const { entities: { trips } } = state;
   const trip = trips[ownProps.match.params.tripId];
   let destinations = [];
-  let activities = [];
+  let activities = state.entities.activities[ownProps.match.params.tripId] ? Object.values(state.entities.activities[ownProps.match.params.tripId]) : [];
 
   if (trip) {
     destinations = trip.destinations;
-    activities = trip.activities;
   }
 
   return {

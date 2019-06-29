@@ -97,14 +97,14 @@ router.patch("/:tripId/:activityId/update", passport.authenticate("jwt", { sessi
   });
 
 // delete single activity
-router.delete("/:tripId/:activityId", passport.authenticate("jwt", { session: false }),
+router.delete("/:tripId/:activityId/delete", passport.authenticate("jwt", { session: false }),
   (req, res) => {
     User.findById(req.user.id)
       .then(user => {
         const trip = user.trips.id(req.params.tripId);
         trip.activities.id(req.params.activityId).remove();
         user.save().then(user => {
-          res.json(user);
+          res.json({ tripId: req.params.tripId, activityId: req.params.activityId  });
         });
       })
       .catch(err => console.log("error in deleting activities ", err));
