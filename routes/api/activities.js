@@ -88,11 +88,10 @@ router.patch("/:tripId/:activityId/update", passport.authenticate("jwt", { sessi
           activity.endTime = req.body.endTime;
           user.save()
             .then(user => {
-              console.log(activity)
               return res.json(activity);
             })
             .catch(err => {
-              res.status(400).json(err)
+              res.status(400).json(err);
             });
         }
       })
