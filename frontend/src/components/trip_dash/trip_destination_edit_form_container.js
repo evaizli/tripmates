@@ -4,15 +4,9 @@ import { connect } from 'react-redux';
 import {updateDestination} from "../../actions/destination_actions";
 
 const mapStateToProps = (state) => {
-  const destinationId = state.ui.modal.destinationId;
   const tripId = state.ui.modal.tripId;
-  
-  let destination;
-  state.entities.trips[tripId].destinations.forEach(d => {
-    if (d._id === destinationId){
-      destination = d;
-    }
-  });
+  const destinationId = state.ui.modal.destinationId;
+  const destination = state.entities.destinations[tripId][destinationId];
 
   return {
     destination,

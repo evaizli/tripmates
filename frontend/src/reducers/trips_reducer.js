@@ -3,17 +3,10 @@ import {
     RECEIVE_TRIP, 
     REMOVE_TRIP 
 } from '../actions/trip_actions';
-import {
-    RECEIVE_DESTINATION,
-} from '../actions/destination_actions';
-import {
-    RECEIVE_ACTIVITY,
-} from "../actions/activity_actions";
 
 const tripsReducer = (state = {}, action ) => {
     Object.freeze(state);
     let newState;
-    let replaced; 
     switch(action.type){
         case RECEIVE_TRIPS:
             newState = Object.assign({}, state);
@@ -28,43 +21,6 @@ const tripsReducer = (state = {}, action ) => {
         case REMOVE_TRIP:
             newState = Object.assign({}, state);
             delete newState[action.tripId];
-            return newState;
-        case RECEIVE_DESTINATION:
-            newState = Object.assign({}, state);
-            let newDestinations = Object.assign([], newState[action.destination.tripId].destinations);
-            let destinationId = action.destination._id;
-            
-            replaced = false;
-            for (let i = 0; i < newDestinations.length; i++) {
-                if (newDestinations[i]._id === destinationId) {
-                    newDestinations[i] = action.destination;
-                    replaced = true;
-                }
-            }
-            if (!replaced) {
-                newDestinations.push(action.destination);
-            }
-            
-            newState[action.destination.tripId].destinations = newDestinations;
-            return newState;
-        case RECEIVE_ACTIVITY:
-            newState = Object.assign({}, state);
-            const tripId = action.activity.tripId;
-            const activityId = action.activity._id;
-            let newActivities = Object.assign([], newState[tripId].activities);
-            
-            replaced = false;
-            for (let i = 0; i < newActivities.length; i++) {
-                if (newActivities[i]._id === activityId) {
-                    newActivities[i] = action.activity;
-                    replaced = true;
-                }
-            }
-            if (!replaced) {
-                newActivities.push(action.activity);
-            }
-            
-            newState[tripId].activities = newActivities;
             return newState;
         default:
             return state;
