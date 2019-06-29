@@ -4,15 +4,9 @@ import { closeModal } from '../../actions/modal_actions';
 import { updateActivity, deleteActivity } from "../../actions/activity_actions";
 
 const mapStateToProps = state => {
-    let activityId = state.ui.modal.activityId;
-    let tripId = state.ui.modal.tripId;
-    
-    let activity;
-    state.entities.trips[tripId].activities.forEach(a => {
-        if (a._id === activityId){
-            activity = a;
-        }
-    });
+    const tripId = state.ui.modal.tripId;
+    const activityId = state.ui.modal.activityId;
+    const activity = state.entities.activities[tripId][activityId];
 
     return {
         activity,
