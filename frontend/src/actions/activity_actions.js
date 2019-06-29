@@ -1,6 +1,5 @@
 import * as APIUtil from "../utils/activity_api_util";
 
-
 export const RECEIVE_ACTIVITIES = "RECEIVE_ACTIVITIES";
 export const RECEIVE_ACTIVITY = "RECEIVE_ACTIVITY";
 export const RECEIVE_ACTIVITY_ERRORS = "RECEIVE_ACTIVITY_ERRORS";
@@ -14,14 +13,12 @@ export const receiveActivities = payload => {
   };
 };
 
-
 export const receiveActivity = payload => {
   return {
     type: RECEIVE_ACTIVITY,
     activity: payload.data
   };
 };
-
 
 export const removeActivity = payload => {
   return {
@@ -44,7 +41,6 @@ export const clearActivityErrors = () => {
   };
 };
 
-
 export const fetchActivities = () => dispatch => {
   return APIUtil.fetchActivities()
     .then(activities => dispatch(receiveActivities(activities)))
@@ -52,7 +48,6 @@ export const fetchActivities = () => dispatch => {
       dispatch(receiveActivityErrors(err.response.data));
     });
 };
-
 
 export const fetchActivity = (id) => dispatch => {
   return APIUtil.fetchActivity(id)

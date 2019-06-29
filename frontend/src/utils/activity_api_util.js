@@ -12,11 +12,10 @@ export const createActivity = data => {
     return axios.post(`/api/activities/${data.tripId}`, data);
 };
 
-export const deleteActivity = data => {
-    return axios.delete(`/api/activities/${data.tripId}/${data._id}/delete`);
-}
-
-//mongoose action for update patch or get???
 export const updateActivity = data => {
     return axios.patch(`/api/activities/${data.tripId}/${data._id}/update`, data);
-} 
+} ;
+
+export const deleteActivity = data => {
+    return axios.delete(`/api/activities/${data.tripId}/${data._id}/delete`);
+};
