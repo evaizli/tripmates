@@ -4,13 +4,16 @@ import { closeModal } from '../../actions/modal_actions';
 import { updateActivity } from "../../actions/activity_actions";
 
 const mapStateToProps = state => {
-    let activityId = state.ui.modal.id;
+    let activityId = state.ui.modal.activityId;
+    let tripId = state.ui.modal.tripId;
+    
     let activity;
-    state.entities.activities.forEach(a => {
+    state.entities.trips[tripId].activities.forEach(a => {
         if (a._id === activityId){
             activity = a;
         }
     });
+
     return {
         activity,
         formType: "Edit Activity"

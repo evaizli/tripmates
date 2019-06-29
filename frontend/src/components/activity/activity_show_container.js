@@ -5,9 +5,9 @@ import { fetchActivity } from "../../actions/activity_actions";
 
 const mapStateToProps = (state, ownProps) => {
   let tripId = state.ui.modal.tripId;
-  let activityId = state.ui.modal.id;
+  let activityId = state.ui.modal.activityId;
   let activity;
-  state.entities.activities.forEach(a => {
+  state.entities.trips[tripId].activities.forEach(a => {
       if (a._id === activityId){
         activity = a;
       }
