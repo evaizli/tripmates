@@ -9,7 +9,7 @@ class About extends React.Component {
         <div className="about-container">
           <h2>About</h2>
 
-          <h3>Trip Mates Mission</h3>
+          <h3>TripMates Mission</h3>
 
           <p>
             TripMates is a web app that allows users to easily collaborate
@@ -35,7 +35,7 @@ class About extends React.Component {
                 <i className="fab fa-github" />
               </a>
               <a href="https://www.jeffdam.com/">
-                <i class="fas fa-user-circle" /> - Personal Site
+                <i className="fas fa-user-circle" /> - Personal Site
               </a>
             </div>
           </section>
@@ -54,7 +54,7 @@ class About extends React.Component {
                 <i className="fab fa-github" />
               </a>
               <a href="http://evapan.com/">
-                <i class="fas fa-user-circle" /> - Personal Site
+                <i className="fas fa-user-circle" /> - Personal Site
               </a>
             </div>
           </section>
@@ -73,7 +73,7 @@ class About extends React.Component {
                 <i className="fab fa-github" />
               </a>
               <a href="https://github.com/macandrew6">
-                <i class="fas fa-user-circle" /> - Personal Site
+                <i className="fas fa-user-circle" /> - Personal Site
               </a>
             </div>
           </section>

@@ -16,8 +16,8 @@ const mapStateToProps = (state) => {
     activityDate: date,
     image: "",
     notes: "",
-    startTime: "",
-    endTime: "",
+    startTime: "07:00",
+    endTime: "08:00",
     tripId
   };
   

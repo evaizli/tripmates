@@ -24,20 +24,25 @@ export const sortStartTime = activities => {
   return activitiesDup.sort(compareTimeAsc);
 };
 
-export const futureTripsFinder = (trips) => {
+export const futureTripsFinder = (trips, destinations) => {
   const dateNow = getDateNow();
-  let futureTrips = []
+  let futureTrips = [];
   trips.forEach(trip => {
-    if (trip.destinations.length > 0) {
-      const startDate = parseDate(new Date(sortStartDateAsc(trip.destinations)[0].startDate));
+    const tripDestinations = Object.values(destinations[trip._id]);
+    if (tripDestinations.length > 0) {
+      const startDate = parseDate(
+        new Date(sortStartDateAsc(tripDestinations)[0].startDate)
+      );
       if (startDate > dateNow) {
-        trip.startDate = startDate;
-        futureTrips.push({ name: trip.tripName, startDate, tripId: trip._id });
+        futureTrips.push({
+          name: trip.tripName,
+          startDate,
+          tripId: trip._id
+        });
       }
     }
   });
-  futureTrips = sortTrips(futureTrips);
-  return futureTrips;
+  return sortTrips(futureTrips);
 };
 
 export const parseTrips = trips => {

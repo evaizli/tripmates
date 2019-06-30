@@ -1,7 +1,7 @@
 import React from 'react';
 import editIcon from '../../assets/images/icons8-pencil-24.png'; 
 import addIcon from '../../assets/images/icons8-plus-math-30.png'; 
-import { formatDate } from '../../utils/datetime_api_util';
+import { formatDate, getDateNow } from '../../utils/datetime_api_util';
 
 const TripLogistics = ({ tripId, destinations, openModal }) => {
   
@@ -40,7 +40,7 @@ const TripLogistics = ({ tripId, destinations, openModal }) => {
     )
   });
 
-  const placeholderDate = destinations[destinations.length - 1].endDate;
+  const placeholderDate = destinations.length > 0 ? destinations[destinations.length - 1].endDate : getDateNow();
 
   const addDestinationButton = (
     <div onClick={() => openModal({ type: 'createDestination', tripId, placeholderDate })} className="add-button">
