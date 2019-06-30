@@ -14,27 +14,17 @@ class SideBar extends React.Component {
     element.scrollIntoView({ behavior: "smooth" });
   }
 
-  sortTrips(trips) {
-    const tripsDup = Object.assign([], trips);
-    const compareTrip = (a, b) => (new Date(tripStartDateFinder(a.destinations)) < new Date(tripStartDateFinder(b.destinations)) ? -1 : 1);
-    return tripsDup.sort(compareTrip);
-  }
-
   render() {
     const { trips, logout } = this.props;
 
-    const allTrips = trips.filter(trip => {
-      return trip.destinations.length > 0;
-    });
-
-    const futureTrips = this.sortTrips(futureTripsFinder(allTrips));
+    const futureTrips = futureTripsFinder(trips);
 
     const tripsStartDates = futureTrips.map(trip => {
       const tripStartDate = tripStartDateFinder(trip.destinations);
       return { name: trip.tripName, startDate: tripStartDate, tripId: trip._id };
     });
 
-    const tripsCountdown = tripsStartDates.map((trip, idx) => {
+    const tripsCountdown = tripsStartDates.slice(0,5).map((trip, idx) => {
       const dateNow = new Date().getTime();
       const startDate = new Date(trip.startDate).getTime();
       const oneDay = 1000 * 60 * 60 * 24;
