@@ -13,7 +13,7 @@ export const createTrip = data => {
 };
 
 export const deleteTrip = id => {
-    return axios.delete(`/api/trips/${id}`);
+    return axios.delete(`/api/trips/${id}/delete`);
 };
 
 export const updateTrip = data => {

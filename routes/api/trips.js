@@ -80,14 +80,15 @@ router.patch("/:tripId/update", passport.authenticate("jwt", { session: false })
     });
 
 // delete trip
-router.delete("/:tripId", passport.authenticate("jwt", {session: false}),
+router.delete("/:tripId/delete", passport.authenticate("jwt", {session: false}),
     (req, res) => {
         User.findById(req.user.id)
             .then(user => {
-                user.trips.id(req.params.tripId).remove();
+                const tripId = req.params.tripId;
+                user.trips.id(tripId).remove();
                 user.save()
                     .then(user => {
-                        res.json(user);
+                        res.json(tripId);
                     });
             })
             .catch(err => res.status(400).json(err));
