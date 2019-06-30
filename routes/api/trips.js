@@ -88,7 +88,7 @@ router.delete("/:tripId/delete", passport.authenticate("jwt", {session: false}),
                 user.trips.id(tripId).remove();
                 user.save()
                     .then(user => {
-                        res.json(tripId);
+                        res.json({tripId});
                     });
             })
             .catch(err => res.status(400).json(err));

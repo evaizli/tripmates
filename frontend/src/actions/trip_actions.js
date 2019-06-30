@@ -20,10 +20,10 @@ export const receiveTrip = (payload) => {
     });
 };
 
-export const removeTrip = tripId => {
+export const removeTrip = payload => {
     return {
-    type: REMOVE_TRIP,
-    tripId
+        type: REMOVE_TRIP,
+        tripId: payload.data.tripId
     };
 };
 
