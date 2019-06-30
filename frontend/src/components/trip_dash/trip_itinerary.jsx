@@ -1,13 +1,13 @@
 import React from 'react';
 import addIcon from '../../assets/images/icons8-plus-math-30.png'; 
-import { allDatesFinder, formatTime, formatDate, sortStartTime } from '../../utils/datetime_api_util';
+import { allDatesFinder, formatTime, formatDate, sortStartTime, parseDate } from '../../utils/datetime_api_util';
 
 const TripItinerary = ({ tripId, activities, tripDates, openModal }) => {
 
   const parseActivities = (activities) => {
     const activitiesCatDate = {};
     activities.forEach((activity) => {
-      const date = formatDate(activity.activityDate);
+      const date = parseDate(activity.activityDate);
       if (activitiesCatDate[date]) {
         activitiesCatDate[date].push(activity);
       } else {

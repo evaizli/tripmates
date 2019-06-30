@@ -6,13 +6,14 @@ import {
   RECEIVE_TRIPS,
   RECEIVE_TRIP
 } from "../actions/trip_actions";
+import { RECEIVE_USER_LOGOUT } from "../actions/session_actions";
 
 const destinationsReducer = (state = {}, action) => {
   Object.freeze(state);
   let newState;
   switch (action.type) {
     case RECEIVE_TRIPS:
-      newState = Object.assign({}, state);
+      newState = {};
       action.trips.forEach(trip => {
         newState[trip._id] = {};
         trip.destinations.forEach(destination => {
@@ -41,6 +42,8 @@ const destinationsReducer = (state = {}, action) => {
       const { tripId, destinationId } = action.destination;
       delete newState[tripId][destinationId];
       return newState;
+    case RECEIVE_USER_LOGOUT:
+      return {};
     default:
       return state;
   }
