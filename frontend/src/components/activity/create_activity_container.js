@@ -2,7 +2,6 @@ import { connect } from "react-redux";
 import ActivityForm from "./activity_form";
 import { closeModal } from '../../actions/modal_actions';
 import { createActivity } from "../../actions/activity_actions";
-import { getDateNow } from '../../utils/datetime_api_util';
 
 const mapStateToProps = (state) => {
 
