@@ -3,6 +3,7 @@ import SidebarContainer from '../shared/sidebar_container';
 import TripLogistics from './trip_logistics';
 import TripItinerary from './trip_itinerary';
 import { sortStartDateAsc, tripStartDateFinder, tripEndDateFinder } from '../../utils/datetime_api_util';
+import editIcon from '../../assets/images/icons8-pencil-24.png'; 
 
 class TripDash extends React.Component {
 
@@ -40,7 +41,17 @@ class TripDash extends React.Component {
         <SidebarContainer pageType="Trip Dash" destinationsCount={destinationsCount}/>
         <div className="trip-dash-content">
           <div className="trip-dash-header">
-            <h1>{trip.tripName}</h1>
+            <div className="flex-row baseline">
+              <h1>{trip.tripName}&nbsp;</h1>
+              <img
+                src={editIcon}
+                className="edit-icon"
+                alt="edit"
+                onClick={() => this.props.openModal({type: "editTrip", tripId: trip._id})}
+                title="Edit Destination"
+              />
+            </div>
+            
             <h3>{tripDates}</h3> 
           </div>
           <TripLogistics 

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import LoginFormContainer from '../session/login_form_container';
 import SignupFormContainer from '../session/signup_form_container';
 import TripCreateFormContainer from '../trip_form/trip_create_form_container';
+import TripEditFormContainer from '../trip_form/trip_edit_form_container';
 import TripDestinationEditFormContainer from '../trip_dash/trip_destination_edit_form_container';
 import TripDestinationCreateFormContainer from '../trip_dash/trip_destination_create_form_container';
 import CreateActivityFormContainer from "../activity/create_activity_container";
@@ -22,8 +23,11 @@ function Modal({ modal, closeModal }) {
     case "signup":
       component = <SignupFormContainer />;
       break;
-      case "createTrip":
+    case "createTrip":
       component = <TripCreateFormContainer />;
+      break;
+    case "editTrip":
+      component = <TripEditFormContainer />;
       break;
     case "createDestination":
       component = <TripDestinationCreateFormContainer />;

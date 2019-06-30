@@ -3,16 +3,13 @@ import React from 'react';
 class TripForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      tripName: "",
-      description: ""
-    };
+    this.state = this.props.trip;
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createTrip(this.state)
+    this.props.processForm(this.state)
       .then(() => this.props.closeModal());
     
   }
@@ -26,9 +23,12 @@ class TripForm extends React.Component {
   }
 
   render() {
+    const formTitle = this.props.formType === "create" ? "Create a Trip" : "Edit a Trip";
+    const buttonText = this.props.formType === "create" ? "Create Trip" : "Edit Trip";
+
     return (
       <div className = "trip-form-page" >
-        <h2>Create a Trip</h2>
+        <h2>{ formTitle }</h2>
         <form className="trip-form" onSubmit={this.handleSubmit}>
           <input
             type="text"
@@ -43,7 +43,7 @@ class TripForm extends React.Component {
             value={this.state.description}
             />
         
-          <input type="submit" value="Create Trip" />
+          <input type="submit" value={ buttonText } />
 
         </form>
       </div>

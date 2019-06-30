@@ -46,17 +46,17 @@ export const parseTrips = trips => {
 
   trips.forEach(trip => {
     if (trip.destinations.length === 0) {
-      tentativeTrips.push(trip)
+      tentativeTrips.push(trip);
     } else {
       const startDate = parseDate(new Date(sortStartDateAsc(trip.destinations)[0].startDate));
       const endDate = parseDate(new Date(sortEndDateDesc(trip.destinations)[0].endDate));
-      trip["startDate"] = startDate;
+      trip.startDate = startDate;
       if (startDate <= dateNow && endDate >= dateNow) {
-        inProgressTrips.push(trip)
+        inProgressTrips.push(trip);
       } else if (startDate > dateNow) {
-        futureTrips.push(trip)
+        futureTrips.push(trip);
       } else {
-        pastTrips.push(trip)
+        pastTrips.push(trip);
       }
     }
   })

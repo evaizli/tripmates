@@ -71,7 +71,7 @@ router.patch("/:tripId/update", passport.authenticate("jwt", { session: false })
             
                     user.save()
                         .then(user => {
-                            return res.json(user);
+                            return res.json(trip);
                         })
                         .catch(err => res.status(400).json(err));
                 }
