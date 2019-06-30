@@ -68,6 +68,7 @@ class SessionForm extends React.Component {
       : "";
 
     const otherForm = (formType === "Sign Up") ? "Log In" : "Sign Up";
+    const autocompletePsw = (formType === "Sign Up") ? "new-password" : "current-password";
 
     return (
       <div className="session-page">
@@ -78,12 +79,14 @@ class SessionForm extends React.Component {
             type="text"
             onChange={this.update('email')}
             placeholder="Email"
+            autoComplete="username"
           />
           {formTypeInput}
           <input
             type="password"
             onChange={this.update('password')}
             placeholder="Password"
+            autoComplete={autocompletePsw}
           />
           {confirmPass}
           <input type="submit" value={formType} />
