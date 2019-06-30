@@ -15,7 +15,7 @@ class ActivityForm extends React.Component {
   }
 
   handleDelete() {
-    this.props.deleteActivity({ tripId: this.props.activity.tripId, _id: this.props.activity._id })
+    this.props.deleteActivity({ tripId: this.state.tripId, _id: this.state._id })
     .then(() => this.props.closeModal());
   }
 

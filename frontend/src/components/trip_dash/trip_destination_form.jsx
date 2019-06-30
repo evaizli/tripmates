@@ -16,7 +16,7 @@ class TripDestinationForm extends React.Component {
   }
 
   handleDelete() {
-    this.props.deleteDestination({ tripId: this.props.destination.tripId, _id: this.props.destination._id })
+    this.props.deleteDestination({ tripId: this.state.tripId, _id: this.state._id })
       .then(() => this.props.closeModal());
   }
 

@@ -97,9 +97,13 @@ export const formatDate = (date) => {
 };
 
 export const parseDate = (date) => {
-  date = new Date(date).toISOString();
-  const parsedDate = date.split("T");
-  return parsedDate[0];
+  if (date.length === 0) {
+    return date;
+  } else {
+    date = new Date(date).toISOString();
+    const parsedDate = date.split("T");
+    return parsedDate[0];
+  }
 };
 
 export const tripStartDateFinder = (destinations) => {
