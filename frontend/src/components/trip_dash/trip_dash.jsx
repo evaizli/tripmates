@@ -19,24 +19,35 @@ class TripDash extends React.Component {
   }
 
   render() {
-    let { trip, destinations, activities} = this.props;
+    const { trip, destinations, activities} = this.props;
     if (!trip) return null;
-    
-    const destinationsSorted = destinations.length > 0 ? sortStartDateAsc(destinations) : [];
-    const tripStartDate = destinations.length > 0 ? tripStartDateFinder(destinations) : new Date();
-    const tripEndDate = destinations.length > 0 ? tripEndDateFinder(destinations) : new Date();
-    const tripItinerary = destinations.length > 0 ? <TripItinerary tripId={trip._id} activities={activities} tripDates={{ start: tripStartDate, end: tripEndDate }} openModal={this.props.openModal}/> : "";
-    const tripDates = destinations.length > 0 ? `${tripStartDateFinder(destinations)} to ${tripEndDateFinder(destinations)}` : "";
+
+    const destinationsCount = destinations.length;
+    const destinationsSorted = destinationsCount > 0 ? sortStartDateAsc(destinations) : [];
+    const tripStartDate = destinationsCount > 0 ? tripStartDateFinder(destinations) : new Date();
+    const tripEndDate = destinationsCount > 0 ? tripEndDateFinder(destinations) : new Date();
+    const tripItinerary = destinationsCount > 0 ? 
+      <TripItinerary 
+        tripId={trip._id} 
+        activities={activities} 
+        tripDates={{ start: tripStartDate, end: tripEndDate }} 
+        openModal={this.props.openModal}
+        /> : "";
+    const tripDates = destinationsCount > 0 ? `${tripStartDate} to ${tripEndDate}` : "";
 
     return (
       <section className="trip-dash-main">
-        <SidebarContainer pageType="Trip Dash" destinationsCount={destinations.length}/>
+        <SidebarContainer pageType="Trip Dash" destinationsCount={destinationsCount}/>
         <div className="trip-dash-content">
           <div className="trip-dash-header">
             <h1>{trip.tripName}</h1>
             <h3>{tripDates}</h3> 
           </div>
-          <TripLogistics tripId={trip._id} destinations={destinationsSorted} openModal={this.props.openModal}/>
+          <TripLogistics 
+            tripId={trip._id} 
+            destinations={destinationsSorted} 
+            openModal={this.props.openModal}
+            />
           { tripItinerary }
         </div>
       </section>
