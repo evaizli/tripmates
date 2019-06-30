@@ -101,10 +101,12 @@ router.delete("/:tripId/:activityId/delete", passport.authenticate("jwt", { sess
   (req, res) => {
     User.findById(req.user.id)
       .then(user => {
-        const trip = user.trips.id(req.params.tripId);
-        trip.activities.id(req.params.activityId).remove();
+        const tripId = req.params.tripId;
+        const activityId = req.params.activityId;
+        const trip = user.trips.id(tripId);
+        trip.activities.id(activityId).remove();
         user.save().then(user => {
-          res.json({ tripId: req.params.tripId, activityId: req.params.activityId  });
+          res.json({ tripId, activityId });
         });
       })
       .catch(err => console.log("error in deleting activities ", err));
@@ -112,6 +114,3 @@ router.delete("/:tripId/:activityId/delete", passport.authenticate("jwt", { sess
 
 
 module.exports = router;
-
-///
-// mates: what kind of routes do we need for activities
