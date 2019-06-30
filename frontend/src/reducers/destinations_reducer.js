@@ -31,6 +31,9 @@ const destinationsReducer = (state = {}, action) => {
     case RECEIVE_DESTINATION:
       newState = Object.assign({}, state);
       const destination = action.destination;
+      if (!newState[destination.tripId]) {
+        newState[destination.tripId] = {};
+      }
       newState[destination.tripId][destination._id] = destination;
       return newState;
     case REMOVE_DESTINATION:

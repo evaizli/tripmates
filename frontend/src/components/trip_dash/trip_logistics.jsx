@@ -4,7 +4,7 @@ import addIcon from '../../assets/images/icons8-plus-math-30.png';
 import { formatDate } from '../../utils/datetime_api_util';
 
 const TripLogistics = ({ tripId, destinations, openModal }) => {
-
+  
   const destinationsDisplay = destinations.map((destination, idx) => {
     const modalAttr = { type: 'editDestination', destinationId: destination._id, tripId };
     

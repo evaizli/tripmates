@@ -1,7 +1,9 @@
 import TripDestinationForm from './trip_destination_form';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import {updateDestination} from "../../actions/destination_actions";
+import { updateDestination, deleteDestination } from "../../actions/destination_actions";
+import { deleteActivity } from "../../actions/activity_actions";
+
 
 const mapStateToProps = (state) => {
   const tripId = state.ui.modal.tripId;
@@ -17,7 +19,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
   return {
     closeModal: () => dispatch(closeModal()),
-    processForm: (data) => dispatch(updateDestination(data))
+    processForm: (data) => dispatch(updateDestination(data)),
+    deleteDestination: (data) => dispatch(deleteDestination(data)),
+    deleteActivity: (data) => dispatch(deleteActivity(data))
   };
 };
 

@@ -18,7 +18,7 @@ const mapDispatchToProps = dispatch => {
 
     return {
         processForm: activity => dispatch(updateActivity(activity)),
-        deleteActivity: (payload) => dispatch(deleteActivity(payload)),
+        deleteActivity: (data) => dispatch(deleteActivity(data)),
         closeModal: () => dispatch(closeModal())
     };
 };

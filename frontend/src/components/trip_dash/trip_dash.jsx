@@ -21,13 +21,12 @@ class TripDash extends React.Component {
   render() {
     let { trip, destinations, activities} = this.props;
     if (!trip) return null;
-    destinations = destinations.length < 1 ? trip.destinations : destinations;
     
-    const destinationsSorted = trip.destinations.length > 0 ? sortStartDateAsc(destinations) : [];
-    const tripStartDate = trip.destinations.length > 0 ? tripStartDateFinder(destinations) : new Date();
-    const tripEndDate = trip.destinations.length > 0 ? tripEndDateFinder(destinations) : new Date();
-    const tripItinerary = trip.destinations.length > 0 ? <TripItinerary tripId={trip._id} activities={activities} tripDates={{ start: tripStartDate, end: tripEndDate }} openModal={this.props.openModal}/> : "";
-    const tripDates = trip.destinations.length > 0 ? `${tripStartDateFinder(trip.destinations)} to ${tripEndDateFinder(trip.destinations)}` : "";
+    const destinationsSorted = destinations.length > 0 ? sortStartDateAsc(destinations) : [];
+    const tripStartDate = destinations.length > 0 ? tripStartDateFinder(destinations) : new Date();
+    const tripEndDate = destinations.length > 0 ? tripEndDateFinder(destinations) : new Date();
+    const tripItinerary = destinations.length > 0 ? <TripItinerary tripId={trip._id} activities={activities} tripDates={{ start: tripStartDate, end: tripEndDate }} openModal={this.props.openModal}/> : "";
+    const tripDates = destinations.length > 0 ? `${tripStartDateFinder(destinations)} to ${tripEndDateFinder(destinations)}` : "";
 
     return (
       <section className="trip-dash-main">
