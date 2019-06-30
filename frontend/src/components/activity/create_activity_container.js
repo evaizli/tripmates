@@ -3,23 +3,24 @@ import ActivityForm from "./activity_form";
 import { closeModal } from '../../actions/modal_actions';
 import { createActivity } from "../../actions/activity_actions";
 
-const mapStateToProps = (state, ownProps) => {
-  const tripId = state.entities.trips[0]._id;
-  const date = state.ui.modal.date ? state.ui.modal.date : new Date();
+const mapStateToProps = (state) => {
+
+  const { tripId, date } = state.ui.modal; 
   
   let activity = {
-      activityName: "",
-      location: "",
-      address: "",
-      mates: "",
-      tag: "",
-      activityDate: date,
-      image: "",
-      notes: "",
-      startTime: "",
-      endTime: "",
-      tripId,
-  }
+    activityName: "",
+    location: "",
+    address: "",
+    mates: "",
+    tag: "",
+    activityDate: date,
+    image: "",
+    notes: "",
+    startTime: "",
+    endTime: "",
+    tripId
+  };
+  
   return {
     activity,
     formType: "Create Activity"

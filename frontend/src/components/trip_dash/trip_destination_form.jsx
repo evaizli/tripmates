@@ -1,10 +1,12 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom'
+import {withRouter} from 'react-router-dom';
+import { parseDate } from '../../utils/datetime_api_util';
 
 class TripDestinationForm extends React.Component {
   constructor(props){
     super(props);
     this.state = Object.assign({}, this.props.destination);
+    this.handleDelete = this.handleDelete.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
   }
@@ -13,18 +15,20 @@ class TripDestinationForm extends React.Component {
     return e => this.setState( {[field]: e.currentTarget.value});
   }
 
-  handleSubmit(e){
-    e.preventDefault();
-    this.props.processForm(this.state).then(()=>this.props.closeModal());
+  handleDelete() {
+    this.props.deleteDestination({ tripId: this.state.tripId, _id: this.state._id })
+      .then(() => this.props.closeModal());
   }
 
-  prefillDate(date){
-    return new Date(date).toISOString().substring(0, 10);
+  handleSubmit(e){
+    e.preventDefault();
+    this.props.processForm(this.state)
+      .then(()=>this.props.closeModal());
   }
 
   render() {
     const { location, startDate, endDate, housing, transportation, notes } = this.state;
-    const deleteButton = this.props.formType === "Edit Destination" ? <div className="delete">Delete Destination</div> : "";
+    const deleteButton = this.props.formType === "Edit Destination" ? <div onClick={this.handleDelete} className="delete">Delete Destination</div> : "";
 
     return (
       <div className="form-main" >
@@ -41,14 +45,14 @@ class TripDestinationForm extends React.Component {
             <label><h4>Start Date</h4>
             <input
               type="date"
-              value={this.prefillDate(startDate)}
+              value={parseDate(startDate)}
               onChange={this.update("startDate")}
             />
             </label>
             <label><h4>End Date</h4>
             <input
               type="date"
-              value={this.prefillDate(endDate)} 
+              value={parseDate(endDate)} 
                 onChange={this.update("endDate")}
             />
             </label>

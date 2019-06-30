@@ -58,12 +58,11 @@ router.post("/:tripId/", passport.authenticate("jwt", { session: false }),
             return res.status(400).json(errors);
           }
         }
-        destination["tripId"] = tripId;
+
         trip.destinations.push(destination);
         user.save()
-          .then(() => {
-            // make sure not to send back the user password
-            return res.json(destination);
+          .then(user => {
+            return res.json(trip.destinations[trip.destinations.length - 1]);
           })
           .catch(err => console.log("error in posting destination from db ", err));
         });
@@ -97,15 +96,17 @@ router.patch("/:tripId/:destinationId/update", passport.authenticate("jwt", { se
       .catch(err => console.log("error in updating destination ", err));
   });
   
-router.delete("/:tripId/:destinationId", passport.authenticate("jwt", { session: false }),
+router.delete("/:tripId/:destinationId/delete", passport.authenticate("jwt", { session: false }),
   (req, res) => {
     User.findById(req.user.id)
       .then(user => {
-        const trip = user.trips.id(req.params.tripId);
-        trip.destinations.id(req.params.destinationId).remove();
+        const tripId = req.params.tripId;
+        const destinationId = req.params.destinationId; 
+        const trip = user.trips.id(tripId);
+        trip.destinations.id(destinationId).remove();
 
         user.save().then(user => {
-          res.json(user);
+          res.json({ tripId, destinationId });
         });
 
       })

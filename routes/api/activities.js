@@ -54,12 +54,10 @@ router.post("/:tripId/", passport.authenticate("jwt", { session: false }),
             return res.status(400).json(errors);
           }
         }
-
         trip.activities.push(activity);
         user.save()
           .then(user => {
-            // make sure not to send back the user password
-            return res.json(activity);
+            return res.json(trip.activities[trip.activities.length-1]);
           })
           .catch(err => console.log("error in posting activity from db ", err));
       });
@@ -88,11 +86,10 @@ router.patch("/:tripId/:activityId/update", passport.authenticate("jwt", { sessi
           activity.endTime = req.body.endTime;
           user.save()
             .then(user => {
-              console.log(activity)
               return res.json(activity);
             })
             .catch(err => {
-              res.status(400).json(err)
+              res.status(400).json(err);
             });
         }
       })
@@ -100,14 +97,16 @@ router.patch("/:tripId/:activityId/update", passport.authenticate("jwt", { sessi
   });
 
 // delete single activity
-router.delete("/:tripId/:activityId", passport.authenticate("jwt", { session: false }),
+router.delete("/:tripId/:activityId/delete", passport.authenticate("jwt", { session: false }),
   (req, res) => {
     User.findById(req.user.id)
       .then(user => {
-        const trip = user.trips.id(req.params.tripId);
-        trip.activities.id(req.params.activityId).remove();
+        const tripId = req.params.tripId;
+        const activityId = req.params.activityId;
+        const trip = user.trips.id(tripId);
+        trip.activities.id(activityId).remove();
         user.save().then(user => {
-          res.json(user);
+          res.json({ tripId, activityId });
         });
       })
       .catch(err => console.log("error in deleting activities ", err));
@@ -115,6 +114,3 @@ router.delete("/:tripId/:activityId", passport.authenticate("jwt", { session: fa
 
 
 module.exports = router;
-
-///
-// mates: what kind of routes do we need for activities

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { futureTrips, tripStartDateFinder } from '../../utils/datetime_api_util';
+import { futureTripsFinder, getDateNow } from '../../utils/datetime_api_util';
 import logoutIcon from '../../assets/images/logout.svg';
 
 class SideBar extends React.Component {
@@ -17,25 +17,19 @@ class SideBar extends React.Component {
   render() {
     const { trips, logout } = this.props;
 
-    const allTrips = trips.filter(trip => {
-      return trip.destinations.length > 0;
-    });
+    const futureTrips = futureTripsFinder(trips);
 
-    const tripsStartDates = futureTrips(allTrips).map(trip => {
-      const tripStartDate = tripStartDateFinder(trip.destinations);
-      return { name: trip.tripName, startDate: tripStartDate, tripId: trip._id };
-    });
-
-    const tripsCountdown = tripsStartDates.map((trip, idx) => {
-      const dateNow = new Date().getTime();
+    const tripsCountdown = futureTrips.slice(0,5).map((trip, idx) => {
+      const dateNow = new Date(getDateNow()).getTime();
       const startDate = new Date(trip.startDate).getTime();
       const oneDay = 1000 * 60 * 60 * 24;
       const daysLeft = Math.floor((startDate - dateNow) / oneDay);
+      const daysLeftText = daysLeft <= 1 ? `${daysLeft} day` : `${daysLeft} days`;
 
       return (
         <Link key={idx} to={`/trip/${trip.tripId}`}>
           <div key={idx} className="sidebar-menu-item flex-col">
-            <div>{`${daysLeft} days`}</div>
+            <div>{ daysLeftText }</div>
             <div>until</div>
             <div>{`${trip.name}`}</div>
           </div>
@@ -44,7 +38,7 @@ class SideBar extends React.Component {
     })
 
     const tripsCountdownItem = () => {
-      if (tripsStartDates.length > 0) {
+      if (futureTrips.length > 0) {
         return(
           <>
             <div className="sidebar-menu-item sidebar-menu-item-countdown">Trips Countdown</div>

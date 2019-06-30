@@ -10,19 +10,22 @@ const TripsDashItems = ({ tripType, trips, openModal }) => {
     ) : "";
   
   const tripButtons = trips.map((trip, idx) => {
-    const description = trip.description ? trip.description : ""; 
+    const titleText = trip.description === "" ? trip.tripName : `${trip.tripName} - ${trip.description}`; 
     const tripDates = trip.destinations.length > 0 ? 
-      <div>
+      <div className="date-info">
         <h4>{`${tripStartDateFinder(trip.destinations)}`}</h4>
         <h4>to</h4>
         <h4>{`${tripEndDateFinder(trip.destinations)}`}</h4>
       </div>
      : "";
+    const tripName = trip.tripName.length > 27 ? trip.tripName.slice(0,27) + "..." : trip.tripName;
 
     return (
-      <Link key={idx} to={`/trip/${trip._id}`} className="trips-dash-item" title={ description }>
+      <Link key={idx} to={`/trip/${trip._id}`} className="trips-dash-item" title={ titleText }>
         <div className="trips-dash-item-info">
-          <h3>{trip.tripName}</h3>
+          <div className="trip-name">
+            <h3>{ tripName }</h3>
+          </div>
           {tripDates}
         </div>
         <div className="trips-dash-item-background">
