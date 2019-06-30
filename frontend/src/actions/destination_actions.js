@@ -20,10 +20,10 @@ export const receiveDestination = payload => {
   };
 };
 
-export const removeDestination = destination => {
+export const removeDestination = payload => {
   return {
     type: REMOVE_DESTINATION,
-    destinationId: destination._id
+    destination: payload.data
   };
 };
 
@@ -58,9 +58,7 @@ export const fetchDestination = id => dispatch => {
 
 export const createDestination = data => dispatch => {
   return APIUtil.createDestination(data)
-    .then(data => { 
-      dispatch(receiveDestination(data))
-    })
+    .then(data => dispatch(receiveDestination(data)))
     .catch(err => {
       dispatch(receiveDestinationErrors(err));
     });
@@ -74,9 +72,9 @@ export const updateDestination = data => dispatch => {
     });
 };
 
-export const deleteDestination = id => dispatch => {
-  return APIUtil.deleteDestination(id)
-    .then(destinationId => dispatch(removeDestination(destinationId)))
+export const deleteDestination = data => dispatch => {
+  return APIUtil.deleteDestination(data)
+    .then(data => dispatch(removeDestination(data)))
     .catch(err => {
       dispatch(receiveDestinationErrors(err.response.data));
     });

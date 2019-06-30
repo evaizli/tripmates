@@ -6,12 +6,18 @@ class TripDestinationForm extends React.Component {
   constructor(props){
     super(props);
     this.state = Object.assign({}, this.props.destination);
+    this.handleDelete = this.handleDelete.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
   }
 
   update(field) {
     return e => this.setState( {[field]: e.currentTarget.value});
+  }
+
+  handleDelete() {
+    this.props.deleteDestination({ tripId: this.props.destination.tripId, _id: this.props.destination._id })
+      .then(() => this.props.closeModal());
   }
 
   handleSubmit(e){
@@ -22,7 +28,7 @@ class TripDestinationForm extends React.Component {
 
   render() {
     const { location, startDate, endDate, housing, transportation, notes } = this.state;
-    const deleteButton = this.props.formType === "Edit Destination" ? <div className="delete">Delete Destination</div> : "";
+    const deleteButton = this.props.formType === "Edit Destination" ? <div onClick={this.handleDelete} className="delete">Delete Destination</div> : "";
 
     return (
       <div className="form-main" >
