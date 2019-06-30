@@ -1,8 +1,9 @@
 import React from 'react';
 import SidebarContainer from '../shared/sidebar_container';
 import TripLogistics from './trip_logistics';
-import TripItineraryContainer from './trip_itinerary_container';
+import TripItinerary from './trip_itinerary';
 import { sortStartDateAsc, tripStartDateFinder, tripEndDateFinder } from '../../utils/datetime_api_util';
+import editIcon from '../../assets/images/icons8-pencil-24.png'; 
 
 class TripDash extends React.Component {
 
@@ -19,25 +20,45 @@ class TripDash extends React.Component {
   }
 
   render() {
-    let { trip, destinations, activities} = this.props;
+    const { trip, destinations, activities } = this.props;
     if (!trip) return null;
-    destinations = destinations.length < 1 ? trip.destinations : destinations;
-    
-    const destinationsSorted = trip.destinations.length > 0 ? sortStartDateAsc(destinations) : [];
-    const tripStartDate = trip.destinations.length > 0 ? tripStartDateFinder(destinations) : new Date();
-    const tripEndDate = trip.destinations.length > 0 ? tripEndDateFinder(destinations) : new Date();
-    const tripItinerary = trip.destinations.length > 0 ? <TripItineraryContainer tripId={trip._id} activities={activities} tripDates={{start: tripStartDate, end: tripEndDate}}/> : "";
-    const tripDates = trip.destinations.length > 0 ? `${tripStartDateFinder(trip.destinations)} to ${tripEndDateFinder(trip.destinations)}` : "";
+
+    const destinationsCount = destinations.length;
+    const destinationsSorted = destinationsCount > 0 ? sortStartDateAsc(destinations) : [];
+    const tripStartDate = destinationsCount > 0 ? tripStartDateFinder(destinations) : new Date();
+    const tripEndDate = destinationsCount > 0 ? tripEndDateFinder(destinations) : new Date();
+    const tripItinerary = destinationsCount > 0 ? 
+      <TripItinerary 
+        tripId={trip._id} 
+        activities={activities} 
+        tripDates={{ start: tripStartDate, end: tripEndDate }} 
+        openModal={this.props.openModal}
+        /> : "";
+    const tripDates = destinationsCount > 0 ? `${tripStartDate} to ${tripEndDate}` : "";
 
     return (
       <section className="trip-dash-main">
-        <SidebarContainer pageType="Trip Dash" destinationsCount={destinations.length}/>
+        <SidebarContainer pageType="Trip Dash" destinationsCount={destinationsCount}/>
         <div className="trip-dash-content">
           <div className="trip-dash-header">
-            <h1>{trip.tripName}</h1>
+            <div className="flex-row baseline">
+              <h1>{trip.tripName}&nbsp;</h1>
+              <img
+                src={editIcon}
+                className="edit-icon"
+                alt="edit"
+                onClick={() => this.props.openModal({type: "editTrip", tripId: trip._id})}
+                title="Edit Destination"
+              />
+            </div>
+            
             <h3>{tripDates}</h3> 
           </div>
-          <TripLogistics destinations={destinationsSorted} openModal={this.props.openModal}/>
+          <TripLogistics 
+            tripId={trip._id} 
+            destinations={destinationsSorted} 
+            openModal={this.props.openModal}
+            />
           { tripItinerary }
         </div>
       </section>

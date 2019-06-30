@@ -1,4 +1,4 @@
 /node_modules
 /config/keys_dev.js
-/.DS_Stores
+/.DS_Store
 bundle.js*

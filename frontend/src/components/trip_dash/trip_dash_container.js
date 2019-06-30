@@ -5,11 +5,12 @@ import { fetchTrip } from '../../actions/trip_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const { entities: { trips } } = state;
-  const trip = trips.filter(trip => trip._id === ownProps.match.params.tripId);
-  const destinations = state.entities.destinations;
-  const activities = state.entities.activities;
+  const trip = trips[ownProps.match.params.tripId];
+  let destinations = state.entities.destinations[ownProps.match.params.tripId] ? Object.values(state.entities.destinations[ownProps.match.params.tripId]) : [];
+  let activities = state.entities.activities[ownProps.match.params.tripId] ? Object.values(state.entities.activities[ownProps.match.params.tripId]) : [];
+
   return {
-    trip: trip[0],
+    trip,
     destinations,
     activities
   };

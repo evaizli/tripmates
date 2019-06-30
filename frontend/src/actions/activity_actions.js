@@ -1,6 +1,5 @@
 import * as APIUtil from "../utils/activity_api_util";
 
-
 export const RECEIVE_ACTIVITIES = "RECEIVE_ACTIVITIES";
 export const RECEIVE_ACTIVITY = "RECEIVE_ACTIVITY";
 export const RECEIVE_ACTIVITY_ERRORS = "RECEIVE_ACTIVITY_ERRORS";
@@ -14,7 +13,6 @@ export const receiveActivities = payload => {
   };
 };
 
-
 export const receiveActivity = payload => {
   return {
     type: RECEIVE_ACTIVITY,
@@ -22,11 +20,10 @@ export const receiveActivity = payload => {
   };
 };
 
-
-export const removeActivity = activity => {
+export const removeActivity = payload => {
   return {
     type: REMOVE_ACTIVITY,
-    activityId: activity._id
+    activity: payload.data
   };
 };
 
@@ -44,7 +41,6 @@ export const clearActivityErrors = () => {
   };
 };
 
-
 export const fetchActivities = () => dispatch => {
   return APIUtil.fetchActivities()
     .then(activities => dispatch(receiveActivities(activities)))
@@ -52,7 +48,6 @@ export const fetchActivities = () => dispatch => {
       dispatch(receiveActivityErrors(err.response.data));
     });
 };
-
 
 export const fetchActivity = (id) => dispatch => {
   return APIUtil.fetchActivity(id)
@@ -70,7 +65,6 @@ export const createActivity = (data) => dispatch => {
     });
 };
 
-
 export const updateActivity = (data) => dispatch => {
   return APIUtil.updateActivity(data)
     .then(data => dispatch(receiveActivity(data)))
@@ -79,10 +73,9 @@ export const updateActivity = (data) => dispatch => {
     });
 };
 
-export const deleteActivity = (id) => dispatch => {
-
-  return APIUtil.deleteActivity(id)
-    .then(activityId => dispatch(removeActivity(activityId)))
+export const deleteActivity = (data) => dispatch => {
+  return APIUtil.deleteActivity(data)
+    .then(data => dispatch(removeActivity(data)))
     .catch(err => {
       dispatch(receiveActivityErrors(err.response.data));
     });

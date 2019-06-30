@@ -20,20 +20,23 @@
 }
 
 .sidebar-menu {
-  padding: 20px 0px;
   @extend .flex-col;
+  padding: 20px 0px;
   width: 100%;
+
+  h1 {
+    padding: 0 20px;
+  }
 }
 
 .sidebar-menu-items {
-  height: 100%;
   @extend .flex-col;
+  height: 100%;
   justify-content: space-between;
 }
 
 .sidebar-menu-item {
   min-height: 30px;
-  height: 100%;
   padding: 5px 20px;
   font-weight: 600;
   display: flex;
@@ -60,9 +63,13 @@
 }
 
 .logo {
-  cursor: default;
-  padding: 0 20px;
+  cursor: pointer;
   text-shadow: 1px 1px 2px black;
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
 }
 
 .logout-icon {

@@ -1,13 +1,12 @@
 import React from 'react';
 import editIcon from '../../assets/images/icons8-pencil-24.png'; 
 import addIcon from '../../assets/images/icons8-plus-math-30.png'; 
-import { formatDate } from '../../utils/datetime_api_util';
+import { formatDate, getDateNow } from '../../utils/datetime_api_util';
 
-const TripLogistics = ({ destinations, openModal }) => {
-
+const TripLogistics = ({ tripId, destinations, openModal }) => {
+  
   const destinationsDisplay = destinations.map((destination, idx) => {
-    const modalAttr = { type: 'editDestination', id: destination._id };
-    
+    const modalAttr = { type: 'editDestination', destinationId: destination._id, tripId };
     return (
       <div key={idx} className="trip-logistics-destination">
         <div className="trip-logistics-destination-header">
@@ -41,12 +40,16 @@ const TripLogistics = ({ destinations, openModal }) => {
     )
   });
 
+  const placeholderDate = destinations.length > 0 ? destinations[destinations.length - 1].endDate : getDateNow();
+
   const addDestinationButton = (
-    <div onClick={() => openModal({ type: 'createDestination' })} className="add-button">
+    <div onClick={() => openModal({ type: 'createDestination', tripId, placeholderDate })} className="add-button">
       <img src={addIcon} alt="add" />
       &nbsp;Add Destination
     </div>
   )
+
+  const secondAddDestinationButton = destinations.length > 0 ? addDestinationButton : "";
 
   return (
     <div id="logistics" className="trip-logistics-main">
@@ -57,7 +60,7 @@ const TripLogistics = ({ destinations, openModal }) => {
       <div className="trip-logistics-destinations">
         {destinationsDisplay}
       </div>
-      { addDestinationButton }
+      { secondAddDestinationButton }
     </div>
   )
 

@@ -1,9 +1,11 @@
 import React from 'react';
+import { parseDate } from '../../utils/datetime_api_util';
 
 class ActivityForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = Object.assign({}, this.props.activity);
+    this.handleDelete = this.handleDelete.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
   }
@@ -11,13 +13,16 @@ class ActivityForm extends React.Component {
   update(field) {
     return e => this.setState({[field]: e.currentTarget.value });
   }
-  handleSubmit(e) {
-    e.preventDefault();
-    this.props.processForm(this.state).then(() => this.props.closeModal());
+
+  handleDelete() {
+    this.props.deleteActivity({ tripId: this.state.tripId, _id: this.state._id })
+    .then(() => this.props.closeModal());
   }
 
-  prefillDate(date){
-    return new Date(date).toISOString().substring(0, 10);
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.processForm(this.state)
+      .then(() => this.props.closeModal());
   }
 
   render() {
@@ -31,7 +36,7 @@ class ActivityForm extends React.Component {
       endTime 
     } = this.state;
 
-    const deleteButton = this.props.formType === "Edit Activity" ? <div className="delete">Delete Activity</div> : "";
+    const deleteButton = this.props.formType === "Edit Activity" ? <div onClick={this.handleDelete} className="delete">Delete Activity</div> : "";
     
     return (
       <div className="form-main">
@@ -49,7 +54,7 @@ class ActivityForm extends React.Component {
             <label> <h4>Activity Date</h4>
             <input
               type="date"
-              value={this.prefillDate(activityDate)}
+              value={parseDate(activityDate)}
               onChange={this.update("activityDate")}
             />
             </label>

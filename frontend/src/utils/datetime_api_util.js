@@ -1,3 +1,11 @@
+export const getDateNow = () => {
+  const dateNow = new Date();
+  const date = dateNow.getDate() < 10 ? `0${dateNow.getDate()}` : dateNow.getDate();
+  const month = dateNow.getMonth() + 1 < 10 ? `0${dateNow.getMonth() + 1}` : dateNow.getMonth() + 1;
+  const year = dateNow.getFullYear();
+  return `${year}-${month}-${date}`;
+}
+
 export const sortEndDateDesc = (destinations) => {
   const destinationsDup = Object.assign([], destinations);
   const compareDateDesc = (a, b) => (a.endDate > b.endDate ? -1 : 1);
@@ -16,29 +24,65 @@ export const sortStartTime = activities => {
   return activitiesDup.sort(compareTimeAsc);
 };
 
-export const inProgressTrips = (trips) => {
-  const dateNow = new Date();
-  return trips.filter(trip => {
-    const startDate = new Date(sortStartDateAsc(trip.destinations)[0].startDate);
-    const endDate = new Date(sortEndDateDesc(trip.destinations)[0].endDate);
-    return startDate <= dateNow && endDate >= dateNow;
+export const futureTripsFinder = (trips, destinations) => {
+  const dateNow = getDateNow();
+  let futureTrips = [];
+  trips.forEach(trip => {
+    const tripDestinations = Object.values(destinations[trip._id]);
+    if (tripDestinations.length > 0) {
+      const startDate = parseDate(
+        new Date(sortStartDateAsc(tripDestinations)[0].startDate)
+      );
+      if (startDate > dateNow) {
+        futureTrips.push({
+          name: trip.tripName,
+          startDate,
+          tripId: trip._id
+        });
+      }
+    }
   });
+  return sortTrips(futureTrips);
 };
 
-export const pastTrips = (trips) => {
-  const dateNow = new Date();
-  return trips.filter(trip => {
-    const endDate = new Date(sortEndDateDesc(trip.destinations)[0].endDate);
-    return endDate < dateNow;
+export const parseTrips = trips => {
+  const dateNow = getDateNow();
+  let [pastTrips, inProgressTrips, futureTrips, tentativeTrips]  = [[], [], [], []];
+
+  trips.forEach(trip => {
+    if (trip.destinations.length === 0) {
+      tentativeTrips.push(trip);
+    } else {
+      const startDate = parseDate(new Date(sortStartDateAsc(trip.destinations)[0].startDate));
+      const endDate = parseDate(new Date(sortEndDateDesc(trip.destinations)[0].endDate));
+      trip.startDate = startDate;
+      if (startDate <= dateNow && endDate >= dateNow) {
+        inProgressTrips.push(trip);
+      } else if (startDate > dateNow) {
+        futureTrips.push(trip);
+      } else {
+        pastTrips.push(trip);
+      }
+    }
   });
+  
+  pastTrips = sortTrips(pastTrips);
+  inProgressTrips = sortTrips(inProgressTrips);
+  futureTrips = sortTrips(futureTrips).concat(alphabetizeTrips(tentativeTrips));
+
+  return { pastTrips, inProgressTrips, futureTrips };
 };
 
-export const futureTrips = (trips) => {
-  const dateNow = new Date();
-  return trips.filter(trip => {
-    const startDate = new Date(sortStartDateAsc(trip.destinations)[0].startDate);
-    return startDate > dateNow;
-  });
+const alphabetizeTrips = trips => {
+  const tripsDup = Object.assign([], trips);
+  const compareName = (a, b) => a.tripName.toLowerCase() < b.tripName.toLowerCase() ? -1 : 1;
+  return tripsDup.sort(compareName);
+};
+
+const sortTrips = trips => {
+  const tripsDup = Object.assign([], trips);
+  const compareTrip = (a, b) => a.startDate < b.startDate ? -1 : 1 ;
+  return tripsDup.sort(compareTrip);
 };
 
 export const formatTime = (time) => {
@@ -55,6 +99,16 @@ export const formatDate = (date) => {
   const dateDup = new Date(date);
   dateDup.setHours(dateDup.getHours() + (dateDup.getTimezoneOffset() / 60));
   return dateDup.toLocaleDateString("en-US", dateOptions);
+};
+
+export const parseDate = (date) => {
+  if (date.length === 0) {
+    return date;
+  } else {
+    date = new Date(date).toISOString();
+    const parsedDate = date.split("T");
+    return parsedDate[0];
+  }
 };
 
 export const tripStartDateFinder = (destinations) => {
@@ -88,14 +142,14 @@ const endOfWeek = (tripEndDate) => {
 export const allDatesFinder = (tripStartDate, tripEndDate) => {
   const startWeek = startOfWeek(tripStartDate);
   const endWeek = endOfWeek(tripEndDate);
-  const allDates = [[startWeek]];
+  const allDates = [[formatDate(startWeek.toISOString())]];
   let j = 0;
 
   let newDate = startWeek;
   for (let i = 1; newDate < endWeek; i++) {
     newDate = new Date(startWeek);
     newDate.setDate(newDate.getDate() + i);
-    allDates[j].push(newDate);
+    allDates[j].push(formatDate(newDate.toISOString()));
     if (allDates[j].length === 7 && newDate < endWeek) {
       allDates.push([]);
       j++;

@@ -1,113 +1,102 @@
 import React from 'react';
 import addIcon from '../../assets/images/icons8-plus-math-30.png'; 
-import { allDatesFinder, formatTime, sortStartTime } from '../../utils/datetime_api_util';
+import { allDatesFinder, formatTime, formatDate, sortStartTime } from '../../utils/datetime_api_util';
 
-class TripItinerary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      tripDates: this.props.tripDates,
-      activities: this.props.activities
-    };
-    this.tripDates = this.props;
-  }
+const TripItinerary = ({ tripId, activities, tripDates, openModal }) => {
 
-  parseActivities(activities) {
+  const parseActivities = (activities) => {
     const activitiesCatDate = {};
     activities.forEach((activity) => {
-      const date = new Date(activity.activityDate);
-      if (activitiesCatDate[date.toDateString()]) {
-        activitiesCatDate[date.toDateString()].push(activity);
+      const date = formatDate(activity.activityDate);
+      if (activitiesCatDate[date]) {
+        activitiesCatDate[date].push(activity);
       } else {
-        activitiesCatDate[date.toDateString()] = [activity];
+        activitiesCatDate[date] = [activity];
       }
     });
     return activitiesCatDate;
-  }
+  };
 
-  render() {
-    const activitiesByDate = this.parseActivities(this.props.activities);
-    const allDates = allDatesFinder(this.state.tripDates.start, this.state.tripDates.end);
+  const activitiesByDate = parseActivities(activities);
+  const allDates = allDatesFinder(tripDates.start, tripDates.end);
   
-    const calendar = allDates.map((week, idxWeek) => {
-      const weekDates = week.map((day, idxDay) => {
-        return (
-          <h4 key={idxDay}>{day.toDateString()}</h4>
-        )
-      })
+  const calendar = allDates.map((week, idxWeek) => {
+    const weekDates = week.map((day, idxDay) => {
+      return (
+        <h4 key={idxDay}>{formatDate(day)}</h4>
+      )
+    })
 
-      const weekActivities = week.map((day, idxDay) => {
-        let activityOfDay = "";
-        if (activitiesByDate[day.toDateString()]) {
-          const sortedActivities = sortStartTime(activitiesByDate[day.toDateString()])
-          activityOfDay = sortedActivities.map((activity, idxActivity) => {
-            const time = formatTime(activity.startTime);
+    const weekActivities = week.map((day, idxDay) => {
+      let activityOfDay = "";
+      if (activitiesByDate[day]) {
+        const sortedActivities = sortStartTime(activitiesByDate[day])
+        activityOfDay = sortedActivities.map((activity, idxActivity) => {
+          const time = formatTime(activity.startTime);
+          return (
+            <div 
+              className="trip-activity" 
+              key={idxActivity} 
+              onClick={() => openModal({ type: "activityShow", activityId: activity._id, tripId })} 
+              title={`${time} - ${activity.activityName}`}
+            >
+              <h5>{time}</h5>
+              <h5>{activity.activityName}</h5>
+            </div>
+          )
+        })
+      } 
 
-            return (
-              <div 
-                className="trip-activity" 
-                key={idxActivity} 
-                onClick={() => this.props.openModal({ type: "activityShow", id: activity._id })} 
-                title={activity.activityName}
-              >
-                <h5>{time}</h5>
-                <h5>{activity.activityName}</h5>
-              </div>
-            )
-          })
-        } 
-
-        const date = new Date(day);
-        const startDate = new Date(this.state.tripDates.start);
-        const endDate = new Date(this.state.tripDates.end);
-        const addActivity = (date >= startDate && date <= endDate) ?
-          <div
-            className="activity-add"
-            onClick={() => this.props.openModal({ type: 'createActivity', date: day })}
-            title="Add Activity"
-          ></div>
-           : 
-          <div className="grey"></div>
-        ;
-
-        return (
-          <div 
-            className="trip-itinerary-activity-list" 
-            key={idxDay} 
-          >
-            { activityOfDay }
-            { addActivity }
-          </div>
-        )
-      })
+      const date = new Date(day);
+      const startDate = new Date(tripDates.start);
+      const endDate = new Date(tripDates.end);
+      const addActivity = (date >= startDate && date <= endDate) ?
+        <div
+          className="activity-add"
+          onClick={() => openModal({ type: 'createActivity', tripId, date: date.toISOString() })}
+          title="Add Activity"
+        ></div>
+          : 
+        <div className="grey"></div>
+      ;
 
       return (
-        <div key={idxWeek} className="flex-col">
-          <div className="trip-itinerary-date-header">
-            { weekDates }
-          </div>
-          <div className="trip-itinerary-activity-lists">
-            { weekActivities }
-          </div>
+        <div 
+          className="trip-itinerary-activity-list" 
+          key={idxDay} 
+        >
+          { activityOfDay }
+          { addActivity }
         </div>
       )
     })
 
     return (
-      <section id="itinerary" className="trip-itinerary-main">
-        <div className="trip-itinerary-header">
-          <h2>Itinerary</h2>
-          <div onClick={() => this.props.openModal({type: 'createActivity'})} className="add-button">
-            <img src={addIcon} alt="add" />
-            &nbsp;Add Activity
-          </div>
+      <div key={idxWeek} className="flex-col">
+        <div className="trip-itinerary-date-header">
+          { weekDates }
         </div>
-        <div className="trip-itinerary-week">
-          { calendar }
+        <div className="trip-itinerary-activity-lists">
+          { weekActivities }
         </div>
-      </section>
+      </div>
     )
-  }
+  })
+
+  return (
+    <section id="itinerary" className="trip-itinerary-main">
+      <div className="trip-itinerary-header">
+        <h2>Itinerary</h2>
+        <div onClick={() => openModal({ type: 'createActivity', tripId, date: tripDates.start })} className="add-button">
+          <img src={addIcon} alt="add" />
+          &nbsp;Add Activity
+        </div>
+      </div>
+      <div className="trip-itinerary-week">
+        { calendar }
+      </div>
+    </section>
+  )
 }
 
 export default TripItinerary;

@@ -14,20 +14,17 @@ export const receiveTrips = (payload) => {
 };
 
 export const receiveTrip = (payload) => {
-    let tripId = payload.data._id;
-    payload.data.destinations.forEach( destination => destination["tripId"] = tripId);
-    payload.data.activities.forEach(activity => activity["tripId"] = tripId);
     return ({
         type: RECEIVE_TRIP,
         trip: payload.data
     });
 };
 
-export const removeTrip = (trip) =>{
-    return ({
+export const removeTrip = payload => {
+    return {
         type: REMOVE_TRIP,
-        tripId: trip.data._id
-    });
+        tripId: payload.data.tripId
+    };
 };
 
 export const receiveTripErrors = errors => {
@@ -57,7 +54,7 @@ export const fetchTrip = (id) => dispatch => {
     return (
         APIUtil.fetchTrip(id)
             .then(trip => dispatch(receiveTrip(trip)))
-            .catch(err => { dispatch(receiveTripErrors(err.response.data)) })
+            .catch(err => dispatch(receiveTripErrors(err.response.data)))
     );
 };
 
@@ -65,7 +62,7 @@ export const createTrip = (data) => dispatch => {
     return (
         APIUtil.createTrip(data)
             .then(data => dispatch(receiveTrip(data)))
-            .catch(err => { dispatch(receiveTripErrors(err.response.data)) })
+            .catch(err => dispatch(receiveTripErrors(err.response.data)))
     );
 };
 
@@ -73,7 +70,7 @@ export const updateTrip = (data) => dispatch => {
     return (
         APIUtil.updateTrip(data)
             .then(data => dispatch(receiveTrip(data)))
-            .catch(err => { dispatch(receiveTripErrors(err.response.data)) })
+            .catch(err => dispatch(receiveTripErrors(err.response.data)))
     );
 };
 
@@ -82,6 +79,6 @@ export const deleteTrip = (id) => dispatch => {
     return (
         APIUtil.deleteTrip(id)
             .then(tripId => dispatch(removeTrip(tripId)))
-            .catch(err => { dispatch(receiveTripErrors(err.response.data)) })
+            .catch(err => dispatch(receiveTripErrors(err.response.data)))
     );
 };

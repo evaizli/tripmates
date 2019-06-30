@@ -11,6 +11,7 @@ class ActivtyShow extends React.Component{
             startTime,
             endTime,
             address,
+            _id
         } = this.props.activity;
         
         const location = this.props.activity.location === "" ? <>&nbsp;</> : this.props.activity.location;
@@ -33,7 +34,7 @@ class ActivtyShow extends React.Component{
                         src={editIcon}
                         className="edit-icon"
                         alt="edit"
-                        onClick={() => this.props.openModal({ type: 'editActivity', id: this.props.activity._id, tripId: this.props.tripId })}
+                        onClick={() => this.props.openModal({ type: 'editActivity', activityId: _id, tripId: this.props.tripId })}
                         title="Edit Activity"
                     />
                 </div>

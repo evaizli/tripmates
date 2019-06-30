@@ -3,19 +3,15 @@ import ActivityShow from "../activity/activity_show";
 import { closeModal, openModal } from "../../actions/modal_actions";
 import { fetchActivity } from "../../actions/activity_actions";
 
-const mapStateToProps = (state, ownProps) => {
-  let tripId = state.ui.modal.tripId;
-  let activityId = state.ui.modal.id;
-  let activity;
-  state.entities.activities.forEach(a => {
-      if (a._id === activityId){
-        activity = a;
-      }
-  })
+const mapStateToProps = state => {
+  const tripId = state.ui.modal.tripId;
+  const activityId = state.ui.modal.activityId;
+  const activity = state.entities.activities[tripId][activityId];
+  
   return {
     activity,
-    formType: "Activity Show",
-    tripId
+    tripId,
+    formType: "Activity Show"
   };
 };
 
