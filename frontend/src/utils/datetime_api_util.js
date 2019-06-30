@@ -42,8 +42,7 @@ export const futureTripsFinder = (trips, destinations) => {
       }
     }
   });
-  futureTrips = sortTrips(futureTrips);
-  return futureTrips;
+  return sortTrips(futureTrips);
 };
 
 export const parseTrips = trips => {
