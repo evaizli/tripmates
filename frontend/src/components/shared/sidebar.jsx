@@ -15,9 +15,9 @@ class SideBar extends React.Component {
   }
 
   render() {
-    const { trips, logout } = this.props;
+    const { trips, destinations, logout } = this.props;
 
-    const futureTrips = futureTripsFinder(trips);
+    const futureTrips = futureTripsFinder(trips, destinations);
 
     const tripsCountdown = futureTrips.slice(0,5).map((trip, idx) => {
       const dateNow = new Date(getDateNow()).getTime();
