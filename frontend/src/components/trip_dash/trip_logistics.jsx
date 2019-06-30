@@ -7,7 +7,6 @@ const TripLogistics = ({ tripId, destinations, openModal }) => {
   
   const destinationsDisplay = destinations.map((destination, idx) => {
     const modalAttr = { type: 'editDestination', destinationId: destination._id, tripId };
-    
     return (
       <div key={idx} className="trip-logistics-destination">
         <div className="trip-logistics-destination-header">
@@ -41,8 +40,10 @@ const TripLogistics = ({ tripId, destinations, openModal }) => {
     )
   });
 
+  const placeholderDate = destinations[destinations.length - 1].endDate;
+
   const addDestinationButton = (
-    <div onClick={() => openModal({ type: 'createDestination', tripId })} className="add-button">
+    <div onClick={() => openModal({ type: 'createDestination', tripId, placeholderDate })} className="add-button">
       <img src={addIcon} alt="add" />
       &nbsp;Add Destination
     </div>

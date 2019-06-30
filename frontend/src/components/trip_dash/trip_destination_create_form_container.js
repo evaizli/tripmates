@@ -6,8 +6,9 @@ import { getDateNow } from '../../utils/datetime_api_util';
 
 const mapStateToProps = (state) => {
   
-  const { tripId } = state.ui.modal; 
-  const placeholderDate = getDateNow();
+  const { tripId, placeholderDate } = state.ui.modal; 
+  debugger
+  // const placeholderDate = getDateNow();
 
   let destination = {
     location: "",
