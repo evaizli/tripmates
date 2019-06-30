@@ -7,7 +7,7 @@ const mapStateToProps = (state) => {
   const trips = Object.values(state.entities.trips);
 
   return ({
-    trips: trips
+    trips
   });
 };
 
