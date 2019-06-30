@@ -16,8 +16,8 @@ const App = () => {
       <Switch>
         <ProtectedRoute exact path='/trip/:tripId' component={TripDashContainer} />
         <ProtectedRoute exact path='/dashboard' component={TripsDashContainer} />
+        <AuthRoute exact path='/about' component={About} />
         <AuthRoute exact path='/' component={Splash} />
-        <Route exact path='/about' component={About} />
         <Redirect to='/' />
       </Switch>
     </div>
