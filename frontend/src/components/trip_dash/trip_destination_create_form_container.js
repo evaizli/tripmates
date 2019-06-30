@@ -1,12 +1,13 @@
 import TripDestinationForm from './trip_destination_form';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import { createDestination} from "../../actions/destination_actions";
+import { createDestination } from "../../actions/destination_actions";
+import { getDateNow } from '../../utils/datetime_api_util';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   
   const { tripId } = state.ui.modal; 
-  const placeholderDate = new Date().toISOString();
+  const placeholderDate = getDateNow();
 
   let destination = {
     location: "",

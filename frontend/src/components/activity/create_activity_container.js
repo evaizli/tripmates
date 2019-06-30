@@ -2,11 +2,12 @@ import { connect } from "react-redux";
 import ActivityForm from "./activity_form";
 import { closeModal } from '../../actions/modal_actions';
 import { createActivity } from "../../actions/activity_actions";
+import { getDateNow } from '../../utils/datetime_api_util';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
 
   const { tripId, date } = state.ui.modal; 
-  const activityDate = date ? date : new Date().toISOString();
+  const activityDate = date ? date : getDateNow();
   
   let activity = {
       activityName: "",

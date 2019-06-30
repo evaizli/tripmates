@@ -1,3 +1,11 @@
+export const getDateNow = () => {
+  const dateNow = new Date();
+  const date = dateNow.getDate() < 10 ? `0${dateNow.getDate()}` : dateNow.getDate();
+  const month = dateNow.getMonth() + 1 < 10 ? `0${dateNow.getMonth() + 1}` : dateNow.getMonth() + 1;
+  const year = dateNow.getFullYear();
+  return `${year}-${month}-${date}`;
+}
+
 export const sortEndDateDesc = (destinations) => {
   const destinationsDup = Object.assign([], destinations);
   const compareDateDesc = (a, b) => (a.endDate > b.endDate ? -1 : 1);
@@ -17,29 +25,71 @@ export const sortStartTime = activities => {
 };
 
 export const inProgressTripsFinder = (trips) => {
-  const dateNow = new Date();
+  const dateNow = getDateNow();
   return trips.filter(trip => {
-    const startDate = new Date(sortStartDateAsc(trip.destinations)[0].startDate);
-    const endDate = new Date(sortEndDateDesc(trip.destinations)[0].endDate);
+    const startDate = parseDate(new Date(sortStartDateAsc(trip.destinations)[0].startDate));
+    const endDate = parseDate(new Date(sortEndDateDesc(trip.destinations)[0].endDate));
     return startDate <= dateNow && endDate >= dateNow;
   });
 };
 
 export const pastTripsFinder = (trips) => {
-  const dateNow = new Date();
+  const dateNow = getDateNow();
   return trips.filter(trip => {
-    const endDate = new Date(sortEndDateDesc(trip.destinations)[0].endDate);
+    const endDate = parseDate(new Date(sortEndDateDesc(trip.destinations)[0].endDate));
     return endDate < dateNow;
   });
 };
 
 export const futureTripsFinder = (trips) => {
-  const dateNow = new Date();
+  const dateNow = getDateNow();
   return trips.filter(trip => {
-    const startDate = new Date(sortStartDateAsc(trip.destinations)[0].startDate);
+    const startDate = parseDate(new Date(sortStartDateAsc(trip.destinations)[0].startDate));
     return startDate > dateNow;
   });
 };
+
+export const parseTrips = trips => {
+  const dateNow = getDateNow();
+  let pastTrips = [];
+  let inProgressTrips = [];
+  let futureTrips = [];
+  let tentativeTrips = [];
+
+  trips.forEach(trip => {
+    if (trip.destinations.length === 0) {
+      tentativeTrips.push(trip)
+    } else {
+      const startDate = parseDate(new Date(sortStartDateAsc(trip.destinations)[0].startDate));
+      const endDate = parseDate(new Date(sortEndDateDesc(trip.destinations)[0].endDate));
+      if (startDate <= dateNow && endDate >= dateNow) {
+        inProgressTrips.push(trip)
+      } else if (startDate > dateNow) {
+        futureTrips.push(trip)
+      } else {
+        pastTrips.push(trip)
+      }
+    }
+  })
+
+  pastTrips = sortTrips(pastTrips);
+  inProgressTrips = sortTrips(inProgressTrips);
+  futureTrips = sortTrips(futureTrips).concat(alphabetizeTrips(tentativeTrips));
+
+  return { pastTrips, inProgressTrips, futureTrips }
+}
+
+const alphabetizeTrips = trips => {
+  const tripsDup = Object.assign([], trips);
+  const compareName = (a, b) => (a.tripName < b.tripName ? -1 : 1);
+  return tripsDup.sort(compareName);
+}
+
+const sortTrips = trips => {
+  const tripsDup = Object.assign([], trips);
+  const compareTrip = (a, b) => (new Date(tripStartDateFinder(a.destinations)) < new Date(tripStartDateFinder(b.destinations)) ? -1 : 1);
+  return tripsDup.sort(compareTrip);
+}
 
 export const formatTime = (time) => {
   const splitTime = time.split(":");
@@ -58,6 +108,7 @@ export const formatDate = (date) => {
 };
 
 export const parseDate = (date) => {
+  date = new Date(date).toISOString();
   const parsedDate = date.split("T");
   return parsedDate[0];
 };
