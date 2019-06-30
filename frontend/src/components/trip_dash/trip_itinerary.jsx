@@ -87,7 +87,7 @@ const TripItinerary = ({ tripId, activities, tripDates, openModal }) => {
     <section id="itinerary" className="trip-itinerary-main">
       <div className="trip-itinerary-header">
         <h2>Itinerary</h2>
-        <div onClick={() => openModal({ type: 'createActivity', tripId })} className="add-button">
+        <div onClick={() => openModal({ type: 'createActivity', tripId, date: tripDates.start })} className="add-button">
           <img src={addIcon} alt="add" />
           &nbsp;Add Activity
         </div>

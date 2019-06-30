@@ -7,20 +7,19 @@ import { getDateNow } from '../../utils/datetime_api_util';
 const mapStateToProps = (state) => {
 
   const { tripId, date } = state.ui.modal; 
-  const activityDate = date ? date : getDateNow();
   
   let activity = {
-      activityName: "",
-      location: "",
-      address: "",
-      mates: "",
-      tag: "",
-      activityDate,
-      image: "",
-      notes: "",
-      startTime: "",
-      endTime: "",
-      tripId,
+    activityName: "",
+    location: "",
+    address: "",
+    mates: "",
+    tag: "",
+    activityDate: date,
+    image: "",
+    notes: "",
+    startTime: "",
+    endTime: "",
+    tripId
   };
   
   return {
