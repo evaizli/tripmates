@@ -21,8 +21,9 @@ class TripForm extends React.Component {
 
   handleDelete() {
     this.props.deleteTrip(this.state._id)
-      .then(() => this.props.history.push('/dashboard'))
+      // .then(() => this.props.history.push('/dashboard'))
       .then(() => this.props.closeModal());
+    this.props.history.push('/dashboard');
   }
  
   update(field) {
