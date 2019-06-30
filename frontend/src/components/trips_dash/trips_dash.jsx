@@ -23,9 +23,7 @@ class TripsDash extends React.Component {
   render() {
     const { trips } = this.props;
     if (!trips) return null;
-
-    let { pastTrips, inProgressTrips, futureTrips } = parseTrips(trips);
-
+    const { pastTrips, inProgressTrips, futureTrips } = parseTrips(trips);
 
     const inProgressTripsItems = (inProgressTrips.length > 0) ? 
       <TripsDashItems tripType="in Progress" trips={inProgressTrips} /> :

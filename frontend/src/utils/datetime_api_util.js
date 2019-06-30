@@ -32,7 +32,7 @@ export const futureTripsFinder = (trips) => {
       const startDate = parseDate(new Date(sortStartDateAsc(trip.destinations)[0].startDate));
       if (startDate > dateNow) {
         trip["startDate"] = startDate;
-        futureTrips.push({ name: trip.tripName, startDate: startDate, tripId: trip._id });
+        futureTrips.push({ name: trip.tripName, startDate, tripId: trip._id });
       }
     }
   });
