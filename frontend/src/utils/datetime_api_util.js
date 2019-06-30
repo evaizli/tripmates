@@ -31,7 +31,7 @@ export const futureTripsFinder = (trips) => {
     if (trip.destinations.length > 0) {
       const startDate = parseDate(new Date(sortStartDateAsc(trip.destinations)[0].startDate));
       if (startDate > dateNow) {
-        trip["startDate"] = startDate;
+        trip.startDate = startDate;
         futureTrips.push({ name: trip.tripName, startDate, tripId: trip._id });
       }
     }
@@ -59,26 +59,26 @@ export const parseTrips = trips => {
         pastTrips.push(trip);
       }
     }
-  })
+  });
   
   pastTrips = sortTrips(pastTrips);
   inProgressTrips = sortTrips(inProgressTrips);
   futureTrips = sortTrips(futureTrips).concat(alphabetizeTrips(tentativeTrips));
 
-  return { pastTrips, inProgressTrips, futureTrips }
-}
+  return { pastTrips, inProgressTrips, futureTrips };
+};
 
 const alphabetizeTrips = trips => {
   const tripsDup = Object.assign([], trips);
-  const compareName = (a, b) => (a.tripName < b.tripName ? -1 : 1);
+  const compareName = (a, b) => a.tripName.toLowerCase() < b.tripName.toLowerCase() ? -1 : 1;
   return tripsDup.sort(compareName);
-}
+};
 
 const sortTrips = trips => {
   const tripsDup = Object.assign([], trips);
   const compareTrip = (a, b) => a.startDate < b.startDate ? -1 : 1 ;
   return tripsDup.sort(compareTrip);
-}
+};
 
 export const formatTime = (time) => {
   const splitTime = time.split(":");
