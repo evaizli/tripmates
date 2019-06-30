@@ -93,7 +93,7 @@ const endOfWeek = (tripEndDate) => {
 export const allDatesFinder = (tripStartDate, tripEndDate) => {
   const startWeek = startOfWeek(tripStartDate);
   const endWeek = endOfWeek(tripEndDate);
-  const allDates = [[startWeek]];
+  const allDates = [[formatDate(startWeek.toISOString())]];
   let j = 0;
 
   let newDate = startWeek;

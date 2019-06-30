@@ -19,7 +19,7 @@ class TripDash extends React.Component {
   }
 
   render() {
-    const { trip, destinations, activities} = this.props;
+    const { trip, destinations, activities } = this.props;
     if (!trip) return null;
 
     const destinationsCount = destinations.length;
