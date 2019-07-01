@@ -30,6 +30,10 @@ class TripDestinationForm extends React.Component {
     const { location, startDate, endDate, housing, transportation, notes } = this.state;
     const deleteButton = this.props.formType === "Edit Destination" ? <div onClick={this.handleDelete} className="delete">Delete Destination</div> : "";
 
+    const errors = this.props.errors.map((error, idx) => (
+      <li key={idx}>{error}</li>
+    ));
+
     return (
       <div className="form-main" >
         <h2>{this.props.formType}</h2>
@@ -80,6 +84,10 @@ class TripDestinationForm extends React.Component {
 
         </form>
         { deleteButton }
+
+        <ul>
+          {errors}
+        </ul>
       </div>
     )
   }

@@ -20,7 +20,7 @@ const mapStateToProps = (state) => {
   return {
     destination,
     formType: "Create Destination",
-    errors: state.errors.destination
+    errors: Object.values(state.errors.destination),
   };
 };
 
