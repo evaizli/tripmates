@@ -7,22 +7,24 @@ class About extends React.Component {
       <div>
         <Header />
         <div className="about-container">
-          <h2>About</h2>
+          <div className="about-content">
+            <h2>About</h2>
 
-          <h3>TripMates Mission</h3>
+            <h3>TripMates Mission</h3>
 
-          <p>
-            TripMates is a web app that allows users to easily collaborate
-            on planning trips with a group of people. Users can go to one
-            place for all of their trip logistics, write notes and reviews
-            while on a trip, and share their travel recommendations and
-            moments afterwards.
-          </p>
+            <p>
+              TripMates is a web app that allows users to easily collaborate
+              on planning trips with a group of people. Users can go to one
+              place for all of their trip logistics, write notes and reviews
+              while on a trip, and share their travel recommendations and
+              moments afterwards.
+            </p>
+          </div>
 
           <h3>The Team</h3>
 
           <section className="teammate">
-            <div className="content">
+            <div className="teammate-content">
               <h4>Jeffrey Dam</h4>
               <h5>Front-End Developer</h5>
               <h6>short description about jeff dam</h6>
@@ -41,7 +43,7 @@ class About extends React.Component {
           </section>
 
           <section className="teammate">
-            <div className="content">
+            <div className="teammate-content">
               <h4>Eva Pan</h4>
               <h5>Full-Stack Developer</h5>
               <h6>short description about eva pan</h6>
@@ -60,7 +62,7 @@ class About extends React.Component {
           </section>
 
           <section className="teammate">
-            <div className="content">
+            <div className="teammate-content">
               <h4>Andrew Mac</h4>
               <h5>Back-End Develpoer</h5>
               <h6>short description about andrew mac</h6>
