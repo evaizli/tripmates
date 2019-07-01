@@ -12,7 +12,8 @@ const mapStateToProps = (state) => {
 
   return {
     destination,
-    formType: "Edit Destination"
+    formType: "Edit Destination",
+    errors: Object.values(state.errors.destination),
   };
 };
 
