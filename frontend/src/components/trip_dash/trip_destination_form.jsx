@@ -11,6 +11,10 @@ class TripDestinationForm extends React.Component {
     this.update = this.update.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
+
   update(field) {
     return e => this.setState( {[field]: e.currentTarget.value});
   }
@@ -23,7 +27,7 @@ class TripDestinationForm extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     this.props.processForm(this.state)
-    .then((test) => test ? this.props.closeModal() : null)
+    .then((data) => data ? this.props.closeModal() : null)
   }
 
   render() {

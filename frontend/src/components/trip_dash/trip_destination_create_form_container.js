@@ -1,7 +1,7 @@
 import TripDestinationForm from './trip_destination_form';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import { createDestination } from "../../actions/destination_actions";
+import { createDestination, clearDestinationErrors } from "../../actions/destination_actions";
 
 const mapStateToProps = (state) => {
   
@@ -27,7 +27,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
   return {
     closeModal: () => dispatch(closeModal()), 
-    processForm: (data) => dispatch(createDestination(data))
+    processForm: (data) => dispatch(createDestination(data)),
+    clearErrors: () => dispatch(clearDestinationErrors())
   };
 };
 
