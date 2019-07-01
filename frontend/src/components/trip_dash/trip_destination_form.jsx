@@ -23,7 +23,7 @@ class TripDestinationForm extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     this.props.processForm(this.state)
-      // .then(()=>this.props.closeModal())
+    .then((test) => test ? this.props.closeModal() : null)
   }
 
   render() {
@@ -31,7 +31,7 @@ class TripDestinationForm extends React.Component {
     const deleteButton = this.props.formType === "Edit Destination" ? <div onClick={this.handleDelete} className="delete">Delete Destination</div> : "";
 
     const errors = this.props.errors.map((error, idx) => (
-      <li key={idx}>{error}</li>
+      <li className="errors" key={idx}>{error}</li>
     ));
 
     return (
