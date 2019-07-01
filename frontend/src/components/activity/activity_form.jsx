@@ -36,6 +36,10 @@ class ActivityForm extends React.Component {
       endTime 
     } = this.state;
 
+    const errors = this.props.errors.map((error, idx) => (
+      <li key={idx}>{error}</li>
+    ));
+
     const deleteButton = this.props.formType === "Edit Activity" ? <div onClick={this.handleDelete} className="delete">Delete Activity</div> : "";
     
     return (
@@ -99,6 +103,7 @@ class ActivityForm extends React.Component {
           </label>
           <input type="submit" value={this.props.formType}/>
         </form>
+        <ul>{errors}</ul>
         {deleteButton}
       </div>
     );

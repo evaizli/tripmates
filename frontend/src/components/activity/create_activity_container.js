@@ -23,7 +23,8 @@ const mapStateToProps = (state) => {
   
   return {
     activity,
-    formType: "Create Activity"
+    formType: "Create Activity",
+    errors: Object.values(state.errors.activity)
   };
 };
 
