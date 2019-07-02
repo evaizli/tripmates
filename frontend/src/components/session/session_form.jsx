@@ -49,10 +49,10 @@ class SessionForm extends React.Component {
 
     const formTypeInput = (formType === "Sign Up") ? 
       (
-        <>
+        <div>
           <input type="text" onChange={this.update('displayName')} placeholder="Display Name" />
           <input type="text" onChange={this.update('name')} placeholder="Name" />
-        </>
+        </div>
       ) : (
         ""
       );

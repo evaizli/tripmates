@@ -10,6 +10,10 @@ class ActivityForm extends React.Component {
     this.update = this.update.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
+
   update(field) {
     return e => this.setState({[field]: e.currentTarget.value });
   }
@@ -22,7 +26,7 @@ class ActivityForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.processForm(this.state)
-      .then(() => this.props.closeModal());
+      .then((data) => data ? this.props.closeModal() : null);
   }
 
   render() {
@@ -35,6 +39,10 @@ class ActivityForm extends React.Component {
       startTime,
       endTime 
     } = this.state;
+
+    const errors = this.props.errors.map((error, idx) => (
+      <li key={idx}>{error}</li>
+    ));
 
     const deleteButton = this.props.formType === "Edit Activity" ? <div onClick={this.handleDelete} className="delete">Delete Activity</div> : "";
     
@@ -99,6 +107,7 @@ class ActivityForm extends React.Component {
           </label>
           <input type="submit" value={this.props.formType}/>
         </form>
+        <ul>{errors}</ul>
         {deleteButton}
       </div>
     );

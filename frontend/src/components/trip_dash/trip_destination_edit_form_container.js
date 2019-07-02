@@ -1,7 +1,7 @@
 import TripDestinationForm from './trip_destination_form';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import { updateDestination, deleteDestination } from "../../actions/destination_actions";
+import { updateDestination, deleteDestination, clearDestinationErrors } from "../../actions/destination_actions";
 import { deleteActivity } from "../../actions/activity_actions";
 
 
@@ -12,7 +12,8 @@ const mapStateToProps = (state) => {
 
   return {
     destination,
-    formType: "Edit Destination"
+    formType: "Edit Destination",
+    errors: Object.values(state.errors.destination),
   };
 };
 
@@ -21,7 +22,8 @@ const mapDispatchToProps = dispatch => {
     closeModal: () => dispatch(closeModal()),
     processForm: (data) => dispatch(updateDestination(data)),
     deleteDestination: (data) => dispatch(deleteDestination(data)),
-    deleteActivity: (data) => dispatch(deleteActivity(data))
+    deleteActivity: (data) => dispatch(deleteActivity(data)),
+    clearErrors: () => dispatch(clearDestinationErrors())
   };
 };
 
