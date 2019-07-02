@@ -44,7 +44,7 @@ router.post("/:tripId/", passport.authenticate("jwt", { session: false }),
       .then(user => {
         const activity = req.body;
         const trip = user.trips.id(req.params.tripId);
-
+        console.log(activity)
         if (!trip) {
           return res.status(400).json("there is no trip of this name");
         } else {

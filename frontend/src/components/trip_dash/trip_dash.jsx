@@ -31,7 +31,7 @@ class TripDash extends React.Component {
       <TripItinerary 
         tripId={trip._id} 
         activities={activities} 
-        tripDates={{ start: tripStartDate, end: tripEndDate }} 
+        tripDates={{ startDate: tripStartDate, endDate: tripEndDate }} 
         openModal={this.props.openModal}
         /> : "";
     const tripDates = destinationsCount > 0 ? `${tripStartDate} to ${tripEndDate}` : "";
