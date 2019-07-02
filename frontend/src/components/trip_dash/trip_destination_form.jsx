@@ -44,7 +44,6 @@ class TripDestinationForm extends React.Component {
     return (
       <div className="form-main" >
         <div className="flex-row baseline"><h2>{formType}</h2>&nbsp;<h3>*</h3>Required</div>
-        
         <form onSubmit={this.handleSubmit}>
           <label>
             <h4>Location*</h4>

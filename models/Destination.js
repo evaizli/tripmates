@@ -33,7 +33,8 @@ const DestinationSchema = new Schema({
         default: Date.now
     },
     tripId: {
-        type: Schema.Types.ObjectId, ref: 'trips',
+        type: Schema.Types.ObjectId, 
+        ref: 'trips'
     }
 });
 
