@@ -39,8 +39,9 @@ h5 {
 }
 
 .errors {
+  list-style: none inside;
   color: red;
-  margin-bottom: 5px;
+  margin-top: 5px;
 }
 
 .delete {
