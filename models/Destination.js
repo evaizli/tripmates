@@ -19,14 +19,12 @@ const DestinationSchema = new Schema({
         required: false
     },
     startDate: {
-        type: Date,
+        type: String,
         required: true,
-        default: Date.now
     },
     endDate: {
-        type: Date,
+        type: String,
         required: true,
-        default: Date.now
     },
     date: {
         type: Date,
