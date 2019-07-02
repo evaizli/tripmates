@@ -54,27 +54,32 @@ class SessionForm extends React.Component {
     const displayNameErr = errors.displayName ? <div className="error">{errors.displayName}</div> : "";
     const displayNameInputErr = errors.displayName ? "error-input" : "";
 
-    const formTypeInput = (formType === "Sign Up") ? 
+    const signUpInput = (formType === "Sign Up") ? 
       (
-        <div>
-          <input type="text" onChange={this.update('displayName')} placeholder="Display Name" />
-          <input type="text" onChange={this.update('name')} placeholder="Name" />
-        </div>
+        <>
+          {displayNameErr}
+          <input className={displayNameInputErr} type="text" onChange={this.update('displayName')} placeholder="Display Name" />
+          {nameErr}
+          <input className={nameInputErr} type="text" onChange={this.update('name')} placeholder="Name" />
+        </>
       ) : (
         ""
-      );
+        );
     const confirmPass = (formType === "Sign Up") ? 
-      (
-        <input type="password" onChange={this.update('password2')} placeholder="Confirm Password" />
-      ) : (
-        ""
-      );
+    (
+      <>
+        {password2Err}
+        <input className={password2InputErr} type="password" onChange={this.update('password2')} placeholder="Confirm Password" />
+      </>
+    ) : (
+      ""
+    );
 
-    const demoForm = (formType === "Log In") ?
+    const demoLoginButton = (formType === "Log In") ?
       (<button onClick={this.demoLogin}>Demo Log In</button>)
       : "";
 
-    const otherForm = (formType === "Sign Up") ? "Log In" : "Sign Up";
+    const otherButtonText = (formType === "Sign Up") ? "Log In" : "Sign Up";
     const autocompletePsw = (formType === "Sign Up") ? "new-password" : "current-password";
 
     return (
@@ -82,14 +87,18 @@ class SessionForm extends React.Component {
 
         <h2>{formType}</h2>
         <form className="session-form" onSubmit={this.handleSubmit}>
+          {emailErr}
           <input
+            className={emailInputErr}
             type="text"
             onChange={this.update('email')}
             placeholder="Email"
             autoComplete="username"
-          />
-          {formTypeInput}
+            />
+          {signUpInput}
+          {passwordErr}
           <input
+            className={passwordInputErr}
             type="password"
             onChange={this.update('password')}
             placeholder="Password"
@@ -97,9 +106,9 @@ class SessionForm extends React.Component {
           />
           {confirmPass}
           <input type="submit" value={formType} />
-          {demoForm}
+          {demoLoginButton}
         </form>
-        <button onClick={this.handleOtherSessionModal}>{otherForm}</button>
+        <button onClick={this.handleOtherSessionModal}>{otherButtonText}</button>
       </div>
     );
   }
