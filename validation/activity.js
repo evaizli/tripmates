@@ -9,16 +9,19 @@ module.exports = function validateActivityInput(data) {
     data.endDate = validText(data.endTime) ? data.endTime : "";
 
     if (!Validator.isLength(data.activityName, { min: 1, max: 50 })) {
-        errors.activityName = "Activity name must be between 1 and 50 chars";
+        errors.activityName = "Activity Name must be between 1 and 50 chars";
     }
     if (Validator.isEmpty(data.activityName)) {
-        errors.activityName = "Activity name field is required";
+        errors.activityName = "Activity Name field is required";
+    }
+    if (Validator.isEmpty(data.activityDate)) {
+        errors.activityDate = "Activity Date field is required";
     }
     if (Validator.isEmpty(data.startTime)) {
-        errors.startTime = "Start time field is required";
+        errors.startTime = "Start Time field is required";
     }
     if (Validator.isEmpty(data.endTime)) {
-        errors.endTime = "End time field is required";
+        errors.endTime = "End Time field is required";
     }
 
     return {
