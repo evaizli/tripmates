@@ -34,35 +34,52 @@ class TripDestinationForm extends React.Component {
     const { location, startDate, endDate, housing, transportation, notes } = this.state;
     const deleteButton = this.props.formType === "Edit Destination" ? <div onClick={this.handleDelete} className="delete">Delete Destination</div> : "";
 
-    const errors = this.props.errors.map((error, idx) => (
-      <li className="errors" key={idx}>{error}</li>
-    ));
+    const errorsHash = {}
+    this.props.errors.forEach(error => {
+      errorsHash[error] = error;
+    })
+    const locationErr = errorsHash["Location field is required"] ? <div className="error">Location field is required</div> : "";
+    const locationInputErr = errorsHash["Location field is required"] ? "error-input" : "";
+    const startDateErr = errorsHash["Start date field is required"] ? <div className="error">Start date field is required</div> : "";
+    const startDateInputErr = errorsHash["Start date field is required"] ? "error-input" : "";
+    const endDateErr = errorsHash["End date field is required"] ? <div className="error">End date field is required</div> : "";
+    const endDateInputErr = errorsHash["End date field is required"] ? "error-input" : "";
 
     return (
       <div className="form-main" >
-        <h2>{this.props.formType}</h2>
+        <div className="flex-row baseline"><h2>{this.props.formType}</h2>&nbsp;<h3>*</h3>Required</div>
+        
         <form onSubmit={this.handleSubmit}>
-          <label><h4>Location</h4>
+          <label>
+            <h4>Location*</h4>
+            { locationErr }
             <input
+              className={ locationInputErr }
               type="text"
               value ={location}
               onChange={this.update("location")}
             />
           </label>
           <div className="flex-row left-margin">
-            <label><h4>Start Date</h4>
-            <input
-              type="date"
-              value={parseDate(startDate)}
-              onChange={this.update("startDate")}
-            />
+            <label>
+              <h4>Start Date*</h4>
+              { startDateErr }
+              <input
+                className={startDateInputErr}
+                type="date"
+                value={parseDate(startDate)}
+                onChange={this.update("startDate")}
+              />
             </label>
-            <label><h4>End Date</h4>
-            <input
-              type="date"
-              value={parseDate(endDate)} 
+            <label>
+              <h4>End Date*</h4>
+              { endDateErr }
+              <input
+                className={endDateInputErr}
+                type="date"
+                value={parseDate(endDate)} 
                 onChange={this.update("endDate")}
-            />
+              />
             </label>
           </div>
           <label><h4>Housing</h4>
@@ -83,15 +100,9 @@ class TripDestinationForm extends React.Component {
               onChange={this.update("notes")}>
               </textarea>
           </label>
-
           <input type="submit" value={this.props.formType} />
-
         </form>
         { deleteButton }
-        <ul>
-          {errors}
-        </ul>
-
       </div>
     )
   }
