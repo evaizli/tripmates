@@ -20,13 +20,7 @@ class TripForm extends React.Component {
           this.props.history.push(`/trip/${data.trip._id}`);
           this.props.closeModal();
         }
-      })
-
-      // .then(data => {
-      //   if (this.props.formType === "create") {
-      //     this.props.history.push(`/trip/${data.trip._id}`);
-      //   }
-      // })
+      });
   }
 
   handleDelete() {
