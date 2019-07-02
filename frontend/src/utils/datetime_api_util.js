@@ -1,9 +1,18 @@
 export const getDateNow = () => {
   const dateNow = new Date();
-  const date = dateNow.getDate() < 10 ? `0${dateNow.getDate()}` : dateNow.getDate();
-  const month = dateNow.getMonth() + 1 < 10 ? `0${dateNow.getMonth() + 1}` : dateNow.getMonth() + 1;
-  const year = dateNow.getFullYear();
-  return `${year}-${month}-${date}`;
+  return formatDateShort(dateNow);
+};
+
+export const parseDate = date => {
+  if (date.length === 0) {
+    return date;
+  } else {
+    if (typeof date === "object") {
+      date = new Date(date).toISOString();
+    }
+    const parsedDate = date.split("T");
+    return parsedDate[0];
+  }
 };
 
 export const formatDateShort = oldDate => {
@@ -13,15 +22,6 @@ export const formatDateShort = oldDate => {
   return `${year}-${month}-${date}`;
 };
 
-export const formatTime = time => {
-  const splitTime = time.split(":");
-  const hours = splitTime[0] <= 12 ? splitTime[0] : splitTime[0] % 12;
-  const minutes = splitTime[1];
-  const period = splitTime[0] <= 12 ? "AM" : "PM";
-  const formattedTime = `${hours}:${minutes} ${period}`;
-  return formattedTime;
-};
-
 export const formatDate = date => {
   const dateOptions = {
     weekday: "short",
@@ -29,19 +29,20 @@ export const formatDate = date => {
     month: "short",
     day: "numeric"
   };
-  const dateDup = new Date(date);
+  
+  let dateDup = new Date(date);
   dateDup.setHours(dateDup.getHours() + dateDup.getTimezoneOffset() / 60);
-  return dateDup.toLocaleDateString("en-US", dateOptions);
+  dateDup = dateDup.toLocaleDateString("en-US", dateOptions);
+  return dateDup;
 };
 
-export const parseDate = date => {
-  if (date.length === 0) {
-    return date;
-  } else {
-    date = new Date(date).toISOString();
-    const parsedDate = date.split("T");
-    return parsedDate[0];
-  }
+export const formatTime = time => {
+  const splitTime = time.split(":");
+  const hours = splitTime[0] <= 12 ? splitTime[0] : splitTime[0] % 12;
+  const minutes = splitTime[1];
+  const period = splitTime[0] <= 12 ? "AM" : "PM";
+  const formattedTime = `${hours}:${minutes} ${period}`;
+  return formattedTime;
 };
 
 export const allDatesFinder = (tripStartDate, tripEndDate) => {
