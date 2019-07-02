@@ -32,22 +32,18 @@ class TripDestinationForm extends React.Component {
 
   render() {
     const { location, startDate, endDate, housing, transportation, notes } = this.state;
-    const deleteButton = this.props.formType === "Edit Destination" ? <div onClick={this.handleDelete} className="delete">Delete Destination</div> : "";
-
-    const errorsHash = {}
-    this.props.errors.forEach(error => {
-      errorsHash[error] = error;
-    })
-    const locationErr = errorsHash["Location field is required"] ? <div className="error">Location field is required</div> : "";
-    const locationInputErr = errorsHash["Location field is required"] ? "error-input" : "";
-    const startDateErr = errorsHash["Start date field is required"] ? <div className="error">Start date field is required</div> : "";
-    const startDateInputErr = errorsHash["Start date field is required"] ? "error-input" : "";
-    const endDateErr = errorsHash["End date field is required"] ? <div className="error">End date field is required</div> : "";
-    const endDateInputErr = errorsHash["End date field is required"] ? "error-input" : "";
+    const { errors, formType } = this.props;
+    const deleteButton = formType === "Edit Destination" ? <div onClick={this.handleDelete} className="delete">Delete Destination</div> : "";
+    const locationErr = errors.location ? <div className="error">{errors.location}</div> : "";
+    const locationInputErr = errors.location ? "error-input" : "";
+    const startDateErr = errors.startDate ? <div className="error">{errors.startDate}</div> : "";
+    const startDateInputErr = errors.startDate ? "error-input" : "";
+    const endDateErr = errors.endDate ? <div className="error">{errors.endDate}</div> : "";
+    const endDateInputErr = errors.endDate ? "error-input" : "";
 
     return (
       <div className="form-main" >
-        <div className="flex-row baseline"><h2>{this.props.formType}</h2>&nbsp;<h3>*</h3>Required</div>
+        <div className="flex-row baseline"><h2>{formType}</h2>&nbsp;<h3>*</h3>Required</div>
         
         <form onSubmit={this.handleSubmit}>
           <label>
@@ -100,7 +96,7 @@ class TripDestinationForm extends React.Component {
               onChange={this.update("notes")}>
               </textarea>
           </label>
-          <input type="submit" value={this.props.formType} />
+          <input type="submit" value={formType} />
         </form>
         { deleteButton }
       </div>
