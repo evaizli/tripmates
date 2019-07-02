@@ -1,6 +1,5 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import { parseDate } from '../../utils/datetime_api_util';
 
 class TripDestinationForm extends React.Component {
   constructor(props){
@@ -62,7 +61,7 @@ class TripDestinationForm extends React.Component {
               <input
                 className={startDateInputErr}
                 type="date"
-                value={parseDate(startDate)}
+                value={startDate}
                 onChange={this.update("startDate")}
               />
             </label>
@@ -72,7 +71,7 @@ class TripDestinationForm extends React.Component {
               <input
                 className={endDateInputErr}
                 type="date"
-                value={parseDate(endDate)} 
+                value={endDate} 
                 onChange={this.update("endDate")}
               />
             </label>

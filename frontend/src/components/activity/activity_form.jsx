@@ -1,5 +1,4 @@
 import React from 'react';
-import { parseDate } from '../../utils/datetime_api_util';
 
 class ActivityForm extends React.Component {
   constructor(props) {
@@ -73,7 +72,7 @@ class ActivityForm extends React.Component {
               <input
                 className={activityDateInputErr}
                 type="date"
-                value={parseDate(activityDate)}
+                value={activityDate}
                 onChange={this.update("activityDate")}
               />
             </label>

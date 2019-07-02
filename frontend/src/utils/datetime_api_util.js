@@ -126,8 +126,8 @@ export const parseTrips = (trips, destinations) => {
     if (tripDestinations.length === 0) {
       tentativeTrips.push(trip);
     } else {
-      const startDate = parseDate(new Date(sortStartDateAsc(tripDestinations)[0].startDate));
-      const endDate = parseDate(new Date(sortEndDateDesc(tripDestinations)[0].endDate));
+      const startDate = tripStartDateFinder(tripDestinations);
+      const endDate = tripEndDateFinder(tripDestinations);
       trip.startDate = startDate;
       if (startDate <= dateNow && endDate >= dateNow) {
         inProgressTrips.push(trip);

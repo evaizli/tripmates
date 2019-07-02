@@ -2,7 +2,7 @@ import React from 'react';
 import SidebarContainer from '../shared/sidebar_container';
 import TripLogistics from './trip_logistics';
 import TripItinerary from './trip_itinerary';
-import { sortStartDateAsc, tripStartDateFinder, tripEndDateFinder } from '../../utils/datetime_api_util';
+import { sortStartDateAsc, tripStartDateFinder, tripEndDateFinder, formatDate } from '../../utils/datetime_api_util';
 import editIcon from '../../assets/images/icons8-pencil-24.png'; 
 
 class TripDash extends React.Component {
@@ -25,8 +25,8 @@ class TripDash extends React.Component {
 
     const destinationsCount = destinations.length;
     const destinationsSorted = destinationsCount > 0 ? sortStartDateAsc(destinations) : [];
-    const tripStartDate = destinationsCount > 0 ? tripStartDateFinder(destinations) : new Date();
-    const tripEndDate = destinationsCount > 0 ? tripEndDateFinder(destinations) : new Date();
+    const tripStartDate = destinationsCount > 0 ? tripStartDateFinder(destinations) : "";
+    const tripEndDate = destinationsCount > 0 ? tripEndDateFinder(destinations) : "";
     const tripItinerary = destinationsCount > 0 ? 
       <TripItinerary 
         tripId={trip._id} 
@@ -34,7 +34,7 @@ class TripDash extends React.Component {
         tripDates={{ startDate: tripStartDate, endDate: tripEndDate }} 
         openModal={this.props.openModal}
         /> : "";
-    const tripDates = destinationsCount > 0 ? `${tripStartDate} to ${tripEndDate}` : "";
+    const tripDates = destinationsCount > 0 ? `${formatDate(tripStartDate)} to ${formatDate(tripEndDate)}` : "";
 
     return (
       <section className="trip-dash-main">
