@@ -42,10 +42,17 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    const errors = this.props.errors.map((error, idx) => (
-      <li className="errors" key={idx}>{error}</li>
-    ));
-    const { formType} = this.props;
+    const { errors, formType} = this.props;
+    const emailErr = errors.email ? <div className="error">{errors.email}</div> : "";
+    const emailInputErr = errors.email ? "error-input" : "";
+    const passwordErr = errors.password ? <div className="error">{errors.password}</div> : "";
+    const passwordInputErr = errors.password ? "error-input" : "";
+    const password2Err = errors.password2 ? <div className="error">{errors.password2}</div> : "";
+    const password2InputErr = errors.password2 ? "error-input" : "";
+    const nameErr = errors.name ? <div className="error">{errors.name}</div> : "";
+    const nameInputErr = errors.name ? "error-input" : "";
+    const displayNameErr = errors.displayName ? <div className="error">{errors.displayName}</div> : "";
+    const displayNameInputErr = errors.displayName ? "error-input" : "";
 
     const formTypeInput = (formType === "Sign Up") ? 
       (
@@ -92,12 +99,7 @@ class SessionForm extends React.Component {
           <input type="submit" value={formType} />
           {demoForm}
         </form>
-
         <button onClick={this.handleOtherSessionModal}>{otherForm}</button>
-
-        <ul>
-          {errors}
-        </ul>
       </div>
     );
   }

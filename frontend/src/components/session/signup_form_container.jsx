@@ -5,10 +5,9 @@ import { signup, clearErrors } from '../../actions/session_actions';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = state => {
-  const { errors } = state;
   return ({
-    errors: Object.values(errors.session),
-    formType: "Sign Up"
+    formType: "Sign Up",
+    errors: state.errors.session
   });
 };
 
