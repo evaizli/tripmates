@@ -19,21 +19,20 @@ const DestinationSchema = new Schema({
         required: false
     },
     startDate: {
-        type: Date,
+        type: String,
         required: true,
-        default: Date.now
     },
     endDate: {
-        type: Date,
+        type: String,
         required: true,
-        default: Date.now
     },
     date: {
         type: Date,
         default: Date.now
     },
     tripId: {
-        type: Schema.Types.ObjectId, ref: 'trips',
+        type: Schema.Types.ObjectId, 
+        ref: 'trips'
     }
 });
 

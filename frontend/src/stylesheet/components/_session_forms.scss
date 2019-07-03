@@ -4,12 +4,6 @@
   box-sizing: border-box;
   width: 300px;
 
-  li {
-    list-style: none inside;
-    color: red;
-    margin-top: 5px;
-  }
-
   input, button, ul {
     width: 260px;
     box-sizing: border-box;
@@ -22,5 +16,5 @@
 
 .session-form {
   @extend .flex-col;
-  align-items: center;
+  text-align: left;
 }

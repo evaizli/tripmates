@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Switch, Redirect } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute} from '../utils/route_util';
 import Modal from './shared/modal';
 import TripsDashContainer from './trips_dash/trips_dash_container';

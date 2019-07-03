@@ -1,5 +1,4 @@
 import React from 'react';
-import { parseDate } from '../../utils/datetime_api_util';
 
 class ActivityForm extends React.Component {
   constructor(props) {
@@ -15,7 +14,7 @@ class ActivityForm extends React.Component {
   }
 
   update(field) {
-    return e => this.setState({[field]: e.currentTarget.value });
+    return e => this.setState({ [field]: e.currentTarget.value });
   }
 
   handleDelete() {
@@ -40,74 +39,93 @@ class ActivityForm extends React.Component {
       endTime 
     } = this.state;
 
-    const errors = this.props.errors.map((error, idx) => (
-      <li key={idx}>{error}</li>
-    ));
-
+    const { errors, formType } = this.props;
     const deleteButton = this.props.formType === "Edit Activity" ? <div onClick={this.handleDelete} className="delete">Delete Activity</div> : "";
+    const activityDateErr = errors.activityDate ? <div className="error">{errors.activityDate}</div> : "";
+    const activityDateInputErr = errors.activityDate ? "error-input" : "";
+    const activityNameErr = errors.activityName ? <div className="error">{errors.activityName}</div> : "";
+    const activityNameInputErr = errors.activityName ? "error-input" : "";
+    const startTimeErr = errors.startTime ? <div className="error">{errors.startTime}</div> : "";
+    const startTimeInputErr = errors.startTime ? "error-input" : "";
+    const endTimeErr = errors.endTime ? <div className="error">{errors.endTime}</div> : "";
+    const endTimeInputErr = errors.endTime ? "error-input" : "";
     
     return (
       <div className="form-main">
-        <h2>{this.props.formType}</h2>
+        <div className="flex-row baseline"><h2>{formType}</h2>&nbsp;<h3>*</h3>Required</div>
         <form onSubmit={this.handleSubmit}>
-          <label><h4>Activity Name</h4>
-          <input
-            type="text"
-            value={activityName}
-            placeholder="Activity Name"
-            onChange={this.update("activityName")}
-          />
+          <label>
+            <h4>Activity Name*</h4>
+            {activityNameErr}
+            <input
+              className={activityNameInputErr}
+              type="text"
+              value={activityName}
+              placeholder="Activity Name"
+              onChange={this.update("activityName")}
+            />
           </label>
           <div className="flex-row left-margin">
-            <label> <h4>Activity Date</h4>
-            <input
-              type="date"
-              value={parseDate(activityDate)}
-              onChange={this.update("activityDate")}
-            />
+            <label> 
+              <h4>Activity Date*</h4>
+              {activityDateErr}
+              <input
+                className={activityDateInputErr}
+                type="date"
+                value={activityDate}
+                onChange={this.update("activityDate")}
+              />
             </label>
-            <label> <h4>Start Time</h4>
-            <input
-              type="time"
-              value={startTime}
-              onChange={this.update("startTime")}
-            />
+            <label> 
+              <h4>Start Time*</h4>
+              {startTimeErr}
+              <input
+                className={startTimeInputErr}
+                type="time"
+                value={startTime}
+                onChange={this.update("startTime")}
+              />
             </label>
-            <label> <h4>End Time</h4> 
-            <input
-              type="time"
-              value={endTime}
+            <label> 
+              <h4>End Time*</h4> 
+              {endTimeErr}
+              <input
+                className={endTimeInputErr}
+                type="time"
+                value={endTime}
                 onChange={this.update("endTime")}
-            />
+              />
             </label>
           </div>
-          <label><h4>Location</h4>
-          <input
-            type="text"
-            value={location}
-            placeholder="Activity Location"
-            onChange={this.update("location")}
-          />
-          </label>
-          <label><h4>Address</h4>
-          <input
-            type="text"
-            value={address}
-            placeholder="Address"
-            onChange={this.update("address")}
-          />
-          </label>
-          <label><h4>Notes</h4>
-          <textarea
-            type="text"
-            value={notes}
-            placeholder="Activity Notes"
-            onChange={this.update("notes")}
+          <label>
+            <h4>Location</h4>
+            <input
+              type="text"
+              value={location}
+              placeholder="Activity Location"
+              onChange={this.update("location")}
             />
           </label>
-          <input type="submit" value={this.props.formType}/>
+          <label>
+            <h4>Address</h4>
+            <input
+              type="text"
+              value={address}
+              placeholder="Address"
+              onChange={this.update("address")}
+            />
+          </label>
+          <label>
+            <h4>Notes</h4>
+            <textarea
+              type="text"
+              value={notes}
+              placeholder="Activity Notes"
+              onChange={this.update("notes")}
+              />
+          </label>
+          <input type="submit" value={formType}/>
         </form>
-        <ul>{errors}</ul>
         {deleteButton}
       </div>
     );

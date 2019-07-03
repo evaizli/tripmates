@@ -33,17 +33,14 @@ const ActivitySchema = new Schema({
     activityDate: {
         type: String,
         required: true,
-        // default: Date.now
     },
     startTime: {
         type: String,
         required: true,
-        // default: Date.now
     },
     endTime: {
         type: String,
         required: true,
-        // default: Date.now
     },
     date: {
         type: Date,
