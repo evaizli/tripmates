@@ -11,7 +11,7 @@ const mapStateToProps = state => {
       description: ""
     },
     formType: "create",
-    errors: Object.values(state.errors.trip)
+    errors: state.errors.trip
   };
 };
 
