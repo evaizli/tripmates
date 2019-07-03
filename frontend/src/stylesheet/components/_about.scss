@@ -44,12 +44,19 @@
 }
 
 .social {
+  position: relative;
   flex: 1;
   display: flex;
   font-size: 30px;
   background: rgba(0, 0, 0, 0.616);
   flex-direction: column;
   justify-content: space-evenly;
+}
+
+.teammate img {
+  position: absolute;
+  top: 17%;
+  right: 10%;
 }
 
 .social a {

@@ -1,5 +1,7 @@
 import React from 'react'
 import Header from '../splash/header/header'
+import JeffPicture from '../../assets/images/profile_jeff_dam.jpg';
+
 
 class About extends React.Component {
   render() {
@@ -42,8 +44,8 @@ class About extends React.Component {
               <a href="https://www.jeffdam.com/" title="Jeff's Personal Site">
                 <i className="fas fa-user-circle" />
               </a>
+              <img src={JeffPicture} alt=""/>
             </div>
-            <img src="../../assets/images/profile_jeff_dam.jpg" alt=""/>
           </section>
 
           <section id="eva" className="teammate">
