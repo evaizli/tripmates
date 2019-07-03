@@ -38,9 +38,15 @@ h5 {
   }
 }
 
-.errors {
+.error {
+  font-size: 10pt;
+  list-style: none inside;
   color: red;
-  margin-bottom: 5px;
+  margin-top: 2px;
+}
+
+.require {
+  font-size: 10pt;
 }
 
 .delete {

@@ -3,11 +3,12 @@ import addIcon from '../../assets/images/icons8-plus-math-30.png';
 import { allDatesFinder, formatTime, formatDate, sortStartTime } from '../../utils/datetime_api_util';
 
 const TripItinerary = ({ tripId, activities, tripDates, openModal }) => {
-
+  const { startDate, endDate } = tripDates;
+  
   const parseActivities = (activities) => {
     const activitiesCatDate = {};
     activities.forEach((activity) => {
-      const date = formatDate(activity.activityDate);
+      const date = activity.activityDate;
       if (activitiesCatDate[date]) {
         activitiesCatDate[date].push(activity);
       } else {
@@ -18,7 +19,7 @@ const TripItinerary = ({ tripId, activities, tripDates, openModal }) => {
   };
 
   const activitiesByDate = parseActivities(activities);
-  const allDates = allDatesFinder(tripDates.start, tripDates.end);
+  const allDates = allDatesFinder(startDate, endDate);
   
   const calendar = allDates.map((week, idxWeek) => {
     const weekDates = week.map((day, idxDay) => {
@@ -46,14 +47,11 @@ const TripItinerary = ({ tripId, activities, tripDates, openModal }) => {
           )
         })
       } 
-
-      const date = new Date(day);
-      const startDate = new Date(tripDates.start);
-      const endDate = new Date(tripDates.end);
-      const addActivity = (date >= startDate && date <= endDate) ?
+      
+      const addActivity = (day >= startDate && day <= endDate) ?
         <div
           className="activity-add"
-          onClick={() => openModal({ type: 'createActivity', tripId, date: date.toISOString() })}
+          onClick={() => openModal({ type: 'createActivity', tripId, date: day })}
           title="Add Activity"
         ></div>
           : 
@@ -87,7 +85,7 @@ const TripItinerary = ({ tripId, activities, tripDates, openModal }) => {
     <section id="itinerary" className="trip-itinerary-main">
       <div className="trip-itinerary-header">
         <h2>Itinerary</h2>
-        <div onClick={() => openModal({ type: 'createActivity', tripId, date: tripDates.start })} className="add-button">
+        <div onClick={() => openModal({ type: 'createActivity', tripId, date: startDate })} className="add-button">
           <img src={addIcon} alt="add" />
           &nbsp;Add Activity
         </div>
