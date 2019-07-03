@@ -41,7 +41,7 @@ class ActivityForm extends React.Component {
     } = this.state;
 
     const errors = this.props.errors.map((error, idx) => (
-      <li key={idx}>{error}</li>
+      <li className="errors" key={idx}>{error}</li>
     ));
 
     const deleteButton = this.props.formType === "Edit Activity" ? <div onClick={this.handleDelete} className="delete">Delete Activity</div> : "";
