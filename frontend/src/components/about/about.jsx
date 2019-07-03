@@ -1,22 +1,35 @@
 import React from 'react'
 import Header from '../splash/header/header'
 import JeffPicture from '../../assets/images/profile_jeff_dam.jpg';
+// import EvaPicture from '../../assets/images/profile_eva_pan.jpg';
+// import AndrewPicture from '../../assets/images/profile_andrew_mac.jpg';
 
 
 class About extends React.Component {
   render() {
+    // const showSocial = 
+
     return (
       <div>
         <Header />
         <div className="about-container">
           <div className="about">
-          <h2>About</h2>
+            <br/>
+            <h2>About</h2>
+            <br/>
             <div className="about-content">
 
               <h3>TripMates Mission</h3>
 
               <p>
-                TripMates is a web app that allows users to easily collaborate
+                  TripMates was a callaborative project made by three skilled 
+                developers with a shared love for traveling and seeing the world 
+                with friends and family. It was built with a React/Redux frontend 
+                and a Node.js, Express and MongoDB backend for ease and speedy 
+                deployment. 
+              </p>
+              <p>
+                  This web app that allows users to easily collaborate
                 on planning trips with a group of people. Users can go to one
                 place for all of their trip logistics, write notes and reviews
                 while on a trip, and share their travel recommendations and
@@ -45,7 +58,7 @@ class About extends React.Component {
                 <a href="https://www.jeffdam.com/" title="Jeff's Personal Site">
                   <i className="fas fa-user-circle" />
                 </a>
-                <img src={JeffPicture} alt=""/>
+                <img className="profile-pic" src={JeffPicture} alt=""/>
               </div>
             </section>
 
