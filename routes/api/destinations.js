@@ -3,7 +3,6 @@ const router = express.Router();
 const passport = require("passport");
 const validateDestinationInput = require("../../validation/destination");
 const User = require("../../models/User");
-const Destinations = require("../../models/Destination");
 
 //test
 router.get("/test", (req, res) => res.json({ msg: "this is the destinations routes" }));
