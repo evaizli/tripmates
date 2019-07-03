@@ -26,7 +26,7 @@ class TripDestinationForm extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     this.props.processForm(this.state)
-    .then((data) => data ? this.props.closeModal() : null)
+      .then((data) => data ? this.props.closeModal() : null)
   }
 
   render() {

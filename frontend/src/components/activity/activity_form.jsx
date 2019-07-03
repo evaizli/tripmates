@@ -38,8 +38,9 @@ class ActivityForm extends React.Component {
       startTime,
       endTime 
     } = this.state;
-
+    
     const { errors, formType } = this.props;
+
     const deleteButton = this.props.formType === "Edit Activity" ? <div onClick={this.handleDelete} className="delete">Delete Activity</div> : "";
     const activityDateErr = errors.activityDate ? <div className="error">{errors.activityDate}</div> : "";
     const activityDateInputErr = errors.activityDate ? "error-input" : "";

@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import TripForm from "./trip_form";
 import { closeModal } from "../../actions/modal_actions";
-import { updateTrip, deleteTrip } from "../../actions/trip_actions";
+import { updateTrip, deleteTrip, clearTripErrors } from "../../actions/trip_actions";
 
 const mapStateToProps = state => {
   const tripId = state.ui.modal.tripId;
@@ -14,7 +14,8 @@ const mapStateToProps = state => {
       tripName: trip.tripName,
       description: trip.description
     },
-    formType: "edit"
+    formType: "edit",
+    errors: Object.values(state.errors.trip)
   };
 };
 
@@ -22,7 +23,8 @@ const mapDispatchToProps = dispatch => {
   return {
     processForm: trip => dispatch(updateTrip(trip)),
     deleteTrip: tripId => dispatch(deleteTrip(tripId)),
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
+    clearErrors: () => dispatch(clearTripErrors())
   };
 };
 

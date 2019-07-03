@@ -8,15 +8,19 @@ class TripForm extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     this.props.processForm(this.state)
       .then(data => {
-        if (this.props.formType === "create") {
+        if (!data.errors) {
           this.props.history.push(`/trip/${data.trip._id}`);
+          this.props.closeModal();
         }
-      })
-      .then(() => this.props.closeModal());
+      });
   }
 
   handleDelete() {
@@ -39,6 +43,10 @@ class TripForm extends React.Component {
     const buttonText = this.props.formType === "create" ? "Create Trip" : "Edit Trip";
     const deleteButton = this.props.formType === "edit" ? <div onClick={this.handleDelete} className="delete">Delete Trip</div> : "";
 
+    const errors = this.props.errors.map((error, idx) => (
+      <li className="errors" key={idx}>{error}</li>
+    ));
+
     return (
       <div className = "trip-form-page" >
         <h2>{ formTitle }</h2>
@@ -58,6 +66,7 @@ class TripForm extends React.Component {
         
           <input type="submit" value={ buttonText } />
         </form>
+        <ul>{errors}</ul>
         { deleteButton }
       </div>
     );

@@ -3,6 +3,8 @@ const validText = require("./valid-text");
 
 module.exports = function validateActivityInput(data) {
     let errors = {};
+    let startTime = data.activityDate + ", " + data.startTime;
+    let endTime = data.activityDate + ", " + data.endTime;
 
     data.activityName = validText(data.activityName) ? data.activityName : "";
     data.startTime = validText(data.startTime) ? data.startTime : "";
@@ -20,8 +22,14 @@ module.exports = function validateActivityInput(data) {
     if (Validator.isEmpty(data.startTime)) {
         errors.startTime = "Start Time field is required";
     }
+    if (Validator.isEmpty(data.activityDate)) {
+        errors.activityDate = "Activity date field is required";
+    }
     if (Validator.isEmpty(data.endTime)) {
         errors.endTime = "End Time field is required";
+    }
+    if (!Validator.isBefore(startTime, endTime)) {
+        errors.startTime = "Start time must be before end time";
     }
 
     return {

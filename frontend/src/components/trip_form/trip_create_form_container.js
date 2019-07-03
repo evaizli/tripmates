@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 import TripForm from './trip_form';
 import { closeModal } from '../../actions/modal_actions';
-import { createTrip } from '../../actions/trip_actions';
+import { createTrip, clearTripErrors } from '../../actions/trip_actions';
 
 const mapStateToProps = state => {  
   return {
@@ -10,14 +10,16 @@ const mapStateToProps = state => {
       tripName: "",
       description: ""
     },
-    formType: "create"
+    formType: "create",
+    errors: Object.values(state.errors.trip)
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     processForm: trip => dispatch(createTrip(trip)),
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
+    clearErrors: () => dispatch(clearTripErrors())
   };
 };
 

@@ -20,6 +20,9 @@ module.exports = function validateDestinationInput(data) {
     if (Validator.isEmpty(data.endDate)) {
         errors.endDate = "End date field is required";
     }
+    if (!Validator.isBefore(data.startDate, data.endDate)) {
+        errors.startDate = "Start date must be before end date";
+    }
 
     return {
         errors,
