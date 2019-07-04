@@ -80,10 +80,14 @@
     font-weight: 600;
     text-shadow: 0px 1px 1px $color-dark-grey;
     box-shadow: 1px 1px 3px rgb(36, 36, 36);
-
+    
     &:hover {
       cursor: pointer;
       background: $color-primary-bluegreen;
+      * {
+        color: black;
+        text-shadow: none;
+      }
     }
   }
 
