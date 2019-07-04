@@ -35,7 +35,6 @@ class About extends React.Component {
                 while on a trip, and share their travel recommendations and
                 moments afterwards.
               </p>
-
             </div>
           </div>
           <br/>
