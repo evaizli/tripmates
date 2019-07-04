@@ -93,6 +93,7 @@ class ActivityForm extends React.Component {
               <input
                 className={endTimeInputErr}
                 type="time"
+                min={startTime}
                 value={endTime}
                 onChange={this.update("endTime")}
               />
