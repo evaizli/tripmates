@@ -42,7 +42,7 @@ class About extends React.Component {
 
             <section className="teammate">
               <div className="teammate-content">
-                <h3>Jeffrey Dam</h3>
+                <h3>Jeff Dam</h3>
                 <h4>Front-End Developer</h4>
                 <h6>Former instructional designer, assistant manager of youth engagement and technology, digital learning specialist at the California Academy of Sciences. Jeff is a highly skilled informal science educator turned software developer, experienced in building dynamic single page web applications in JavaScript, Ruby on Rails, Node.js, React, and HTML/CSS.</h6>
               </div>
