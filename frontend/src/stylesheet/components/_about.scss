@@ -4,9 +4,19 @@
 
 }
 
-.about-container h2, h3 {
+.about-container h2, h3, h5 {
   text-align: center;
   text-shadow: 1px 1px 2px black
+}
+
+.about-container i {
+  color: black;
+}
+
+.about-container i:hover {
+  color: white;
+  text-shadow: 0 0 5px white;
+  transition: .2s ease-in-out;
 }
 
 .about {
@@ -38,7 +48,6 @@
     text-indent: 15px;
   }
   transition: .8s ease-in-out;
-
 }
 
 .about-content:hover {
@@ -62,16 +71,24 @@
   height: 300px;
   width: 65%;
   margin-bottom: 2px;
-  background: rgba(0, 0, 0, 0.109);
+  background: rgba(0, 0, 0, 0.205);
+  transition: .3s ease-in-out;
 }
 
 .teammate:hover {
   background: rgba(0, 0, 0, 0.335);
+  height: 330px;
+  width: 71%;
+  transition: .3s ease-in-out;
 }
 
 .teammate-content {
   flex: 1;
-  padding: 25px;
+  padding: 35px;
+  overflow: scroll;
+  h6 {
+    font-size: 18px;
+  }
 }
 
 .social {
