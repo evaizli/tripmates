@@ -38,9 +38,9 @@
 .sidebar-menu-item {
   min-height: 30px;
   padding: 5px 20px;
-  font-weight: 600;
   display: flex;
   align-items: center;
+  font-weight: 600;
   text-shadow: 0px 1px 1px $color-dark-grey;
   transition: 0.3s;
   
@@ -53,13 +53,44 @@
 .sidebar-menu-item-logout {
   @extend .sidebar-menu-item;
   height: 30px;
-  margin-bottom: 14px;
   margin-bottom: 0px;
 }
 
-.sidebar-menu-item-countdown:hover {
-  cursor: auto;
-  background: none;
+.sidebar-menu-item-countdown {
+  @extend .sidebar-menu-item;
+  height: 30px;
+  margin-bottom: 0px;
+
+  &:hover {
+    cursor: default;
+    background: none;
+  }
+}
+
+.sidebar-menu-countdown-item {
+  @extend .flex-col;
+  
+  a {
+    @extend .flex-col;
+    padding: 10px;
+    margin: 0 20px;
+    border-radius: 3px;
+    background: $color-primary-blue-hover;
+    text-align: center;
+    font-weight: 600;
+    text-shadow: 0px 1px 1px $color-dark-grey;
+    box-shadow: 1px 1px 3px rgb(36, 36, 36);
+
+    &:hover {
+      cursor: pointer;
+      background: $color-primary-bluegreen;
+    }
+  }
+
+  a + a {
+    margin-top: 10px;
+  }  
+
 }
 
 .logo {
