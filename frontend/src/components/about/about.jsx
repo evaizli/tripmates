@@ -37,7 +37,6 @@ class About extends React.Component {
               </p>
             </div>
           </div>
-          <br/>
           <div className="team">
             <h2>The Team</h2>
 
