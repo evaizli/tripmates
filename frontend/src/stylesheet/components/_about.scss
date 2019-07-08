@@ -1,52 +1,37 @@
 .about-container {
   color: white;
-  background-color: rgba(0, 0, 0, 0.096);
-
-}
-
-.about-container {
-  h2, h3, h4, h5 {
+  h1, h2, h3, h4, h5 {
   text-align: center;
   text-shadow: 1px 1px 2px black
   }
-}
 
-.about-container i {
-  color: black;
-}
-
-.about-container i:hover {
-  color: white;
-  text-shadow: 0 0 5px white;
-  transition: .2s ease-in-out;
-}
-
-.about {
-  display: flex;
-  background: url('../assets/images/trang_an_jeff_dam.JPG') no-repeat center center;
-  background-size: cover;
-  flex-direction: column;
-  // justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 40px 0px;
-  // height: 70%;
-}
-
-.about {
-  h2 {
-    font-size: 40px;
+  i {
+    color: black;
+    &:hover {
+      color: white;
+      text-shadow: 0 0 5px white;
+      transition: .3s;
+    }
   }
 }
 
+.about {
+  @extend .flex-col;
+  align-items: center;
+  background: url('../assets/images/trang_an_jeff_dam.JPG') no-repeat center center;
+  background-size: cover;
+  width: 100%;
+}
+
 .about-content {
-  background-color: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.75);
   border-radius: 3px;
   box-shadow: 0px 0px 10px black;
+  margin: 80px;
   padding: 30px;
-  width: 50%;
-  // height: 70%;
-  overflow: scroll;
+  max-width: 900px;
+  box-sizing: border-box;
+
   p {
     font-size: 18px;
     text-indent: 15px;
@@ -55,18 +40,6 @@
   p + p {
     margin: 0;
   }
-
-  transition: .8s ease-in-out;
-}
-
-.about-content:hover {
-  background-color: rgba(0, 0, 0, 0.637);
-  transition: .8s ease-in-out;
-}
-
-
-.about-content:after {
-  z-index: 1;
 }
 
 .team {
@@ -80,53 +53,50 @@
   h2 {
     color: black;
     text-shadow: 1px 1px 2px grey;
+    margin-bottom: 25px;
   }
 }
 
 .teammate {
-  display: flex;
-  width: 65%;
-  margin-bottom: 10px;
-  background: rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 0px 10px black;
-  transition: .3s ease-in-out;
+  @extend .flex-row;
+  margin: 0 80px 15px 80px;
+  max-width: 900px;
   border-radius: 3px;
+  box-shadow: 0px 0px 5px black;
 }
 
-// .teammate:hover {
-//   background: rgba(0, 0, 0, 0.95);
-//   width: 71%;
-//   transition: .3s ease-in-out;
-// }
-
 .teammate-content {
-  flex: 1;
-  padding: 35px;
-  overflow: scroll;
+  @extend .flex-col;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 3px 0 0 3px;
+  padding: 40px;
+  
   h6 {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 
 .social {
   border-radius: 0 3px 3px 0;
-  position: relative;
-  flex: 1;
-  font-size: 30px;
   background: grey;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  padding: 40px;
+  @extend .flex-row;
+  align-items: center;
 }
 
-.teammate img {
-  position: absolute;
-  left: 50%;
-  margin-left: -50px;
+
+.social-links {
+  @extend .flex-col;
+  font-size: 30px;
+  margin-right: 40px;
+  
+  a + a {
+    margin-top: 30px;
+  }
 }
 
-.social a {
-  margin-left: 12%;
-  width: 30px;
+.profile-pic {
+  width: 200px;
+  box-shadow: 1px 1px 5px black;
 }
-
