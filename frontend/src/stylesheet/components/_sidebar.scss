@@ -75,19 +75,16 @@
     padding: 10px;
     margin: 0 20px;
     border-radius: 3px;
-    background: $color-primary-blue-hover;
+    background: $color-secondary-blue;
     text-align: center;
     font-weight: 600;
     text-shadow: 0px 1px 1px $color-dark-grey;
     box-shadow: 1px 1px 3px rgb(36, 36, 36);
-    
+    transition: 0.3s;
+
     &:hover {
       cursor: pointer;
-      background: $color-primary-bluegreen;
-      * {
-        color: black;
-        text-shadow: none;
-      }
+      opacity: .5;
     }
   }
 
