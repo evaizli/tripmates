@@ -28,7 +28,7 @@ class SideBar extends React.Component {
 
       return (
         <Link key={idx} to={`/trip/${trip.tripId}`}>
-          <div key={idx} className="sidebar-menu-item flex-col">
+          <div key={idx} className=" flex-col">
             <div>{ daysLeftText }</div>
             <div>until</div>
             <div>{`${trip.name}`}</div>
@@ -41,8 +41,8 @@ class SideBar extends React.Component {
       if (futureTrips.length > 0) {
         return(
           <>
-            <div className="sidebar-menu-item sidebar-menu-item-countdown">Trips Countdown</div>
-            <div className="flex-col">
+            <div className="sidebar-menu-item-countdown">Trips Countdown</div>
+            <div className="sidebar-menu-countdown-item">
               { tripsCountdown } 
             </div>
           </>
