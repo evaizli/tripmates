@@ -59,16 +59,17 @@
 
 .teammate {
   @extend .flex-row;
-  background: rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 0px 10px black;
-  border-radius: 3px;
   margin: 0 80px 15px 80px;
   max-width: 900px;
+  border-radius: 3px;
+  box-shadow: 0px 0px 5px black;
 }
 
 .teammate-content {
   @extend .flex-col;
   justify-content: center;
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 3px 0 0 3px;
   padding: 40px;
   
   h6 {
