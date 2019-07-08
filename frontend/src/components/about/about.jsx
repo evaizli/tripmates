@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../splash/header/header'
 import JeffPicture from '../../assets/images/profile_jeff_dam.jpg';
-// import EvaPicture from '../../assets/images/profile_eva_pan.jpg';
+import EvaPicture from '../../assets/images/profile_eva_pan.jpg';
 import AndrewPicture from '../../assets/images/profile_andrew_mac.jpg';
 
 
@@ -18,9 +18,7 @@ class About extends React.Component {
             <h2>About</h2>
             <br/>
             <div className="about-content">
-
               <h3>TripMates Mission</h3>
-
               <p>
                   TripMates was a callaborative project made by three skilled 
                 developers with a shared love for traveling and seeing the world 
@@ -76,6 +74,7 @@ class About extends React.Component {
                 <a href="http://evapan.com/" title="Eva's Personal Site">
                   <i className="fas fa-user-circle" />
                 </a>
+                <img className="profile-pic" src={EvaPicture} alt=""/>
               </div>
             </section>
 
