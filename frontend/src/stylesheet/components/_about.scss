@@ -17,20 +17,20 @@
 
 .about {
   @extend .flex-col;
+  align-items: center;
   background: url('../assets/images/trang_an_jeff_dam.JPG') no-repeat center center;
   background-size: cover;
   width: 100%;
-  align-items: center;
-  padding: 80px 0px;
 }
 
 .about-content {
   background: rgba(0, 0, 0, 0.75);
   border-radius: 3px;
   box-shadow: 0px 0px 10px black;
-  margin: 0px 80px;
+  margin: 80px;
   padding: 30px;
   max-width: 900px;
+  box-sizing: border-box;
 
   p {
     font-size: 18px;
@@ -53,24 +53,24 @@
   h2 {
     color: black;
     text-shadow: 1px 1px 2px grey;
+    margin-bottom: 25px;
   }
 }
 
 .teammate {
-  display: flex;
-  width: 65%;
-  margin-bottom: 10px;
+  @extend .flex-row;
   background: rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 10px black;
-  transition: .3s ease-in-out;
   border-radius: 3px;
+  margin: 0 80px 15px 80px;
+  max-width: 900px;
 }
 
 .teammate-content {
   @extend .flex-col;
-  flex: 1;
-  padding: 35px;
-
+  justify-content: center;
+  padding: 40px;
+  
   h6 {
     font-size: 16px;
   }
@@ -78,26 +78,24 @@
 
 .social {
   border-radius: 0 3px 3px 0;
-  position: relative;
-  flex: 1;
-  font-size: 30px;
   background: grey;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  padding: 40px;
+  @extend .flex-row;
+  align-items: center;
 }
 
-.teammate img {
-  position: absolute;
-  left: 50%;
-  margin-left: -50px;
-}
 
-.social a {
-  margin-left: 12%;
-  width: 30px;
+.social-links {
+  @extend .flex-col;
+  font-size: 30px;
+  margin-right: 40px;
+  
+  a + a {
+    margin-top: 30px;
+  }
 }
 
 .profile-pic {
-  height: 200px;
+  width: 200px;
+  box-shadow: 1px 1px 5px black;
 }
