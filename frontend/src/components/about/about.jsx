@@ -14,11 +14,8 @@ class About extends React.Component {
         <Header />
         <div className="about-container">
           <div className="about">
-            <br/>
-            <h2>About</h2>
-            <br/>
             <div className="about-content">
-              <h3>TripMates Mission</h3>
+              <h2>TripMates Mission</h2>
               <p>
                   TripMates was a callaborative project made by three skilled 
                 developers with a shared love for traveling and seeing the world 
@@ -37,7 +34,6 @@ class About extends React.Component {
           </div>
           <div className="team">
             <h2>The Team</h2>
-
             <section className="teammate">
               <div className="teammate-content">
                 <h3>Jeff Dam</h3>

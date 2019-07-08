@@ -1,48 +1,36 @@
 .about-container {
   color: white;
-  background-color: rgba(0, 0, 0, 0.096);
-
-}
-
-.about-container {
-  h2, h3, h4, h5 {
+  h1, h2, h3, h4, h5 {
   text-align: center;
   text-shadow: 1px 1px 2px black
   }
-}
 
-.about-container i {
-  color: black;
-}
-
-.about-container i:hover {
-  color: white;
-  text-shadow: 0 0 5px white;
-  transition: .2s ease-in-out;
+  i {
+    color: black;
+    &:hover {
+      color: white;
+      text-shadow: 0 0 5px white;
+      transition: .3s;
+    }
+  }
 }
 
 .about {
-  display: flex;
+  @extend .flex-col;
   background: url('../assets/images/trang_an_jeff_dam.JPG') no-repeat center center;
   background-size: cover;
-  flex-direction: column;
-  align-items: center;
   width: 100%;
-  padding: 40px 0px;
-}
-
-.about {
-  h2 {
-    font-size: 40px;
-  }
+  align-items: center;
+  padding: 80px 0px;
 }
 
 .about-content {
   background: rgba(0, 0, 0, 0.75);
   border-radius: 3px;
   box-shadow: 0px 0px 10px black;
+  margin: 0px 80px;
   padding: 30px;
-  width: 50%;
+  max-width: 900px;
 
   p {
     font-size: 18px;
@@ -52,12 +40,6 @@
   p + p {
     margin: 0;
   }
-
-}
-
-
-.about-content:after {
-  z-index: 1;
 }
 
 .team {
@@ -84,18 +66,13 @@
   border-radius: 3px;
 }
 
-// .teammate:hover {
-//   background: rgba(0, 0, 0, 0.95);
-//   width: 71%;
-//   transition: .3s ease-in-out;
-// }
-
 .teammate-content {
+  @extend .flex-col;
   flex: 1;
   padding: 35px;
-  overflow: scroll;
+
   h6 {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 
