@@ -26,11 +26,9 @@
   background: url('../assets/images/trang_an_jeff_dam.JPG') no-repeat center center;
   background-size: cover;
   flex-direction: column;
-  // justify-content: center;
   align-items: center;
   width: 100%;
   padding: 40px 0px;
-  // height: 70%;
 }
 
 .about {
@@ -40,13 +38,12 @@
 }
 
 .about-content {
-  background-color: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.75);
   border-radius: 3px;
   box-shadow: 0px 0px 10px black;
   padding: 30px;
   width: 50%;
-  // height: 70%;
-  overflow: scroll;
+
   p {
     font-size: 18px;
     text-indent: 15px;
@@ -56,12 +53,6 @@
     margin: 0;
   }
 
-  transition: .8s ease-in-out;
-}
-
-.about-content:hover {
-  background-color: rgba(0, 0, 0, 0.637);
-  transition: .8s ease-in-out;
 }
 
 
