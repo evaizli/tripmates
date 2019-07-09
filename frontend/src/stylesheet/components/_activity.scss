@@ -7,6 +7,7 @@
   align-items: center;
   background: rgb(228, 228, 228);
   border-radius: 1px;
+  transition: 0.3s;
 
   img {
     height: 15px;
@@ -27,10 +28,6 @@
   @extend .baseline;
 }
 
-.grey {
-  height: 100%;
-  background: $color-light-grey;
-}
 
 .activity-show-datetime {
   @extend .flex-row;
@@ -38,4 +35,13 @@
   h4 {
     margin-top: 0px;
   }
+}
+
+.activity-show-notes {
+  white-space: pre-wrap;
+}
+
+.grey {
+  height: 100%;
+  background: $color-light-grey;
 }
