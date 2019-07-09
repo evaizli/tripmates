@@ -60,7 +60,7 @@ class ActivtyShow extends React.Component{
                     <h4>Address</h4>
                     {mapLink(address)}
                 </label>
-                <label> 
+                <label className="activity-show-notes"> 
                     <h4>Notes</h4>
                     {notes}
                 </label>
