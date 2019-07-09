@@ -53,7 +53,9 @@ const TripItinerary = ({ tripId, activities, tripDates, openModal }) => {
           className="activity-add"
           onClick={() => openModal({ type: 'createActivity', tripId, date: day })}
           title="Add Activity"
-        ></div>
+        >
+          <img src={addIcon} alt="add" />
+        </div>
           : 
         <div className="grey"></div>
       ;
