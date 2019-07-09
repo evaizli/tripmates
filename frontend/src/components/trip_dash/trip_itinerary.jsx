@@ -40,9 +40,9 @@ const TripItinerary = ({ tripId, activities, tripDates, openModal }) => {
               className="trip-activity" 
               key={idxActivity} 
               onClick={() => openModal({ type: "activityShow", activityId: activity._id, tripId })} 
-              title={`${startTime} - ${startTime}: ${activity.activityName}`}
+              title={`${startTime} - ${endTime}: ${activity.activityName}`}
             >
-              <h5>{time}</h5>
+              <h5>{startTime}</h5>
               <h5>{activity.activityName}</h5>
             </div>
           )
