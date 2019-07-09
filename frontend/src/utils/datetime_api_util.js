@@ -38,9 +38,9 @@ export const formatDate = date => {
 
 export const formatTime = time => {
   const splitTime = time.split(":");
-  const hours = splitTime[0] <= 12 ? splitTime[0] : splitTime[0] % 12;
+  const hours = splitTime[0] % 12 === 0 ? "12" : splitTime[0] % 12;
   const minutes = splitTime[1];
-  const period = splitTime[0] <= 12 ? "AM" : "PM";
+  const period = splitTime[0] < 12 ? "AM" : "PM";
   const formattedTime = `${hours}:${minutes} ${period}`;
   return formattedTime;
 };

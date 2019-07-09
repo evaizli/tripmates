@@ -33,15 +33,16 @@ const TripItinerary = ({ tripId, activities, tripDates, openModal }) => {
       if (activitiesByDate[day]) {
         const sortedActivities = sortStartTime(activitiesByDate[day])
         activityOfDay = sortedActivities.map((activity, idxActivity) => {
-          const time = formatTime(activity.startTime);
+          const startTime = formatTime(activity.startTime);
+          const endTime = formatTime(activity.endTime);
           return (
             <div 
               className="trip-activity" 
               key={idxActivity} 
               onClick={() => openModal({ type: "activityShow", activityId: activity._id, tripId })} 
-              title={`${time} - ${activity.activityName}`}
+              title={`${startTime} - ${endTime}: ${activity.activityName}`}
             >
-              <h5>{time}</h5>
+              <h5>{startTime}</h5>
               <h5>{activity.activityName}</h5>
             </div>
           )
