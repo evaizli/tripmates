@@ -41,13 +41,13 @@ class About extends React.Component {
               </div>
               <div id="jeff" className="social">
                 <div className="social-links">
-                  <a href="https://www.linkedin.com/in/jeffdam/" title="Jeff's LinkedIn">
+                  <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jeffdam/" title="Jeff's LinkedIn">
                     <i className="fab fa-linkedin-in" />
                   </a>
-                  <a href="https://github.com/jeffdam" title="Jeff's Github">
+                  <a target="_blank" rel="noopener noreferrer" href="https://github.com/jeffdam" title="Jeff's Github">
                     <i className="fab fa-github" />
                   </a>
-                  <a href="https://www.jeffdam.com/" title="Jeff's Personal Site">
+                  <a target="_blank" rel="noopener noreferrer" href="https://www.jeffdam.com/" title="Jeff's Personal Site">
                     <i className="fas fa-user-circle" />
                   </a>
                 </div>
@@ -62,13 +62,13 @@ class About extends React.Component {
               </div>
               <div className="social">
                 <div className="social-links">
-                  <a href="https://www.linkedin.com/in/evapan2000/" title="Eva's LinkedIn">
+                  <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/evapan2000/" title="Eva's LinkedIn">
                     <i className="fab fa-linkedin-in" />
                   </a>
-                  <a href="https://github.com/evaizli" title="Eva's Github">
+                  <a target="_blank" rel="noopener noreferrer" href="https://github.com/evaizli" title="Eva's Github">
                     <i className="fab fa-github" />
                   </a>
-                  <a href="http://evapan.com/" title="Eva's Personal Site">
+                  <a target="_blank" rel="noopener noreferrer" href="http://evapan.com/" title="Eva's Personal Site">
                     <i className="fas fa-user-circle" />
                   </a>
                 </div>
@@ -83,13 +83,13 @@ class About extends React.Component {
               </div>
               <div className="social">
                 <div className="social-links">
-                  <a href="https://www.linkedin.com/in/macandrew6/" title="Andrew's LinkedIn">
+                  <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/macandrew6/" title="Andrew's LinkedIn">
                     <i className="fab fa-linkedin-in" />
                   </a>
-                  <a href="https://github.com/macandrew6" title="Andrew's Github">
+                  <a target="_blank" rel="noopener noreferrer" href="https://github.com/macandrew6" title="Andrew's Github">
                     <i className="fab fa-github" />
                   </a>
-                  <a href="https://github.com/macandrew6" title="Andrew's Personal Site">
+                  <a target="_blank" rel="noopener noreferrer" href="https://github.com/macandrew6" title="Andrew's Personal Site">
                     <i className="fas fa-user-circle" />
                   </a>
                 </div>
