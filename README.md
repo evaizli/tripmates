@@ -16,7 +16,7 @@ TripMates is a web app that allows users to easily collaborate on planning trips
 * Sass
 * Webpack
 
-## Functionality and MVP
+## Features
 
 ### Splash Page
 
@@ -57,7 +57,7 @@ Logged out users are immediately taken to a splash page where they can log on, s
 
 <img src="./frontend/src/assets/images/readme/tripmates_activities.gif" width="60%">
 
-## Group Members and Work Breakdown
+## Group Members
 
 * [Eva Pan](http://evapan.com/)
 * [Jeff Dam](https://www.jeffdam.com/)
