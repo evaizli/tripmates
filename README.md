@@ -6,52 +6,76 @@
 
 TripMates is a web app that allows users to easily collaborate on planning trips with a group of people. Users can go to one place for all of their trip logistics, write notes and reviews while on a trip, and share their travel recommendations and moments afterwards.
 
-## Functionality and MVP
-
-### New account creation, login, and guest/demo login
-
-* Users can sign up, sign in, log out
-* Users can use a demo login to try the site
-* Users can't use certain features without logging in (e.g. creating trips)
-
-### Trip Planning
-
-* Users have a dashboard for planning
-* Users can map out their trip
-* Users can create itineraries
-
-### Trip Documentation
-
-* Users can create reviews
-* Users take notes
-* Users submit photos
-
-### Trips Dashboard
-
-* Users have a private dashboard of the their past, present, and future trips 
-* Friend List
-* Countdown until trip
-
-## Technologies and Technical Challenges
+## Technologies
 
 * MongoDB
 * Express
 * React
 * Node.js
 * Redux
+* Sass
+* Webpack
+
+## Functionality and MVP
+
+### Splash Page
+
+Logged out users are immediately taken to a splash page where they can log on, sign up, or read more about the app and the team.
+
+<img src="./frontend/src/assets/images/readme/tripmates_splash.gif" width="60%">
+
+### New account creation, login, and demo login
+
+* Users can sign up, sign in, log out
+* Users can use a demo login to try the site
+* Users can't use certain features without logging in (e.g. creating trips)
+
+<img src="./frontend/src/assets/images/readme/tripmates_login.gif" width="60%">
+
+### Trips Dashboard
+
+* Users have a private dashboard of the their past, present, and future trips
+* Countdown until trip
+
+<img src="./frontend/src/assets/images/readme/tripmates_tripsdash.gif" width="60%">
+
+### Trip Planning
+
+* Users have a dashboard for each trip they are planning
+
+<img src="./frontend/src/assets/images/readme/tripmates_tripdash.gif" width="60%">
+
+* Users can create and edit trips
+
+<img src="./frontend/src/assets/images/readme/tripmates_createtrip.gif" width="60%">
+
+* Users can add, edit, and delete destinations
+
+<img src="./frontend/src/assets/images/readme/tripmates_destinations.gif" width="60%">
+
+* Users can add, edit, and delete activities
+
+<img src="./frontend/src/assets/images/readme/tripmates_activities.gif" width="60%">
 
 ## Group Members and Work Breakdown
 
-* Team Name: PanDamMac
-* Eva Pan - Backend Design
-* Jeff Dam - Frontend Design
-* Andrew Mac - Backend Design
+* [Eva Pan](http://evapan.com/)
+* [Jeff Dam](https://www.jeffdam.com/)
+* [Andrew Mac](https://github.com/macandrew6)
 
-## Bonus Features (Future To Dos)
+## Possible Future Features
+
+In the future we would like to add:
 
 ### Trip planning
 
-* Users can look up what travel docs they need for their destination and any travel advisories (bonus)
+* Users can add other users to the trip to make edits
+* Users can look up what travel docs they need for their destination and any travel advisories
+
+### Trip Documentation
+
+* Users add reviews to their activities and destinations
+* Users submit photos
 
 ### Budgeting and Expense Tracking
 
@@ -59,7 +83,7 @@ TripMates is a web app that allows users to easily collaborate on planning trips
 * Users can track expenses and split costs
 * Users can reconcile expenses at end of trip
 
-### Profile Dasboard
+### User Profile Dasboard
 
 * Wish list of destinations
 * Travel preferences
