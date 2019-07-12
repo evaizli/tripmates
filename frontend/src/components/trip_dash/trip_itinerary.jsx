@@ -66,7 +66,9 @@ const TripItinerary = ({ tripId, activities, tripDates, openModal }) => {
           className="trip-itinerary-activity-list" 
           key={idxDay} 
         >
+          <div>
           { activityOfDay }
+          </div>
           { addActivity }
         </div>
       )
