@@ -27,8 +27,8 @@
   background: rgba(0, 0, 0, 0.75);
   border-radius: 3px;
   box-shadow: 0px 0px 10px black;
-  margin: 80px;
-  padding: 30px;
+  margin: 100px;
+  padding: 40px;
   max-width: 900px;
   box-sizing: border-box;
 
@@ -48,7 +48,7 @@
   align-items: center;
   background: url('../assets/images/kyoto_jeff_dam.JPG') no-repeat center center;
   background-size: cover;
-  padding: 40px 0px;
+  padding: 80px 0px;
 
   h2 {
     color: black;
@@ -59,7 +59,7 @@
 
 .teammate {
   @extend .flex-row;
-  margin: 0 80px 15px 80px;
+  margin: 0 100px 15px 100px;
   max-width: 900px;
   border-radius: 3px;
   box-shadow: 0px 0px 5px black;
