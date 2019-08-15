@@ -90,7 +90,7 @@ class About extends React.Component {
                   <a target="_blank" rel="noopener noreferrer" href="https://github.com/macandrew6" title="Andrew's Github">
                     <i className="fab fa-github" />
                   </a>
-                  <a target="_blank" rel="noopener noreferrer" href="https://github.com/macandrew6" title="Andrew's Personal Site">
+                  <a target="_blank" rel="noopener noreferrer" href="https://andrew-mac.netlify.com/" title="Andrew's Personal Site">
                     <i className="fas fa-user-circle" />
                   </a>
                 </div>
