@@ -37,7 +37,15 @@ class About extends React.Component {
             <section className="teammate">
               <div className="teammate-content">
                 <h3>Jeff Dam</h3>
-                <h6>Former instructional designer, assistant manager of youth engagement and technology, digital learning specialist at the California Academy of Sciences. Jeff is a highly skilled informal science educator turned software developer, experienced in building dynamic single page web applications in JavaScript, Ruby on Rails, Node.js, React, and HTML/CSS.</h6>
+                <h6>
+                  Jeff is a software developer with seven years of experience in the education field as a science and technology educator. 
+                  He's always had a passion for teaching and helping others but wanted to move beyond the whiteboard and apply his science 
+                  knowledge and problem-solving skills to create tangible products used by millions. 
+                  <br/><br/>
+                  He's dedicated over 1000+ hours to learning CS fundamentals, implementing best-practices, and sharpening his skills in 
+                  JavaScript, React, Ruby on Rails, Express, Node.js, SQL, and HTML/CSS. Jeff is experienced in building dynamic single-page 
+                  applications, working on collaborative teams, and adapting to new roles and shifting priorities.
+                </h6>
               </div>
               <div id="jeff" className="social">
                 <img className="profile-pic" src={JeffPicture} alt=""/>
